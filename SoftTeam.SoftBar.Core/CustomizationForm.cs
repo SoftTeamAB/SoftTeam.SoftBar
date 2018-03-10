@@ -5,22 +5,25 @@ namespace SoftTeam.SoftBar.Core
 {
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
+        private string _path = "";
         private const int SPACE = 4;
         private const int SCROLLBAR_WIDTH = 20;
         private const int  LEVEL_INDENTATION = 36;
         private const int  ITEM_HEIGHT = 36;
         private int height = 0;
         private int level = 0;
-        public CustomizationForm(SoftBarManager manager)
+
+        public CustomizationForm(SoftBarManager manager, string path)
         {
             InitializeComponent();
 
+            _path = path;
             LoadMenu(manager);
         }
 
         private void CustomizationForm_Load(object sender, EventArgs e)
         {
-
+            barStaticItemPath.Caption = _path;
         }
         private void LoadMenu(SoftBarManager manager)
         {
@@ -82,6 +85,11 @@ namespace SoftTeam.SoftBar.Core
             item.Size = new Size(width, ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
             height += item.Height + SPACE;
+        }
+
+        private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.Close();
         }
     }
 }

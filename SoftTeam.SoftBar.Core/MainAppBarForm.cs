@@ -13,8 +13,18 @@ namespace SoftTeam.SoftBar
 
             // Set up the app bar at the top of the screen
             AppBarFunctions.SetAppBar(this, AppBarEdge.Top);
+            
+            // Get the path for the xml file
+            var path = Core.Properties.Settings.Default.SoftBarXmlPath;
+
+            // First time user
+            if (string.IsNullOrEmpty(path))
+            {
+
+            }
+
             // Create the app bar from XML
-            SoftBarManager bar = new SoftBarManager(this, @"c:\temp\menu.xml");
+            SoftBarManager bar = new SoftBarManager(this, path);
         }
 
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)

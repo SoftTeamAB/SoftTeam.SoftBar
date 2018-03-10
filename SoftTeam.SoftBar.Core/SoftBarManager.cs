@@ -315,7 +315,7 @@ namespace SoftTeam.SoftBar.Core
 
         private void CustomizeItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            using (CustomizationForm form = new CustomizationForm(this))
+            using (CustomizationForm form = new CustomizationForm(this, _path))
             {
                 form.ShowDialog();
 
