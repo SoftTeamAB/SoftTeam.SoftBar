@@ -10,69 +10,56 @@ using System.Threading.Tasks;
 
 namespace SoftTeam.SoftBar.Core
 {
-    public class SoftBarMenu
+    public class SoftBarMenu:SoftBarBaseItem
     {
         #region Fields
-        private readonly List<SoftBarMenuItem> _menuItems = new List<SoftBarMenuItem>();
+        private readonly List<SoftBarBaseItem> _menuItems = new List<SoftBarBaseItem>();
 
-        private MainAppBarForm _form = null;
-        private string _name = "";
         private int _width;
         private int _left;
         private string _iconPath = "";
-        private bool _isSystemMenu = false;
+
         private SimpleButton _button = null;
         private PopupMenu _popupMenu = null;        
         #endregion
 
         #region Constructor
-        public SoftBarMenu(MainAppBarForm form, string name, int left, bool isSystemMenu = false)
+        public SoftBarMenu(MainAppBarForm form, string name, int left, bool systemMenu = false) : base(form,name,false,systemMenu)
         {
-            _form = form;            
             _left = left;
-            _name = name;
-            _isSystemMenu = isSystemMenu;
             Width = Name.Length * 10;
         }
         #endregion
 
         #region Properties
-        public string Name { get => _name; set => _name = value; }
-        public List<SoftBarMenuItem> MenuItems => _menuItems;
+        public List<SoftBarBaseItem> MenuItems => _menuItems;
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
-        public string IconPath { get => _iconPath; set => _iconPath = value; }
-        public bool IsSystemMenu { get => _isSystemMenu; set => _isSystemMenu = value; }
-        
+        public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
+
         public SimpleButton Button { get => _button; set => _button = value; }
         public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
-
-        public Image Image
-        {
-            get
-            {
-                if (!string.IsNullOrEmpty(IconPath))
-                {
-                    //Icon ico = Icon.ExtractAssociatedIcon(path);
-                    //Image image = new Icon(ico, 16, 16).ToBitmap();
-
-                    Image image = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
-                    return image.ResizeImage(16, 16);
-                }
-                else
-                    return null;
-            }
-        }
         #endregion
 
+        private void UpdateImage()
+        {
+            if (!string.IsNullOrEmpty(IconPath))
+            {
+                Image image = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
+                Image = image.ResizeImage(16, 16);
+            }
+            else
+                Image = null;
+        }
         #region CreateMenu
-        public void CreateMenu()
+        public void Setup()
         {
             Button = AddButton(Name);
             PopupMenu = AddPopupMenu();
 
-            if (!_isSystemMenu)
-                Button.Click += Button_Click;
+            if (SystemMenu) return;
+
+            Button.Click += Button_Click;
         }
 
         private SimpleButton AddButton(string name)
@@ -87,7 +74,7 @@ namespace SoftTeam.SoftBar.Core
             button.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             button.ImageOptions.Image = Image;
             // Add the button to the form
-            _form.Controls.Add(button);
+            Form.Controls.Add(button);
 
             return button;
         }
@@ -95,7 +82,7 @@ namespace SoftTeam.SoftBar.Core
         private PopupMenu AddPopupMenu()
         {
             // Create an empty menu and return it
-            PopupMenu menu = new PopupMenu(_form.barManagerSoftBar);
+            PopupMenu menu = new PopupMenu(Form.barManagerSoftBar);
             return menu;
         }
         #endregion

@@ -37,42 +37,35 @@ namespace SoftTeam.SoftBar.Core
         {
             AddItemControl(menu);
             level += 1;
-            foreach (var menuItem in menu.MenuItems)
+            foreach (SoftBarBaseItem menuItem in menu.MenuItems)
             {
-                switch (menuItem.Type)
-                {
-                    case SoftBarMenuItem.MenuItemType.Header:
-                        AddMenuHeaderControl(menuItem);
-                        break;
-                    case SoftBarMenuItem.MenuItemType.MenuItem:
-                        AddMenuItemControl(menuItem);
-                        break;
-                    case SoftBarMenuItem.MenuItemType.SystemMenuItem:
-                        // Do nothing
-                        break;
-                    case SoftBarMenuItem.MenuItemType.SubLevelMenu:
-                        // Not implemented
-                        throw new NotImplementedException();                        
-                }
+                if (menuItem.SystemMenu)
+                    continue;
+
+                AddItemControl(menuItem);
+                //switch (menuItem.GetType().Name)
+                //{
+                    
+                //    case "SoftBarHeaderItem":
+                //        AddMenuHeaderControl((SoftBarHeaderItem)menuItem);
+                //        break;
+                //    case SoftBarMenuItem.MenuItemType.MenuItem:
+                //        AddMenuItemControl(menuItem);
+                //        break;
+                //    case SoftBarMenuItem.MenuItemType.SystemMenuItem:
+                //        // Do nothing
+                //        break;
+                //    case SoftBarMenuItem.MenuItemType.SubLevelMenu:
+                //        // Not implemented
+                //        throw new NotImplementedException();                        
+                //}
             }
             level -= 1;
         }
 
-        private void AddItemControl(SoftBarMenu menu)
+        private void AddItemControl(SoftBarBaseItem menu)
         {
             MenuItem item = new MenuItem(menu,level);
-            AddItem(item);
-        }
-
-        private void AddMenuHeaderControl(SoftBarMenuItem menuItem)
-        {
-            MenuItem item = new MenuItem(menuItem, level, true);
-            AddItem(item);
-        }
-
-        private void AddMenuItemControl(SoftBarMenuItem menuItem)
-        {
-            MenuItem item = new MenuItem(menuItem, level);
             AddItem(item);
         }
 

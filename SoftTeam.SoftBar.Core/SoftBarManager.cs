@@ -89,12 +89,12 @@ namespace SoftTeam.SoftBar.Core
                 if (menuItem.Name == "headerItem")
                 {
                     // Create the new headerItem
-                    SoftBarMenuItem headerItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.Header, name);
+                    SoftBarHeaderItem headerItem = new SoftBarHeaderItem(_form, name);
                     xmlMenu.MenuItems.Add(headerItem);
                 }
                 else
                 {
-                    SoftBarMenuItem xmlMenuItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.MenuItem, name);
+                    SoftBarMenuItem xmlMenuItem = new SoftBarMenuItem(_form, name);
 
                     // Application and document path
                     var applicationNode = menuItem.SelectSingleNode("applicationPath");
@@ -152,46 +152,56 @@ namespace SoftTeam.SoftBar.Core
         private void CreateSystemMenu()
         {
             _systemMenu = new SoftBarMenu(_form, "SystemMenu", 0, true);
-            _systemMenu.CreateMenu();
+            _systemMenu.Setup();
             _systemMenu.Button.Click += Button_Click;
             _systemMenu.Button.Tag = _systemMenu;
             _systemMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.SystemMenu);
 
             // Reload the app bar
-            SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Reload");
+            SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, "Reload", false, true);
             reloadItem.Setup(_systemMenu.PopupMenu);
             reloadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Reload);
             reloadItem.Item.ItemClick += Reload_ItemClick;
 
             // Settings for the app bar
-            SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Settings");
+            SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, "Settings", false, true);
             settingsItem.Setup(_systemMenu.PopupMenu);
             settingsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Settings);
             settingsItem.Item.ItemClick += SettingsItem_ItemClick;
 
+            //// Customize the app bar menu
+            //SoftBarSubMenu customizeSubMenuItem = new SoftBarSubMenu(_form, "Customize");
+            //customizeSubMenuItem.Setup(_systemMenu.PopupMenu);
+            //customizeSubMenuItem.SubMenu.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
+
             // Customize the app bar
-            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Customize");
+            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize in SoftBar editor",false,true);
             customizeItem.Setup(_systemMenu.PopupMenu);
+            //customizeSubMenuItem.MenuItems.Add(customizeItem);
+            //customizeSubMenuItem.SubMenu.AddItem(customizeItem.Item);
             customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
             customizeItem.Item.ItemClick += CustomizeItem_ItemClick;
 
+            // Customize the app bar in notepad
+            SoftBarMenuItem openInNotepadItem = new SoftBarMenuItem(_form, "Customize in Notepad (risky!)", false,true);
+            openInNotepadItem.Setup(_systemMenu.PopupMenu);
+            //customizeSubMenuItem.MenuItems.Add(openInNotepadItem);
+            //customizeSubMenuItem.SubMenu.AddItem(openInNotepadItem.Item);
+            openInNotepadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
+            openInNotepadItem.Item.ItemClick += openInNotepadItem_ItemClick; ;
+
             // Exit the app bar
-            SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Exit", true);
+            SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true, true);
             exitItem.Setup(_systemMenu.PopupMenu);
             exitItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Exit);
             exitItem.BeginGroup = true;
             exitItem.Item.ItemClick += ExitItem_ItemClick;
         }
 
-        private void SettingsItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void CreateDirectoriesMenu()
         {
             _directoriesMenu = new SoftBarMenu(_form, "Directories", _systemMenu.Width, true);
-            _directoriesMenu.CreateMenu();
+            _directoriesMenu.Setup();
             _directoriesMenu.Button.Click += Button_Click;
             _directoriesMenu.Button.Tag = _directoriesMenu;
             _directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
@@ -202,7 +212,7 @@ namespace SoftTeam.SoftBar.Core
             foreach (DriveInfo  drive in drives)
             {
                 // Create a menu item for the drive
-                SoftBarMenuItem driveItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, drive.Name, false);
+                SoftBarMenuItem driveItem = new SoftBarMenuItem(_form,  drive.Name, false, true);
 
                 if (driveType!=drive.DriveType)
                     driveItem.BeginGroup = true;
@@ -231,58 +241,53 @@ namespace SoftTeam.SoftBar.Core
             }
 
             // Add special directories
-            SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Desktop", true);
+            SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true, true);
             desktopItem.Setup(_directoriesMenu.PopupMenu);
             desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
             desktopItem.Item.ItemClick += DesktopItem_ItemClick; ;
 
-            SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Documents", false);
+            SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", false, true);
             documentsItem.Setup(_directoriesMenu.PopupMenu);
             documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Document);
             documentsItem.Item.ItemClick += DocumentsItem_ItemClick; ;
 
-            SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SystemMenuItem, "Downloads", false);
+            SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", false,true);
             downloadsItem.Setup(_directoriesMenu.PopupMenu);
             downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
             downloadsItem.Item.ItemClick += DocumentsItem_ItemClick; ;
 
         }
 
-        private void DesktopItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Desktop");
-        }
-
-        private void DocumentsItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Documents");
-        }
-
-        private void DriveItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var drive = ((DriveInfo)e.Item.Tag);
-            Process.Start(drive.Name);
-        }
-
         public void CreateMenus()
         {
             foreach (SoftBarMenu menu in _menus)
             {
-                menu.CreateMenu();
+                menu.Setup();
                 CreateMenu(menu);
             }
         }
         private void CreateMenu(SoftBarMenu menu)
         {
-            foreach (SoftBarMenuItem item in menu.MenuItems)
+            foreach (SoftBarBaseItem item in menu.MenuItems)
             {
-                if (item.IsFolder)
+                if (item is SoftBarSubMenu)
                 {
                     //CreateSubMenu(menu, item);
                 }
+                else if (item is SoftBarHeaderItem)
+                {
+                    var menuItem = item as SoftBarHeaderItem;
+                    menuItem.Setup(menu.PopupMenu);
+                }
+                else if (item is SoftBarSubMenu)
+                {
+                    var menuItem = item as SoftBarSubMenu;
+                    menuItem.Setup(menu.PopupMenu);
+                }
                 else
                 {
-                    item.Setup(menu.PopupMenu);
+                    var menuItem = item as SoftBarMenuItem;
+                    menuItem.Setup(menu.PopupMenu);
                 }
             }
         }
@@ -318,16 +323,44 @@ namespace SoftTeam.SoftBar.Core
             using (CustomizationForm form = new CustomizationForm(this, _path))
             {
                 form.ShowDialog();
-
             }
-
-            // Process.Start("Notepad", "menu.xml");
         }
 
         private void ExitItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _form.Close();
         }
+
+        private void SettingsItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (SettingsForm form = new SettingsForm())
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void DesktopItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Desktop");
+        }
+
+        private void DocumentsItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Documents");
+        }
+
+        private void DriveItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var drive = ((DriveInfo)e.Item.Tag);
+            Process.Start(drive.Name);
+        }
+
+        private void openInNotepadItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var path = Core.Properties.Settings.Default.SoftBarXmlPath;
+            CommandLine.ExecuteCommandLine(path);
+        }
+
         #endregion
     }
 }
