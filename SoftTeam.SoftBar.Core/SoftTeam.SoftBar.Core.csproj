@@ -85,9 +85,6 @@
     <Compile Include="ToolTipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="menu.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Resources\folder_document.png" />
     <None Include="Resources\folder_into.png" />
     <None Include="Resources\hard_drive_network.png" />
