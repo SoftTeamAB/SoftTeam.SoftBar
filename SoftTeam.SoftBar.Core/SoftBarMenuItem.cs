@@ -14,15 +14,9 @@ namespace SoftTeam.SoftBar.Core
     public class SoftBarMenuItem : SoftBarBaseItem
     {
         #region Fields
-        private readonly List<SoftBarMenuItem> _menuItems = new List<SoftBarMenuItem>();
-
-        private string _iconPath = "";
         private int _width;
         private int _left;
-        private bool _warning = false;
-        private string _warningText = "";
         private BarStaticItem _item = null;
-        private PopupMenu _popupMenu = null;
         private CommandLineHelper _commandLine = null;
         #endregion
 
@@ -35,63 +29,14 @@ namespace SoftTeam.SoftBar.Core
 
         #region Properties
         public string DocumentPath { get => _commandLine.Document; set => _commandLine.Document = value; }
-        public string ApplicationPath { get => _commandLine.Application; set { _commandLine.Application = value; UpdateImage(); } }
-        public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
+        public string ApplicationPath {
+            get => _commandLine.Application;
+            set { _commandLine.Application = value; if (string.IsNullOrEmpty(IconPath)) IconPath = value; }
+        }
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
 
         public BarStaticItem Item { get => _item; set => _item = value; }
-        public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
-
-        public bool Warning { get => _warning; set => _warning = value; }
-        public string WarningText { get => _warningText; set => _warningText = value; }
-        #endregion
-
-        #region Misc functions
-        private void UpdateImage()
-        {
-            // First check IconPath...
-            var path = IconPath;
-            // ...then check application path if IconPath is empty
-            if (string.IsNullOrEmpty(path))
-                path = ApplicationPath;
-
-            // If we have a potential icon...
-            if (!string.IsNullOrEmpty(path))
-            {
-                try
-                {
-                    if (!File.Exists(path))
-                    {
-                        // Set warning message
-                        Warning = true;
-                        WarningText = "IconPath does not exist!";
-                        // Return an error image
-                        Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                    }
-                    else
-                    {
-                        // Extract the icon...
-                        Image image = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                        // and return an 16x16 image
-                        Image = image.ResizeImage(16, 16);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Set warning message
-                    Warning = true;
-                    WarningText = $"Unknown icon exception! : \n\n{ex.Message}";
-
-                    // Return an error image
-                    Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                }
-            }
-            else
-                // Return no image
-                Image = null;
-
-        }
         #endregion
 
         #region Setup

@@ -13,7 +13,6 @@ namespace SoftTeam.SoftBar.Core
     public class SoftBarSubMenu : SoftBarBaseMenu
     {
         #region Fields
-        private string _iconPath = "";
         private BarSubItem _subMenu = null;
         #endregion
 
@@ -24,23 +23,7 @@ namespace SoftTeam.SoftBar.Core
         #endregion
 
         #region Properties
-        public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
-
         public BarSubItem Item { get => _subMenu; set => _subMenu = value; }
-
-        #endregion
-
-        #region Misc functions
-        private void UpdateImage()
-        {
-            if (!string.IsNullOrEmpty(IconPath))
-            {
-                Image image = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
-                Image = image.ResizeImage(16, 16);
-            }
-            else
-                Image = null;
-        }
         #endregion
 
         #region Setup

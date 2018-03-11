@@ -4,7 +4,6 @@ using System.Drawing;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
-using SoftTeam.SoftBar.Core.Extensions;
 using SoftTeam.SoftBar.Core.Forms;
 
 namespace SoftTeam.SoftBar.Core
@@ -14,9 +13,7 @@ namespace SoftTeam.SoftBar.Core
         #region Fields
         private int _width;
         private int _left;
-        private string _iconPath = "";
         private PopupMenu _popupMenu = null;
-
         private SimpleButton _button = null;
         #endregion
 
@@ -33,23 +30,8 @@ namespace SoftTeam.SoftBar.Core
         #region Properties
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
-        public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
         public PopupMenu Item { get => _popupMenu; set => _popupMenu = value; }
-
         public SimpleButton Button { get => _button; set => _button = value; }
-        #endregion
-
-        #region Misc functions
-        private void UpdateImage()
-        {
-            if (!string.IsNullOrEmpty(IconPath))
-            {
-                Image image = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
-                Image = image.ResizeImage(16, 16);
-            }
-            else
-                Image = null;
-        }
         #endregion
 
         #region Setup
