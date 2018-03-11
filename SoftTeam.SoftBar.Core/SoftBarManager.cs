@@ -23,12 +23,12 @@ namespace SoftTeam.SoftBar.Core
         #region Fields
         private SoftBarMenu _systemMenu = null;
         private SoftBarMenu _directoriesMenu = null;
-        private List<SoftBarMenu> _menus = new List<SoftBarMenu>();
+        private List<SoftBarMenu> _userMenus = new List<SoftBarMenu>();
 
         private MainAppBarForm _form = null;
         private string _path = "";
 
-        public List<SoftBarMenu> Menus { get => _menus; set => _menus = value; }
+        public List<SoftBarMenu> Menus { get => _userMenus; set => _userMenus = value; }
         #endregion
 
         #region Constructor
@@ -79,100 +79,100 @@ namespace SoftTeam.SoftBar.Core
                     });
 
                     // Select all top level menus in the document
-                    XmlNode menus = doc.SelectSingleNode("//softbar");
+                    XmlNode xmlMenus = doc.SelectSingleNode("//softbar");
 
                     // and loop through them
-                    foreach (XmlNode menu in menus)
+                    foreach (XmlNode xmlMenu in xmlMenus)
                     {
                         // Create the first level menu and add it
-                        SoftBarMenu xmlMenu = new SoftBarMenu(_form, menu.Attributes["name"].Value, GetCurrentWidth());
+                        SoftBarMenu softBarMenu = new SoftBarMenu(_form, xmlMenu.Attributes["name"].Value, GetCurrentWidth());
 
                         // Check if the menu has an IconPath attribute
-                        var iconNode = menu.Attributes["iconPath"];
-                        if (iconNode != null)
-                            xmlMenu.IconPath = iconNode.Value;
+                        var iconPathAttribute = xmlMenu.Attributes["iconPath"];
+                        if (iconPathAttribute != null)
+                            softBarMenu.IconPath = iconPathAttribute.Value;
 
                         // Add the menu to the user menu collection
-                        _menus.Add(xmlMenu);
+                        _userMenus.Add(softBarMenu);
 
                         // Load the rest of the menu
-                        LoadXmlMenu(menu, xmlMenu);
+                        LoadXmlMenu(xmlMenu, softBarMenu);
                     }
                 }
             }
         }
 
-        private void LoadXmlMenu(XmlNode xmlMenu, SoftBarBaseMenu softMenu)
+        private void LoadXmlMenu(XmlNode xmlMenu, SoftBarBaseMenu softBarBaseMenu)
         {
             // Loop through all menu items in the menu
-            foreach (XmlNode menuItem in xmlMenu)
+            foreach (XmlNode xmlMenuItem in xmlMenu)
             {
                 // First get some standard properties, name...
-                var name = menuItem.Attributes["name"].Value;
+                var name = xmlMenuItem.Attributes["name"].Value;
 
                 // ...beginGroup...
                 bool beginGroup = false;
-                var beginGroupAttribute = menuItem.Attributes["beginGroup"];
+                var beginGroupAttribute = xmlMenuItem.Attributes["beginGroup"];
                 if (beginGroupAttribute != null)
                     beginGroup = beginGroupAttribute.Value.ToUpper() == "TRUE";
 
                 // ...and IconPath...
                 string iconPath = "";
-                var iconPathAttribute = menuItem.Attributes["iconPath"];
+                var iconPathAttribute = xmlMenuItem.Attributes["iconPath"];
                 if (iconPathAttribute != null)
                     iconPath = iconPathAttribute.Value;
 
                 // Is it a sub menu, header item or a ordinary menu item
-                if (menuItem.Name == "menu")
+                if (xmlMenuItem.Name == "menu")
                 {
                     // Create the new sub menu
-                    SoftBarSubMenu xmlSubMenu = new SoftBarSubMenu(_form, name, false);
+                    SoftBarSubMenu softBarSubMenu = new SoftBarSubMenu(_form, name, false);
 
                     // Begin group (must be set after the element is added to the manager, so here we are just storing it)
-                    xmlSubMenu.BeginGroup = beginGroup;
+                    softBarSubMenu.BeginGroup = beginGroup;
 
                     // Store the Icon path
-                    xmlSubMenu.IconPath = iconPath;
+                    softBarSubMenu.IconPath = iconPath;
 
                     // Add the sub menu to the menu
-                    softMenu.MenuItems.Add(xmlSubMenu);
+                    softBarBaseMenu.MenuItems.Add(softBarSubMenu);
 
                     // Load all the menu items of the sub menu by calling this function recursively
-                    LoadXmlMenu(menuItem, xmlSubMenu);
+                    LoadXmlMenu(xmlMenuItem, softBarSubMenu);
                 }
-                else if (menuItem.Name == "headerItem")
+                else if (xmlMenuItem.Name == "headerItem")
                 {
                     // Create the new headerItem
-                    SoftBarHeaderItem headerItem = new SoftBarHeaderItem(_form, name);
+                    SoftBarHeaderItem softBarHeaderItem = new SoftBarHeaderItem(_form, name);
 
                     // Begin group (must be set after the element is added to the manager)
-                    headerItem.BeginGroup = beginGroup;
+                    softBarHeaderItem.BeginGroup = beginGroup;
 
                     // Store the Icon path
-                    headerItem.IconPath = iconPath;
+                    softBarHeaderItem.IconPath = iconPath;
 
                     // Add the header item to the menu
-                    softMenu.MenuItems.Add(headerItem);
+                    softBarBaseMenu.MenuItems.Add(softBarHeaderItem);
                 }
                 else
                 {
                     // Create the new menu item
-                    SoftBarMenuItem xmlMenuItem = new SoftBarMenuItem(_form, name);
+                    SoftBarMenuItem softBarMenuItem = new SoftBarMenuItem(_form, name);
 
                     // Get and store the application and document path
-                    var applicationNode = menuItem.SelectSingleNode("applicationPath");
-                    xmlMenuItem.ApplicationPath = applicationNode == null ? "" : applicationNode.InnerText;
-                    var documentNode = menuItem.SelectSingleNode("documentPath");
-                    xmlMenuItem.DocumentPath = documentNode == null ? "" : documentNode.InnerText;
+                    var applicationNodeElement = xmlMenuItem.SelectSingleNode("applicationPath");
+                    softBarMenuItem.ApplicationPath = applicationNodeElement == null ? "" : applicationNodeElement.InnerText;
+                    var documentNodeElement = xmlMenuItem.SelectSingleNode("documentPath");
+                    softBarMenuItem.DocumentPath = documentNodeElement == null ? "" : documentNodeElement.InnerText;
 
                     // Begin group (must be set after the element is added to the manager)
-                    xmlMenuItem.BeginGroup = beginGroup;
+                    softBarMenuItem.BeginGroup = beginGroup;
 
                     // Store the Icon path
-                    xmlMenuItem.IconPath = iconPath;
+                    softBarMenuItem.IconPath = iconPath;
 
                     // Add the menu item to the menu
-                    softMenu.MenuItems.Add(xmlMenuItem);
+                    softBarBaseMenu.MenuItems.Add(softBarMenuItem);
                 }
             }
         }
@@ -309,72 +309,72 @@ namespace SoftTeam.SoftBar.Core
         // Build the user menus
         public void CreateMenus()
         {
-            foreach (SoftBarMenu menu in _menus)
+            foreach (SoftBarMenu softBarMenu in _userMenus)
             {
-                menu.Setup();
-                CreateMenu(menu);
+                softBarMenu.Setup();
+                CreateMenu(softBarMenu);
             }
         }
 
         // Build a user menu
-        private void CreateMenu(SoftBarBaseMenu menu)
+        private void CreateMenu(SoftBarBaseMenu softBarBaseMenu)
         {
             // For all menu items in the menu
-            foreach (SoftBarBaseItem item in menu.MenuItems)
+            foreach (SoftBarBaseItem softBarBaseItem in softBarBaseMenu.MenuItems)
             {
-                if (item is SoftBarSubMenu)
+                if (softBarBaseItem is SoftBarSubMenu)
                 {
                     // We have a sub menu
-                    var subMenu = item as SoftBarSubMenu;
+                    var softBarSubMenu = softBarBaseItem as SoftBarSubMenu;
 
                     // Create the sub menu 
-                    var barSubMenu = subMenu.Setup();
+                    var barSubItem = softBarSubMenu.Setup();
 
                     // Add the sub menu
-                    if (menu is SoftBarMenu)
-                        ((SoftBarMenu)menu).Item.AddItem(barSubMenu);
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barSubItem);
                     else
-                        ((SoftBarSubMenu)menu).Item.AddItem(barSubMenu);
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barSubItem);
 
                     // Create a new group if beginGroup is true
-                    if (subMenu.BeginGroup) barSubMenu.Links[0].BeginGroup = true;
+                    if (softBarSubMenu.BeginGroup) barSubItem.Links[0].BeginGroup = true;
 
                     // Call create menu recursivly
-                    CreateMenu(subMenu);
+                    CreateMenu(softBarSubMenu);
                 }
-                else if (item is SoftBarHeaderItem)
+                else if (softBarBaseItem is SoftBarHeaderItem)
                 {
                     // We have a header item
-                    var menuItem = item as SoftBarHeaderItem;
+                    var softBarHeaderItem = softBarBaseItem as SoftBarHeaderItem;
 
                     // Create the header item
-                    var barHeaderItem = menuItem.Setup();
+                    var barHeaderItem = softBarHeaderItem.Setup();
 
                     // Add the header item to the menu
-                    if (menu is SoftBarMenu)
-                        ((SoftBarMenu)menu).Item.AddItem(barHeaderItem);
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
                     else
-                        ((SoftBarSubMenu)menu).Item.AddItem(barHeaderItem);
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
 
                     // Create a new group if beginGroup is true
-                    if (menuItem.BeginGroup) barHeaderItem.Links[0].BeginGroup = true;
+                    if (softBarHeaderItem.BeginGroup) barHeaderItem.Links[0].BeginGroup = true;
                 }
                 else
                 {
                     // We have a menu item
-                    var menuItem = item as SoftBarMenuItem;
+                    var softBarMenuItem = softBarBaseItem as SoftBarMenuItem;
 
                     // Create the menu item
-                    var barStaticItem = menuItem.Setup();
+                    var barStaticItem = softBarMenuItem.Setup();
 
                     // Add the menu item to the menu
-                    if (menu is SoftBarMenu)
-                        ((SoftBarMenu)menu).Item.AddItem(barStaticItem);
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
                     else
-                        ((SoftBarSubMenu)menu).Item.AddItem(barStaticItem);
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
 
                     // Create a new group if beginGroup is true
-                    if (menuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
+                    if (softBarMenuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
                 }
             }
         }
@@ -389,7 +389,7 @@ namespace SoftTeam.SoftBar.Core
         {
             int width = _systemMenu.Width + SEPARATOR_WIDTH + _directoriesMenu.Width + SEPARATOR_WIDTH;
 
-            foreach (var menu in _menus)
+            foreach (var menu in _userMenus)
                 width += menu.Width + SEPARATOR_WIDTH;
 
             return width;
