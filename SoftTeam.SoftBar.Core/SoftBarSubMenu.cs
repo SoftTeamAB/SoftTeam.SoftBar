@@ -25,7 +25,7 @@ namespace SoftTeam.SoftBar.Core
         #region Properties
         public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
 
-        public BarSubItem SubMenu { get => _subMenu; set => _subMenu = value; }
+        public BarSubItem Item { get => _subMenu; set => _subMenu = value; }
 
         #endregion
 
@@ -34,7 +34,7 @@ namespace SoftTeam.SoftBar.Core
             if (!string.IsNullOrEmpty(IconPath))
             {
                 Image image = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
-                Image = Image.ResizeImage(16, 16);
+                Image = image.ResizeImage(16, 16);
             }
             else
                 Image = null;
@@ -44,15 +44,12 @@ namespace SoftTeam.SoftBar.Core
         {
             _subMenu = new BarSubItem(Form.barManagerSoftBar, Name);
 
-            ParentMenu = null;
-            ParentSubMenu = _subMenu;
-
             return _subMenu;
         }
 
         public override void AddSubMenu(BarSubItem subMenu)
         {
-            SubMenu.AddItem(subMenu);
+            ParentSubMenu.AddItem(subMenu);
         }
 
         #endregion

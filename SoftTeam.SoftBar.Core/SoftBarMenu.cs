@@ -36,7 +36,7 @@ namespace SoftTeam.SoftBar.Core
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
         public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
-        public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
+        public PopupMenu Item { get => _popupMenu; set => _popupMenu = value; }
 
         public SimpleButton Button { get => _button; set => _button = value; }
         #endregion
@@ -53,22 +53,19 @@ namespace SoftTeam.SoftBar.Core
         }
         #region CreateMenu
 
-        public void Setup()
+        public PopupMenu Setup()
         {
             Button = AddButton(Name);
-            PopupMenu = AddPopupMenu();
+            Item = AddPopupMenu();
 
-            ParentMenu = PopupMenu;
-            ParentSubMenu = null;
+            if (!SystemMenu) Button.Click += Button_Click;
 
-            if (SystemMenu) return;
-
-            Button.Click += Button_Click;
+            return Item;
         }
 
         public override void AddSubMenu(BarSubItem subMenu)
         {
-            PopupMenu.AddItem(subMenu);
+            Item.AddItem(subMenu);
         }
 
         private SimpleButton AddButton(string name)
@@ -99,7 +96,7 @@ namespace SoftTeam.SoftBar.Core
         #region Events
         private void Button_Click(object sender, EventArgs e)
         {
-            PopupMenu.ShowPopup(new Point(_left, 0));
+            Item.ShowPopup(new Point(_left, 0));
         }
         #endregion
     }

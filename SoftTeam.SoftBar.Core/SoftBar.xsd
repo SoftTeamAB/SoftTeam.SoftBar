@@ -1,41 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="menu">
+    <xs:complexType>
+      <xs:choice maxOccurs="unbounded">
+        <xs:element ref ="menu"/>
+        <xs:element name="menuItem" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="applicationPath" type="xs:string" minOccurs="0"/>
+              <xs:element name="documentPath" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="iconPath" type="xs:string" use="optional" />
+            <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="headerItem" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="iconPath" type="xs:string" use="optional" />
+            <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+      <xs:attribute name="name" type="xs:string" use="required" />
+      <xs:attribute name="iconPath" type="xs:string" use="optional" />
+      <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
+    </xs:complexType>
+  </xs:element>
+
   <xs:element name="softbar">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="menus">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="menu"  minOccurs="0" maxOccurs="0">
-                <xs:complexType>
-                  <xs:all>
-                    <xs:element name="menuItem">
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="applicationPath" type="xs:string" minOccurs="0"/>
-                          <xs:element name="documentPath" type="xs:string" minOccurs="0"/>
-                        </xs:sequence>
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                        <xs:attribute name="iconPath" type="xs:string" use="optional" />
-                        <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="headerItem">
-                      <xs:complexType>
-                        <xs:attribute name="name" type="xs:string" use="required" />
-                        <xs:attribute name="iconPath" type="xs:string" use="optional" />
-                        <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
-                      </xs:complexType>
-                    </xs:element>
-                  </xs:all>
-                  <xs:attribute name="name" type="xs:string" use="required" />
-                  <xs:attribute name="iconPath" type="xs:string" use="optional" />
-                  <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
-                </xs:complexType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
+        <xs:element ref="menu" minOccurs="0" maxOccurs="unbounded"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
