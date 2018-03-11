@@ -10,35 +10,35 @@ using System.Threading.Tasks;
 
 namespace SoftTeam.SoftBar.Core
 {
-    public class SoftBarMenu:SoftBarBaseItem
+    public class SoftBarMenu:SoftBarBaseMenu
     {
         #region Fields
-        private readonly List<SoftBarBaseItem> _menuItems = new List<SoftBarBaseItem>();
 
         private int _width;
         private int _left;
         private string _iconPath = "";
+        private PopupMenu _popupMenu = null;
 
         private SimpleButton _button = null;
-        private PopupMenu _popupMenu = null;        
         #endregion
 
         #region Constructor
-        public SoftBarMenu(MainAppBarForm form, string name, int left, bool systemMenu = false) : base(form,name,false,systemMenu)
+        public SoftBarMenu(MainAppBarForm form, string name, int left, bool systemMenu = false) : base(form,name,systemMenu)
         {
             _left = left;
             Width = Name.Length * 10;
+            ParentMenu = null;
+            ParentSubMenu = null;
         }
         #endregion
 
         #region Properties
-        public List<SoftBarBaseItem> MenuItems => _menuItems;
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
         public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
+        public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
 
         public SimpleButton Button { get => _button; set => _button = value; }
-        public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
         #endregion
 
         private void UpdateImage()
@@ -52,14 +52,23 @@ namespace SoftTeam.SoftBar.Core
                 Image = null;
         }
         #region CreateMenu
+
         public void Setup()
         {
             Button = AddButton(Name);
             PopupMenu = AddPopupMenu();
 
+            ParentMenu = PopupMenu;
+            ParentSubMenu = null;
+
             if (SystemMenu) return;
 
             Button.Click += Button_Click;
+        }
+
+        public override void AddSubMenu(BarSubItem subMenu)
+        {
+            PopupMenu.AddItem(subMenu);
         }
 
         private SimpleButton AddButton(string name)

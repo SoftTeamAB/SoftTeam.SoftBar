@@ -9,24 +9,20 @@ using System.Threading.Tasks;
 
 namespace SoftTeam.SoftBar.Core
 {
-    public class SoftBarSubMenu : SoftBarBaseItem
+    public class SoftBarSubMenu : SoftBarBaseMenu
     {
         #region Fields
-        private readonly List<SoftBarMenuItem> _menuItems = new List<SoftBarMenuItem>();
-
         private string _iconPath = "";
         private BarSubItem _subMenu = null;
-        private PopupMenu _popupMenu = null;
         #endregion
 
         #region Constructor
-        public SoftBarSubMenu(MainAppBarForm form, string name, bool beginGroup, bool systemMenu) : base (form,name,beginGroup,systemMenu)
+        public SoftBarSubMenu(MainAppBarForm form, string name, bool systemMenu) : base (form,name,systemMenu)
         {
         }
         #endregion
 
         #region Properties
-        public List<SoftBarMenuItem> MenuItems => _menuItems;
         public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
 
         public BarSubItem SubMenu { get => _subMenu; set => _subMenu = value; }
@@ -44,14 +40,21 @@ namespace SoftTeam.SoftBar.Core
                 Image = null;
         }
         #region CreateMenu
-        public void Setup(PopupMenu popupMenu)
+        public BarSubItem Setup()
         {
-            _popupMenu = popupMenu;
-
             _subMenu = new BarSubItem(Form.barManagerSoftBar, Name);
 
-            _popupMenu.AddItem(_subMenu);
+            ParentMenu = null;
+            ParentSubMenu = _subMenu;
+
+            return _subMenu;
         }
+
+        public override void AddSubMenu(BarSubItem subMenu)
+        {
+            SubMenu.AddItem(subMenu);
+        }
+
         #endregion
     }
 }

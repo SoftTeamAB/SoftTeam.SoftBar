@@ -20,16 +20,16 @@ namespace SoftTeam.SoftBar.Core
 
         private string _iconPath = "";
         private int _width;
-        private int _left;
+        private int _left;        
         private bool _warning = false;
         private string _warningText = "";
-        private BarItem _item = null;
+        private BarStaticItem _item = null;
         private PopupMenu _popupMenu = null;
         private CommandLine _commandLine = null;
         #endregion
 
         #region Constructor
-        public SoftBarMenuItem(MainAppBarForm form, string name, bool beginGroup = false, bool systemMenu = false) : base(form,name,beginGroup,systemMenu)
+        public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form,name,systemMenu)
         {
             _commandLine = new CommandLine();
         }
@@ -42,11 +42,11 @@ namespace SoftTeam.SoftBar.Core
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
 
-        public BarItem Item { get => _item; set => _item = value; }
+        public BarStaticItem Item { get => _item; set => _item = value; }
         public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
 
         public bool Warning { get => _warning; set => _warning = value; }
-        public string WarningText { get => _warningText; set => _warningText = value; }
+        public string WarningText { get => _warningText; set => _warningText = value; }        
         #endregion
 
         private void UpdateImage()
@@ -94,26 +94,18 @@ namespace SoftTeam.SoftBar.Core
 
     }
     #region Create menu item
-    public void Setup(PopupMenu popupMenu)
+    public BarStaticItem Setup()
         {
-            // Set the popup menu this item belongs to
-            PopupMenu = popupMenu;
             // Create the BarButtonIem
             Item = new BarStaticItem();
             Item.Manager = Form.barManagerSoftBar;
             Item.Caption = Name;
-            // Add the item
-            _popupMenu.AddItem(Item);
-
-            // Begin a new group (creates a line) if that property is set
-            if (BeginGroup)
-                Item.Links[0].BeginGroup = true;
 
             // Associate the BarButtonItem with the MenuItem, used when clicked
             Item.Tag = this;
             Item.ItemClick += Item_ItemClick;
 
-            if (SystemMenu) return;
+            if (SystemMenu) return Item;
 
             try
             {
@@ -134,6 +126,8 @@ namespace SoftTeam.SoftBar.Core
                 Item.SuperTip = ToolTipHelper.CreateWarningToolTip(WarningText);
                 Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
             }
+
+            return Item;
         }
         #endregion
 

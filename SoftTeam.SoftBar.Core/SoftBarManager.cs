@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Schema;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -51,7 +53,15 @@ namespace SoftTeam.SoftBar.Core
         {
             // Create a new xml document and load the document
             XmlDocument doc = new XmlDocument();
+
+            XmlSchemaSet schemas = new XmlSchemaSet();
+            schemas.Add("", "SoftBar.xsd");
+            doc.Schemas = schemas;
             doc.Load(_path);
+
+            doc.Validate((o, e) => {
+                Debug.WriteLine(e.Message);
+            });
 
             // Select all menus in the document
             XmlNode menus = doc.SelectSingleNode("//menus");
@@ -70,27 +80,50 @@ namespace SoftTeam.SoftBar.Core
             }
         }
 
-        private void LoadXmlMenu(XmlNode menu, SoftBarMenu xmlMenu)
-        {            
-            foreach (XmlNode menuItem in menu)
+        private void LoadXmlMenu(XmlNode xmlMenu, SoftBarBaseMenu softMenu)
+        {
+            foreach (XmlNode menuItem in xmlMenu)
             {
                 var name = menuItem.Attributes["name"].Value;
+
+                bool beginGroup = false;
+                var beginGroupAttribute = menuItem.Attributes["beginGroup"];
+                if (beginGroupAttribute != null)
+                    beginGroup = beginGroupAttribute.Value.ToUpper() == "TRUE";
+
+                string iconPath = "";
+                var iconPathAttribute = menuItem.Attributes["iconPath"];
+                if (iconPathAttribute != null)
+                    iconPath = iconPathAttribute.Value;
 
                 // Is it a sub menu, header item or a ordinary menu item
                 if (menuItem.Name == "menu")
                 {
-                    throw new NotImplementedException();
                     //// Create the new sub menu
-                    //SoftBarMenuItem xmlSubMenu = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SubLevelMenu, name, true);
-                    //xmlMenu.MenuItems.Add(xmlSubMenu);
+                    SoftBarSubMenu xmlSubMenu = new SoftBarSubMenu(_form, name, false);
 
-                    //LoadXmlSubMenu(menuItem, xmlSubMenu);
+                    // Begin group (must be set after the element is added to the manager)
+                    xmlSubMenu.BeginGroup = beginGroup;
+
+                    // Icon path
+                    xmlSubMenu.IconPath = iconPath;
+
+                    softMenu.MenuItems.Add(xmlSubMenu);
+
+                    LoadXmlMenu(menuItem, xmlSubMenu);
                 }
                 if (menuItem.Name == "headerItem")
                 {
                     // Create the new headerItem
                     SoftBarHeaderItem headerItem = new SoftBarHeaderItem(_form, name);
-                    xmlMenu.MenuItems.Add(headerItem);
+
+                    // Begin group (must be set after the element is added to the manager)
+                    headerItem.BeginGroup = beginGroup;
+
+                    // Icon path
+                    headerItem.IconPath = iconPath;
+
+                    softMenu.MenuItems.Add(headerItem);
                 }
                 else
                 {
@@ -101,50 +134,16 @@ namespace SoftTeam.SoftBar.Core
                     xmlMenuItem.ApplicationPath = applicationNode == null ? "" : applicationNode.InnerText;
                     var documentNode = menuItem.SelectSingleNode("documentPath");
                     xmlMenuItem.DocumentPath = documentNode == null ? "" : documentNode.InnerText;
-                    
-                    // Begin group
-                    var group = false;
-                    if (menuItem.SelectSingleNode("beginGroup") != null)
-                        group = menuItem.SelectSingleNode("beginGroup").InnerText.ToUpper() == "TRUE";
-                    xmlMenuItem.BeginGroup = group;
 
-                    // Icon
-                    var iconNode = menuItem.SelectSingleNode("iconPath");
-                    if (iconNode != null)
-                        xmlMenuItem.IconPath = iconNode.InnerText;
+                    // Begin group (must be set after the element is added to the manager)
+                    xmlMenuItem.BeginGroup = beginGroup;
 
-                    xmlMenu.MenuItems.Add(xmlMenuItem);
+                    // Icon path
+                    xmlMenuItem.IconPath = iconPath;
+
+                    softMenu.MenuItems.Add(xmlMenuItem);
                 }
             }
-        }
-
-        private void LoadXmlSubMenu(XmlNode menu, SoftBarMenuItem xmlMenu)
-        {
-            //foreach (XmlNode menuItem in menu)
-            //{
-            //    var name = menuItem.Attributes["name"].Value;
-
-            //    if (menuItem.Name == "menu")
-            //    {
-            //        // Create the new sub menu
-            //        SoftBarMenuItem xmlSubMenu = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.SubLevelMenu, name, true);
-            //        xmlMenu.Menus.Add(xmlSubMenu);
-
-            //        LoadXmlSubMenu(menuItem, xmlSubMenu);
-            //    }
-            //    else
-            //    {
-            //        SoftBarMenuItem xmlMenuItem = new SoftBarMenuItem(_form, SoftBarMenuItem.MenuItemType.MenuItem, name);
-
-            //        xmlMenuItem.ApplicationPath = menuItem.SelectSingleNode("applicationPath").InnerText;
-            //        xmlMenuItem.BeginGroup = menuItem.SelectSingleNode("beginGroup").InnerText.ToUpper() == "TRUE";
-            //        var iconNode = menuItem.SelectSingleNode("icon");
-            //        if (iconNode != null)
-            //            xmlMenuItem.IconPath = iconNode.InnerText;
-
-            //        xmlMenu.Menus.Add(xmlMenuItem);
-            //    }
-            //}
         }
         #endregion
 
@@ -158,16 +157,18 @@ namespace SoftTeam.SoftBar.Core
             _systemMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.SystemMenu);
 
             // Reload the app bar
-            SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, "Reload", false, true);
-            reloadItem.Setup(_systemMenu.PopupMenu);
+            SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, "Reload", true);
+            reloadItem.Setup();
             reloadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Reload);
             reloadItem.Item.ItemClick += Reload_ItemClick;
+            _systemMenu.PopupMenu.AddItem(reloadItem.Item);
 
             // Settings for the app bar
-            SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, "Settings", false, true);
-            settingsItem.Setup(_systemMenu.PopupMenu);
+            SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, "Settings", true);
+            settingsItem.Setup();
             settingsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Settings);
             settingsItem.Item.ItemClick += SettingsItem_ItemClick;
+            _systemMenu.PopupMenu.AddItem(settingsItem.Item);
 
             //// Customize the app bar menu
             //SoftBarSubMenu customizeSubMenuItem = new SoftBarSubMenu(_form, "Customize");
@@ -175,27 +176,30 @@ namespace SoftTeam.SoftBar.Core
             //customizeSubMenuItem.SubMenu.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
 
             // Customize the app bar
-            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize in SoftBar editor",false,true);
-            customizeItem.Setup(_systemMenu.PopupMenu);
+            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize in SoftBar editor", true);
+            customizeItem.Setup();
             //customizeSubMenuItem.MenuItems.Add(customizeItem);
             //customizeSubMenuItem.SubMenu.AddItem(customizeItem.Item);
             customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
             customizeItem.Item.ItemClick += CustomizeItem_ItemClick;
+            _systemMenu.PopupMenu.AddItem(customizeItem.Item);
 
             // Customize the app bar in notepad
-            SoftBarMenuItem openInNotepadItem = new SoftBarMenuItem(_form, "Customize in Notepad (risky!)", false,true);
-            openInNotepadItem.Setup(_systemMenu.PopupMenu);
+            SoftBarMenuItem openInNotepadItem = new SoftBarMenuItem(_form, "Customize in Notepad (risky!)", true);
+            openInNotepadItem.Setup();
             //customizeSubMenuItem.MenuItems.Add(openInNotepadItem);
             //customizeSubMenuItem.SubMenu.AddItem(openInNotepadItem.Item);
             openInNotepadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
             openInNotepadItem.Item.ItemClick += openInNotepadItem_ItemClick; ;
+            _systemMenu.PopupMenu.AddItem(openInNotepadItem.Item);
 
             // Exit the app bar
-            SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true, true);
-            exitItem.Setup(_systemMenu.PopupMenu);
+            SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true);
+            exitItem.Setup();
             exitItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Exit);
-            exitItem.BeginGroup = true;
             exitItem.Item.ItemClick += ExitItem_ItemClick;
+            _systemMenu.PopupMenu.AddItem(exitItem.Item);
+            exitItem.Item.Links[0].BeginGroup = true;
         }
 
         private void CreateDirectoriesMenu()
@@ -208,17 +212,17 @@ namespace SoftTeam.SoftBar.Core
 
             // Add drives
             DriveType? driveType = null;
-            DriveInfo[] drives=DriveInfo.GetDrives();
-            foreach (DriveInfo  drive in drives)
+            DriveInfo[] drives = DriveInfo.GetDrives();
+            bool beginGroup = false;
+            foreach (DriveInfo drive in drives)
             {
                 // Create a menu item for the drive
-                SoftBarMenuItem driveItem = new SoftBarMenuItem(_form,  drive.Name, false, true);
+                SoftBarMenuItem driveItem = new SoftBarMenuItem(_form, drive.Name, true);
 
-                if (driveType!=drive.DriveType)
-                    driveItem.BeginGroup = true;
+                beginGroup = (driveType != drive.DriveType);
 
-                driveItem.Setup(_directoriesMenu.PopupMenu);
-                switch (drive.DriveType)  
+                driveItem.Setup();
+                switch (drive.DriveType)
                 {
                     case DriveType.Removable:
                         driveItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.floppy_drive);
@@ -236,25 +240,32 @@ namespace SoftTeam.SoftBar.Core
                 //driveItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Exit);
                 driveItem.Item.Tag = drive;
                 driveItem.Item.ItemClick += DriveItem_ItemClick;
+                _directoriesMenu.PopupMenu.AddItem(driveItem.Item);
+                if (beginGroup)
+                    driveItem.Item.Links[0].BeginGroup = true;
 
                 driveType = drive.DriveType;
             }
 
             // Add special directories
-            SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true, true);
-            desktopItem.Setup(_directoriesMenu.PopupMenu);
+            SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true);
+            desktopItem.Setup();
             desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
             desktopItem.Item.ItemClick += DesktopItem_ItemClick; ;
+            _directoriesMenu.PopupMenu.AddItem(desktopItem.Item);
+            desktopItem.Item.Links[0].BeginGroup = true;
 
-            SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", false, true);
-            documentsItem.Setup(_directoriesMenu.PopupMenu);
+            SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", true);
+            documentsItem.Setup();
             documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Document);
             documentsItem.Item.ItemClick += DocumentsItem_ItemClick; ;
+            _directoriesMenu.PopupMenu.AddItem(documentsItem.Item);
 
-            SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", false,true);
-            downloadsItem.Setup(_directoriesMenu.PopupMenu);
+            SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", true);
+            downloadsItem.Setup();
             downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
             downloadsItem.Item.ItemClick += DocumentsItem_ItemClick; ;
+            _directoriesMenu.PopupMenu.AddItem(downloadsItem.Item);
 
         }
 
@@ -266,28 +277,45 @@ namespace SoftTeam.SoftBar.Core
                 CreateMenu(menu);
             }
         }
-        private void CreateMenu(SoftBarMenu menu)
+        private void CreateMenu(SoftBarBaseMenu menu)
         {
             foreach (SoftBarBaseItem item in menu.MenuItems)
             {
                 if (item is SoftBarSubMenu)
                 {
-                    //CreateSubMenu(menu, item);
+                    // We have a sub menu
+                    var subMenu = item as SoftBarSubMenu;
+                    // Add the sub menu to the main menu
+                    var barSubMenu = subMenu.Setup();
+                    subMenu.AddSubMenu(barSubMenu);
+                    if (subMenu.BeginGroup) barSubMenu.Links[0].BeginGroup = true;
+
+                    // Call create menu recursivly
+                    CreateMenu(subMenu);
                 }
                 else if (item is SoftBarHeaderItem)
                 {
                     var menuItem = item as SoftBarHeaderItem;
-                    menuItem.Setup(menu.PopupMenu);
-                }
-                else if (item is SoftBarSubMenu)
-                {
-                    var menuItem = item as SoftBarSubMenu;
-                    menuItem.Setup(menu.PopupMenu);
+                    var barHeaderItem = menuItem.Setup();
+
+                    if (menu.ParentSubMenu == null)
+                        menu.ParentMenu.AddItem(barHeaderItem);
+                    else
+                        menu.ParentSubMenu.AddItem(barHeaderItem);
+
+                    if (menuItem.BeginGroup) barHeaderItem.Links[0].BeginGroup = true;
                 }
                 else
                 {
                     var menuItem = item as SoftBarMenuItem;
-                    menuItem.Setup(menu.PopupMenu);
+                    var barStaticItem = menuItem.Setup();
+
+                    if (menu.ParentSubMenu == null)
+                        menu.ParentMenu.AddItem(barStaticItem);
+                    else
+                        menu.ParentSubMenu.AddItem(barStaticItem);
+
+                    if (menuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
                 }
             }
         }

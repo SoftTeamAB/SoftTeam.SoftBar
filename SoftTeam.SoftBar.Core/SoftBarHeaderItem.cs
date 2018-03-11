@@ -21,7 +21,7 @@ namespace SoftTeam.SoftBar.Core
         #endregion
 
         #region Constructor
-        public SoftBarHeaderItem(MainAppBarForm form, string name, bool beginGroup = false, bool systemMenu = false) : base(form,name,beginGroup,systemMenu)
+        public SoftBarHeaderItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form,name,systemMenu)
         {
         }
         #endregion
@@ -74,16 +74,14 @@ namespace SoftTeam.SoftBar.Core
                 Image = null;
         }
         #region Create menu item
-        public void Setup(PopupMenu popupMenu)
+        public BarHeaderItem Setup()
         {
-            // Store the popup menu this item belongs to
-            PopupMenu = popupMenu;
             // Create the new BarHeaderItem
             Item = new BarHeaderItem();
             // Set the caption
             Item.Caption = Name;
-            // And add it
-            _popupMenu.AddItem(Item);
+
+            return Item;
         }
         #endregion
     }
