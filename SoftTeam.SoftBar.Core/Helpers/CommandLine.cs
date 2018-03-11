@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.Helpers
 {
-    public class CommandLine
+    public class CommandLineHelper
     {
         private string _application = "";
         private string _document = "";
         private string _parameters = "";
         private Exception _lastExecutionException = null;
 
-        public CommandLine()
+        public CommandLineHelper()
         {
         }
 
-        public CommandLine(string application, string document, string parameters)
+        public CommandLineHelper(string application, string document, string parameters)
         {
             Application = application;
             Document = document;

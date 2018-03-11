@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core;
 
-namespace SoftTeam.SoftBar
+namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MainAppBarForm : DevExpress.XtraEditors.XtraForm
     {

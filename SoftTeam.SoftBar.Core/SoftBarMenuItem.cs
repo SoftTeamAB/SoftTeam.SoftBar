@@ -1,15 +1,13 @@
-﻿using DevExpress.Utils;
-using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using SoftTeam.SoftBar.Core.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Drawing;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Drawing;
+
+using DevExpress.XtraBars;
+
+using SoftTeam.SoftBar.Core.Extensions;
+using SoftTeam.SoftBar.Core.Helpers;
+using SoftTeam.SoftBar.Core.Forms;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -20,18 +18,18 @@ namespace SoftTeam.SoftBar.Core
 
         private string _iconPath = "";
         private int _width;
-        private int _left;        
+        private int _left;
         private bool _warning = false;
         private string _warningText = "";
         private BarStaticItem _item = null;
         private PopupMenu _popupMenu = null;
-        private CommandLine _commandLine = null;
+        private CommandLineHelper _commandLine = null;
         #endregion
 
         #region Constructor
-        public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form,name,systemMenu)
+        public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form, name, systemMenu)
         {
-            _commandLine = new CommandLine();
+            _commandLine = new CommandLineHelper();
         }
         #endregion
 
@@ -46,9 +44,10 @@ namespace SoftTeam.SoftBar.Core
         public PopupMenu PopupMenu { get => _popupMenu; set => _popupMenu = value; }
 
         public bool Warning { get => _warning; set => _warning = value; }
-        public string WarningText { get => _warningText; set => _warningText = value; }        
+        public string WarningText { get => _warningText; set => _warningText = value; }
         #endregion
 
+        #region Misc functions
         private void UpdateImage()
         {
             // First check IconPath...
@@ -68,14 +67,14 @@ namespace SoftTeam.SoftBar.Core
                         Warning = true;
                         WarningText = "IconPath does not exist!";
                         // Return an error image
-                        Image =  new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                        Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
                     }
                     else
                     {
                         // Extract the icon...
                         Image image = Icon.ExtractAssociatedIcon(path).ToBitmap();
                         // and return an 16x16 image
-                        Image =  image.ResizeImage(16, 16);
+                        Image = image.ResizeImage(16, 16);
                     }
                 }
                 catch (Exception ex)
@@ -85,16 +84,18 @@ namespace SoftTeam.SoftBar.Core
                     WarningText = $"Unknown icon exception! : \n\n{ex.Message}";
 
                     // Return an error image
-                    Image =  new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                    Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
                 }
             }
             else
                 // Return no image
-                Image =  null;
+                Image = null;
 
-    }
-    #region Create menu item
-    public BarStaticItem Setup()
+        }
+        #endregion
+
+        #region Setup
+        public BarStaticItem Setup()
         {
             // Create the BarButtonIem
             Item = new BarStaticItem();
@@ -138,7 +139,7 @@ namespace SoftTeam.SoftBar.Core
             var menuItem = (SoftBarMenuItem)e.Item.Tag;
 
             if (_commandLine.CanExecute())
-                _commandLine.Execute();                
+                _commandLine.Execute();
         }
         #endregion
     }

@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 using DevExpress.Skins;
 using DevExpress.LookAndFeel;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.Controls
 {
     public partial class MenuItem : DevExpress.XtraEditors.XtraUserControl
     {

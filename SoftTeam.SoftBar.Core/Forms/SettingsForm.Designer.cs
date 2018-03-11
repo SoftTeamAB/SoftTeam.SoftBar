@@ -1,4 +1,4 @@
-﻿namespace SoftTeam.SoftBar.Core
+﻿namespace SoftTeam.SoftBar.Core.Forms
 {
     partial class SettingsForm
     {

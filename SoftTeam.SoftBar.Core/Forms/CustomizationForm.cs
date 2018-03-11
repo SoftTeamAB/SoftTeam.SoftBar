@@ -1,7 +1,8 @@
-﻿using System;
+﻿using SoftTeam.SoftBar.Core.Controls;
+using System;
 using System.Drawing;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {

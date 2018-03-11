@@ -1,16 +1,16 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Xml.Linq;
 using System.Xml.Schema;
+
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+
+using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Helpers;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -432,12 +432,12 @@ namespace SoftTeam.SoftBar.Core
 
         private void DesktopItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Desktop");
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Desktop");
         }
 
         private void DocumentsItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            CommandLine.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Documents");
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Documents");
         }
 
         private void DriveItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -449,7 +449,7 @@ namespace SoftTeam.SoftBar.Core
         private void openInNotepadItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             var path = Core.Properties.Settings.Default.SoftBarXmlPath;
-            CommandLine.ExecuteCommandLine(path);
+            CommandLineHelper.ExecuteCommandLine(path);
         }
 
         #endregion

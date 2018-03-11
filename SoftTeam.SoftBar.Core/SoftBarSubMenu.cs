@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Extensions;
+using SoftTeam.SoftBar.Core.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -29,6 +30,7 @@ namespace SoftTeam.SoftBar.Core
 
         #endregion
 
+        #region Misc functions
         private void UpdateImage()
         {
             if (!string.IsNullOrEmpty(IconPath))
@@ -39,7 +41,9 @@ namespace SoftTeam.SoftBar.Core
             else
                 Image = null;
         }
-        #region CreateMenu
+        #endregion
+
+        #region Setup
         public BarSubItem Setup()
         {
             _subMenu = new BarSubItem(Form.barManagerSoftBar, Name);

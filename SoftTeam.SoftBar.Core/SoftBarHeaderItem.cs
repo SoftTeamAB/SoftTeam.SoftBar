@@ -1,12 +1,11 @@
-﻿using DevExpress.XtraBars;
-using SoftTeam.SoftBar.Core.Extensions;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using DevExpress.XtraBars;
+
+using SoftTeam.SoftBar.Core.Extensions;
+using SoftTeam.SoftBar.Core.Forms;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -36,6 +35,7 @@ namespace SoftTeam.SoftBar.Core
         public string WarningText { get => _warningText; set => _warningText = value; }
         #endregion
 
+        #region Misc functions
         private void UpdateImage()
         {
             // If we have a potential icon...
@@ -73,7 +73,9 @@ namespace SoftTeam.SoftBar.Core
                 // Return no image
                 Image = null;
         }
-        #region Create menu item
+        #endregion
+
+        #region Setup
         public BarHeaderItem Setup()
         {
             // Create the new BarHeaderItem

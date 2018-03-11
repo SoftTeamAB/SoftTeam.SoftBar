@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftTeam.SoftBar.Core.Forms;
+using System;
 using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar

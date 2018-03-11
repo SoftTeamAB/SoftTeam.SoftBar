@@ -1,4 +1,4 @@
-﻿namespace SoftTeam.SoftBar.Core
+﻿namespace SoftTeam.SoftBar.Core.Controls
 {
     partial class MenuItem
     {

@@ -1,4 +1,4 @@
-﻿namespace SoftTeam.SoftBar
+﻿namespace SoftTeam.SoftBar.Core.Forms
 {
     partial class MainAppBarForm
     {

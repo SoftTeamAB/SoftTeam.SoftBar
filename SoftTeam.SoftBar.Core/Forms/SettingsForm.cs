@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class SettingsForm : DevExpress.XtraEditors.XtraForm
     {

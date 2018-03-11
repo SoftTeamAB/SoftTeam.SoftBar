@@ -1,19 +1,17 @@
-﻿using DevExpress.XtraBars;
-using DevExpress.XtraEditors;
-using SoftTeam.SoftBar.Core.Extensions;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
+using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
+
+using SoftTeam.SoftBar.Core.Extensions;
+using SoftTeam.SoftBar.Core.Forms;
 
 namespace SoftTeam.SoftBar.Core
 {
     public class SoftBarMenu:SoftBarBaseMenu
     {
         #region Fields
-
         private int _width;
         private int _left;
         private string _iconPath = "";
@@ -41,6 +39,7 @@ namespace SoftTeam.SoftBar.Core
         public SimpleButton Button { get => _button; set => _button = value; }
         #endregion
 
+        #region Misc functions
         private void UpdateImage()
         {
             if (!string.IsNullOrEmpty(IconPath))
@@ -51,8 +50,9 @@ namespace SoftTeam.SoftBar.Core
             else
                 Image = null;
         }
-        #region CreateMenu
+        #endregion
 
+        #region Setup
         public PopupMenu Setup()
         {
             Button = AddButton(Name);

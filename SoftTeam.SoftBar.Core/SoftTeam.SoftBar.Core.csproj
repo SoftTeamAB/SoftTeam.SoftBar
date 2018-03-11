@@ -53,24 +53,24 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
-    <Compile Include="CommandLine.cs" />
-    <Compile Include="CustomizationForm.cs">
+    <Compile Include="Helpers\CommandLine.cs" />
+    <Compile Include="Forms\CustomizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomizationForm.Designer.cs">
+    <Compile Include="Forms\CustomizationForm.Designer.cs">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ImageExtension.cs" />
-    <Compile Include="MainAppBarForm.cs">
+    <Compile Include="Forms\MainAppBarForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainAppBarForm.Designer.cs">
+    <Compile Include="Forms\MainAppBarForm.Designer.cs">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MenuItem.cs">
+    <Compile Include="Controls\MenuItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MenuItem.Designer.cs">
+    <Compile Include="Controls\MenuItem.Designer.cs">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,10 +84,10 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="SettingsForm.cs">
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SettingsForm.Designer.cs">
+    <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="SoftBarBaseItem.cs" />
@@ -97,7 +97,7 @@
     <Compile Include="SoftBarMenu.cs" />
     <Compile Include="SoftBarMenuItem.cs" />
     <Compile Include="SoftBarSubMenu.cs" />
-    <Compile Include="ToolTipHelper.cs" />
+    <Compile Include="Helpers\ToolTipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -127,13 +127,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CustomizationForm.resx">
+    <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainAppBarForm.resx">
+    <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MenuItem.resx">
+    <EmbeddedResource Include="Controls\MenuItem.resx">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -141,7 +141,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsForm.resx">
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
