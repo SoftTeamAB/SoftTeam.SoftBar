@@ -37,6 +37,10 @@ namespace SoftTeam.SoftBar.Core.Controls
             pictureBoxIcon.BackColor = HelperFunctions.GetTypeColor(_type);
             hyperlinkLabelControlName.Text = _item.Name;
             pictureBoxIcon.Image = _item.Image;
+            if (_item.BeginGroup)
+                pictureBoxBeginGroup.BringToFront();
+            else
+                pictureBoxNoBeginGroup.BringToFront();
         }
 
         private void item_Click(object sender, EventArgs e)
@@ -49,6 +53,15 @@ namespace SoftTeam.SoftBar.Core.Controls
                     UpdateValues();
                 }
             }
+            else if (_item is SoftBarHeaderItem)
+            {
+                using (CustomizeMenuItem form = new CustomizeMenuItem((SoftBarHeaderItem)_item))
+                {
+                    form.ShowDialog();
+                    UpdateValues();
+                }
+            }
+
         }
     }
 }

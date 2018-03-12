@@ -169,6 +169,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\EditHeaderItem.resx">
+      <DependentUpon>EditHeaderItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\EditMenu.resx">
       <DependentUpon>EditMenu.cs</DependentUpon>
     </EmbeddedResource>

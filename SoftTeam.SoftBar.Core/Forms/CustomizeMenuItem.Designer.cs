@@ -30,7 +30,8 @@
         {
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonOk = new DevExpress.XtraEditors.SimpleButton();
-            this.editMenu1 = new SoftTeam.SoftBar.Core.Controls.EditMenu();
+            this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenu();
+            this.editHeaderItem = new SoftTeam.SoftBar.Core.Controls.EditHeaderItem();
             this.SuspendLayout();
             // 
             // simpleButtonCancel
@@ -53,12 +54,21 @@
             this.simpleButtonOk.Text = "&OK";
             this.simpleButtonOk.Click += new System.EventHandler(this.simpleButtonOk_Click);
             // 
-            // editMenu1
+            // editMenu
             // 
-            this.editMenu1.Location = new System.Drawing.Point(0, 0);
-            this.editMenu1.Name = "editMenu1";
-            this.editMenu1.Size = new System.Drawing.Size(400, 250);
-            this.editMenu1.TabIndex = 0;
+            this.editMenu.BeginGroup = false;
+            this.editMenu.IconPath = "";
+            this.editMenu.Location = new System.Drawing.Point(0, 0);
+            this.editMenu.Name = "editMenu";
+            this.editMenu.Size = new System.Drawing.Size(400, 250);
+            this.editMenu.TabIndex = 0;
+            // 
+            // editHeaderItem
+            // 
+            this.editHeaderItem.Location = new System.Drawing.Point(0, 0);
+            this.editHeaderItem.Name = "editHeaderItem";
+            this.editHeaderItem.Size = new System.Drawing.Size(400, 250);
+            this.editHeaderItem.TabIndex = 3;
             // 
             // CustomizeMenuItem
             // 
@@ -67,7 +77,8 @@
             this.ClientSize = new System.Drawing.Size(400, 303);
             this.Controls.Add(this.simpleButtonOk);
             this.Controls.Add(this.simpleButtonCancel);
-            this.Controls.Add(this.editMenu1);
+            this.Controls.Add(this.editHeaderItem);
+            this.Controls.Add(this.editMenu);
             this.Name = "CustomizeMenuItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CustomizeMenuItem";
@@ -77,8 +88,9 @@
 
         #endregion
 
-        private Controls.EditMenu editMenu1;
+        private Controls.EditMenu editMenu;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonOk;
+        private Controls.EditHeaderItem editHeaderItem;
     }
 }
