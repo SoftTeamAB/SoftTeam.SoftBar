@@ -175,6 +175,9 @@
     <EmbeddedResource Include="Controls\EditMenu.resx">
       <DependentUpon>EditMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\EditSubMenu.resx">
+      <DependentUpon>EditSubMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </EmbeddedResource>

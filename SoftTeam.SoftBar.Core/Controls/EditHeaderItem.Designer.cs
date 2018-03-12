@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
             this.labelControlEditHeader = new DevExpress.XtraEditors.LabelControl();
             this.checkEditBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
-            // pictureBox1
+            // pictureBoxIcon
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIcon.TabIndex = 16;
+            this.pictureBoxIcon.TabStop = false;
             // 
             // labelControlName
             // 
@@ -88,14 +88,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.labelControlName);
             this.Controls.Add(this.labelControlEditHeader);
             this.Controls.Add(this.checkEditBeginGroup);
             this.Controls.Add(this.textEditName);
             this.Name = "EditHeaderItem";
             this.Size = new System.Drawing.Size(400, 250);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             this.ResumeLayout(false);
@@ -105,7 +105,7 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
         private DevExpress.XtraEditors.LabelControl labelControlName;
         private DevExpress.XtraEditors.LabelControl labelControlEditHeader;
         private DevExpress.XtraEditors.CheckEdit checkEditBeginGroup;

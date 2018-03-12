@@ -32,6 +32,7 @@
             this.simpleButtonOk = new DevExpress.XtraEditors.SimpleButton();
             this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenu();
             this.editHeaderItem = new SoftTeam.SoftBar.Core.Controls.EditHeaderItem();
+            this.editSubMenu = new SoftTeam.SoftBar.Core.Controls.EditSubMenu();
             this.SuspendLayout();
             // 
             // simpleButtonCancel
@@ -65,16 +66,27 @@
             // 
             // editHeaderItem
             // 
+            this.editHeaderItem.BeginGroup = false;
             this.editHeaderItem.Location = new System.Drawing.Point(0, 0);
             this.editHeaderItem.Name = "editHeaderItem";
             this.editHeaderItem.Size = new System.Drawing.Size(400, 250);
             this.editHeaderItem.TabIndex = 3;
+            // 
+            // editSubMenu
+            // 
+            this.editSubMenu.BeginGroup = false;
+            this.editSubMenu.IconPath = "";
+            this.editSubMenu.Location = new System.Drawing.Point(0, 0);
+            this.editSubMenu.Name = "editSubMenu";
+            this.editSubMenu.Size = new System.Drawing.Size(400, 250);
+            this.editSubMenu.TabIndex = 4;
             // 
             // CustomizeMenuItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 303);
+            this.Controls.Add(this.editSubMenu);
             this.Controls.Add(this.simpleButtonOk);
             this.Controls.Add(this.simpleButtonCancel);
             this.Controls.Add(this.editHeaderItem);
@@ -92,5 +104,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonOk;
         private Controls.EditHeaderItem editHeaderItem;
+        private Controls.EditSubMenu editSubMenu;
     }
 }

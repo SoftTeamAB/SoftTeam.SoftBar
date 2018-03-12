@@ -37,11 +37,11 @@
             this.checkEditBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.xtraOpenFileDialogEditMenu = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditName
@@ -111,19 +111,19 @@
             // 
             this.xtraOpenFileDialogEditMenu.FileName = "xtraOpenFileDialog1";
             // 
-            // pictureBox1
+            // pictureBoxIcon
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxIcon.Name = "pictureBoxIcon";
+            this.pictureBoxIcon.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIcon.TabIndex = 8;
+            this.pictureBoxIcon.TabStop = false;
             // 
             // EditMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.simpleButtonBrowse);
             this.Controls.Add(this.labelControlName);
             this.Controls.Add(this.labelControlIconPath);
@@ -136,7 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -152,6 +152,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEditBeginGroup;
         private DevExpress.XtraEditors.SimpleButton simpleButtonBrowse;
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogEditMenu;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBoxIcon;
     }
 }

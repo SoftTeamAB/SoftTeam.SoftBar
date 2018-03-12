@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Extensions;
@@ -49,13 +43,13 @@ namespace SoftTeam.SoftBar.Core.Controls
                 // Extract the icon...
                 Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
                 // and return an 16x16 image
-                pictureBox1.Image = iconImage.ResizeImage(32, 32);
+                pictureBoxIcon.Image = iconImage.ResizeImage(32, 32);
             }
             catch (Exception ex)
             {
                 XtraMessageBox.Show(ex.Message);
                 // Return an error image
-                pictureBox1.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
             }
         }
 

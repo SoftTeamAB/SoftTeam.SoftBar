@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
+
 using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core.Forms
@@ -18,6 +10,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private SoftBarMenu _menu = null;
         private SoftBarHeaderItem _headerItem = null;
+        private SoftBarSubMenu _subMenu = null;
 
         public CustomizeMenuItem(SoftBarMenu menu)
         {
@@ -48,6 +41,21 @@ namespace SoftTeam.SoftBar.Core.Forms
             editHeaderItem.LoadValues();
         }
 
+        public CustomizeMenuItem(SoftBarSubMenu subMenu)
+        {
+            InitializeComponent();
+
+            _type = MenuItemType.SubMenu;
+            editSubMenu.BringToFront();
+
+            editSubMenu.Name = subMenu.Name;
+            editSubMenu.IconPath = subMenu.IconPath;
+            editSubMenu.BeginGroup = subMenu.BeginGroup;
+            _subMenu = subMenu;
+
+            editSubMenu.LoadValues();
+        }
+
         private void simpleButtonOk_Click(object sender, EventArgs e)
         {
             switch (_type)
@@ -64,6 +72,13 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                     _headerItem.Name = editHeaderItem.Name;
                     _headerItem.BeginGroup = editHeaderItem.BeginGroup;
+                    break;
+                case MenuItemType.SubMenu:
+                    editSubMenu.SaveValues();
+
+                    _subMenu.Name = editSubMenu.Name;
+                    _subMenu.IconPath = editSubMenu.IconPath;
+                    _subMenu.BeginGroup = editSubMenu.BeginGroup;
                     break;
             }
 

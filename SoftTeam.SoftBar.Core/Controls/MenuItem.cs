@@ -61,6 +61,14 @@ namespace SoftTeam.SoftBar.Core.Controls
                     UpdateValues();
                 }
             }
+            else if (_item is SoftBarSubMenu)
+            {
+                using (CustomizeMenuItem form = new CustomizeMenuItem((SoftBarSubMenu)_item))
+                {
+                    form.ShowDialog();
+                    UpdateValues();
+                }
+            }
 
         }
     }
