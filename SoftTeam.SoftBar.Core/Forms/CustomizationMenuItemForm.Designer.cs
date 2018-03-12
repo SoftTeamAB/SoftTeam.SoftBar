@@ -1,6 +1,6 @@
 ﻿namespace SoftTeam.SoftBar.Core.Forms
 {
-    partial class CustomizeMenuItem
+    partial class CustomizationMenuItemForm
     {
         /// <summary>
         /// Required designer variable.

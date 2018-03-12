@@ -17,6 +17,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private int _height = TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
+        private SoftBarManager _manager = null;
 
         public CustomizationForm(SoftBarManager manager, string path)
         {
@@ -24,6 +25,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             _path = path;
             LoadMenu(manager);
+            _manager = manager;
         }
 
         private void CustomizationForm_Load(object sender, EventArgs e)
@@ -105,6 +107,33 @@ namespace SoftTeam.SoftBar.Core.Forms
             item.Size = new Size(width, ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
             _height += item.Height + SPACE;
+            menu.CustomizationMenuItem = item;
+            item.MenuItemClicked += Item_MenuItemClicked;
+            item.ClearSelectedRequested += Item_ClearSelectedRequested;
+        }
+
+        private void Item_ClearSelectedRequested(object sender, EventArgs e)
+        {
+            foreach (var menuItem in _manager.Menus)
+            {
+                menuItem.CustomizationMenuItem.Selected = false;
+                SetSelected(menuItem, false);
+            }
+        }
+
+        private void Item_MenuItemClicked(object sender, MenuItem.MenuItemClickedEventArgs e)
+        {
+            SetSelected(e.Menu, e.Selected);
+        }
+
+        private void SetSelected(SoftBarBaseMenu menu, bool selected)
+        {
+            foreach (var menuItem in menu.MenuItems)
+            {
+                menuItem.CustomizationMenuItem.Selected = selected;
+                if (menuItem is SoftBarSubMenu)
+                    SetSelected((SoftBarSubMenu)menuItem, selected);
+            }
         }
 
         private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

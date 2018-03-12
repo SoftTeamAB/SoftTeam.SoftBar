@@ -42,8 +42,16 @@ namespace SoftTeam.SoftBar.Core.Helpers
         }
 
         private string CommandLineString
-        {
-            get { return $"{_application} {_document} {_parameters}"; }
+        {      
+            get {
+                if (string.IsNullOrEmpty(Parameters))
+                    return $"{_application} {_document}";
+                else
+                {
+                    var parameters = _parameters.Replace("%%document%%", _document);
+                    return $"{_application} {parameters}";
+                }
+            }
         }
 
         public static void ExecuteCommandLine(string commandLine)

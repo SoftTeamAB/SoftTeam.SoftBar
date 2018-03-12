@@ -36,39 +36,28 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            this.hyperlinkLabelControlName = new DevExpress.XtraEditors.HyperlinkLabelControl();
             this.labelControlType = new DevExpress.XtraEditors.LabelControl();
             this.defaultLookAndFeelSoftBar = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.pictureBoxBeginGroup = new System.Windows.Forms.PictureBox();
             this.pictureBoxNoBeginGroup = new System.Windows.Forms.PictureBox();
             this.toolTipControllerMenuItem = new DevExpress.Utils.ToolTipController(this.components);
+            this.labelControlName = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBeginGroup)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoBeginGroup)).BeginInit();
             this.SuspendLayout();
             // 
-            // hyperlinkLabelControlName
-            // 
-            this.hyperlinkLabelControlName.Appearance.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hyperlinkLabelControlName.Appearance.Options.UseFont = true;
-            this.hyperlinkLabelControlName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.hyperlinkLabelControlName.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.hyperlinkLabelControlName.Location = new System.Drawing.Point(40, 15);
-            this.hyperlinkLabelControlName.Name = "hyperlinkLabelControlName";
-            this.hyperlinkLabelControlName.Size = new System.Drawing.Size(243, 16);
-            this.hyperlinkLabelControlName.TabIndex = 0;
-            this.hyperlinkLabelControlName.Text = "Name";
-            this.hyperlinkLabelControlName.Click += new System.EventHandler(this.item_Click);
-            // 
             // labelControlType
             // 
-            this.labelControlType.Location = new System.Drawing.Point(40, 3);
+            this.labelControlType.Location = new System.Drawing.Point(40, 0);
             this.labelControlType.Name = "labelControlType";
             this.labelControlType.Size = new System.Drawing.Size(22, 13);
             this.labelControlType.TabIndex = 1;
             this.labelControlType.Text = "type";
             this.labelControlType.Click += new System.EventHandler(this.item_Click);
+            this.labelControlType.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.labelControlType.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
             // 
             // defaultLookAndFeelSoftBar
             // 
@@ -83,6 +72,9 @@
             this.pictureBoxIcon.TabIndex = 3;
             this.pictureBoxIcon.TabStop = false;
             this.pictureBoxIcon.Click += new System.EventHandler(this.item_Click);
+            this.pictureBoxIcon.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.pictureBoxIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
+            this.pictureBoxIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // pictureBoxBeginGroup
             // 
@@ -104,6 +96,9 @@
             this.pictureBoxBeginGroup.TabIndex = 4;
             this.pictureBoxBeginGroup.TabStop = false;
             this.pictureBoxBeginGroup.Click += new System.EventHandler(this.item_Click);
+            this.pictureBoxBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.pictureBoxBeginGroup.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
+            this.pictureBoxBeginGroup.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // pictureBoxNoBeginGroup
             // 
@@ -125,20 +120,40 @@
             this.pictureBoxNoBeginGroup.TabIndex = 5;
             this.pictureBoxNoBeginGroup.TabStop = false;
             this.pictureBoxNoBeginGroup.Click += new System.EventHandler(this.item_Click);
+            this.pictureBoxNoBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.pictureBoxNoBeginGroup.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
+            this.pictureBoxNoBeginGroup.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
+            // 
+            // labelControlName
+            // 
+            this.labelControlName.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlName.Appearance.Options.UseFont = true;
+            this.labelControlName.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
+            this.labelControlName.Location = new System.Drawing.Point(40, 15);
+            this.labelControlName.Name = "labelControlName";
+            this.labelControlName.Size = new System.Drawing.Size(317, 21);
+            this.labelControlName.TabIndex = 6;
+            this.labelControlName.Text = "labelControl1";
+            this.labelControlName.Click += new System.EventHandler(this.item_Click);
+            this.labelControlName.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.labelControlName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // MenuItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Controls.Add(this.labelControlName);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.labelControlType);
-            this.Controls.Add(this.hyperlinkLabelControlName);
             this.Controls.Add(this.pictureBoxNoBeginGroup);
             this.Controls.Add(this.pictureBoxBeginGroup);
             this.Name = "MenuItem";
             this.Size = new System.Drawing.Size(398, 36);
             this.Click += new System.EventHandler(this.item_Click);
+            this.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBeginGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoBeginGroup)).EndInit();
@@ -148,13 +163,12 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.HyperlinkLabelControl hyperlinkLabelControlName;
         private DevExpress.XtraEditors.LabelControl labelControlType;
         private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeelSoftBar;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.PictureBox pictureBoxBeginGroup;
         private System.Windows.Forms.PictureBox pictureBoxNoBeginGroup;
         private DevExpress.Utils.ToolTipController toolTipControllerMenuItem;
+        private DevExpress.XtraEditors.LabelControl labelControlName;
     }
 }

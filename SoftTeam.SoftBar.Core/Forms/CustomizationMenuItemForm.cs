@@ -4,7 +4,7 @@ using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
-    public partial class CustomizeMenuItem : DevExpress.XtraEditors.XtraForm
+    public partial class CustomizationMenuItemForm : DevExpress.XtraEditors.XtraForm
     {
         private MenuItemType _type = MenuItemType.None;
 
@@ -13,7 +13,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private SoftBarSubMenu _subMenu = null;
         private SoftBarMenuItem _menuItem = null;
 
-        public CustomizeMenuItem(SoftBarMenu menu)
+        public CustomizationMenuItemForm(SoftBarMenu menu)
         {
             InitializeComponent();
 
@@ -28,7 +28,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editMenu.LoadValues();
         }
 
-        public CustomizeMenuItem(SoftBarHeaderItem headerItem)
+        public CustomizationMenuItemForm(SoftBarHeaderItem headerItem)
         {
             InitializeComponent();
 
@@ -42,7 +42,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editHeaderItem.LoadValues();
         }
 
-        public CustomizeMenuItem(SoftBarSubMenu subMenu)
+        public CustomizationMenuItemForm(SoftBarSubMenu subMenu)
         {
             InitializeComponent();
 
@@ -57,7 +57,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editSubMenu.LoadValues();
         }
 
-        public CustomizeMenuItem(SoftBarMenuItem menuItem)
+        public CustomizationMenuItemForm(SoftBarMenuItem menuItem)
         {
             InitializeComponent();
 

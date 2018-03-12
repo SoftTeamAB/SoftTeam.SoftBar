@@ -81,11 +81,11 @@
     <Compile Include="Controls\EditSubMenu.Designer.cs">
       <DependentUpon>EditSubMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CustomizeMenuItem.cs">
+    <Compile Include="Forms\CustomizationMenuItemForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\CustomizeMenuItem.Designer.cs">
-      <DependentUpon>CustomizeMenuItem.cs</DependentUpon>
+    <Compile Include="Forms\CustomizationMenuItemForm.Designer.cs">
+      <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\StartupForm.cs">
       <SubType>Form</SubType>
@@ -184,8 +184,8 @@
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomizeMenuItem.resx">
-      <DependentUpon>CustomizeMenuItem.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\CustomizationMenuItemForm.resx">
+      <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>

@@ -41,9 +41,9 @@ namespace SoftTeam.SoftBar.Core.Misc
             switch (type)
             {
                 case MenuItemType.Menu:
-                    return Color.FromArgb(102,153,114);
+                    return Color.FromArgb(80,80,80);
                 case MenuItemType.SubMenu:
-                    return Color.FromArgb(178, 229, 190);
+                    return Color.FromArgb(80,80,80);
                 case MenuItemType.HeaderItem:
                     return Color.Gray;
                 case MenuItemType.MenuItem:
