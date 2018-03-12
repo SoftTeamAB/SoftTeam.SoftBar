@@ -33,6 +33,7 @@
             this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenu();
             this.editHeaderItem = new SoftTeam.SoftBar.Core.Controls.EditHeaderItem();
             this.editSubMenu = new SoftTeam.SoftBar.Core.Controls.EditSubMenu();
+            this.editMenuItem = new SoftTeam.SoftBar.Core.Controls.EditMenuItem();
             this.SuspendLayout();
             // 
             // simpleButtonCancel
@@ -81,19 +82,35 @@
             this.editSubMenu.Size = new System.Drawing.Size(400, 250);
             this.editSubMenu.TabIndex = 4;
             // 
+            // editMenuItem
+            // 
+            this.editMenuItem.ApplicationPath = "";
+            this.editMenuItem.BeginGroup = false;
+            this.editMenuItem.DocumentPath = "";
+            this.editMenuItem.IconPath = "";
+            this.editMenuItem.Location = new System.Drawing.Point(0, 0);
+            this.editMenuItem.Name = "editMenuItem";
+            this.editMenuItem.Parameters = "";
+            this.editMenuItem.Size = new System.Drawing.Size(400, 250);
+            this.editMenuItem.TabIndex = 5;
+            // 
             // CustomizeMenuItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 303);
+            this.Controls.Add(this.editMenuItem);
             this.Controls.Add(this.editSubMenu);
             this.Controls.Add(this.simpleButtonOk);
             this.Controls.Add(this.simpleButtonCancel);
             this.Controls.Add(this.editHeaderItem);
             this.Controls.Add(this.editMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "CustomizeMenuItem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "CustomizeMenuItem";
+            this.Text = "Customize menu item";
             this.ResumeLayout(false);
 
         }
@@ -105,5 +122,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonOk;
         private Controls.EditHeaderItem editHeaderItem;
         private Controls.EditSubMenu editSubMenu;
+        private Controls.EditMenuItem editMenuItem;
     }
 }

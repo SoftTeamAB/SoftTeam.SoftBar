@@ -29,6 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSubMenu));
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -98,14 +108,29 @@
             this.checkEditBeginGroup.Name = "checkEditBeginGroup";
             this.checkEditBeginGroup.Properties.Caption = "Begin group";
             this.checkEditBeginGroup.Size = new System.Drawing.Size(100, 19);
+            superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem3.Text = "Begin group";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.checkEditBeginGroup.SuperTip = superToolTip3;
             this.checkEditBeginGroup.TabIndex = 11;
             // 
             // textEditIconPath
             // 
-            this.textEditIconPath.Enabled = false;
             this.textEditIconPath.Location = new System.Drawing.Point(50, 134);
             this.textEditIconPath.Name = "textEditIconPath";
             this.textEditIconPath.Size = new System.Drawing.Size(274, 20);
+            superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem2.Text = "Icon path";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "The path for the file that contains the icon that should be used for this menu it" +
+    "em.";
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.textEditIconPath.SuperTip = superToolTip2;
             this.textEditIconPath.TabIndex = 10;
             // 
             // textEditName
@@ -113,6 +138,15 @@
             this.textEditName.Location = new System.Drawing.Point(50, 89);
             this.textEditName.Name = "textEditName";
             this.textEditName.Size = new System.Drawing.Size(307, 20);
+            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem4.Text = "Name";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "The name of this menu item. This is the name that will appear in the menu, when i" +
+    "t is opened.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.textEditName.SuperTip = superToolTip4;
             this.textEditName.TabIndex = 9;
             // 
             // xtraOpenFileDialogEditSubMenu

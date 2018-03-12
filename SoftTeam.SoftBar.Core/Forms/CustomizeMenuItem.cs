@@ -11,6 +11,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private SoftBarMenu _menu = null;
         private SoftBarHeaderItem _headerItem = null;
         private SoftBarSubMenu _subMenu = null;
+        private SoftBarMenuItem _menuItem = null;
 
         public CustomizeMenuItem(SoftBarMenu menu)
         {
@@ -56,6 +57,25 @@ namespace SoftTeam.SoftBar.Core.Forms
             editSubMenu.LoadValues();
         }
 
+        public CustomizeMenuItem(SoftBarMenuItem menuItem)
+        {
+            InitializeComponent();
+
+            _type = MenuItemType.MenuItem;
+            editMenuItem.BringToFront();
+
+            editMenuItem.Name = menuItem.Name;
+            editMenuItem.IconPath = menuItem.IconPath;
+            editMenuItem.BeginGroup = menuItem.BeginGroup;
+
+            editMenuItem.ApplicationPath = menuItem.ApplicationPath;
+            editMenuItem.DocumentPath = menuItem.DocumentPath;
+            editMenuItem.Parameters = menuItem.Parameters;
+            _menuItem = menuItem;
+
+            editMenuItem.LoadValues();
+        }
+
         private void simpleButtonOk_Click(object sender, EventArgs e)
         {
             switch (_type)
@@ -79,6 +99,13 @@ namespace SoftTeam.SoftBar.Core.Forms
                     _subMenu.Name = editSubMenu.Name;
                     _subMenu.IconPath = editSubMenu.IconPath;
                     _subMenu.BeginGroup = editSubMenu.BeginGroup;
+                    break;
+                case MenuItemType.MenuItem:
+                    editMenuItem.SaveValues();
+
+                    _menuItem.Name = editMenuItem.Name;
+                    _menuItem.IconPath = editMenuItem.IconPath;
+                    _menuItem.BeginGroup = editMenuItem.BeginGroup;
                     break;
             }
 

@@ -33,6 +33,7 @@ namespace SoftTeam.SoftBar.Core
             get => _commandLine.Application;
             set { _commandLine.Application = value; if (string.IsNullOrEmpty(IconPath)) IconPath = value; }
         }
+        public string Parameters { get => _commandLine.Parameters; set=>_commandLine.Parameters = value; }
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
 
@@ -70,7 +71,7 @@ namespace SoftTeam.SoftBar.Core
             {
                 // Create a tool tip and set the warning image
                 Item.SuperTip = ToolTipHelper.CreateWarningToolTip(WarningText);
-                Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                Item.ImageOptions.Image = new Bitmap(Properties.Resources.Warning_small);
             }
 
             return Item;
