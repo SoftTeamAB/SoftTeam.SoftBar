@@ -3,4 +3,4 @@ An Application bar for Windows 10, with which you can start applications, open s
 
 DevExpress WinForm 17.2.6 is required to compile this project.
 
-<img src="SoftBar-directories.png">
+<img src="/SoftBar-directories.png">
