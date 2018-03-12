@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<softbar>
+  <menu name="Development" iconPath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe">
+    <headerItem name="Development" iconPath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe"/>
+    <menuItem name="Notepad">
+      <applicationPath>c:\windows\notepad.exe</applicationPath>
+    </menuItem>
+    <menuItem name="Visual Studio" beginGroup="true">
+      <applicationPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe</applicationPath>
+    </menuItem>
+    <menuItem name="Visual Studio" iconPath="C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe">
+      <applicationPath>C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe</applicationPath>
+    </menuItem>
+  </menu>
+  <menu name="Office" iconPath="C:\Program Files (x86)\Microsoft Office\root\Office16\MsAccess.exe">
+    <headerItem name="Development" iconPath="C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\devenv.exe"/>
+    <menuItem name="Word">
+      <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\WinWord.exe</applicationPath>
+    </menuItem>
+    <menuItem name="Excel">
+      <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\Excel.exe</applicationPath>
+    </menuItem>
+    <menuItem name="OneNote">
+      <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\OneNote.exe</applicationPath>
+    </menuItem>
+    <menuItem name="Outlook">
+      <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\Outlook.exe</applicationPath>
+    </menuItem>
+    <menu name="More Office" iconPath="C:\Program Files (x86)\Microsoft Office\root\Office16\MsPub.exe">
+      <menuItem name="Publisher">
+        <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\MsPub.exe</applicationPath>
+      </menuItem>
+      <menu name="Even more Office" iconPath="C:\Program Files (x86)\Microsoft Office\root\Office16\MsAccess.exe">
+        <menuItem name="Access">
+          <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\MsAccess.exe</applicationPath>
+        </menuItem>
+        <menu name="Even even more Office" iconPath="C:\Program Files (x86)\Microsoft Office\root\Office16\MsAccess.exe">
+          <menuItem name="Access">
+            <applicationPath>C:\Program Files (x86)\Microsoft Office\root\Office16\MsAccess.exe</applicationPath>
+          </menuItem>
+        </menu>
+      </menu>
+    </menu>
+  </menu>
+</softbar>
