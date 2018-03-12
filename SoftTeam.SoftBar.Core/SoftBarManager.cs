@@ -169,7 +169,8 @@ namespace SoftTeam.SoftBar.Core
                     softBarMenuItem.BeginGroup = beginGroup;
 
                     // Store the Icon path
-                    softBarMenuItem.IconPath = iconPath;
+                    if (!string.IsNullOrEmpty(iconPath))
+                        softBarMenuItem.IconPath = iconPath;
 
                     // Add the menu item to the menu
                     softBarBaseMenu.MenuItems.Add(softBarMenuItem);

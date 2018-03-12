@@ -30,7 +30,7 @@ namespace SoftTeam.SoftBar.Core
         public BarSubItem Setup()
         {
             _subMenu = new BarSubItem(Form.barManagerSoftBar, Name);
-
+            _subMenu.Glyph = Image;
             return _subMenu;
         }
 

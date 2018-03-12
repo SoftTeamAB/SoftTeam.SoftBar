@@ -27,7 +27,6 @@ namespace SoftTeam.SoftBar.Core
             Item = new BarHeaderItem();
             // Set the caption
             Item.Caption = Name;
-
             return Item;
         }
         #endregion
