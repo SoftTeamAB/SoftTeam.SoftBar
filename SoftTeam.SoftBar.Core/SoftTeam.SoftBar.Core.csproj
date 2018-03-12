@@ -57,6 +57,36 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
+    <Compile Include="Controls\EditHeaderItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditHeaderItem.Designer.cs">
+      <DependentUpon>EditHeaderItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditMenu.Designer.cs">
+      <DependentUpon>EditMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditMenuItem.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditMenuItem.Designer.cs">
+      <DependentUpon>EditMenuItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\EditSubMenu.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EditSubMenu.Designer.cs">
+      <DependentUpon>EditSubMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomizeMenuItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomizeMenuItem.Designer.cs">
+      <DependentUpon>CustomizeMenuItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\StartupForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,8 +169,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controls\EditMenu.resx">
+      <DependentUpon>EditMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomizeMenuItem.resx">
+      <DependentUpon>CustomizeMenuItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>

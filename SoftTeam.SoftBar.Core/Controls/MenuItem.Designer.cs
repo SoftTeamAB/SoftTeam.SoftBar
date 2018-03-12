@@ -47,6 +47,7 @@
             this.hyperlinkLabelControlName.Size = new System.Drawing.Size(243, 16);
             this.hyperlinkLabelControlName.TabIndex = 0;
             this.hyperlinkLabelControlName.Text = "Name";
+            this.hyperlinkLabelControlName.Click += new System.EventHandler(this.item_Click);
             // 
             // labelControl1
             // 
@@ -56,6 +57,7 @@
             this.labelControl1.TabIndex = 1;
             this.labelControl1.Text = "labelControl1";
             this.labelControl1.Visible = false;
+            this.labelControl1.Click += new System.EventHandler(this.item_Click);
             // 
             // defaultLookAndFeelSoftBar
             // 
@@ -69,6 +71,7 @@
             this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxIcon.TabIndex = 3;
             this.pictureBoxIcon.TabStop = false;
+            this.pictureBoxIcon.Click += new System.EventHandler(this.item_Click);
             // 
             // MenuItem
             // 
@@ -80,7 +83,7 @@
             this.Controls.Add(this.hyperlinkLabelControlName);
             this.Name = "MenuItem";
             this.Size = new System.Drawing.Size(398, 34);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuItem_Paint);
+            this.Click += new System.EventHandler(this.item_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -11,10 +11,11 @@ namespace SoftTeam.SoftBar.Core.Forms
         private const int LEFT_MARGIN = 3;
         private const int TOP_MARGIN = 2;
         private const int SCROLLBAR_WIDTH = 20;
-        private const int  LEVEL_INDENTATION = 36;
-        private const int  ITEM_HEIGHT = 36;
-        private int height = TOP_MARGIN;
-        private int level = 0;
+        private const int LEVEL_INDENTATION = 36;
+        private const int ITEM_HEIGHT = 36;
+        private int _height = TOP_MARGIN;
+        private int _level = 0;
+        private int _maxLevel = 0;
 
         public CustomizationForm(SoftBarManager manager, string path)
         {
@@ -28,59 +29,81 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             barStaticItemPath.Caption = _path;
         }
-        private void LoadMenu(SoftBarManager manager)
+
+        private int CalculateMaxLevel(SoftBarManager manager)
         {
+            int maxLevel = 0;
 
             foreach (var menu in manager.Menus)
             {
+                CalculateMaxLevelEx(menu,ref maxLevel);
+            }
+
+            return maxLevel;
+        }
+        private void CalculateMaxLevelEx(SoftBarBaseMenu menu, ref int maxLevel)
+        {
+            _level += 1;
+
+            if (_level > maxLevel)
+                maxLevel = _level;
+
+            foreach (SoftBarBaseItem menuItem in menu.MenuItems)
+            {
+                if (menuItem is SoftBarSubMenu)
+                    CalculateMaxLevelEx((SoftBarBaseMenu)menuItem, ref maxLevel);
+            }
+
+            _level -= 1;
+        }
+
+        private void LoadMenu(SoftBarManager manager)
+        {
+            _maxLevel = CalculateMaxLevel(manager);
+
+            foreach (var menu in manager.Menus)
+            {
+                AddItemControl(menu);
                 LoadMenu(menu);
             }
         }
-        private void LoadMenu(SoftBarMenu menu)
+
+        private void LoadMenu(SoftBarBaseMenu menu)
         {
-            AddItemControl(menu);
-            level += 1;
+            _level += 1;
             foreach (SoftBarBaseItem menuItem in menu.MenuItems)
             {
                 if (menuItem.SystemMenu)
                     continue;
 
-                AddItemControl(menuItem);
-                //switch (menuItem.GetType().Name)
-                //{
-                    
-                //    case "SoftBarHeaderItem":
-                //        AddMenuHeaderControl((SoftBarHeaderItem)menuItem);
-                //        break;
-                //    case SoftBarMenuItem.MenuItemType.MenuItem:
-                //        AddMenuItemControl(menuItem);
-                //        break;
-                //    case SoftBarMenuItem.MenuItemType.SystemMenuItem:
-                //        // Do nothing
-                //        break;
-                //    case SoftBarMenuItem.MenuItemType.SubLevelMenu:
-                //        // Not implemented
-                //        throw new NotImplementedException();                        
-                //}
+                if (menuItem is SoftBarSubMenu)
+                {
+                    AddItemControl(menuItem);
+                    LoadMenu((SoftBarBaseMenu)menuItem);
+                }
+                else if (menuItem is SoftBarHeaderItem)
+                {
+                    AddItemControl(menuItem);
+                }
+                else if (menuItem is SoftBarMenuItem)
+                {
+                    AddItemControl(menuItem);
+                }
             }
-            level -= 1;
+            _level -= 1;
         }
 
         private void AddItemControl(SoftBarBaseItem menu)
         {
-            MenuItem item = new MenuItem(menu,level);
-            AddItem(item);
-        }
+            var step = 128 / _maxLevel;
+            var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
+            MenuItem item = new MenuItem(menu, _level, color);
+            var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * LEVEL_INDENTATION - SCROLLBAR_WIDTH;
 
-        private void AddItem(MenuItem item)
-        {
-            // Temporary width, change when sub menues are implemented
-            var width = xtraScrollableControlMenu.ClientSize.Width - LEVEL_INDENTATION- SCROLLBAR_WIDTH;
-
-            item.Location = new Point(level * LEVEL_INDENTATION+LEFT_MARGIN, height);
+            item.Location = new Point(_level * LEVEL_INDENTATION + LEFT_MARGIN, _height);
             item.Size = new Size(width, ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
-            height += item.Height + SPACE;
+            _height += item.Height + SPACE;
         }
 
         private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
