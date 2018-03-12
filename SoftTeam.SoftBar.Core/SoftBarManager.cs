@@ -11,6 +11,7 @@ using DevExpress.XtraEditors;
 
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Helpers;
+using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -64,7 +65,12 @@ namespace SoftTeam.SoftBar.Core
                     // In debug mode we want to get the schema from SoftTeam.SoftBar.Core,
                     // otherwise from the current directory
                     if (Debugger.IsAttached)
-                        schemas.Add("", @"..\..\..\SoftTeam.SoftBar.Core\bin\Debug\SoftBar.xsd");
+                    {
+                        var xsdPath = HelperFunctions.AssemblyDirectory;
+                        xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"..\..\..\"));
+                        xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"SoftTeam.SoftBar.Core\bin\Debug\SoftBar.xsd")); 
+                        schemas.Add("", xsdPath);
+                    }
                     else
                         schemas.Add("", "SoftBar.xsd");
                     doc.Schemas = schemas;

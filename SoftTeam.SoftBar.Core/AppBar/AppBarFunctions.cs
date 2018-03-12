@@ -25,6 +25,7 @@ namespace SoftTeam.SoftBar.Core
     /// </summary>
     public static class AppBarFunctions
     {
+        public static AppBarEdge Edge { get; set; } = AppBarEdge.None;
         /// <summary>
         /// Internal class for registration of an app bar
         /// </summary>
@@ -150,6 +151,7 @@ namespace SoftTeam.SoftBar.Core
             // Get the app bar from the form that was passed in
             var info = GetRegisterInfo(appbarWindow);
             info.Edge = edge;
+            Edge = edge;
 
             var appBarData = new Interop.APPBARDATA();
             appBarData.cbSize = Marshal.SizeOf(appBarData);

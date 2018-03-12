@@ -39,6 +39,7 @@
             this.barLinkContainerItem1 = new DevExpress.XtraBars.BarLinkContainerItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.xtraOpenFileDialogSoftBar = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -119,6 +120,10 @@
             this.barButtonItem1.Id = 4;
             this.barButtonItem1.Name = "barButtonItem1";
             // 
+            // xtraOpenFileDialogSoftBar
+            // 
+            this.xtraOpenFileDialogSoftBar.FileName = "xtraOpenFileDialog1";
+            // 
             // MainAppBarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -131,7 +136,7 @@
             this.Name = "MainAppBarForm";
             this.Text = "MainAppBarForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainAppBarForm_FormClosing);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainAppBarForm_Paint);
+            this.Load += new System.EventHandler(this.MainAppBarForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -149,5 +154,6 @@
         private DevExpress.XtraBars.BarLinkContainerItem barLinkContainerItem1;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogSoftBar;
     }
 }

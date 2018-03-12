@@ -8,10 +8,12 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         private string _path = "";
         private const int SPACE = 4;
+        private const int LEFT_MARGIN = 3;
+        private const int TOP_MARGIN = 2;
         private const int SCROLLBAR_WIDTH = 20;
         private const int  LEVEL_INDENTATION = 36;
         private const int  ITEM_HEIGHT = 36;
-        private int height = 0;
+        private int height = TOP_MARGIN;
         private int level = 0;
 
         public CustomizationForm(SoftBarManager manager, string path)
@@ -75,7 +77,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Temporary width, change when sub menues are implemented
             var width = xtraScrollableControlMenu.ClientSize.Width - LEVEL_INDENTATION- SCROLLBAR_WIDTH;
 
-            item.Location = new Point(level * LEVEL_INDENTATION, height);
+            item.Location = new Point(level * LEVEL_INDENTATION+LEFT_MARGIN, height);
             item.Size = new Size(width, ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
             height += item.Height + SPACE;
