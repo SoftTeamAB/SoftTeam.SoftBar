@@ -420,6 +420,7 @@ namespace SoftTeam.SoftBar.Core
         {
             using (CustomizationForm form = new CustomizationForm(this, _path))
             {
+                _systemMenu.Item.HidePopup();
                 form.ShowDialog();
             }
         }
@@ -433,6 +434,7 @@ namespace SoftTeam.SoftBar.Core
         {
             using (SettingsForm form = new SettingsForm())
             {
+                _systemMenu.Item.HidePopup();
                 form.ShowDialog();
             }
         }

@@ -12,4 +12,13 @@ namespace SoftTeam.SoftBar.Core.Misc
         FirstTimeUser=1,
         Wizard=2
     }
+
+    public enum MenuItemType
+    {
+        None=0,
+        Menu,
+        SubMenu,
+        HeaderItem,
+        MenuItem
+    }
 }

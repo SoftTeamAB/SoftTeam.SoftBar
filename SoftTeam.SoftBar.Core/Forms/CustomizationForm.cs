@@ -1,4 +1,5 @@
 ﻿using SoftTeam.SoftBar.Core.Controls;
+using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Drawing;
 
@@ -7,12 +8,12 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
         private string _path = "";
-        private const int SPACE = 4;
+        private const int SPACE = 0;
         private const int LEFT_MARGIN = 3;
         private const int TOP_MARGIN = 2;
         private const int SCROLLBAR_WIDTH = 20;
         private const int LEVEL_INDENTATION = 36;
-        private const int ITEM_HEIGHT = 36;
+        private const int ITEM_HEIGHT = 38;
         private int _height = TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
@@ -63,7 +64,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             foreach (var menu in manager.Menus)
             {
-                AddItemControl(menu);
+                AddItemControl(MenuItemType.Menu, menu);
                 LoadMenu(menu);
             }
         }
@@ -78,26 +79,26 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 if (menuItem is SoftBarSubMenu)
                 {
-                    AddItemControl(menuItem);
+                    AddItemControl(MenuItemType.SubMenu, menuItem);
                     LoadMenu((SoftBarBaseMenu)menuItem);
                 }
                 else if (menuItem is SoftBarHeaderItem)
                 {
-                    AddItemControl(menuItem);
+                    AddItemControl(MenuItemType.HeaderItem, menuItem);
                 }
                 else if (menuItem is SoftBarMenuItem)
                 {
-                    AddItemControl(menuItem);
+                    AddItemControl(MenuItemType.MenuItem, menuItem);
                 }
             }
             _level -= 1;
         }
 
-        private void AddItemControl(SoftBarBaseItem menu)
+        private void AddItemControl(MenuItemType type, SoftBarBaseItem menu)
         {
             var step = 128 / _maxLevel;
             var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
-            MenuItem item = new MenuItem(menu, _level, color);
+            MenuItem item = new MenuItem(type, menu, _level, color);
             var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * LEVEL_INDENTATION - SCROLLBAR_WIDTH;
 
             item.Location = new Point(_level * LEVEL_INDENTATION + LEFT_MARGIN, _height);
