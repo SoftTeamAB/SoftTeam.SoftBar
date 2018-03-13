@@ -8,6 +8,8 @@ namespace SoftTeam.SoftBar.Core.Extensions
 {
     public static class ImageExtension
     {
+        // Detta är ett test
+
         /// <summary>
         /// Resize the image to the specified width and height.
         /// </summary>
