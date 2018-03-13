@@ -55,7 +55,6 @@
             this.labelControlType.Size = new System.Drawing.Size(22, 13);
             this.labelControlType.TabIndex = 1;
             this.labelControlType.Text = "type";
-            this.labelControlType.Click += new System.EventHandler(this.item_Click);
             this.labelControlType.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             // 
             // defaultLookAndFeelSoftBar
@@ -70,7 +69,6 @@
             this.pictureBoxIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBoxIcon.TabIndex = 3;
             this.pictureBoxIcon.TabStop = false;
-            this.pictureBoxIcon.Click += new System.EventHandler(this.item_Click);
             this.pictureBoxIcon.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             // 
             // pictureBoxBeginGroup
@@ -92,7 +90,6 @@
             this.toolTipControllerMenuItem.SetSuperTip(this.pictureBoxBeginGroup, superToolTip1);
             this.pictureBoxBeginGroup.TabIndex = 4;
             this.pictureBoxBeginGroup.TabStop = false;
-            this.pictureBoxBeginGroup.Click += new System.EventHandler(this.item_Click);
             this.pictureBoxBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             // 
             // pictureBoxNoBeginGroup
@@ -114,7 +111,6 @@
             this.toolTipControllerMenuItem.SetSuperTip(this.pictureBoxNoBeginGroup, superToolTip2);
             this.pictureBoxNoBeginGroup.TabIndex = 5;
             this.pictureBoxNoBeginGroup.TabStop = false;
-            this.pictureBoxNoBeginGroup.Click += new System.EventHandler(this.item_Click);
             this.pictureBoxNoBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             // 
             // labelControlName
@@ -127,7 +123,6 @@
             this.labelControlName.Size = new System.Drawing.Size(317, 21);
             this.labelControlName.TabIndex = 6;
             this.labelControlName.Text = "labelControl1";
-            this.labelControlName.Click += new System.EventHandler(this.item_Click);
             this.labelControlName.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             // 
             // MenuItem
@@ -142,7 +137,6 @@
             this.Controls.Add(this.pictureBoxNoBeginGroup);
             this.Name = "MenuItem";
             this.Size = new System.Drawing.Size(398, 36);
-            this.Click += new System.EventHandler(this.item_Click);
             this.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBeginGroup)).EndInit();

@@ -32,6 +32,35 @@ namespace SoftTeam.SoftBar.Core.Controls
             UpdateValues();
             this.BackColor = color;
             _color = color;
+
+            // Attach event handlers
+            AttachEvents();
+        }
+
+        ~MenuItem()
+        {
+            // Remove event handlers
+            DetachEvents();
+        }
+
+        private void AttachEvents()
+        {
+            this.MouseDown += MenuItem_MouseDown;
+            this.labelControlName.MouseDown += MenuItem_MouseDown;
+            this.labelControlType.MouseDown += MenuItem_MouseDown;
+            this.pictureBoxIcon.MouseDown += MenuItem_MouseDown;
+            this.pictureBoxBeginGroup.MouseDown += MenuItem_MouseDown;
+            this.pictureBoxNoBeginGroup.MouseDown += MenuItem_MouseDown;
+        }
+
+        private void DetachEvents()
+        {
+            this.MouseDown -= MenuItem_MouseDown;
+            this.labelControlName.MouseDown -= MenuItem_MouseDown;
+            this.labelControlType.MouseDown -= MenuItem_MouseDown;
+            this.pictureBoxIcon.MouseDown -= MenuItem_MouseDown;
+            this.pictureBoxBeginGroup.MouseDown -= MenuItem_MouseDown;
+            this.pictureBoxNoBeginGroup.MouseDown -= MenuItem_MouseDown;
         }
         #endregion
 
@@ -62,7 +91,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         #endregion
 
         #region Select menu item
-        private void item_Click(object sender, EventArgs e)
+        private void MenuItem_MouseDown(object sender, MouseEventArgs e)
         {
             onClearSelectedRequested();
             SelectMenuItem();
