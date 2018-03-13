@@ -81,6 +81,7 @@
     <Compile Include="Controls\EditSubMenu.Designer.cs">
       <DependentUpon>EditSubMenu.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\ControlExtension.cs" />
     <Compile Include="Forms\CustomizationMenuItemForm.cs">
       <SubType>Form</SubType>
     </Compile>

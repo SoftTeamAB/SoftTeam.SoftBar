@@ -27,8 +27,11 @@ namespace SoftTeam.SoftBar.Core
         #endregion
 
         #region Setup
-        public BarSubItem Setup()
+        public BarSubItem Setup(SoftBarBaseMenu parentSubMenu)
         {
+            // Store the parent
+            ParentBaseMenu = parentSubMenu;
+
             _subMenu = new BarSubItem(Form.barManagerSoftBar, Name);
             _subMenu.Glyph = Image;
             return _subMenu;

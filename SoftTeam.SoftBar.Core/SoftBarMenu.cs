@@ -22,7 +22,7 @@ namespace SoftTeam.SoftBar.Core
         {
             _left = left;
             Width = Name.Length * 10;
-            ParentMenu = null;
+            ParentPopupMenu = null;
             ParentSubMenu = null;
         }
         #endregion

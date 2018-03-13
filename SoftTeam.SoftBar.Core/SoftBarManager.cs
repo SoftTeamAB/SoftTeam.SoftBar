@@ -335,7 +335,7 @@ namespace SoftTeam.SoftBar.Core
                     var softBarSubMenu = softBarBaseItem as SoftBarSubMenu;
 
                     // Create the sub menu 
-                    var barSubItem = softBarSubMenu.Setup();
+                    var barSubItem = softBarSubMenu.Setup(softBarBaseMenu);
 
                     // Add the sub menu
                     if (softBarBaseMenu is SoftBarMenu)
