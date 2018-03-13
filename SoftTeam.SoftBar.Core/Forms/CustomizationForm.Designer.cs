@@ -277,7 +277,6 @@
             this.Name = "CustomizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoftBar customization form";
-            this.Load += new System.EventHandler(this.CustomizationForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

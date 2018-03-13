@@ -7,6 +7,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
+        #region Fields
         private string _path = "";
         private const int SPACE = 0;
         private const int LEFT_MARGIN = 3;
@@ -18,7 +19,9 @@ namespace SoftTeam.SoftBar.Core.Forms
         private int _level = 0;
         private int _maxLevel = 0;
         private SoftBarManager _manager = null;
+        #endregion
 
+        #region Constructors
         public CustomizationForm(SoftBarManager manager, string path)
         {
             InitializeComponent();
@@ -26,40 +29,36 @@ namespace SoftTeam.SoftBar.Core.Forms
             _path = path;
             LoadMenu(manager);
             _manager = manager;
-        }
-
-        private void CustomizationForm_Load(object sender, EventArgs e)
-        {
             barStaticItemPath.Caption = _path;
         }
+        #endregion
 
+        #region Calculate max level
         private int CalculateMaxLevel(SoftBarManager manager)
         {
             int maxLevel = 0;
 
             foreach (var menu in manager.Menus)
-            {
-                CalculateMaxLevelEx(menu,ref maxLevel);
-            }
+                CalculateMaxLevelEx(menu, ref maxLevel);
 
             return maxLevel;
         }
+
         private void CalculateMaxLevelEx(SoftBarBaseMenu menu, ref int maxLevel)
         {
             _level += 1;
-
             if (_level > maxLevel)
                 maxLevel = _level;
 
             foreach (SoftBarBaseItem menuItem in menu.MenuItems)
-            {
                 if (menuItem is SoftBarSubMenu)
                     CalculateMaxLevelEx((SoftBarBaseMenu)menuItem, ref maxLevel);
-            }
 
             _level -= 1;
         }
+        #endregion
 
+        #region Load menu for customization
         private void LoadMenu(SoftBarManager manager)
         {
             _maxLevel = CalculateMaxLevel(manager);
@@ -111,22 +110,26 @@ namespace SoftTeam.SoftBar.Core.Forms
             item.MenuItemClicked += Item_MenuItemClicked;
             item.ClearSelectedRequested += Item_ClearSelectedRequested;
         }
+        #endregion
 
+        #region Clear selected menu item
         private void Item_ClearSelectedRequested(object sender, EventArgs e)
         {
             foreach (var menuItem in _manager.Menus)
             {
-                menuItem.CustomizationMenuItem.Selected = false;
-                SetSelected(menuItem, false);
+                menuItem.CustomizationMenuItem.Selected = MenuItemSelectedStatus.NotSelected;
+                SetSelected(menuItem, MenuItemSelectedStatus.NotSelected);
             }
         }
+        #endregion
 
+        #region Menu item clicked
         private void Item_MenuItemClicked(object sender, MenuItem.MenuItemClickedEventArgs e)
         {
-            SetSelected(e.Menu, e.Selected);
+            SetSelected(e.Menu, MenuItemSelectedStatus.SubSelected);
         }
 
-        private void SetSelected(SoftBarBaseMenu menu, bool selected)
+        private void SetSelected(SoftBarBaseMenu menu, MenuItemSelectedStatus selected)
         {
             foreach (var menuItem in menu.MenuItems)
             {
@@ -135,10 +138,13 @@ namespace SoftTeam.SoftBar.Core.Forms
                     SetSelected((SoftBarSubMenu)menuItem, selected);
             }
         }
+        #endregion
 
+        #region Bar event handlers
         private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
         }
+        #endregion
     }
 }

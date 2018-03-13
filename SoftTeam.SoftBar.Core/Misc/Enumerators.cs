@@ -21,4 +21,11 @@ namespace SoftTeam.SoftBar.Core.Misc
         HeaderItem,
         MenuItem
     }
+
+    public enum MenuItemSelectedStatus
+    {
+        NotSelected,
+        Selected,
+        SubSelected
+    }
 }

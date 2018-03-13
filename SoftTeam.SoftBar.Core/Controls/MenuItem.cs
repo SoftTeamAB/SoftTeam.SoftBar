@@ -1,15 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using DevExpress.Skins;
-using DevExpress.LookAndFeel;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 
@@ -17,37 +8,19 @@ namespace SoftTeam.SoftBar.Core.Controls
 {
     public partial class MenuItem : DevExpress.XtraEditors.XtraUserControl
     {
+        #region Fields
         private int _level = 0;
         private SoftBarBaseItem _item = null;
         private MenuItemType _type = MenuItemType.None;
-        private bool _selected = false;
+        private MenuItemSelectedStatus _selected = MenuItemSelectedStatus.NotSelected;
         private Color _color;
-        public bool Selected { get => _selected; set { _selected = value; UpdateColor(); } }
+        #endregion
 
-        public class MenuItemClickedEventArgs
-        {
-            public SoftBarBaseMenu Menu { get; set; }
-            public bool Selected { get; set; }
-            public MenuItemClickedEventArgs(SoftBarBaseMenu menu, bool selected)
-            {
-                Menu = menu;
-                Selected = selected;
-            }
-        }
-        public delegate void MenuItemClickedEventHandler(object sender, MenuItemClickedEventArgs e);
-        public event MenuItemClickedEventHandler MenuItemClicked;
-        public event EventHandler ClearSelectedRequested;
+        #region Properties
+        public MenuItemSelectedStatus Selected { get => _selected; set { _selected = value; UpdateColor(); } }
+        #endregion
 
-        private void onMenuItemClicked(bool selected)
-        {
-            MenuItemClicked?.Invoke(this, new MenuItemClickedEventArgs((SoftBarBaseMenu)_item, selected));
-        }
-
-        private void onClearSelectedRequested()
-        {
-            ClearSelectedRequested?.Invoke(this, new EventArgs());
-        }
-
+        #region Constructor
         public MenuItem(MenuItemType type, SoftBarBaseItem item, int level, Color color)
         {
             _type = type;
@@ -57,6 +30,84 @@ namespace SoftTeam.SoftBar.Core.Controls
             UpdateValues();
             this.BackColor = color;
             _color = color;
+        }
+        #endregion
+
+        #region Events
+        public delegate void MenuItemClickedEventHandler(object sender, MenuItemClickedEventArgs e);
+        public event MenuItemClickedEventHandler MenuItemClicked;
+        public event EventHandler ClearSelectedRequested;
+
+        public class MenuItemClickedEventArgs
+        {
+            public SoftBarBaseMenu Menu { get; set; }
+
+            public MenuItemClickedEventArgs(SoftBarBaseMenu menu)
+            {
+                Menu = menu;
+            }
+        }
+
+        private void onMenuItemClicked()
+        {
+            MenuItemClicked?.Invoke(this, new MenuItemClickedEventArgs((SoftBarBaseMenu)_item));
+        }
+
+        private void onClearSelectedRequested()
+        {
+            ClearSelectedRequested?.Invoke(this, new EventArgs());
+        }
+        #endregion
+
+        #region Select menu item
+        private void item_Click(object sender, EventArgs e)
+        {
+            onClearSelectedRequested();
+
+            Selected = MenuItemSelectedStatus.Selected;
+
+            UpdateColor();
+
+            if (_item is SoftBarBaseMenu)
+                onMenuItemClicked();
+        }
+
+        private void UpdateColor()
+        {
+            switch (Selected)
+            {
+                case MenuItemSelectedStatus.NotSelected:
+                    this.BackColor = _color;
+                    break;
+                case MenuItemSelectedStatus.Selected:
+                    this.BackColor = Color.FromArgb(75, 150, 100);
+                    break;
+                case MenuItemSelectedStatus.SubSelected:
+                    this.BackColor = Color.FromArgb(125, 200, 150);
+                    break;
+            }
+        }
+        #endregion
+
+        #region Edit menu item
+        private void MenuItem_DoubleClick(object sender, EventArgs e)
+        {
+            CustomizationMenuItemForm form = null;
+
+            if (_item is SoftBarMenu)
+                form = new CustomizationMenuItemForm((SoftBarMenu)_item);
+            else if (_item is SoftBarHeaderItem)
+                form = new CustomizationMenuItemForm((SoftBarHeaderItem)_item);
+            else if (_item is SoftBarSubMenu)
+                form = new CustomizationMenuItemForm((SoftBarSubMenu)_item);
+            else if (_item is SoftBarMenuItem)
+                form = new CustomizationMenuItemForm((SoftBarMenuItem)_item);
+
+            form.ShowDialog();
+            UpdateValues();
+
+            form.Dispose();
+            form = null;
         }
 
         private void UpdateValues()
@@ -70,60 +121,9 @@ namespace SoftTeam.SoftBar.Core.Controls
             else
                 pictureBoxNoBeginGroup.BringToFront();
         }
+        #endregion
 
-        private void item_Click(object sender, EventArgs e)
-        {
-            onClearSelectedRequested();
-
-            Selected = !Selected;
-
-            UpdateColor();
-        }
-
-        private void UpdateColor()
-        {
-            if (Selected)
-                this.BackColor = Color.FromArgb(75, 150, 100);
-            else
-                this.BackColor = _color;
-        }
-
-        private void MenuItem_DoubleClick(object sender, EventArgs e)
-        {
-            if (_item is SoftBarMenu)
-            {
-                using (CustomizationMenuItemForm form = new CustomizationMenuItemForm((SoftBarMenu)_item))
-                {
-                    form.ShowDialog();
-                    UpdateValues();
-                }
-            }
-            else if (_item is SoftBarHeaderItem)
-            {
-                using (CustomizationMenuItemForm form = new CustomizationMenuItemForm((SoftBarHeaderItem)_item))
-                {
-                    form.ShowDialog();
-                    UpdateValues();
-                }
-            }
-            else if (_item is SoftBarSubMenu)
-            {
-                using (CustomizationMenuItemForm form = new CustomizationMenuItemForm((SoftBarSubMenu)_item))
-                {
-                    form.ShowDialog();
-                    UpdateValues();
-                }
-            }
-            else if (_item is SoftBarMenuItem)
-            {
-                using (CustomizationMenuItemForm form = new CustomizationMenuItemForm((SoftBarMenuItem)_item))
-                {
-                    form.ShowDialog();
-                    UpdateValues();
-                }
-            }
-        }
-
+        #region Move item (drag n drop)
         private Point MouseDownLocation;
 
         private void MenuItem_MouseDown(object sender, MouseEventArgs e)
@@ -140,5 +140,6 @@ namespace SoftTeam.SoftBar.Core.Controls
                 this.Top += e.Y - MouseDownLocation.Y;
             }
         }
+        #endregion
     }
 }
