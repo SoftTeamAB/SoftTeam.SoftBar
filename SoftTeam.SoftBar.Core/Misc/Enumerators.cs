@@ -28,4 +28,10 @@ namespace SoftTeam.SoftBar.Core.Misc
         Selected,
         SubSelected
     }
+
+    public enum MenuItemsDirection
+    {
+        Up,
+        Down
+    }
 }

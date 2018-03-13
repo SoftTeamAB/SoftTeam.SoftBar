@@ -1,8 +1,12 @@
-﻿using CoreControls = SoftTeam.SoftBar.Core.Controls;
+﻿// Since we have using System.Windows.Forms below, we get a conflict 
+// between the class MenuItem in Forms and Core.Controls so we use
+// an alias here.
+using CoreControls = SoftTeam.SoftBar.Core.Controls;
 using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Collections.ObjectModel;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -10,17 +14,12 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         #region Fields
         private string _path = "";
-        private const int SPACE = 0;
-        private const int LEFT_MARGIN = 3;
-        private const int TOP_MARGIN = 2;
-        private const int SCROLLBAR_WIDTH = 20;
-        private const int LEVEL_INDENTATION = 36;
-        private const int ITEM_HEIGHT = 38;
-        private int _height = TOP_MARGIN;
+        private int _height = Constants.TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
         private SoftBarManager _manager = null;
         private CoreControls.MenuItem _previousMenuItem = null;
+        private ObservableCollection<CoreControls.MenuItem> _menuItems = new ObservableCollection<CoreControls.MenuItem>();
         #endregion
 
         #region Constructors
@@ -113,13 +112,13 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             var step = 128 / _maxLevel;
             var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
-            CoreControls.MenuItem item = new CoreControls.MenuItem(type, menu, _level, color, _previousMenuItem);
-            var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * LEVEL_INDENTATION - SCROLLBAR_WIDTH;
+            CoreControls.MenuItem item = new CoreControls.MenuItem(this,type, menu, _level, color, _menuItems, _previousMenuItem);
+            var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
-            item.Location = new Point(_level * LEVEL_INDENTATION + LEFT_MARGIN, _height);
-            item.Size = new Size(width, ITEM_HEIGHT);
+            item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
+            item.Size = new Size(width, Constants.ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
-            _height += item.Height + SPACE;
+            _height += item.Height + Constants.SPACE;
             menu.CustomizationMenuItem = item;
             item.MenuSelected += Item_MenuItemClicked;
             item.ClearSelectedRequested += Item_ClearSelectedRequested;
@@ -129,6 +128,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 item.Draggable(true, null);
 
             _previousMenuItem = item;
+            _menuItems.Add(item);
 
             return item;
         }

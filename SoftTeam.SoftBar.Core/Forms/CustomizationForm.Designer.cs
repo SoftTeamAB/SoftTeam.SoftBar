@@ -284,8 +284,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControlMenu;
         private DevExpress.XtraBars.BarManager barManagerCustomization;
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenu;
@@ -308,5 +306,6 @@
         private DevExpress.XtraBars.BarStaticItem barStaticItem3;
         private DevExpress.XtraBars.BarStaticItem barStaticItem4;
         private DevExpress.XtraBars.BarStaticItem barStaticItem5;
+        public DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControlMenu;
     }
 }

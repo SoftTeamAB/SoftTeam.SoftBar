@@ -114,6 +114,7 @@
     <Compile Include="Controls\MenuItem.Designer.cs">
       <DependentUpon>MenuItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

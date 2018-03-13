@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Windows.Forms;
 using SoftTeam.SoftBar.Core.Forms;
@@ -14,7 +15,9 @@ namespace SoftTeam.SoftBar.Core.Controls
         private MenuItemType _type = MenuItemType.None;
         private MenuItemSelectedStatus _selected = MenuItemSelectedStatus.NotSelected;
         private Color _color;
+        private ObservableCollection<MenuItem> _menuItems = new ObservableCollection<MenuItem>();
         private MenuItem _previousMenuItem = null;
+        private CustomizationForm _parentForm = null;
         #endregion
 
         #region Properties
@@ -23,15 +26,20 @@ namespace SoftTeam.SoftBar.Core.Controls
         #endregion
 
         #region Constructor
-        public MenuItem(MenuItemType type, SoftBarBaseItem item, int level, Color color, MenuItem previousMenuItem=null)
+        public MenuItem(CustomizationForm parentForm,MenuItemType type, SoftBarBaseItem item, int level, Color color, ObservableCollection<MenuItem> menuItems, MenuItem previousMenuItem=null)
         {
-            _type = type;
-            _level = level;
-            _item = item;
             InitializeComponent();
+
+            _parentForm = parentForm;
+            _type = type;
+            _item = item;
+            _level = level;
+            _color = color;
+            _menuItems = menuItems;
+            _previousMenuItem = previousMenuItem;
+
             UpdateValues();
             this.BackColor = color;
-            _color = color;
         }
         #endregion
 
@@ -130,5 +138,72 @@ namespace SoftTeam.SoftBar.Core.Controls
                 pictureBoxNoBeginGroup.BringToFront();
         }
         #endregion
+
+        private void MenuItem_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+                return;
+
+            // Convert to form coordinates
+            Point point = PointToForm(e.Location);
+
+            var minHoverItem = GetHoverMenuItem(point, MenuItemsDirection.Up);
+
+            int heightOfDraggableItems = CalculateHeigthOfDraggedItems(point);
+            var maxHoverItem = GetHoverMenuItem(new Point(point.X, point.Y + heightOfDraggableItems), MenuItemsDirection.Down);
+
+            if (minHoverItem != null)
+                minHoverItem.Location = new Point(minHoverItem.Location.X, minHoverItem.Location.Y + heightOfDraggableItems);
+            if (maxHoverItem != null)
+                maxHoverItem.Location = new Point(maxHoverItem.Location.X, maxHoverItem.Location.Y - heightOfDraggableItems);
+        }
+
+        private Point PointToForm(Point point)
+        {
+            // Convert to screen coordinates
+            point = this.PointToScreen(point);
+            // Convert to form coordinates
+            return _parentForm.xtraScrollableControlMenu.PointToClient(point);            
+        }
+
+        private int CalculateHeigthOfDraggedItems(Point mouse)
+        {
+            if (_type == MenuItemType.Menu || _type == MenuItemType.SubMenu)
+            {
+                var menu = (SoftBarBaseMenu)_item;
+                return (menu.ChildCustomizationItems.Count + 1) * Constants.ITEM_HEIGHT;
+            }
+            else
+                return Constants.ITEM_HEIGHT;
+        }
+
+        private MenuItem GetHoverMenuItem(Point point, MenuItemsDirection direction)
+        {
+            MenuItem item = null;
+
+            if (direction == MenuItemsDirection.Up)
+            {
+                foreach (var menuItem in _menuItems)
+                {
+                    if (menuItem.Equals(this))
+                        continue;
+
+                    if (point.Y >= menuItem.Location.Y && point.Y <= menuItem.Location.Y + Constants.ITEM_HEIGHT / 2)
+                        return menuItem;
+                }
+            }
+            else
+            {
+                foreach (var menuItem in _menuItems)
+                {
+                    if (menuItem.Equals(this))
+                        continue;
+
+                    if (point.Y >= menuItem.Location.Y + Constants.ITEM_HEIGHT / 2 && point.Y <= menuItem.Location.Y + Constants.ITEM_HEIGHT)
+                        return menuItem;
+                }
+            }
+            return item;
+        }
     }
 }
