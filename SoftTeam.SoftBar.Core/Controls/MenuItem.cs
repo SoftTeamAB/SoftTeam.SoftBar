@@ -32,35 +32,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             UpdateValues();
             this.BackColor = color;
             _color = color;
-
-            // Attach event handlers
-            AttachEvents();
-        }
-
-        ~MenuItem()
-        {
-            // Remove event handlers
-            DetachEvents();
-        }
-
-        private void AttachEvents()
-        {
-            this.MouseDown += MenuItem_MouseDown;
-            this.labelControlName.MouseDown += MenuItem_MouseDown;
-            this.labelControlType.MouseDown += MenuItem_MouseDown;
-            this.pictureBoxIcon.MouseDown += MenuItem_MouseDown;
-            this.pictureBoxBeginGroup.MouseDown += MenuItem_MouseDown;
-            this.pictureBoxNoBeginGroup.MouseDown += MenuItem_MouseDown;
-        }
-
-        private void DetachEvents()
-        {
-            this.MouseDown -= MenuItem_MouseDown;
-            this.labelControlName.MouseDown -= MenuItem_MouseDown;
-            this.labelControlType.MouseDown -= MenuItem_MouseDown;
-            this.pictureBoxIcon.MouseDown -= MenuItem_MouseDown;
-            this.pictureBoxBeginGroup.MouseDown -= MenuItem_MouseDown;
-            this.pictureBoxNoBeginGroup.MouseDown -= MenuItem_MouseDown;
         }
         #endregion
 
