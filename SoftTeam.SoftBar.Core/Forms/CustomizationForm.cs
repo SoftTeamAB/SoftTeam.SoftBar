@@ -7,6 +7,7 @@ using System;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -74,41 +75,26 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void LoadMenu(SoftBarBaseMenu menu)
         {
             _level += 1;
+
             foreach (SoftBarBaseItem menuItem in menu.MenuItems)
             {
                 if (menuItem.SystemMenu)
                     continue;
 
-                CoreControls.MenuItem customizationMenuItem = null;
-
                 if (menuItem is SoftBarSubMenu)
                 {
-                    customizationMenuItem = AddItemControl(MenuItemType.SubMenu, menuItem);
-                    menu.ChildCustomizationItems.Add(customizationMenuItem);
-                    LoadMenu((SoftBarBaseMenu)menuItem);
+                    AddItemControl(MenuItemType.SubMenu, menuItem);
+                    LoadMenu((SoftBarBaseMenu)menuItem);                    
                 }
                 else if (menuItem is SoftBarHeaderItem)
-                {
-                    customizationMenuItem = AddItemControl(MenuItemType.HeaderItem, menuItem);
-                    menu.ChildCustomizationItems.Add(customizationMenuItem);
-                }
+                    AddItemControl(MenuItemType.HeaderItem, menuItem);
                 else if (menuItem is SoftBarMenuItem)
-                {
-                    customizationMenuItem = AddItemControl(MenuItemType.MenuItem, menuItem);
-                    menu.ChildCustomizationItems.Add(customizationMenuItem);
-                }
-                var parent = menu.ParentBaseMenu;
-                while (parent != null)
-                {
-                    //if (!parent.ParentBaseMenu.ChildCustomizationItems.Contains(customizationMenuItem))
-                        parent.ChildCustomizationItems.Add(customizationMenuItem);
-                    parent = parent.ParentBaseMenu;
-                }
+                    AddItemControl(MenuItemType.MenuItem, menuItem);
             }
             _level -= 1;
         }
 
-        private CoreControls.MenuItem AddItemControl(MenuItemType type, SoftBarBaseItem menu)
+        private void AddItemControl(MenuItemType type, SoftBarBaseItem menu)
         {
             var step = 128 / _maxLevel;
             var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
@@ -120,17 +106,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             xtraScrollableControlMenu.Controls.Add(item);
             _height += item.Height + Constants.SPACE;
             menu.CustomizationMenuItem = item;
-            item.MenuSelected += Item_MenuItemClicked;
             item.ClearSelectedRequested += Item_ClearSelectedRequested;
-            if (type == MenuItemType.Menu || type == MenuItemType.SubMenu)
-                item.Draggable(true, ((SoftBarBaseMenu)menu).ChildCustomizationItems);
-            else
-                item.Draggable(true, null);
 
             _previousMenuItem = item;
             _menuItems.Add(item);
-
-            return item;
         }
         #endregion
 
@@ -142,13 +121,6 @@ namespace SoftTeam.SoftBar.Core.Forms
                 menuItem.CustomizationMenuItem.Selected = MenuItemSelectedStatus.NotSelected;
                 SetSelected(menuItem, MenuItemSelectedStatus.NotSelected);
             }
-        }
-        #endregion
-
-        #region Menu item clicked
-        private void Item_MenuItemClicked(object sender, CoreControls.MenuItem.MenuSelectedEventArgs e)
-        {
-            SetSelected(e.Menu, MenuItemSelectedStatus.SubSelected);
         }
 
         private void SetSelected(SoftBarBaseMenu menu, MenuItemSelectedStatus selected)

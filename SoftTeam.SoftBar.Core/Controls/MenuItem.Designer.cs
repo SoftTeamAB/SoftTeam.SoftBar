@@ -57,7 +57,6 @@
             this.labelControlType.Text = "type";
             this.labelControlType.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.labelControlType.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.labelControlType.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // defaultLookAndFeelSoftBar
             // 
@@ -73,7 +72,6 @@
             this.pictureBoxIcon.TabStop = false;
             this.pictureBoxIcon.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.pictureBoxIcon.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.pictureBoxIcon.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // pictureBoxBeginGroup
             // 
@@ -96,7 +94,6 @@
             this.pictureBoxBeginGroup.TabStop = false;
             this.pictureBoxBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.pictureBoxBeginGroup.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.pictureBoxBeginGroup.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // pictureBoxNoBeginGroup
             // 
@@ -119,7 +116,6 @@
             this.pictureBoxNoBeginGroup.TabStop = false;
             this.pictureBoxNoBeginGroup.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.pictureBoxNoBeginGroup.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.pictureBoxNoBeginGroup.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // labelControlName
             // 
@@ -133,7 +129,6 @@
             this.labelControlName.Text = "labelControl1";
             this.labelControlName.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.labelControlName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.labelControlName.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             // 
             // MenuItem
             // 
@@ -149,7 +144,6 @@
             this.Size = new System.Drawing.Size(398, 36);
             this.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBeginGroup)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxNoBeginGroup)).EndInit();
