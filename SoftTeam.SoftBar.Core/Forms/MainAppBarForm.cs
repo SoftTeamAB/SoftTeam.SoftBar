@@ -30,7 +30,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             AppBarFunctions.SetAppBar(this, AppBarEdge.Top);
 
             // Create the app bar from XML
-            SoftBarManager bar = new SoftBarManager(this, path);
+            BarManager bar = new BarManager(this, path);
 
         }
 

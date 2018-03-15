@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftTeam.SoftBar", "SoftTea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftTeam.SoftBar.Core", "SoftTeam.SoftBar.Core\SoftTeam.SoftBar.Core.csproj", "{D9C6BD21-88BD-4338-8D58-E6659AF6B2CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftTeam.SoftBar.Test", "SoftTeam.SoftBar.Test\SoftTeam.SoftBar.Test.csproj", "{F9F7283B-FDD3-4668-B037-14928E53F58F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,23 +23,15 @@ Global
 		{D9C6BD21-88BD-4338-8D58-E6659AF6B2CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C6BD21-88BD-4338-8D58-E6659AF6B2CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C6BD21-88BD-4338-8D58-E6659AF6B2CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9F7283B-FDD3-4668-B037-14928E53F58F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9F7283B-FDD3-4668-B037-14928E53F58F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9F7283B-FDD3-4668-B037-14928E53F58F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9F7283B-FDD3-4668-B037-14928E53F58F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AB290A9A-1314-4B68-B9C0-697C4151B932}
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://softteam.visualstudio.com/
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = SoftTeam.SoftBar\\SoftTeam.SoftBar.csproj
-		SccProjectName1 = SoftTeam.SoftBar
-		SccLocalPath1 = SoftTeam.SoftBar
-		SccProjectUniqueName2 = SoftTeam.SoftBar.Core\\SoftTeam.SoftBar.Core.csproj
-		SccProjectName2 = SoftTeam.SoftBar.Core
-		SccLocalPath2 = SoftTeam.SoftBar.Core
 	EndGlobalSection
 EndGlobal

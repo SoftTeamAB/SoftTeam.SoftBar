@@ -94,6 +94,12 @@
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
     <Compile Include="Extensions\ControlExtension.cs" />
+    <Compile Include="Forms\EditMyDirectoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\EditMyDirectoryForm.Designer.cs">
+      <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Helpers\CommandLine.cs" />
     <Compile Include="Extensions\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">
@@ -122,10 +128,13 @@
     <Compile Include="Forms\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings\Setting.cs" />
+    <Compile Include="Settings\Settings.cs" />
+    <Compile Include="Settings\SettingsManager.cs" />
     <Compile Include="SoftBarBaseItem.cs" />
     <Compile Include="SoftBarBaseMenu.cs" />
     <Compile Include="SoftBarHeaderItem.cs" />
-    <Compile Include="SoftBarManager.cs" />
+    <Compile Include="BarManager.cs" />
     <Compile Include="SoftBarMenu.cs" />
     <Compile Include="SoftBarMenuItem.cs" />
     <Compile Include="SoftBarSubMenu.cs" />
@@ -159,6 +168,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\EditMyDirectoryForm.resx">
+      <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -15,7 +15,7 @@ using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core
 {
-    public class SoftBarManager
+    public class BarManager
     {
         #region Constants
         private const int SEPARATOR_WIDTH = 0;
@@ -34,7 +34,7 @@ namespace SoftTeam.SoftBar.Core
         #endregion
 
         #region Constructor
-        public SoftBarManager(MainAppBarForm form, string path)
+        public BarManager(MainAppBarForm form, string path)
         {
             _form = form;
             _path = path;
