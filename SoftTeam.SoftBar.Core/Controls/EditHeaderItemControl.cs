@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 
 namespace SoftTeam.SoftBar.Core.Controls
 {
-    public partial class EditHeaderItem : DevExpress.XtraEditors.XtraUserControl
+    public partial class EditHeaderItemControl : DevExpress.XtraEditors.XtraUserControl
     {
         private string _name = "";
         private bool _beginGroup = false;
@@ -20,7 +20,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
 
 
-        public EditHeaderItem()
+        public EditHeaderItemControl()
         {
             InitializeComponent();
         }

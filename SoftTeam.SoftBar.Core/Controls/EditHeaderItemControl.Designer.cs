@@ -1,6 +1,6 @@
 ﻿namespace SoftTeam.SoftBar.Core.Controls
 {
-    partial class EditHeaderItem
+    partial class EditHeaderItemControl
     {
         /// <summary> 
         /// Required designer variable.
@@ -33,7 +33,7 @@
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHeaderItem));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHeaderItemControl));
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();

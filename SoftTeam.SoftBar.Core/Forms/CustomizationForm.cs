@@ -1,13 +1,10 @@
-﻿// Since we have using System.Windows.Forms below, we get a conflict 
-// between the class MenuItem in Forms and Core.Controls so we use
-// an alias here.
-using CoreControls = SoftTeam.SoftBar.Core.Controls;
+﻿using SoftTeam.SoftBar.Core.Controls;
 using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Collections.ObjectModel;
-using System.Collections.Generic;
+using SoftTeam.SoftBar.Core.Helpers;
+using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -15,12 +12,13 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         #region Fields
         private string _path = "";
+        private string _backupDirectory = @"C:\ProgramData\SoftTeam\SoftBar";
         private int _height = Constants.TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
         private SoftBarManager _manager = null;
-        private CoreControls.MenuItem _previousMenuItem = null;
-        private ObservableCollection<CoreControls.MenuItem> _menuItems = new ObservableCollection<CoreControls.MenuItem>();
+        private MenuItemControl _previousMenuItem = null;
+        private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         #endregion
 
         #region Constructors
@@ -29,7 +27,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             InitializeComponent();
 
             _path = path;
-            LoadMenu(manager);
+            RefreshMenuItems(manager);
             _manager = manager;
             barStaticItemPath.Caption = _path;
         }
@@ -61,8 +59,10 @@ namespace SoftTeam.SoftBar.Core.Forms
         #endregion
 
         #region Load menu for customization
-        private void LoadMenu(SoftBarManager manager)
+        private void RefreshMenuItems(SoftBarManager manager)
         {
+            ClearMenuItems();
+
             _maxLevel = CalculateMaxLevel(manager);
 
             foreach (var menu in manager.Menus)
@@ -84,7 +84,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 if (menuItem is SoftBarSubMenu)
                 {
                     AddItemControl(MenuItemType.SubMenu, menuItem);
-                    LoadMenu((SoftBarBaseMenu)menuItem);                    
+                    LoadMenu((SoftBarBaseMenu)menuItem);
                 }
                 else if (menuItem is SoftBarHeaderItem)
                     AddItemControl(MenuItemType.HeaderItem, menuItem);
@@ -94,11 +94,17 @@ namespace SoftTeam.SoftBar.Core.Forms
             _level -= 1;
         }
 
+        private void ClearMenuItems()
+        {
+            _height = 0;
+            xtraScrollableControlMenu.Controls.Clear();
+        }
+
         private void AddItemControl(MenuItemType type, SoftBarBaseItem menu)
         {
             var step = 128 / _maxLevel;
             var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
-            CoreControls.MenuItem item = new CoreControls.MenuItem(this,type, menu, _level, color, _menuItems, _previousMenuItem);
+            MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems, _previousMenuItem);
             var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
             item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
@@ -134,10 +140,147 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
-        #region Bar event handlers
+        #region Event handlers (bar & menu)
         private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.Close();
+        }
+
+        private void barStaticItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Save();
+        }
+
+        private void barButtonItemAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddMenu();
+        }
+
+        private void barButtonItemAddMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddSubMenu();
+        }
+
+        private void barButtonItemAddHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddHeaderItem();
+        }
+
+        private void barButtonItemAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddMenuItem();
+        }
+
+        private void barStaticItemAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddMenu();
+        }
+
+        private void barStaticItemAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddSubMenu();
+        }
+
+        private void barStaticItemHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddHeaderItem();
+        }
+
+        private void barStaticItemMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            AddMenuItem();
+        }
+        #endregion
+
+        private void AddMenu()
+        {
+            var selected = GetSelectedItem();
+
+            var menuItem = CreateMenu();
+
+            if (menuItem == null) return;
+
+            if (selected == null)
+                _manager.Menus.Insert(0, (SoftBarMenu)menuItem);
+            else
+                _manager.Menus.Insert(_manager.Menus.IndexOf((SoftBarMenu)selected)+1, (SoftBarMenu)menuItem);
+
+            RefreshMenuItems(_manager);
+        }
+
+        private SoftBarBaseItem CreateMenu()
+        {
+            SoftBarMenu menu = new SoftBarMenu(_manager.Form, "[New item]", 0);
+
+            using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(menu))
+            {
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return null;
+            }
+
+            return menu;
+        }
+
+        private void AddSubMenu()
+        {
+            throw new NotImplementedException();
+        }
+        private void AddHeaderItem()
+        {
+            throw new NotImplementedException();
+        }
+        private void AddMenuItem()
+        {
+            throw new NotImplementedException();
+        }
+
+        private void Save()
+        {
+            // Save
+
+            this.Close();
+        }
+
+        private SoftBarBaseItem GetSelectedItem()
+        {
+            foreach (var menuItem in _menuItems)
+                if (menuItem.Selected == MenuItemSelectedStatus.Selected)
+                    return menuItem.Item;
+
+            return null;
+        }
+
+        #region Bottom bar
+        private void barStaticItemPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenSoftBarXml();
+        }
+
+        private void barStaticItemPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenSoftBarXml();
+        }
+
+        private void barStaticItemBackupPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenBackupDirectory();
+        }
+
+        private void barStaticItemBackupPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenBackupDirectory();
+        }
+
+        private void OpenSoftBarXml()
+        {
+            CommandLineHelper.ExecuteCommandLine($"Notepad.exe {_path}");
+        }
+
+        private void OpenBackupDirectory()
+        {
+            CommandLineHelper.ExecuteCommandLine($"Explorer.exe {_backupDirectory}");
         }
         #endregion
     }

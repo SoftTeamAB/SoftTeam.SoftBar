@@ -6,7 +6,7 @@ using SoftTeam.SoftBar.Core.Extensions;
 
 namespace SoftTeam.SoftBar.Core.Controls
 {
-    public partial class EditMenuItem : DevExpress.XtraEditors.XtraUserControl
+    public partial class EditMenuItemControl : DevExpress.XtraEditors.XtraUserControl
     {
         private string _name = "";
         private string _iconPath = "";
@@ -22,7 +22,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
 
-        public EditMenuItem()
+        public EditMenuItemControl()
         {
             InitializeComponent();
 

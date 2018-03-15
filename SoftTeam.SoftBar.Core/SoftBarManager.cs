@@ -30,6 +30,7 @@ namespace SoftTeam.SoftBar.Core
         private string _path = "";
 
         public List<SoftBarMenu> Menus { get => _userMenus; set => _userMenus = value; }
+        public MainAppBarForm Form { get => _form; set => _form = value; }
         #endregion
 
         #region Constructor

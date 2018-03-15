@@ -6,7 +6,7 @@ using SoftTeam.SoftBar.Core.Extensions;
 
 namespace SoftTeam.SoftBar.Core.Controls
 {
-    public partial class EditMenu : DevExpress.XtraEditors.XtraUserControl
+    public partial class EditMenuControl : DevExpress.XtraEditors.XtraUserControl
     {
         private string _name = "";
         private string _iconPath = "";
@@ -16,7 +16,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
 
-        public EditMenu()
+        public EditMenuControl()
         {
             InitializeComponent();
         }
@@ -38,6 +38,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage(string path)
         {
+            if (string.IsNullOrEmpty(path)) return;
             try
             {
                 // Extract the icon...

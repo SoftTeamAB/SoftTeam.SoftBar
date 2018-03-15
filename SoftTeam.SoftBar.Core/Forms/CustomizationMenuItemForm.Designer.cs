@@ -30,10 +30,10 @@
         {
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonOk = new DevExpress.XtraEditors.SimpleButton();
-            this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenu();
-            this.editHeaderItem = new SoftTeam.SoftBar.Core.Controls.EditHeaderItem();
-            this.editSubMenu = new SoftTeam.SoftBar.Core.Controls.EditSubMenu();
-            this.editMenuItem = new SoftTeam.SoftBar.Core.Controls.EditMenuItem();
+            this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenuControl();
+            this.editHeaderItem = new SoftTeam.SoftBar.Core.Controls.EditHeaderItemControl();
+            this.editSubMenu = new SoftTeam.SoftBar.Core.Controls.EditSubMenuControl();
+            this.editMenuItem = new SoftTeam.SoftBar.Core.Controls.EditMenuItemControl();
             this.SuspendLayout();
             // 
             // simpleButtonCancel
@@ -117,11 +117,11 @@
 
         #endregion
 
-        private Controls.EditMenu editMenu;
+        private Controls.EditMenuControl editMenu;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonOk;
-        private Controls.EditHeaderItem editHeaderItem;
-        private Controls.EditSubMenu editSubMenu;
-        private Controls.EditMenuItem editMenuItem;
+        private Controls.EditHeaderItemControl editHeaderItem;
+        private Controls.EditSubMenuControl editSubMenu;
+        private Controls.EditMenuItemControl editMenuItem;
     }
 }

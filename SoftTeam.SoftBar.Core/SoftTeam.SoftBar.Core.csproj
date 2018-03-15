@@ -93,29 +93,29 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
-    <Compile Include="Controls\EditHeaderItem.cs">
+    <Compile Include="Controls\EditHeaderItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditHeaderItem.Designer.cs">
-      <DependentUpon>EditHeaderItem.cs</DependentUpon>
+    <Compile Include="Controls\EditHeaderItemControl.Designer.cs">
+      <DependentUpon>EditHeaderItemControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditMenu.cs">
+    <Compile Include="Controls\EditMenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditMenu.Designer.cs">
-      <DependentUpon>EditMenu.cs</DependentUpon>
+    <Compile Include="Controls\EditMenuControl.Designer.cs">
+      <DependentUpon>EditMenuControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditMenuItem.cs">
+    <Compile Include="Controls\EditMenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditMenuItem.Designer.cs">
-      <DependentUpon>EditMenuItem.cs</DependentUpon>
+    <Compile Include="Controls\EditMenuItemControl.Designer.cs">
+      <DependentUpon>EditMenuItemControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\EditSubMenu.cs">
+    <Compile Include="Controls\EditSubMenuControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\EditSubMenu.Designer.cs">
-      <DependentUpon>EditSubMenu.cs</DependentUpon>
+    <Compile Include="Controls\EditSubMenuControl.Designer.cs">
+      <DependentUpon>EditSubMenuControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Extensions\ControlExtension.cs" />
     <Compile Include="Forms\CustomizationMenuItemForm.cs">
@@ -144,11 +144,11 @@
     <Compile Include="Forms\MainAppBarForm.Designer.cs">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\MenuItem.cs">
+    <Compile Include="Controls\MenuItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Controls\MenuItem.Designer.cs">
-      <DependentUpon>MenuItem.cs</DependentUpon>
+    <Compile Include="Controls\MenuItemControl.Designer.cs">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
@@ -207,17 +207,17 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\EditHeaderItem.resx">
-      <DependentUpon>EditHeaderItem.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\EditHeaderItemControl.resx">
+      <DependentUpon>EditHeaderItemControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditMenu.resx">
-      <DependentUpon>EditMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\EditMenuControl.resx">
+      <DependentUpon>EditMenuControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditMenuItem.resx">
-      <DependentUpon>EditMenuItem.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\EditMenuItemControl.resx">
+      <DependentUpon>EditMenuItemControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditSubMenu.resx">
-      <DependentUpon>EditSubMenu.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\EditSubMenuControl.resx">
+      <DependentUpon>EditSubMenuControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
@@ -228,8 +228,8 @@
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MenuItem.resx">
-      <DependentUpon>MenuItem.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\MenuItemControl.resx">
+      <DependentUpon>MenuItemControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\StartupForm.resx">
       <DependentUpon>StartupForm.cs</DependentUpon>
