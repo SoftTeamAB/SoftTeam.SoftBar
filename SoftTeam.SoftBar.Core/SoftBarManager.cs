@@ -215,24 +215,6 @@ namespace SoftTeam.SoftBar.Core
             //customizeSubMenuItem.Setup(_systemMenu.PopupMenu);
             //customizeSubMenuItem.SubMenu.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
 
-            // Customize the app bar
-            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize in SoftBar editor", true);
-            customizeItem.Setup();
-            //customizeSubMenuItem.MenuItems.Add(customizeItem);
-            //customizeSubMenuItem.SubMenu.AddItem(customizeItem.Item);
-            customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
-            customizeItem.Item.ItemClick += CustomizeItem_ItemClick;
-            _systemMenu.Item.AddItem(customizeItem.Item);
-
-            // Customize the app bar in notepad
-            SoftBarMenuItem openInNotepadItem = new SoftBarMenuItem(_form, "Customize in Notepad (risky!)", true);
-            openInNotepadItem.Setup();
-            //customizeSubMenuItem.MenuItems.Add(openInNotepadItem);
-            //customizeSubMenuItem.SubMenu.AddItem(openInNotepadItem.Item);
-            openInNotepadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
-            openInNotepadItem.Item.ItemClick += openInNotepadItem_ItemClick; ;
-            _systemMenu.Item.AddItem(openInNotepadItem.Item);
-
             // Exit the app bar
             SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true);
             exitItem.Setup();
@@ -417,15 +399,6 @@ namespace SoftTeam.SoftBar.Core
             menu.Item.ShowPopup(new Point(menu.Left, 0));
         }
 
-        private void CustomizeItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            using (CustomizationForm form = new CustomizationForm(this, _path))
-            {
-                _systemMenu.Item.HidePopup();
-                form.ShowDialog();
-            }
-        }
-
         private void ExitItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _form.Close();
@@ -454,12 +427,6 @@ namespace SoftTeam.SoftBar.Core
         {
             var drive = ((DriveInfo)e.Item.Tag);
             Process.Start(drive.Name);
-        }
-
-        private void openInNotepadItem_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            var path = Core.Properties.Settings.Default.SoftBarXmlPath;
-            CommandLineHelper.ExecuteCommandLine(path);
         }
 
         #endregion

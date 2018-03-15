@@ -1,5 +1,4 @@
-﻿using SoftTeam.SoftBar.Core.Controls;
-using SoftTeam.SoftBar.Core.Extensions;
+﻿using SoftTeam.SoftBar.Core.Extensions;
 using SoftTeam.SoftBar.Core.Forms;
 using System;
 using System.Drawing;
@@ -18,7 +17,6 @@ namespace SoftTeam.SoftBar.Core
         private string _iconPath = "";
         private bool _warning = false;
         private string _warningText = "";
-        private MenuItemControl _customizationMenuItem = null;
         #endregion
 
         #region Constructors
@@ -39,7 +37,6 @@ namespace SoftTeam.SoftBar.Core
         public string IconPath { get => _iconPath; set { _iconPath = value; UpdateImage(); } }
         public bool Warning { get => _warning; set => _warning = value; }
         public string WarningText { get => _warningText; set => _warningText = value; }
-        public MenuItemControl CustomizationMenuItem { get => _customizationMenuItem; set => _customizationMenuItem = value; }
         #endregion
 
         #region Misc functions

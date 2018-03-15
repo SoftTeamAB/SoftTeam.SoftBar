@@ -93,62 +93,14 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
-    <Compile Include="Controls\EditHeaderItemControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\EditHeaderItemControl.Designer.cs">
-      <DependentUpon>EditHeaderItemControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\EditMenuControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\EditMenuControl.Designer.cs">
-      <DependentUpon>EditMenuControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\EditMenuItemControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\EditMenuItemControl.Designer.cs">
-      <DependentUpon>EditMenuItemControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\EditSubMenuControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\EditSubMenuControl.Designer.cs">
-      <DependentUpon>EditSubMenuControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\ControlExtension.cs" />
-    <Compile Include="Forms\CustomizationMenuItemForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomizationMenuItemForm.Designer.cs">
-      <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\StartupForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\StartupForm.Designer.cs">
-      <DependentUpon>StartupForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Helpers\CommandLine.cs" />
-    <Compile Include="Forms\CustomizationForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\CustomizationForm.Designer.cs">
-      <DependentUpon>CustomizationForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Extensions\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\MainAppBarForm.Designer.cs">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\MenuItemControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\MenuItemControl.Designer.cs">
-      <DependentUpon>MenuItemControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
@@ -207,32 +159,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Controls\EditHeaderItemControl.resx">
-      <DependentUpon>EditHeaderItemControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditMenuControl.resx">
-      <DependentUpon>EditMenuControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditMenuItemControl.resx">
-      <DependentUpon>EditMenuItemControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\EditSubMenuControl.resx">
-      <DependentUpon>EditSubMenuControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomizationForm.resx">
-      <DependentUpon>CustomizationForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\CustomizationMenuItemForm.resx">
-      <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\MenuItemControl.resx">
-      <DependentUpon>MenuItemControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\StartupForm.resx">
-      <DependentUpon>StartupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">

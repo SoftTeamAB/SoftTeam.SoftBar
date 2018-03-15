@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
-using SoftTeam.SoftBar.Core.Controls;
 using SoftTeam.SoftBar.Core.Forms;
 
 namespace SoftTeam.SoftBar.Core
