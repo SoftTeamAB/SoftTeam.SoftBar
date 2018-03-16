@@ -50,9 +50,10 @@ namespace SoftTeam.SoftBar.Core
 
             // Associate the BarButtonItem with the MenuItem, used when clicked
             Item.Tag = this;
-            Item.ItemClick += Item_ItemClick;
 
             if (SystemMenu) return Item;
+
+            Item.ItemClick += Item_ItemClick;
 
             try
             {

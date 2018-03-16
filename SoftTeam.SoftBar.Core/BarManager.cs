@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Schema;
 
@@ -41,6 +42,11 @@ namespace SoftTeam.SoftBar.Core
             _form = form;
             _path = path;
 
+            ReloadAppBarMenus();
+        }
+
+        private void ReloadAppBarMenus()
+        {
             // Load settings
             _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
             // Create a system menu
@@ -424,7 +430,13 @@ namespace SoftTeam.SoftBar.Core
         #region Events
         private void Reload_ItemClick(object sender, ItemClickEventArgs e)
         {
+            ReloadAppBar();
+        }
+
+        private void ReloadAppBar()
+        {
             AppBarFunctions.SetAppBar(_form, AppBarEdge.None);
+            Application.DoEvents();
             AppBarFunctions.SetAppBar(_form, AppBarEdge.Top);
         }
 
@@ -444,8 +456,15 @@ namespace SoftTeam.SoftBar.Core
             using (SettingsForm form = new SettingsForm())
             {
                 _systemMenu.Item.HidePopup();
-                form.ShowDialog();
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return;
+
+                ReloadAppBar();
+                ReloadAppBarMenus();
             }
+
         }
 
         private void DesktopItem_ItemClick(object sender, ItemClickEventArgs e)

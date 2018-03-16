@@ -16,6 +16,7 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class SettingsForm : DevExpress.XtraEditors.XtraForm
     {
         private SettingsManager _manager;
+
         public SettingsForm()
         {
             InitializeComponent();
@@ -82,14 +83,21 @@ namespace SoftTeam.SoftBar.Core.Forms
             // My directories
             foreach (var directory in _manager.Settings.MyDirectories)
                 listBoxControlMyDirectories.Items.Add(directory);
+
+            // My tools
+            foreach (var tools in _manager.Settings.MyTools)
+                listBoxControlMyTools.Items.Add(tools);
         }
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
         {
             SaveSettings();
             _manager.Save();
+
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
         private void SaveSettings()
         {
             // General
@@ -113,10 +121,16 @@ namespace SoftTeam.SoftBar.Core.Forms
             _manager.Settings.MyDirectories.Clear();
             foreach (var directory in listBoxControlMyDirectories.Items)
                 _manager.Settings.MyDirectories.Add(directory.ToString());
+
+            // My tools
+            _manager.Settings.MyTools.Clear();
+            foreach (var tools in listBoxControlMyTools.Items)
+                _manager.Settings.MyTools.Add(tools.ToString());
         }
 
         private void simpleButtonCancel_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
@@ -166,6 +180,8 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 if (result == DialogResult.Cancel)
                     return;
+
+                listBoxControlMyTools.Items.Add(form.Path);
             }
         }
     }

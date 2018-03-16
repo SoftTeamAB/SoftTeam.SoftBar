@@ -44,21 +44,21 @@
             this.checkEditRemovableDrives = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditFixedDrives = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageMyDirectories = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.listBoxControlMyDirectories = new DevExpress.XtraEditors.ListBoxControl();
-            this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
-            this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlMyDirectoriesHeader = new DevExpress.XtraEditors.LabelControl();
-            this.tabNavigationPageGeneral = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.checkEditShowDirectoriesMenu = new DevExpress.XtraEditors.CheckEdit();
-            this.checkEditShowToolsMenu = new DevExpress.XtraEditors.CheckEdit();
-            this.tabNavigationPageTools = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.listBoxControl1 = new DevExpress.XtraEditors.ListBoxControl();
-            this.labelControlToolsHeader = new DevExpress.XtraEditors.LabelControl();
+            this.listBoxControlMyDirectories = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButtonAddDirectory = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonEditDirectory = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonRemove = new DevExpress.XtraEditors.SimpleButton();
+            this.tabNavigationPageGeneral = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.checkEditShowToolsMenu = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEditShowDirectoriesMenu = new DevExpress.XtraEditors.CheckEdit();
+            this.tabNavigationPageTools = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.labelControlToolsHeader = new DevExpress.XtraEditors.LabelControl();
+            this.listBoxControlMyTools = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButtonRemoveTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -75,10 +75,10 @@
             this.tabNavigationPageMyDirectories.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).BeginInit();
             this.tabNavigationPageGeneral.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).BeginInit();
             this.tabNavigationPageTools.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -235,31 +235,6 @@
             this.tabNavigationPageMyDirectories.Name = "tabNavigationPageMyDirectories";
             this.tabNavigationPageMyDirectories.Size = new System.Drawing.Size(589, 327);
             // 
-            // listBoxControlMyDirectories
-            // 
-            this.listBoxControlMyDirectories.Location = new System.Drawing.Point(20, 82);
-            this.listBoxControlMyDirectories.Name = "listBoxControlMyDirectories";
-            this.listBoxControlMyDirectories.Size = new System.Drawing.Size(551, 225);
-            this.listBoxControlMyDirectories.TabIndex = 0;
-            // 
-            // simpleButtonSave
-            // 
-            this.simpleButtonSave.Location = new System.Drawing.Point(436, 376);
-            this.simpleButtonSave.Name = "simpleButtonSave";
-            this.simpleButtonSave.Size = new System.Drawing.Size(75, 32);
-            this.simpleButtonSave.TabIndex = 1;
-            this.simpleButtonSave.Text = "Save";
-            this.simpleButtonSave.Click += new System.EventHandler(this.simpleButtonSave_Click);
-            // 
-            // simpleButtonCancel
-            // 
-            this.simpleButtonCancel.Location = new System.Drawing.Point(517, 376);
-            this.simpleButtonCancel.Name = "simpleButtonCancel";
-            this.simpleButtonCancel.Size = new System.Drawing.Size(75, 32);
-            this.simpleButtonCancel.TabIndex = 2;
-            this.simpleButtonCancel.Text = "Cancel";
-            this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
-            // 
             // labelControlMyDirectoriesHeader
             // 
             this.labelControlMyDirectoriesHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -270,56 +245,12 @@
             this.labelControlMyDirectoriesHeader.TabIndex = 4;
             this.labelControlMyDirectoriesHeader.Text = "Add any additional directories that you want to show in the directories menu :";
             // 
-            // tabNavigationPageGeneral
+            // listBoxControlMyDirectories
             // 
-            this.tabNavigationPageGeneral.Caption = "General";
-            this.tabNavigationPageGeneral.Controls.Add(this.checkEditShowToolsMenu);
-            this.tabNavigationPageGeneral.Controls.Add(this.checkEditShowDirectoriesMenu);
-            this.tabNavigationPageGeneral.Name = "tabNavigationPageGeneral";
-            this.tabNavigationPageGeneral.Size = new System.Drawing.Size(589, 327);
-            // 
-            // checkEditShowDirectoriesMenu
-            // 
-            this.checkEditShowDirectoriesMenu.Location = new System.Drawing.Point(28, 24);
-            this.checkEditShowDirectoriesMenu.Name = "checkEditShowDirectoriesMenu";
-            this.checkEditShowDirectoriesMenu.Properties.Caption = "Show directories menu";
-            this.checkEditShowDirectoriesMenu.Size = new System.Drawing.Size(272, 19);
-            this.checkEditShowDirectoriesMenu.TabIndex = 0;
-            // 
-            // checkEditShowToolsMenu
-            // 
-            this.checkEditShowToolsMenu.Location = new System.Drawing.Point(28, 49);
-            this.checkEditShowToolsMenu.Name = "checkEditShowToolsMenu";
-            this.checkEditShowToolsMenu.Properties.Caption = "Show tools menu";
-            this.checkEditShowToolsMenu.Size = new System.Drawing.Size(272, 19);
-            this.checkEditShowToolsMenu.TabIndex = 1;
-            // 
-            // tabNavigationPageTools
-            // 
-            this.tabNavigationPageTools.Caption = "Tools";
-            this.tabNavigationPageTools.Controls.Add(this.labelControlToolsHeader);
-            this.tabNavigationPageTools.Controls.Add(this.listBoxControl1);
-            this.tabNavigationPageTools.Controls.Add(this.simpleButtonRemoveTool);
-            this.tabNavigationPageTools.Controls.Add(this.simpleButtonAddTool);
-            this.tabNavigationPageTools.Name = "tabNavigationPageTools";
-            this.tabNavigationPageTools.Size = new System.Drawing.Size(589, 327);
-            // 
-            // listBoxControl1
-            // 
-            this.listBoxControl1.Location = new System.Drawing.Point(14, 64);
-            this.listBoxControl1.Name = "listBoxControl1";
-            this.listBoxControl1.Size = new System.Drawing.Size(557, 238);
-            this.listBoxControl1.TabIndex = 2;
-            // 
-            // labelControlToolsHeader
-            // 
-            this.labelControlToolsHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControlToolsHeader.Appearance.Options.UseFont = true;
-            this.labelControlToolsHeader.Location = new System.Drawing.Point(14, 7);
-            this.labelControlToolsHeader.Name = "labelControlToolsHeader";
-            this.labelControlToolsHeader.Size = new System.Drawing.Size(423, 13);
-            this.labelControlToolsHeader.TabIndex = 3;
-            this.labelControlToolsHeader.Text = "Add any tools (Windows  or Non-Windows) that you want in the tools menu:";
+            this.listBoxControlMyDirectories.Location = new System.Drawing.Point(20, 82);
+            this.listBoxControlMyDirectories.Name = "listBoxControlMyDirectories";
+            this.listBoxControlMyDirectories.Size = new System.Drawing.Size(551, 225);
+            this.listBoxControlMyDirectories.TabIndex = 0;
             // 
             // simpleButtonAddDirectory
             // 
@@ -351,6 +282,57 @@
             this.simpleButtonRemove.Text = "Remove";
             this.simpleButtonRemove.Click += new System.EventHandler(this.simpleButtonRemove_Click);
             // 
+            // tabNavigationPageGeneral
+            // 
+            this.tabNavigationPageGeneral.Caption = "General";
+            this.tabNavigationPageGeneral.Controls.Add(this.checkEditShowToolsMenu);
+            this.tabNavigationPageGeneral.Controls.Add(this.checkEditShowDirectoriesMenu);
+            this.tabNavigationPageGeneral.Name = "tabNavigationPageGeneral";
+            this.tabNavigationPageGeneral.Size = new System.Drawing.Size(589, 327);
+            // 
+            // checkEditShowToolsMenu
+            // 
+            this.checkEditShowToolsMenu.Location = new System.Drawing.Point(28, 49);
+            this.checkEditShowToolsMenu.Name = "checkEditShowToolsMenu";
+            this.checkEditShowToolsMenu.Properties.Caption = "Show tools menu";
+            this.checkEditShowToolsMenu.Size = new System.Drawing.Size(272, 19);
+            this.checkEditShowToolsMenu.TabIndex = 1;
+            // 
+            // checkEditShowDirectoriesMenu
+            // 
+            this.checkEditShowDirectoriesMenu.Location = new System.Drawing.Point(28, 24);
+            this.checkEditShowDirectoriesMenu.Name = "checkEditShowDirectoriesMenu";
+            this.checkEditShowDirectoriesMenu.Properties.Caption = "Show directories menu";
+            this.checkEditShowDirectoriesMenu.Size = new System.Drawing.Size(272, 19);
+            this.checkEditShowDirectoriesMenu.TabIndex = 0;
+            // 
+            // tabNavigationPageTools
+            // 
+            this.tabNavigationPageTools.Caption = "Tools";
+            this.tabNavigationPageTools.Controls.Add(this.labelControlToolsHeader);
+            this.tabNavigationPageTools.Controls.Add(this.listBoxControlMyTools);
+            this.tabNavigationPageTools.Controls.Add(this.simpleButtonRemoveTool);
+            this.tabNavigationPageTools.Controls.Add(this.simpleButtonAddTool);
+            this.tabNavigationPageTools.Name = "tabNavigationPageTools";
+            this.tabNavigationPageTools.Size = new System.Drawing.Size(589, 327);
+            // 
+            // labelControlToolsHeader
+            // 
+            this.labelControlToolsHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlToolsHeader.Appearance.Options.UseFont = true;
+            this.labelControlToolsHeader.Location = new System.Drawing.Point(14, 7);
+            this.labelControlToolsHeader.Name = "labelControlToolsHeader";
+            this.labelControlToolsHeader.Size = new System.Drawing.Size(423, 13);
+            this.labelControlToolsHeader.TabIndex = 3;
+            this.labelControlToolsHeader.Text = "Add any tools (Windows  or Non-Windows) that you want in the tools menu:";
+            // 
+            // listBoxControlMyTools
+            // 
+            this.listBoxControlMyTools.Location = new System.Drawing.Point(14, 64);
+            this.listBoxControlMyTools.Name = "listBoxControlMyTools";
+            this.listBoxControlMyTools.Size = new System.Drawing.Size(557, 238);
+            this.listBoxControlMyTools.TabIndex = 2;
+            // 
             // simpleButtonRemoveTool
             // 
             this.simpleButtonRemoveTool.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonRemoveTool.ImageOptions.Image")));
@@ -369,6 +351,24 @@
             this.simpleButtonAddTool.TabIndex = 0;
             this.simpleButtonAddTool.Text = "Add";
             this.simpleButtonAddTool.Click += new System.EventHandler(this.simpleButtonAddTool_Click);
+            // 
+            // simpleButtonSave
+            // 
+            this.simpleButtonSave.Location = new System.Drawing.Point(436, 376);
+            this.simpleButtonSave.Name = "simpleButtonSave";
+            this.simpleButtonSave.Size = new System.Drawing.Size(75, 32);
+            this.simpleButtonSave.TabIndex = 1;
+            this.simpleButtonSave.Text = "Save";
+            this.simpleButtonSave.Click += new System.EventHandler(this.simpleButtonSave_Click);
+            // 
+            // simpleButtonCancel
+            // 
+            this.simpleButtonCancel.Location = new System.Drawing.Point(517, 376);
+            this.simpleButtonCancel.Name = "simpleButtonCancel";
+            this.simpleButtonCancel.Size = new System.Drawing.Size(75, 32);
+            this.simpleButtonCancel.TabIndex = 2;
+            this.simpleButtonCancel.Text = "Cancel";
+            this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
             // SettingsForm
             // 
@@ -403,11 +403,11 @@
             this.tabNavigationPageMyDirectories.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).EndInit();
             this.tabNavigationPageGeneral.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).EndInit();
             this.tabNavigationPageTools.ResumeLayout(false);
             this.tabNavigationPageTools.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -441,7 +441,7 @@
         private DevExpress.XtraEditors.CheckEdit checkEditShowToolsMenu;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageTools;
         private DevExpress.XtraEditors.LabelControl labelControlToolsHeader;
-        private DevExpress.XtraEditors.ListBoxControl listBoxControl1;
+        private DevExpress.XtraEditors.ListBoxControl listBoxControlMyTools;
         private DevExpress.XtraEditors.SimpleButton simpleButtonRemoveTool;
         private DevExpress.XtraEditors.SimpleButton simpleButtonAddTool;
     }
