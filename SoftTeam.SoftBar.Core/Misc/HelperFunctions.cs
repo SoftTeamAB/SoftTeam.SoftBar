@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftTeam.SoftBar.Core.Extensions;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -53,6 +54,25 @@ namespace SoftTeam.SoftBar.Core.Misc
                 default:
                     return Color.Red;
             }
+        }
+
+        public static string GetSettingsPath()
+        {
+            var path = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+            path = System.IO.Path.Combine(path, "SoftTeam AB");
+            path = System.IO.Path.Combine(path, "SoftBar");
+            System.IO.Directory.CreateDirectory(path);
+            path = System.IO.Path.Combine(path, "settings.xml");
+
+            return path;
+        }
+
+        public static Image ExtractIcon(string path)
+        {
+            // Extract the icon...
+            Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
+            // and return an 16x16 image
+            return iconImage.ResizeImage(16, 16);
         }
     }
 }

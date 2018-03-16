@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Settings;
+using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -19,13 +20,8 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             InitializeComponent();
 
-            var path = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-            path = System.IO.Path.Combine(path, "SoftTeam AB");
-            path = System.IO.Path.Combine(path, "SoftBar");
-            System.IO.Directory.CreateDirectory(path);
-            path = System.IO.Path.Combine(path, "settings.xml");
-            _manager = new SettingsManager(path);
-
+            // Load settings
+            _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
             LoadSettings();
 
             tabPaneSettings.SelectedPage = tabNavigationPageGeneral;

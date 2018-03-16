@@ -12,6 +12,7 @@ using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Helpers;
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.Settings;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -23,9 +24,10 @@ namespace SoftTeam.SoftBar.Core
 
         #region Fields
         private SoftBarMenu _systemMenu = null;
+        private SoftBarMenu _toolsMenu = null;
         private SoftBarMenu _directoriesMenu = null;
         private List<SoftBarMenu> _userMenus = new List<SoftBarMenu>();
-
+        private SettingsManager _manager = null;
         private MainAppBarForm _form = null;
         private string _path = "";
 
@@ -39,10 +41,14 @@ namespace SoftTeam.SoftBar.Core
             _form = form;
             _path = path;
 
+            // Load settings
+            _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
             // Create a system menu
             CreateSystemMenu();
             // Create the directories menu
             CreateDirectoriesMenu();
+            // Create tools menu
+            CreateToolsMenu();
             // Load user menus from XML
             LoadXml();
             // Create user menues
@@ -296,6 +302,35 @@ namespace SoftTeam.SoftBar.Core
 
         }
 
+        private void CreateToolsMenu()
+        {
+            // Create the actual system menu
+            _toolsMenu = new SoftBarMenu(_form, "ToolsMenu", _directoriesMenu.Left + _directoriesMenu.Width, true);
+            _toolsMenu.Setup();
+            _toolsMenu.Button.Click += Button_Click;
+            _toolsMenu.Button.Tag = _toolsMenu;
+            _toolsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.ToolsMenu);
+
+            // Add all tools
+            foreach (var tool in _manager.Settings.MyTools)
+            {
+                // Create a menu item for the tool
+                SoftBarMenuItem toolItem = new SoftBarMenuItem(_form, tool, true);
+
+                // Begin a new group every time the type changes
+                //beginGroup = (driveType != drive.DriveType);
+
+                // Set the image depending of the drive type
+                toolItem.Setup();
+                toolItem.Item.ImageOptions.Image = HelperFunctions.ExtractIcon(tool);
+                toolItem.Item.Tag = tool;
+                toolItem.Item.ItemClick += toolItem_ItemClick;
+                _toolsMenu.Item.AddItem(toolItem.Item);
+                //if (beginGroup)
+                //    driveItem.Item.Links[0].BeginGroup = true;
+            }
+        }
+
         // Build the user menus
         public void CreateMenus()
         {
@@ -377,7 +412,7 @@ namespace SoftTeam.SoftBar.Core
         /// <returns>int</returns>
         private int GetCurrentWidth()
         {
-            int width = _systemMenu.Width + SEPARATOR_WIDTH + _directoriesMenu.Width + SEPARATOR_WIDTH;
+            int width = _systemMenu.Width + SEPARATOR_WIDTH + _directoriesMenu.Width + SEPARATOR_WIDTH + _toolsMenu.Width + SEPARATOR_WIDTH;
 
             foreach (var menu in _userMenus)
                 width += menu.Width + SEPARATOR_WIDTH;
@@ -427,6 +462,12 @@ namespace SoftTeam.SoftBar.Core
         {
             var drive = ((DriveInfo)e.Item.Tag);
             Process.Start(drive.Name);
+        }
+
+        private void toolItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var path = ((string)e.Item.Tag);
+            Process.Start(path);
         }
 
         #endregion
