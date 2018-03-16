@@ -34,4 +34,29 @@ namespace SoftTeam.SoftBar.Core.Misc
         Up,
         Down
     }
+
+    public enum ToolPath
+    {
+        Bash,
+        Calculator,
+        DiskCleaner,
+        CommandLine,
+        ControlPanel,
+        Defrag,
+        EventViewer,
+        Explorer,
+        Magnify,
+        SystemInfo,
+        Paint,
+        Notepad,
+        OnScreenKeyboard,
+        PerformanceMonitor,
+        RegistryEditor,
+        ResourceMonitor,
+        VolumeMixer,
+        SnippingTool,
+        TaskManager,
+        WordPad
+
+    }
 }

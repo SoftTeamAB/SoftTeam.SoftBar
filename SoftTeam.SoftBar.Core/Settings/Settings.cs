@@ -9,10 +9,14 @@ namespace SoftTeam.SoftBar.Core.Settings
 {
     public class Settings
     {
-        public List<Setting> MySettings = new List<Setting>();
+
+        [XmlElement(ElementName = "MyTools")]
+        public List<string> MyTools = new List<string>();
 
         [XmlElement(ElementName = "MyDirectory")]
         public List<string> MyDirectories = new List<string>();
+
+        public List<Setting> MySettings = new List<Setting>();
 
         public Setting GetSetting(string key)
         {

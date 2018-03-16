@@ -24,6 +24,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -94,6 +95,12 @@
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
     <Compile Include="Extensions\ControlExtension.cs" />
+    <Compile Include="Forms\AddToolsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddToolsForm.Designer.cs">
+      <DependentUpon>AddToolsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\EditMyDirectoryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +175,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\AddToolsForm.resx">
+      <DependentUpon>AddToolsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditMyDirectoryForm.resx">
       <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
     </EmbeddedResource>

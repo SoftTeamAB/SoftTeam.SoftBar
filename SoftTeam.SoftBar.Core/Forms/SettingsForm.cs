@@ -153,12 +153,24 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void simpleButtonRemove_Click(object sender, EventArgs e)
         {
             var index = listBoxControlMyDirectories.SelectedIndex;
+            var message = $"Are you sure you want to delete the path '{listBoxControlMyDirectories.Items[index].ToString()}'?";
 
-            DialogResult result = XtraMessageBox.Show($"Are you sure you want to delete the path '{listBoxControlMyDirectories.Items[index].ToString()}'?", "My directory", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = XtraMessageBox.Show(message, "My directory", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.No)
                 return;
 
             listBoxControlMyDirectories.Items.RemoveAt(index);
+        }
+
+        private void simpleButtonAddTool_Click(object sender, EventArgs e)
+        {
+            using (AddToolsForm form = new AddToolsForm())
+            {
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return;
+            }
         }
     }
 }
