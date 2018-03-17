@@ -57,6 +57,12 @@ namespace SoftTeam.SoftBar.Core.Misc
         SnippingTool,
         TaskManager,
         WordPad
+    }
 
+    public enum AreaType
+    {
+        System,
+        User,
+        Info
     }
 }

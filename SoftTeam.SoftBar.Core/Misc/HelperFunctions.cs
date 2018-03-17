@@ -74,5 +74,19 @@ namespace SoftTeam.SoftBar.Core.Misc
             // and return an 16x16 image
             return iconImage.ResizeImage(16, 16);
         }
+
+        public static string GetXmlSchemaPath(bool debug = false)
+        {
+            if (debug)
+            {
+                var xsdPath = HelperFunctions.AssemblyDirectory;
+                xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"..\..\..\"));
+                xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"SoftTeam.SoftBar.Core\bin\Debug\SoftBar.xsd"));
+                return xsdPath;
+            }
+            else
+                return "SoftBar.xsd";
+
+        }
     }
 }

@@ -7,7 +7,7 @@ namespace SoftTeam.SoftBar.Test
     [TestClass]
     public class SettingsManagerTest
     {
-        private const string _path = @"c:\temp\settings.xml";
+        private const string _path = @"c:\temp\SoftBarTest\settings.xml";
 
         [TestMethod]
         public void SaveSettingsXml()

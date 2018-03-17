@@ -46,11 +46,13 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="SettingsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsManagerTest.cs" />
+    <Compile Include="XmlLoadingTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
