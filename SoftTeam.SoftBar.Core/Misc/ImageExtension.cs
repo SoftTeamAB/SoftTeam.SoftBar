@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 
-namespace SoftTeam.SoftBar.Core.Extensions
+namespace SoftTeam.SoftBar.Core.Misc
 {
     public static class ImageExtension
     {

@@ -94,7 +94,7 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
-    <Compile Include="Extensions\ControlExtension.cs" />
+    <Compile Include="Misc\ControlExtension.cs" />
     <Compile Include="Forms\AddToolsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,7 +108,7 @@
       <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CommandLine.cs" />
-    <Compile Include="Extensions\ImageExtension.cs" />
+    <Compile Include="Misc\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">
       <SubType>Form</SubType>
     </Compile>

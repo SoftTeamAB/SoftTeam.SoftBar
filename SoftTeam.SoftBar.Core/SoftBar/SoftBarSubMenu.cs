@@ -1,13 +1,6 @@
 ﻿using DevExpress.XtraBars;
-using SoftTeam.SoftBar.Core.Extensions;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Xml;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
