@@ -63,8 +63,9 @@ namespace SoftTeam.SoftBar.Core.Forms
                 listBoxControlMyDirectories.Items.Add(directory);
 
             // My tools
-            foreach (var tool in _manager.Settings.MyTools)
-                listBoxControlMyTools.Items.Add(tool);
+            listBoxControlMyTools.DataSource = _manager.Settings.MyTools;
+            //foreach (var tool in _manager.Settings.MyTools)
+            //    listBoxControlMyTools.Items.Add(tool);
         }
 
         private void simpleButtonSave_Click(object sender, EventArgs e)

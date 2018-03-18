@@ -30,6 +30,11 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
             DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.tabPaneSettings = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageDirectories = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.checkEditSpecialVideos = new DevExpress.XtraEditors.CheckEdit();
@@ -329,11 +334,31 @@
             // 
             // listBoxControlMyTools
             // 
+            this.listBoxControlMyTools.ItemHeight = 30;
             this.listBoxControlMyTools.Location = new System.Drawing.Point(14, 64);
             this.listBoxControlMyTools.Name = "listBoxControlMyTools";
             this.listBoxControlMyTools.Size = new System.Drawing.Size(557, 238);
             this.listBoxControlMyTools.TabIndex = 2;
+            tableColumnDefinition1.Length.Value = 149D;
+            tableColumnDefinition2.Length.Value = 404D;
+            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
+            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
+            templatedItemElement1.FieldName = "Name";
+            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement1.Text = "Name";
+            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ColumnIndex = 1;
+            templatedItemElement2.FieldName = "Path";
+            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement2.Text = "Path";
+            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase1.Elements.Add(templatedItemElement1);
+            itemTemplateBase1.Elements.Add(templatedItemElement2);
             itemTemplateBase1.Name = "ToolsTemplate";
+            tableRowDefinition1.Length.Value = 20D;
+            itemTemplateBase1.Rows.Add(tableRowDefinition1);
             this.listBoxControlMyTools.Templates.Add(itemTemplateBase1);
             // 
             // simpleButtonRemoveTool
