@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 
 using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
@@ -11,7 +12,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Constructor
-        public SoftBarHeaderItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form,name,systemMenu)
+        public SoftBarHeaderItem(MainAppBarForm form, XmlHeaderItem headerItem, bool systemMenu = false) : base(form, headerItem.Name, systemMenu)
         {
         }
         #endregion

@@ -4,20 +4,17 @@ using System.Xml;
 namespace SoftTeam.SoftBar.Core.Xml
 {
     // Class for a sub menu (Xml)
-    public class XmlSubMenu : XmlMenuItemBase
+    public class XmlSubMenu : XmlMenuBase
     {
         private string _iconPath = string.Empty;
         private bool _beginGroup = false;
-        private List<XmlMenuItemBase> _menuItems = null;
 
         public XmlSubMenu()
         {
-            _menuItems = new List<XmlMenuItemBase>();
         }
 
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
-        public List<XmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
 
         // Parse a sub menu node
         public void ParseXml(XmlNode parentMenuNode)

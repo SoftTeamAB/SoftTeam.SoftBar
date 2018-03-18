@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Extensions;
 using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Xml;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -17,7 +18,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Constructor
-        public SoftBarSubMenu(MainAppBarForm form, string name, bool systemMenu) : base (form,name,systemMenu)
+        public SoftBarSubMenu(MainAppBarForm form, XmlSubMenu subMenu, bool systemMenu = false) : base (form,subMenu.Name,systemMenu)
         {
         }
         #endregion

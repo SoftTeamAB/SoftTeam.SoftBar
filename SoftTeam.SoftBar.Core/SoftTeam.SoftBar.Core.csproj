@@ -122,6 +122,7 @@
     <Compile Include="Xml\XmlHeaderItem.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
     <Compile Include="Xml\XmlMenu.cs" />
+    <Compile Include="Xml\XmlMenuBase.cs" />
     <Compile Include="Xml\XmlMenuItem.cs" />
     <Compile Include="Xml\XmlMenuItemBase.cs" />
     <Compile Include="Xml\XmlSubMenu.cs" />

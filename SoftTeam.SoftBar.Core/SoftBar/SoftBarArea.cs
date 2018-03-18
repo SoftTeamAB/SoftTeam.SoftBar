@@ -70,49 +70,51 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 _menus.Add(barMenu);
 
                 // Build the rest of the menu
-                BuildMenu(barMenu);
+                BuildMenu((XmlMenuBase)menu, barMenu);
             }
         }
 
         // Build a user menu
-        private void BuildMenu(SoftBarBaseMenu softBarBaseMenu)
+        private void BuildMenu(XmlMenuBase xmlMenu, SoftBarBaseMenu barMenu)
         {
             // For all menu items in the menu
-            foreach (SoftBarBaseItem softBarBaseItem in softBarBaseMenu.MenuItems)
+            foreach (XmlMenuItemBase xmlMenuItemBase in xmlMenu.MenuItems)
             {
-                if (softBarBaseItem is SoftBarSubMenu)
+                if (xmlMenuItemBase is XmlSubMenu)
                 {
                     // We have a sub menu
-                    var softBarSubMenu = softBarBaseItem as SoftBarSubMenu;
+                    var xmlSubMenu = xmlMenuItemBase as XmlSubMenu;
+                    SoftBarSubMenu softBarSubMenu = new SoftBarSubMenu(_form, xmlSubMenu);
 
                     // Create the sub menu 
-                    var barSubItem = softBarSubMenu.Setup(softBarBaseMenu);
+                    var barSubItem = softBarSubMenu.Setup(softBarSubMenu);
 
                     // Add the sub menu
-                    if (softBarBaseMenu is SoftBarMenu)
-                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barSubItem);
+                    if (barMenu is SoftBarMenu)
+                        ((SoftBarMenu)barMenu).Item.AddItem(barSubItem);
                     else
-                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barSubItem);
+                        ((SoftBarSubMenu)barMenu).Item.AddItem(barSubItem);
 
                     // Create a new group if beginGroup is true
                     if (softBarSubMenu.BeginGroup) barSubItem.Links[0].BeginGroup = true;
 
                     // Call create menu recursivly
-                    BuildMenu(softBarSubMenu);
+                    BuildMenu(xmlSubMenu, softBarSubMenu);
                 }
-                else if (softBarBaseItem is SoftBarHeaderItem)
+                else if (xmlMenuItemBase is XmlHeaderItem)
                 {
                     // We have a header item
-                    var softBarHeaderItem = softBarBaseItem as SoftBarHeaderItem;
+                    var xmlHeaderItem = xmlMenuItemBase as XmlHeaderItem;
+                    SoftBarHeaderItem softBarHeaderItem = new SoftBarHeaderItem(_form,xmlHeaderItem);
 
                     // Create the header item
                     var barHeaderItem = softBarHeaderItem.Setup();
 
                     // Add the header item to the menu
-                    if (softBarBaseMenu is SoftBarMenu)
-                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
+                    if (barMenu is SoftBarMenu)
+                        ((SoftBarMenu)barMenu).Item.AddItem(barHeaderItem);
                     else
-                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
+                        ((SoftBarSubMenu)barMenu).Item.AddItem(barHeaderItem);
 
                     // Create a new group if beginGroup is true
                     if (softBarHeaderItem.BeginGroup) barHeaderItem.Links[0].BeginGroup = true;
@@ -120,16 +122,17 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 else
                 {
                     // We have a menu item
-                    var softBarMenuItem = softBarBaseItem as SoftBarMenuItem;
+                    var xmlMenuItem = xmlMenuItemBase as XmlMenuItem;
+                    SoftBarMenuItem softBarMenuItem = new SoftBarMenuItem(_form, xmlMenuItem);
 
                     // Create the menu item
                     var barStaticItem = softBarMenuItem.Setup();
 
                     // Add the menu item to the menu
-                    if (softBarBaseMenu is SoftBarMenu)
-                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
+                    if (barMenu is SoftBarMenu)
+                        ((SoftBarMenu)barMenu).Item.AddItem(barStaticItem);
                     else
-                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
+                        ((SoftBarSubMenu)barMenu).Item.AddItem(barStaticItem);
 
                     // Create a new group if beginGroup is true
                     if (softBarMenuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
