@@ -118,6 +118,8 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="SoftBar\Builders\SoftBarSystemMenuBuilder.cs" />
+    <Compile Include="SoftBar\Builders\SoftBarUserMenuBuilder.cs" />
     <Compile Include="Xml\XmlArea.cs" />
     <Compile Include="Xml\XmlHeaderItem.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
