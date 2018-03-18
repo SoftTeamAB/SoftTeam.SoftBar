@@ -82,11 +82,11 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // My directories
             foreach (var directory in _manager.Settings.MyDirectories)
-                listBoxControlMyDirectories.Items.Add(directory);
+                listBoxControlMyDirectories.Items.Add(directory.Name);
 
             // My tools
-            foreach (var tools in _manager.Settings.MyTools)
-                listBoxControlMyTools.Items.Add(tools);
+            foreach (var tool in _manager.Settings.MyTools)
+                listBoxControlMyTools.Items.Add(tool.Name);
         }
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
@@ -120,12 +120,27 @@ namespace SoftTeam.SoftBar.Core.Forms
             // My directories
             _manager.Settings.MyDirectories.Clear();
             foreach (var directory in listBoxControlMyDirectories.Items)
-                _manager.Settings.MyDirectories.Add(directory.ToString());
+            {
+                var item = new Directory();
+                item.Name = directory.ToString();
+                item.IconPath = "";
+                item.Path = directory.ToString();
+                item.BeginGroup = false;
+                _manager.Settings.MyDirectories.Add(item);
+            }
 
             // My tools
             _manager.Settings.MyTools.Clear();
-            foreach (var tools in listBoxControlMyTools.Items)
-                _manager.Settings.MyTools.Add(tools.ToString());
+            foreach (var tool in listBoxControlMyTools.Items)
+            {
+                var itemTool = new Tool();
+                itemTool.Name = tool.ToString();
+                itemTool.IconPath = tool.ToString();
+                itemTool.Path = tool.ToString();
+                itemTool.Parameters = "";
+                itemTool.BeginGroup = false;
+                _manager.Settings.MyTools.Add(itemTool);
+            }
         }
 
         private void simpleButtonCancel_Click(object sender, EventArgs e)

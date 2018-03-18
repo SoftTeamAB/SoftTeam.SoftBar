@@ -68,10 +68,15 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         public static Image ExtractIcon(string path)
         {
-            // Extract the icon...
-            Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-            // and return an 16x16 image
-            return iconImage.ResizeImage(16, 16);
+            if (string.IsNullOrEmpty(path))
+                return null;
+            else
+            {
+                // Extract the icon...
+                Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
+                // and return an 16x16 image
+                return iconImage.ResizeImage(16, 16);
+            }
         }
 
         public static string GetXmlSchemaPath(bool debug = false)

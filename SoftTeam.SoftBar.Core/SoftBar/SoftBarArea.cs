@@ -128,6 +128,26 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Documents");
         }
 
+        public void DownloadsItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Downloads");
+        }
+
+        public void PicturesItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Pictures");
+        }
+
+        public void VideosItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Videos");
+        }
+
+        public void MusicItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Music");
+        }
+
         public void DriveItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             var drive = ((DriveInfo)e.Item.Tag);
@@ -136,8 +156,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void toolItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var path = ((string)e.Item.Tag);
-            Process.Start(path);
+            var tool = ((Tool)e.Item.Tag);
+            Process.Start(tool.Path);
         }
 
         #endregion

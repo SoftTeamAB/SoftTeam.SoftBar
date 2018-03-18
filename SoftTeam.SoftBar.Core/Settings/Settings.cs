@@ -11,10 +11,10 @@ namespace SoftTeam.SoftBar.Core.Settings
     {
 
         [XmlElement(ElementName = "MyTools")]
-        public List<string> MyTools = new List<string>();
+        public List<Tool> MyTools = new List<Tool>();
 
         [XmlElement(ElementName = "MyDirectory")]
-        public List<string> MyDirectories = new List<string>();
+        public List<Directory> MyDirectories = new List<Directory>();
 
         public List<Setting> MySettings = new List<Setting>();
 

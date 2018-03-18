@@ -5,6 +5,7 @@ using DevExpress.XtraBars;
 
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
@@ -19,7 +20,17 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Constructor
-        // Used fo system items
+        // Used for tools
+        public SoftBarMenuItem(MainAppBarForm form, Tool tool, bool systemMenu = false) : base(form, tool.Name, systemMenu)
+        {
+            _commandLine = new CommandLineHelper();
+            IconPath = tool.IconPath;
+            BeginGroup = tool.BeginGroup;
+            ApplicationPath = tool.Path;
+            Parameters = tool.Parameters;
+        }
+
+        // Used for system items
         public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form, name, systemMenu)
         {
             _commandLine = new CommandLineHelper();

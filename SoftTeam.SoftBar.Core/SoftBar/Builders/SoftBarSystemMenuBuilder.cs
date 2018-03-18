@@ -118,26 +118,65 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             }
 
             // Add special directory for the desktop folder
-            SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true);
-            desktopItem.Setup();
-            desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
-            desktopItem.Item.ItemClick += _softBarArea.DesktopItem_ItemClick; ;
-            directoriesMenu.Item.AddItem(desktopItem.Item);
-            desktopItem.Item.Links[0].BeginGroup = true;
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Desktop).Value == "true")
+            {
+                SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true);
+                desktopItem.Setup();
+                desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+                desktopItem.Item.ItemClick += _softBarArea.DesktopItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(desktopItem.Item);
+                desktopItem.Item.Links[0].BeginGroup = true;
+            }
 
             // Add special directory for the documents folder
-            SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", true);
-            documentsItem.Setup();
-            documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Document);
-            documentsItem.Item.ItemClick += _softBarArea.DocumentsItem_ItemClick; ;
-            directoriesMenu.Item.AddItem(documentsItem.Item);
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Documents).Value == "true")
+            {
+                SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", true);
+                documentsItem.Setup();
+                documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Document);
+                documentsItem.Item.ItemClick += _softBarArea.DocumentsItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(documentsItem.Item);
+            }
 
             // Add special directory for the downloads folder
-            SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", true);
-            downloadsItem.Setup();
-            downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
-            downloadsItem.Item.ItemClick += _softBarArea.DocumentsItem_ItemClick; ;
-            directoriesMenu.Item.AddItem(downloadsItem.Item);
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Downloads).Value == "true")
+            {
+                SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", true);
+                downloadsItem.Setup();
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ItemClick += _softBarArea.DownloadsItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(downloadsItem.Item);
+            }
+
+            // Add special directory for the pictures folder
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Pictures).Value == "true")
+            {
+                SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Pictures", true);
+                downloadsItem.Setup();
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ItemClick += _softBarArea.PicturesItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(downloadsItem.Item);
+            }
+
+            // Add special directory for the videos folder
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Videos).Value == "true")
+            {
+                SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Videos", true);
+                downloadsItem.Setup();
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ItemClick += _softBarArea.VideosItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(downloadsItem.Item);
+            }
+
+            // Add special directory for the music folder
+            if (_settingsManager.Settings.GetSetting(Constants.SpecialFolder_Music).Value == "true")
+            {
+                SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Music", true);
+                downloadsItem.Setup();
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ItemClick += _softBarArea.MusicItem_ItemClick; ;
+                directoriesMenu.Item.AddItem(downloadsItem.Item);
+            }
 
         }
 
@@ -162,7 +201,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 // Set the image depending of the drive type
                 toolItem.Setup();
-                toolItem.Item.ImageOptions.Image = HelperFunctions.ExtractIcon(tool);
+                toolItem.Item.ImageOptions.Image = HelperFunctions.ExtractIcon(tool.IconPath);
                 toolItem.Item.Tag = tool;
                 toolItem.Item.ItemClick += _softBarArea.toolItem_ItemClick;
                 toolsMenu.Item.AddItem(toolItem.Item);

@@ -22,5 +22,13 @@ namespace SoftTeam.SoftBar.Core.Misc
         public const int SYSTEM_MENU = 0;
         public const int DIRECTORIES_MENU = 0;
         public const int TOOLS_MENU = 0;
+
+        // Settings
+        public const string SpecialFolder_Desktop = "SpecialFolder.Desktop";
+        public const string SpecialFolder_Documents = "SpecialFolder.Documents";
+        public const string SpecialFolder_Downloads = "SpecialFolder.Downloads";
+        public const string SpecialFolder_Pictures = "SpecialFolder.Pictures";
+        public const string SpecialFolder_Videos = "SpecialFolder.Videos";
+        public const string SpecialFolder_Music = "SpecialFolder.Music";
     }
 }
