@@ -1,29 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 
-namespace SoftTeam.SoftBar.Core.NewXml
+namespace SoftTeam.SoftBar.Core.Xml
 {
     // Class for a menu (Xml)
-    public class NewXmlMenu
+    public class XmlMenu
     {
         private string _name = string.Empty;
         private string _iconPath = string.Empty;
         private bool _beginGroup = false;
-        private List<NewXmlMenuItemBase> _menuItems = null;
+        private List<XmlMenuItemBase> _menuItems = null;
 
-        public NewXmlMenu()
+        public XmlMenu()
         {
-            _menuItems = new List<NewXmlMenuItemBase>();
+            _menuItems = new List<XmlMenuItemBase>();
         }
 
         public string Name { get => _name; set => _name = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
-        public List<NewXmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
+        public List<XmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
 
         // Parse a menu node
         public void ParseXml(XmlNode parentMenuNode)
@@ -47,17 +43,17 @@ namespace SoftTeam.SoftBar.Core.NewXml
                 switch (subMenuNode.Name.ToLower())
                 {
                     case "menu":
-                        NewXmlSubMenu subMenu = new NewXmlSubMenu();
+                        XmlSubMenu subMenu = new XmlSubMenu();
                         subMenu.ParseXml(subMenuNode);
                         _menuItems.Add(subMenu);
                         break;
                     case "headeritem":
-                        NewXmlHeaderItem headerItem = new NewXmlHeaderItem();
+                        XmlHeaderItem headerItem = new XmlHeaderItem();
                         headerItem.ParseXml(subMenuNode);
                         _menuItems.Add(headerItem);
                         break;
                     case "menuitem":
-                        NewXmlMenuItem menuItem = new NewXmlMenuItem();
+                        XmlMenuItem menuItem = new XmlMenuItem();
                         menuItem.ParseXml(subMenuNode);
                         _menuItems.Add(menuItem);
                         break;

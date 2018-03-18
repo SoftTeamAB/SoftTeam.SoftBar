@@ -1,20 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml;
 
-namespace SoftTeam.SoftBar.Core.NewXml
+namespace SoftTeam.SoftBar.Core.Xml
 {
     /// <summary>
     /// Class for a header item (Xml)
     /// </summary>
-    public class NewXmlHeaderItem : NewXmlMenuItemBase
+    public class XmlHeaderItem : XmlMenuItemBase
     {
         private bool _beginGroup = false;
 
-        public NewXmlHeaderItem()
+        public XmlHeaderItem()
         {
         }
 

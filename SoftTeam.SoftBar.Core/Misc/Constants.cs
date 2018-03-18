@@ -14,5 +14,13 @@ namespace SoftTeam.SoftBar.Core.Misc
         public const int SCROLLBAR_WIDTH = 20;
         public const int LEVEL_INDENTATION = 36;
         public const int ITEM_HEIGHT = 38;
+
+        // Menu separator
+        public const int SEPARATOR_WIDTH = 0;
+
+        // Menus constants
+        public const int SYSTEM_MENU = 0;
+        public const int DIRECTORIES_MENU = 0;
+        public const int TOOLS_MENU = 0;
     }
 }

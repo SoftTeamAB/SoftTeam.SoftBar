@@ -1,35 +1,31 @@
 ﻿using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Schema;
 
-namespace SoftTeam.SoftBar.Core.NewXml
+namespace SoftTeam.SoftBar.Core.Xml
 {
     /// <summary>
     /// This class loads an Xml file containing the entire user area of the SoftBar
     /// </summary>
-    public class NewXmlLoader
+    public class XmlLoader
     {
         private string _path = string.Empty;
-        private NewXmlArea _area = null;
+        private XmlArea _area = null;
         private List<string> _validationErrors = null;
 
         public List<string> ValidationErrors { get => _validationErrors; set => _validationErrors = value; }
 
-        public NewXmlLoader(string path)
+        public XmlLoader(string path)
         {
             _path = path;
-            _area = new NewXmlArea();
+            _area = new XmlArea();
         }
 
-        public NewXmlArea Load()
+        public XmlArea Load()
         {
             // Clear the validation errors
             _validationErrors = new List<string>();
@@ -103,9 +99,9 @@ namespace SoftTeam.SoftBar.Core.NewXml
         }
 
         // Parse xml
-        private NewXmlArea ParseXml(XmlDocument document)
+        private XmlArea ParseXml(XmlDocument document)
         {
-            var area = new NewXmlArea();
+            var area = new XmlArea();
 
             try
             {

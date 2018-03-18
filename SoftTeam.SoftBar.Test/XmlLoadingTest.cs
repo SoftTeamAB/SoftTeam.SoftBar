@@ -2,7 +2,7 @@
 using System.Xml;
 using System.Xml.Schema;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SoftTeam.SoftBar.Core.NewXml;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Test
 {
@@ -13,7 +13,7 @@ namespace SoftTeam.SoftBar.Test
         public void CreateXmlLoader()
         {
             var path = @"c:\temp\SoftBarTest\menu.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
+            XmlLoader loader = new XmlLoader(path);
             Assert.AreNotEqual(null, loader);            
         }
 
@@ -21,8 +21,8 @@ namespace SoftTeam.SoftBar.Test
         public void CreateXmlLoaderAndLoadEmptyXml()
         {
             var path = @"c:\temp\SoftBarTest\emptymenu.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
             Assert.AreEqual(0, area.Menus.Count);
         }
 
@@ -31,8 +31,8 @@ namespace SoftTeam.SoftBar.Test
         public void InvalidXmlTest()
         {
             var path = @"c:\temp\SoftBarTest\invalidmenu.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();            
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();            
         }
 
         [TestMethod]
@@ -40,16 +40,16 @@ namespace SoftTeam.SoftBar.Test
         public void InvalidXmlTest2()
         {
             var path = @"c:\temp\SoftBarTest\invalidmenu2.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
         }
 
         [TestMethod]
         public void CreateXmlLoaderAndLoadXml()
         {
             var path = @"c:\temp\SoftBarTest\complexmenu.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
             Assert.AreEqual(2, area.Menus.Count);
             Assert.AreEqual(4, area.Menus[0].MenuItems.Count);
             Assert.AreEqual(6, area.Menus[1].MenuItems.Count);
@@ -59,32 +59,32 @@ namespace SoftTeam.SoftBar.Test
         public void TestSimpleHeaderItem()
         {
             var path = @"c:\temp\SoftBarTest\headeritem.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
             Assert.AreEqual(1, area.Menus.Count);
             Assert.AreEqual(1, area.Menus[0].MenuItems.Count);
             Assert.AreEqual("Development", area.Menus[0].MenuItems[0].Name);
-            Assert.AreEqual(false, ((NewXmlHeaderItem)area.Menus[0].MenuItems[0]).BeginGroup);
+            Assert.AreEqual(false, ((XmlHeaderItem)area.Menus[0].MenuItems[0]).BeginGroup);
         }
 
         [TestMethod]
         public void TestFullHeaderItem()
         {
             var path = @"c:\temp\SoftBarTest\headeritem2.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
             Assert.AreEqual(1, area.Menus.Count);
             Assert.AreEqual(1, area.Menus[0].MenuItems.Count);
             Assert.AreEqual("Development", area.Menus[0].MenuItems[0].Name);
-            Assert.AreEqual(true, ((NewXmlHeaderItem)area.Menus[0].MenuItems[0]).BeginGroup);
+            Assert.AreEqual(true, ((XmlHeaderItem)area.Menus[0].MenuItems[0]).BeginGroup);
         }
 
         [TestMethod]
         public void TestMenuItem()
         {
             var path = @"c:\temp\SoftBarTest\menuitem.xml";
-            NewXmlLoader loader = new NewXmlLoader(path);
-            NewXmlArea area = loader.Load();
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
             Assert.AreEqual(1, area.Menus.Count);
             Assert.AreEqual(6, area.Menus[0].MenuItems.Count);
 
@@ -96,56 +96,56 @@ namespace SoftTeam.SoftBar.Test
 
             // First menu item
             Assert.AreEqual("Item1", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(false, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(false, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
 
             // Second menu item
             index++;
             Assert.AreEqual("Item2", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(true, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(true, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
 
             // Third menu item
             index++;
             Assert.AreEqual("Item3", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(false, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(iconPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(false, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(iconPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
 
             // Fourth menu item
             index++;
             Assert.AreEqual("Item4", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(true, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(iconPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(true, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(iconPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
 
             // Fifth menu item
             index++;
             Assert.AreEqual("Item5", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(true, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(iconPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(documentPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(string.Empty, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(true, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(iconPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(documentPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(string.Empty, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
 
             // Sixth menu item
             index++;
             Assert.AreEqual("Item6", area.Menus[0].MenuItems[index].Name);
-            Assert.AreEqual(true, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
-            Assert.AreEqual(iconPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
-            Assert.AreEqual(applicationPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
-            Assert.AreEqual(documentPath, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
-            Assert.AreEqual(parameters, ((NewXmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
+            Assert.AreEqual(true, ((XmlMenuItem)area.Menus[0].MenuItems[index]).BeginGroup);
+            Assert.AreEqual(iconPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).IconPath);
+            Assert.AreEqual(applicationPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).ApplicationPath);
+            Assert.AreEqual(documentPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
+            Assert.AreEqual(parameters, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
         }
     }
 }

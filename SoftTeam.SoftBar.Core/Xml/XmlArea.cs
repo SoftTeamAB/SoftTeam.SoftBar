@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Xml;
 
-namespace SoftTeam.SoftBar.Core.NewXml
+namespace SoftTeam.SoftBar.Core.Xml
 {
     /// <summary>
     /// Class for a user button area (Xml)
     /// </summary>
-    public class NewXmlArea
+    public class XmlArea
     {
-        private List<NewXmlMenu> _menus = null;
+        private List<XmlMenu> _menus = null;
 
-        public NewXmlArea()
+        public XmlArea()
         {
-            _menus = new List<NewXmlMenu>();
+            _menus = new List<XmlMenu>();
         }
 
-        public List<NewXmlMenu> Menus { get => _menus; set => _menus = value; }
+        public List<XmlMenu> Menus { get => _menus; set => _menus = value; }
 
         // Parse an area node
         public void ParseXml(XmlNode areaNode)
@@ -28,7 +24,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
             foreach (XmlNode menuNode in areaNode)
             {
                 // Create the new menu
-                NewXmlMenu menu = new NewXmlMenu();
+                XmlMenu menu = new XmlMenu();
                 // Parse the xml for this menu
                 menu.ParseXml(menuNode);
                 // Add the menu to the user menu collection

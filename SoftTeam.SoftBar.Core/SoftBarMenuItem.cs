@@ -1,13 +1,10 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
 using System.Drawing;
 
 using DevExpress.XtraBars;
 
-using SoftTeam.SoftBar.Core.Extensions;
-using SoftTeam.SoftBar.Core.Helpers;
 using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core
 {

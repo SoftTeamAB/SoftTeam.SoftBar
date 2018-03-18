@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
+﻿using System.Xml;
 
-namespace SoftTeam.SoftBar.Core.NewXml
+namespace SoftTeam.SoftBar.Core.Xml
 {
     // Class for a menu item (Xml)
-    public class NewXmlMenuItem : NewXmlMenuItemBase
+    public class XmlMenuItem : XmlMenuItemBase
     {
         private string _applicationPath = string.Empty;
         private string _documentPath = string.Empty;
@@ -16,7 +11,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
         private string _iconPath = string.Empty;
         private bool _beginGroup = false;
 
-        public NewXmlMenuItem()
+        public XmlMenuItem()
         {
         }
 

@@ -31,7 +31,7 @@ namespace SoftTeam.SoftBar.Core
         public List<Control> ChildCustomizationItems { get => _childCustomizationItems; set => _childCustomizationItems = value; }
         public SoftBarBaseMenu ParentBaseMenu { get => _parentBaseMenu; set => _parentBaseMenu = value; }
 
-        public abstract void AddSubMenu(BarSubItem subMenu);
+        //public abstract void AddSubMenu(BarSubItem subMenu);
         #endregion
     }
 }

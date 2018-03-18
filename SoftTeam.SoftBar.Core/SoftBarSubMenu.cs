@@ -37,10 +37,10 @@ namespace SoftTeam.SoftBar.Core
             return _subMenu;
         }
 
-        public override void AddSubMenu(BarSubItem subMenu)
-        {
-            ParentSubMenu.AddItem(subMenu);
-        }
+        //public override void AddSubMenu(BarSubItem subMenu)
+        //{
+        //    ParentSubMenu.AddItem(subMenu);
+        //}
 
         #endregion
     }

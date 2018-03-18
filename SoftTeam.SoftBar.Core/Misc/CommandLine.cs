@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading;
 
-namespace SoftTeam.SoftBar.Core.Helpers
+namespace SoftTeam.SoftBar.Core.Misc
 {
     public class CommandLineHelper : IDisposable
     {

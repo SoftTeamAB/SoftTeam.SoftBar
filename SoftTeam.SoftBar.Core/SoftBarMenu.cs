@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Drawing;
-
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 
 using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core
 {
@@ -18,10 +18,21 @@ namespace SoftTeam.SoftBar.Core
         #endregion
 
         #region Constructor
+        // Old constructor - REMOVE
         public SoftBarMenu(MainAppBarForm form, string name, int left, bool systemMenu = false) : base(form,name,systemMenu)
         {
             _left = left;
-            Width = Name.Length * 10;
+            _width = name.Length * 10;
+            ParentPopupMenu = null;
+            ParentSubMenu = null;
+        }
+        // New constructor
+        public SoftBarMenu(MainAppBarForm form, XmlMenu menu, bool systemMenu = false) : base(form, menu.Name, systemMenu)
+        {
+            _left = 0;
+            _width = menu.Name.Length * 10;
+            IconPath = menu.IconPath;
+            BeginGroup = menu.BeginGroup;
             ParentPopupMenu = null;
             ParentSubMenu = null;
         }
@@ -45,10 +56,10 @@ namespace SoftTeam.SoftBar.Core
             return Item;
         }
 
-        public override void AddSubMenu(BarSubItem subMenu)
-        {
-            Item.AddItem(subMenu);
-        }
+        //public override void AddSubMenu(BarSubItem subMenu)
+        //{
+        //    Item.AddItem(subMenu);
+        //}
 
         private SimpleButton AddButton(string name)
         {
