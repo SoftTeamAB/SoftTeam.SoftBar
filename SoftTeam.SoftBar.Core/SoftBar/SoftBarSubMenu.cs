@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public class SoftBarSubMenu : SoftBarBaseMenu
     {

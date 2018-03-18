@@ -6,7 +6,7 @@ using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Xml;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public class SoftBarMenu:SoftBarBaseMenu
     {

@@ -4,7 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public abstract class SoftBarBaseItem
     {

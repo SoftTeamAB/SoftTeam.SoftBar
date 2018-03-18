@@ -145,14 +145,14 @@
     <Compile Include="Settings\Setting.cs" />
     <Compile Include="Settings\Settings.cs" />
     <Compile Include="Settings\SettingsManager.cs" />
-    <Compile Include="SoftBarArea.cs" />
-    <Compile Include="SoftBarBaseItem.cs" />
-    <Compile Include="SoftBarBaseMenu.cs" />
-    <Compile Include="SoftBarHeaderItem.cs" />
-    <Compile Include="SoftBarManager.cs" />
-    <Compile Include="SoftBarMenu.cs" />
-    <Compile Include="SoftBarMenuItem.cs" />
-    <Compile Include="SoftBarSubMenu.cs" />
+    <Compile Include="SoftBar\SoftBarArea.cs" />
+    <Compile Include="SoftBar\SoftBarBaseItem.cs" />
+    <Compile Include="SoftBar\SoftBarBaseMenu.cs" />
+    <Compile Include="SoftBar\SoftBarHeaderItem.cs" />
+    <Compile Include="SoftBar\SoftBarManager.cs" />
+    <Compile Include="SoftBar\SoftBarMenu.cs" />
+    <Compile Include="SoftBar\SoftBarMenuItem.cs" />
+    <Compile Include="SoftBar\SoftBarSubMenu.cs" />
     <Compile Include="Misc\ToolTipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -177,7 +177,7 @@
     <None Include="Resources\preferences.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\add.png" />
-    <None Include="SoftBar.xsd">
+    <None Include="Xml\SoftBar.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -2,7 +2,7 @@
 
 using SoftTeam.SoftBar.Core.Forms;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public class SoftBarHeaderItem : SoftBarBaseItem
     {

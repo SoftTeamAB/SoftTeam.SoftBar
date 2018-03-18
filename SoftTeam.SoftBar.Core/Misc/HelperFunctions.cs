@@ -81,11 +81,11 @@ namespace SoftTeam.SoftBar.Core.Misc
             {
                 var xsdPath = HelperFunctions.AssemblyDirectory;
                 xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"..\..\..\"));
-                xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"SoftTeam.SoftBar.Core\bin\Debug\SoftBar.xsd"));
+                xsdPath = Path.GetFullPath(Path.Combine(xsdPath, @"SoftTeam.SoftBar.Core\bin\Debug\Xml\SoftBar.xsd"));
                 return xsdPath;
             }
             else
-                return "SoftBar.xsd";
+                return @"Xml\SoftBar.xsd";
 
         }
     }

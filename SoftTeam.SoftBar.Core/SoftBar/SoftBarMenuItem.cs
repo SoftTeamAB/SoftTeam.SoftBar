@@ -6,7 +6,7 @@ using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public class SoftBarMenuItem : SoftBarBaseItem
     {

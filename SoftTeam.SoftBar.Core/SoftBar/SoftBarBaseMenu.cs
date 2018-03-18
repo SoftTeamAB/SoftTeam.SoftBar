@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Forms;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     public abstract class SoftBarBaseMenu : SoftBarBaseItem
     {

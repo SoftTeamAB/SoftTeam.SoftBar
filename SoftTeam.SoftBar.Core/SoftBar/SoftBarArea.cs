@@ -12,7 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace SoftTeam.SoftBar.Core
+namespace SoftTeam.SoftBar.Core.SoftBar
 {
     /// <summary>
     /// A SoftBar area, can be System, User or Info.
@@ -20,19 +20,24 @@ namespace SoftTeam.SoftBar.Core
     /// </summary>
     public class SoftBarArea
     {
+        #region Fields
         private AreaType _type = AreaType.System;
         private List<SoftBarMenu> _menus = null;
         private int _left = 0;
         private MainAppBarForm _form = null;
         private SettingsManager _manager = null;
         private string _path = "";
+        #endregion
 
+        #region Properties
         public List<SoftBarMenu> Menus { get => _menus; set => _menus = value; }
         public MainAppBarForm Form { get => _form; set => _form = value; }
         public int Width { get => _left + _menus.Sum(m => m.Width + Constants.SEPARATOR_WIDTH); }
         public int Left { get => _left; set => _left = value; }
         public AreaType Type { get => _type; set => _type = value; }
+        #endregion
 
+        #region Constructor
         public SoftBarArea(MainAppBarForm form, AreaType type, string path, int left=0)
         {
             _form = form;
@@ -44,6 +49,7 @@ namespace SoftTeam.SoftBar.Core
 
             Reload();
         }
+        #endregion
 
         #region Build user menus
         public void BuildUserMenus(XmlArea area)
@@ -62,8 +68,75 @@ namespace SoftTeam.SoftBar.Core
 
                 // Add the menu to the menus collection
                 _menus.Add(barMenu);
+
+                // Build the rest of the menu
+                BuildMenu(barMenu);
             }
         }
+
+        // Build a user menu
+        private void BuildMenu(SoftBarBaseMenu softBarBaseMenu)
+        {
+            // For all menu items in the menu
+            foreach (SoftBarBaseItem softBarBaseItem in softBarBaseMenu.MenuItems)
+            {
+                if (softBarBaseItem is SoftBarSubMenu)
+                {
+                    // We have a sub menu
+                    var softBarSubMenu = softBarBaseItem as SoftBarSubMenu;
+
+                    // Create the sub menu 
+                    var barSubItem = softBarSubMenu.Setup(softBarBaseMenu);
+
+                    // Add the sub menu
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barSubItem);
+                    else
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barSubItem);
+
+                    // Create a new group if beginGroup is true
+                    if (softBarSubMenu.BeginGroup) barSubItem.Links[0].BeginGroup = true;
+
+                    // Call create menu recursivly
+                    BuildMenu(softBarSubMenu);
+                }
+                else if (softBarBaseItem is SoftBarHeaderItem)
+                {
+                    // We have a header item
+                    var softBarHeaderItem = softBarBaseItem as SoftBarHeaderItem;
+
+                    // Create the header item
+                    var barHeaderItem = softBarHeaderItem.Setup();
+
+                    // Add the header item to the menu
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
+                    else
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barHeaderItem);
+
+                    // Create a new group if beginGroup is true
+                    if (softBarHeaderItem.BeginGroup) barHeaderItem.Links[0].BeginGroup = true;
+                }
+                else
+                {
+                    // We have a menu item
+                    var softBarMenuItem = softBarBaseItem as SoftBarMenuItem;
+
+                    // Create the menu item
+                    var barStaticItem = softBarMenuItem.Setup();
+
+                    // Add the menu item to the menu
+                    if (softBarBaseMenu is SoftBarMenu)
+                        ((SoftBarMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
+                    else
+                        ((SoftBarSubMenu)softBarBaseMenu).Item.AddItem(barStaticItem);
+
+                    // Create a new group if beginGroup is true
+                    if (softBarMenuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
+                }
+            }
+        }
+
         #endregion
 
         #region Build system menus

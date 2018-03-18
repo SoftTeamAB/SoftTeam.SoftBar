@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using SoftTeam.SoftBar.Core;
-using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.SoftBar;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
