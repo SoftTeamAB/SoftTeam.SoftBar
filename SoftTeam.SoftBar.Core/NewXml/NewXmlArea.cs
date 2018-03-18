@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.NewXml
 {
+    /// <summary>
+    /// Class for a user button area (Xml)
+    /// </summary>
     public class NewXmlArea
     {
         private List<NewXmlMenu> _menus = null;
@@ -18,6 +21,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
 
         public List<NewXmlMenu> Menus { get => _menus; set => _menus = value; }
 
+        // Parse an area node
         public void ParseXml(XmlNode areaNode)
         {
             // and loop through them

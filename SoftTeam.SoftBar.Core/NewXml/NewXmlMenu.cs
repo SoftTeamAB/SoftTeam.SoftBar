@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.NewXml
 {
+    // Class for a menu (Xml)
     public class NewXmlMenu
     {
         private string _name = string.Empty;
@@ -24,6 +25,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public List<NewXmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
 
+        // Parse a menu node
         public void ParseXml(XmlNode parentMenuNode)
         {
             // Get the name of the menu

@@ -13,6 +13,7 @@ using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Helpers;
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.NewXml;
 using SoftTeam.SoftBar.Core.Settings;
 
 namespace SoftTeam.SoftBar.Core
@@ -55,6 +56,11 @@ namespace SoftTeam.SoftBar.Core
             CreateDirectoriesMenu();
             // Create tools menu
             CreateToolsMenu();
+
+            // Create xml loader and load xml
+            NewXmlLoader loader = new NewXmlLoader(_path);
+            NewXmlArea area = loader.Load();
+
             // Load user menus from XML
             LoadXml();
             // Create user menues

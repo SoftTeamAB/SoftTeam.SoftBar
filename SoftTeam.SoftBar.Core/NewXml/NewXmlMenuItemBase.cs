@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoftTeam.SoftBar.Core.NewXml
 {
+    // Base class for menu items, header items and sub menus
     public class NewXmlMenuItemBase
     {
         protected string _name = string.Empty;

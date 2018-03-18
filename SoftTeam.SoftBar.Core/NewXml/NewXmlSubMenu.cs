@@ -7,6 +7,7 @@ using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.NewXml
 {
+    // Class for a sub menu (Xml)
     public class NewXmlSubMenu : NewXmlMenuItemBase
     {
         private string _iconPath = string.Empty;
@@ -22,6 +23,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public List<NewXmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
 
+        // Parse a sub menu node
         public void ParseXml(XmlNode parentMenuNode)
         {
             // Get the name of the menu

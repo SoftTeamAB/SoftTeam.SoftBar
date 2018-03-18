@@ -7,6 +7,9 @@ using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.NewXml
 {
+    /// <summary>
+    /// Class for a header item (Xml)
+    /// </summary>
     public class NewXmlHeaderItem : NewXmlMenuItemBase
     {
         private bool _beginGroup = false;
@@ -17,6 +20,7 @@ namespace SoftTeam.SoftBar.Core.NewXml
 
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
 
+        // Parse a sub menu node
         public void ParseXml(XmlNode headerItemNode)
         {
             // Get the name of the menu
