@@ -13,5 +13,10 @@ namespace SoftTeam.SoftBar.Core.Settings
         public string Path = "";
         public string Parameters = "";
         public bool BeginGroup = false;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

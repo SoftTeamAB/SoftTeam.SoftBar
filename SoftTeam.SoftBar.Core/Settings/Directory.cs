@@ -12,5 +12,10 @@ namespace SoftTeam.SoftBar.Core.Settings
         public string IconPath = "";
         public string Path = "";
         public bool BeginGroup = false;
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

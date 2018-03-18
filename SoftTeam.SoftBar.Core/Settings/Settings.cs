@@ -18,6 +18,7 @@ namespace SoftTeam.SoftBar.Core.Settings
 
         public List<Setting> MySettings = new List<Setting>();
 
+        #region Get/Set/Exists string settings
         public Setting GetSetting(string key)
         {
             foreach (var setting in MySettings)
@@ -44,5 +45,54 @@ namespace SoftTeam.SoftBar.Core.Settings
         {
             return GetSetting(key) != null;
         }
+        #endregion
+
+        #region Get/Set boolean settings
+        public bool GetBooleanSetting(string key)
+        {
+            foreach (var setting in MySettings)
+                if (setting.Key == key)
+                    return setting.Value == "true";
+
+            return false;
+        }
+
+        public void SetBooleanSetting(string key, bool value)
+        {
+            var setting = GetSetting(key);
+
+            if (setting == null)
+            {
+                setting = new Setting(key, value.ToString().ToLower());
+                MySettings.Add(setting);
+            }
+            else
+                setting.Value = value.ToString().ToLower();
+        }
+        #endregion    }
+
+        #region Get/Set integer settings
+        public int GetIntegerSetting(string key)
+        {
+            foreach (var setting in MySettings)
+                if (setting.Key == key)
+                    return int.Parse(setting.Value);
+
+            return 0;
+        }
+
+        public void SetIntegerSetting(string key, int value)
+        {
+            var setting = GetSetting(key);
+
+            if (setting == null)
+            {
+                setting = new Setting(key, value.ToString());
+                MySettings.Add(setting);
+            }
+            else
+                setting.Value = value.ToString();
+        }
+        #endregion    }
     }
 }

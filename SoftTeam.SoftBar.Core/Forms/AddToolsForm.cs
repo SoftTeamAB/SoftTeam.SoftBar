@@ -2,12 +2,15 @@
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.Settings;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class AddToolsForm : DevExpress.XtraEditors.XtraForm
     {
-        public string Path { get => textEditToolPath.Text; }
+        private Tool _selectedTool = null;
+
+        public Tool SelectedTool { get => _selectedTool; }
 
         public AddToolsForm()
         {
@@ -22,6 +25,14 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
         {
+            _selectedTool = new Tool();
+
+            _selectedTool.Name =  textEditToolName.Text;
+            _selectedTool.IconPath =  textEditToolIconPath.Text ;
+            _selectedTool.Path =  textEditToolPath.Text ;
+            _selectedTool.BeginGroup =     checkEditToolBeginGroup.Checked ;
+            _selectedTool.Parameters =  textEditToolParameters.Text;
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -41,7 +52,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             textEditToolPath.Text = xtraOpenFileDialogTool.FileName;
         }
 
-        private void SetPath(ToolPath tool)
+        private string SetPath(ToolPath tool)
         {
             string path = "";
 
@@ -121,7 +132,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             path = path.Replace("[SYSTEM32FOLDER]", "System32");
 
-            textEditToolPath.Text = path;
+            return path;
         }
 
         private void simpleButtonTest_Click(object sender, EventArgs e)
@@ -136,103 +147,183 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
 
         private void pictureEditBash_Click(object sender, EventArgs e)
-        {
-            SetPath(ToolPath.Bash);
+        {            
+            textEditToolName.Text = "Bash";
+            textEditToolIconPath.Text = SetPath(ToolPath.Bash);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditCalculator_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Calculator);
+            textEditToolName.Text = "Calculator";
+            textEditToolIconPath.Text = SetPath(ToolPath.Calculator);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditDiskCleaner_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.DiskCleaner);
+            textEditToolName.Text = "Disk cleaner";
+            textEditToolIconPath.Text = SetPath(ToolPath.DiskCleaner);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditCommandLine_Click(object sender, EventArgs e)
-        {
-            SetPath(ToolPath.CommandLine);
+        {            
+            textEditToolName.Text = "Command line";
+            textEditToolIconPath.Text = SetPath(ToolPath.CommandLine);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditControlPanel_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.ControlPanel);
+            textEditToolName.Text = "Control panel";
+            textEditToolIconPath.Text = SetPath(ToolPath.ControlPanel);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditDefrag_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Defrag);
+            textEditToolName.Text = "Defrag tool";
+            textEditToolIconPath.Text = SetPath(ToolPath.Defrag);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditEventViewer_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.EventViewer);
+            textEditToolName.Text = "Event viewer";
+            textEditToolIconPath.Text = SetPath(ToolPath.EventViewer);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditExplorer_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Explorer);
+            textEditToolName.Text = "Explorer";
+            textEditToolIconPath.Text = SetPath(ToolPath.Explorer);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditMagnify_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Magnify);
+            textEditToolName.Text = "Magnify";
+            textEditToolIconPath.Text = SetPath(ToolPath.Magnify);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditSystemInfo_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.SystemInfo);
+            textEditToolName.Text = "System info";
+            textEditToolIconPath.Text = SetPath(ToolPath.SystemInfo);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditPaint_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Paint);
+            textEditToolName.Text = "Paint";
+            textEditToolIconPath.Text = SetPath(ToolPath.Paint);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditNotepad_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.Notepad);
+            textEditToolName.Text = "Notepad";
+            textEditToolIconPath.Text = SetPath(ToolPath.Notepad);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditOSK_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.OnScreenKeyboard);
+            textEditToolName.Text = "On screen keyboard";
+            textEditToolIconPath.Text = SetPath(ToolPath.OnScreenKeyboard);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditPerfMon_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.PerformanceMonitor);
+            textEditToolName.Text = "Performance monitor";
+            textEditToolIconPath.Text = SetPath(ToolPath.PerformanceMonitor);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditRegEdit_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.RegistryEditor);
+            textEditToolName.Text = "Registry editor";
+            textEditToolIconPath.Text = SetPath(ToolPath.RegistryEditor);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditResourceMonitor_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.ResourceMonitor);
+            textEditToolName.Text = "Resource monitor";
+            textEditToolIconPath.Text = SetPath(ToolPath.ResourceMonitor);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditVolumeMixer_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.VolumeMixer);
+            textEditToolName.Text = "Volume mixer";
+            textEditToolIconPath.Text = SetPath(ToolPath.VolumeMixer);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditSnippingTool_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.SnippingTool);
+            textEditToolName.Text = "Snipping tool";
+            textEditToolIconPath.Text = SetPath(ToolPath.SnippingTool);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditTaskManager_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.TaskManager);
+            textEditToolName.Text = "Task manager";
+            textEditToolIconPath.Text = SetPath(ToolPath.TaskManager);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
 
         private void pictureEditWordPad_Click(object sender, EventArgs e)
         {
-            SetPath(ToolPath.WordPad);
+            textEditToolName.Text = "WordPad";
+            textEditToolIconPath.Text = SetPath(ToolPath.WordPad);
+            textEditToolPath.Text = textEditToolIconPath.Text;
+            checkEditToolBeginGroup.Checked = false;
+            textEditToolParameters.Text = "";
         }
     }
 }

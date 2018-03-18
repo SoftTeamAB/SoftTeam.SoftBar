@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SoftTeam.SoftBar.Core.Misc;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -25,7 +26,7 @@ namespace SoftTeam.SoftBar.Core.Settings
                 Load();
         }
 
-        public Settings Settings { get => _settings; internal set => _settings = value; }
+        public Settings Settings { get => _settings; internal set => _settings = value; }        
         public string Path { get => _path; set => _path = value; }
 
         public void Load()
@@ -45,19 +46,19 @@ namespace SoftTeam.SoftBar.Core.Settings
         }
         private void CreateDefaultSettings()
         {
-            _settings.SetSetting("General.DirectoriesMenuVisible", "true");
+            _settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, true);
 
-            _settings.SetSetting("DriveType.FixedDrive", "true");
-            _settings.SetSetting("DriveType.RemovableDrive", "true");
-            _settings.SetSetting("DriveType.CDRomDrive", "true");
-            _settings.SetSetting("DriveType.NetworkDrive", "true");
+            _settings.SetBooleanSetting(Constants.DriveType_FixedDrive, true);
+            _settings.SetBooleanSetting(Constants.DriveType_RemovableDrive, true);
+            _settings.SetBooleanSetting(Constants.DriveType_CDRomDrive, true);
+            _settings.SetBooleanSetting(Constants.DriveType_NetworkDrive, true);
 
-            _settings.SetSetting("SpecialFolder.Desktop", "true");
-            _settings.SetSetting("SpecialFolder.Documents", "true");
-            _settings.SetSetting("SpecialFolder.Download", "true");
-            _settings.SetSetting("SpecialFolder.Pictures", "false");
-            _settings.SetSetting("SpecialFolder.Videos", "false");
-            _settings.SetSetting("SpecialFolder.Music", "false");
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Desktop, true);
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Documents, true);
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Downloads, true);
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Pictures, false);
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Videos, false);
+            _settings.SetBooleanSetting(Constants.SpecialFolder_Music, false);
 
             Save();
         }

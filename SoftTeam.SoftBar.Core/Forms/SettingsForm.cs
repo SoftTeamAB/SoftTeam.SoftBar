@@ -31,62 +31,40 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void LoadSettings()
         {
             // General
-            if (_manager.Settings.ExistsSetting("General.DirectoriesMenuVisible"))
-                checkEditShowDirectoriesMenu.Checked = _manager.Settings.GetSetting("General.DirectoriesMenuVisible").Value.ToLower() == "true";
-            else
-                checkEditShowDirectoriesMenu.Checked = true;
+            if (_manager.Settings.ExistsSetting(Constants.General_DirectoriesMenuVisible))
+                checkEditShowDirectoriesMenu.Checked = _manager.Settings.GetBooleanSetting(Constants.General_DirectoriesMenuVisible);
 
             // Drive types
-            if (_manager.Settings.ExistsSetting("DriveType.FixedDrive"))
-                checkEditFixedDrives.Checked = _manager.Settings.GetSetting("DriveType.FixedDrive").Value.ToLower() == "true"; 
-            else
-                checkEditFixedDrives.Checked = true;
-            if (_manager.Settings.ExistsSetting("DriveType.RemovableDrive"))
-                checkEditRemovableDrives.Checked = _manager.Settings.GetSetting("DriveType.RemovableDrive").Value.ToLower() == "true"; 
-            else
-                checkEditRemovableDrives.Checked = true;
-            if (_manager.Settings.ExistsSetting("DriveType.CDRomDrive"))
-                checkEditCDRom.Checked = _manager.Settings.GetSetting("DriveType.CDRomDrive").Value.ToLower() == "true"; 
-            else
-                checkEditCDRom.Checked = true;
-            if (_manager.Settings.ExistsSetting("DriveType.NetworkDrive"))
-                checkEditNetworkDrives.Checked = _manager.Settings.GetSetting("DriveType.NetworkDrive").Value.ToLower() == "true"; 
-            else
-                checkEditNetworkDrives.Checked = true;
+            if (_manager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
+                checkEditFixedDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_FixedDrive); 
+            if (_manager.Settings.ExistsSetting(Constants.DriveType_RemovableDrive))
+                checkEditRemovableDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_RemovableDrive); 
+            if (_manager.Settings.ExistsSetting(Constants.DriveType_CDRomDrive))
+                checkEditCDRom.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_CDRomDrive); 
+            if (_manager.Settings.ExistsSetting(Constants.DriveType_NetworkDrive))
+                checkEditNetworkDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_NetworkDrive); 
 
             // Speical folders
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Desktop"))
-                checkEditSpecialDesktop.Checked = _manager.Settings.GetSetting("SpecialFolder.Desktop").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialDesktop.Checked = true;
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Documents"))
-                checkEditSpecialDocuments.Checked = _manager.Settings.GetSetting("SpecialFolder.Documents").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialDocuments.Checked = true;
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Download"))
-                checkEditSpecialDownloads.Checked = _manager.Settings.GetSetting("SpecialFolder.Download").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialDownloads.Checked = true;
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Pictures"))
-                checkEditSpecialPictures.Checked = _manager.Settings.GetSetting("SpecialFolder.Pictures").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialPictures.Checked = true;
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Videos"))
-                checkEditSpecialVideos.Checked = _manager.Settings.GetSetting("SpecialFolder.Videos").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialVideos.Checked = true;
-            if (_manager.Settings.ExistsSetting("SpecialFolder.Music"))
-                checkEditSpecialMusic.Checked = _manager.Settings.GetSetting("SpecialFolder.Music").Value.ToLower() == "true"; 
-            else
-                checkEditSpecialMusic.Checked = true;
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Desktop))
+                checkEditSpecialDesktop.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Desktop); 
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Documents))
+                checkEditSpecialDocuments.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Documents); 
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Downloads))
+                checkEditSpecialDownloads.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Downloads); 
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Pictures))
+                checkEditSpecialPictures.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Pictures); 
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Videos))
+                checkEditSpecialVideos.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Videos); 
+            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Music))
+                checkEditSpecialMusic.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Music); 
 
             // My directories
             foreach (var directory in _manager.Settings.MyDirectories)
-                listBoxControlMyDirectories.Items.Add(directory.Name);
+                listBoxControlMyDirectories.Items.Add(directory);
 
             // My tools
             foreach (var tool in _manager.Settings.MyTools)
-                listBoxControlMyTools.Items.Add(tool.Name);
+                listBoxControlMyTools.Items.Add(tool);
         }
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
@@ -101,21 +79,21 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void SaveSettings()
         {
             // General
-            _manager.Settings.SetSetting("General.DirectoriesMenuVisible", checkEditShowDirectoriesMenu.Checked.ToString().ToLower());
+            _manager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
 
             // Drive types
-            _manager.Settings.SetSetting("DriveType.FixedDrive", checkEditFixedDrives.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("DriveType.RemovableDrive", checkEditRemovableDrives.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("DriveType.CDRomDrive", checkEditCDRom.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("DriveType.NetworkDrive", checkEditNetworkDrives.Checked.ToString().ToLower());
+            _manager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.DriveType_RemovableDrive, checkEditRemovableDrives.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.DriveType_CDRomDrive, checkEditCDRom.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.DriveType_NetworkDrive, checkEditNetworkDrives.Checked);
 
-            // Speical folders
-            _manager.Settings.SetSetting("SpecialFolder.Desktop", checkEditSpecialDesktop.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("SpecialFolder.Documents", checkEditSpecialDocuments.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("SpecialFolder.Downloads", checkEditSpecialDownloads.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("SpecialFolder.Pictures", checkEditSpecialPictures.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("SpecialFolder.Videos", checkEditSpecialVideos.Checked.ToString().ToLower());
-            _manager.Settings.SetSetting("SpecialFolder.Music", checkEditSpecialMusic.Checked.ToString().ToLower());
+            // Special folders
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Desktop, checkEditSpecialDesktop.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Documents, checkEditSpecialDocuments.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Downloads, checkEditSpecialDownloads.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Pictures, checkEditSpecialPictures.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Videos, checkEditSpecialVideos.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Music, checkEditSpecialMusic.Checked);
 
             // My directories
             _manager.Settings.MyDirectories.Clear();
@@ -196,7 +174,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 if (result == DialogResult.Cancel)
                     return;
 
-                listBoxControlMyTools.Items.Add(form.Path);
+                listBoxControlMyTools.Items.Add(form.SelectedTool);
             }
         }
     }

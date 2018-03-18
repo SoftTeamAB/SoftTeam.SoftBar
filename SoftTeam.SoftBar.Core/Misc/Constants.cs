@@ -24,6 +24,13 @@ namespace SoftTeam.SoftBar.Core.Misc
         public const int TOOLS_MENU = 0;
 
         // Settings
+        public const string General_DirectoriesMenuVisible = "General.DirectoriesMenuVisible";
+
+        public const string DriveType_FixedDrive = "DriveType.FixedDrive";
+        public const string DriveType_RemovableDrive = "DriveType.RemovableDrive";
+        public const string DriveType_CDRomDrive = "DriveType.CDRomDrive";
+        public const string DriveType_NetworkDrive = "DriveType.NetworkDrive";
+
         public const string SpecialFolder_Desktop = "SpecialFolder.Desktop";
         public const string SpecialFolder_Documents = "SpecialFolder.Documents";
         public const string SpecialFolder_Downloads = "SpecialFolder.Downloads";
