@@ -5,22 +5,29 @@ namespace SoftTeam.SoftBar.Core.Xml
     // Class for a menu item (Xml)
     public class XmlMenuItem : XmlMenuItemBase
     {
+        #region Fields
         private string _applicationPath = string.Empty;
         private string _documentPath = string.Empty;
         private string _parameters = string.Empty;
         private string _iconPath = string.Empty;
         private bool _beginGroup = false;
+        #endregion
 
+        #region Constructor
         public XmlMenuItem()
         {
         }
+        #endregion
 
+        #region Properties
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
+        #endregion
 
+        #region ParseXml
         // Parse a menu item node
         public void ParseXml (XmlNode menuItemNode)
         {
@@ -46,5 +53,6 @@ namespace SoftTeam.SoftBar.Core.Xml
             _parameters = parameterElement == null ? "" : parameterElement.InnerText;
 
         }
+        #endregion
     }
 }

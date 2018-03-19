@@ -6,16 +6,23 @@ namespace SoftTeam.SoftBar.Core.Xml
     // Class for a sub menu (Xml)
     public class XmlSubMenu : XmlMenuBase
     {
+        #region Fields
         private string _iconPath = string.Empty;
         private bool _beginGroup = false;
+        #endregion
 
+        #region Constructors
         public XmlSubMenu()
         {
         }
+        #endregion
 
+        #region Properties
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
+        #endregion
 
+        #region ParseXml
         // Parse a sub menu node
         public void ParseXml(XmlNode parentMenuNode)
         {
@@ -55,5 +62,6 @@ namespace SoftTeam.SoftBar.Core.Xml
                 }
             }
         }
+        #endregion
     }
 }

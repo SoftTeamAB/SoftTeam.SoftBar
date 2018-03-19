@@ -1,7 +1,6 @@
 ﻿using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
-using SoftTeam.SoftBar.Core.Xml;
 using System.Drawing;
 using System.IO;
 
@@ -12,17 +11,22 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
     /// </summary>
     public class SoftBarSystemMenuBuilder
     {
+        #region Fields
         private MainAppBarForm _form = null;
         private SoftBarArea _softBarArea = null;
         private SettingsManager _settingsManager = null;
+        #endregion
 
+        #region Constructor
         public SoftBarSystemMenuBuilder(MainAppBarForm form, SoftBarArea softBarArea, SettingsManager settingsManager)
         {
             _form = form;
             _softBarArea = softBarArea;
             _settingsManager = settingsManager;
         }
+        #endregion
 
+        #region Build
         public void Build()
         {
             BuildSystemMenu();
@@ -54,6 +58,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             settingsItem.Item.ItemClick += _softBarArea.SettingsItem_ItemClick;
             systemMenu.Item.AddItem(settingsItem.Item);
 
+            // Temporarily removed
             //// Customize the app bar menu
             //SoftBarSubMenu customizeSubMenuItem = new SoftBarSubMenu(_form, "Customize");
             //customizeSubMenuItem.Setup(_systemMenu.PopupMenu);
@@ -225,5 +230,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 //    driveItem.Item.Links[0].BeginGroup = true;
             }
         }
+        #endregion
     }
 }

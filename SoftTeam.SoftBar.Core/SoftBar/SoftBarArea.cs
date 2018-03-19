@@ -172,6 +172,5 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         }
 
         #endregion
-
     }
 }

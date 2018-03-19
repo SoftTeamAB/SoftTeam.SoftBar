@@ -8,17 +8,22 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
     /// </summary>
     public class SoftBarUserMenuBuilder
     {
+        #region Fields
         private XmlArea _area = null;
         private MainAppBarForm _form = null;
         private SoftBarArea _softBarArea = null;
+        #endregion
 
+        #region Constructor
         public SoftBarUserMenuBuilder(MainAppBarForm form, SoftBarArea softBarArea, XmlArea area)
         {
             _form = form;
             _area = area;
             _softBarArea = softBarArea;
         }
+        #endregion
 
+        #region Builds
         public void Build()
         {
             foreach (var menu in _area.Menus)
@@ -106,6 +111,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 }
             }
         }
-
+        #endregion
     }
 }

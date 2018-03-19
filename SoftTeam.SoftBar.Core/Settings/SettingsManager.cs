@@ -10,11 +10,17 @@ using System.Xml.Serialization;
 
 namespace SoftTeam.SoftBar.Core.Settings
 {
+    /// <summary>
+    /// Class that handles load and save of settings
+    /// </summary>
     public class SettingsManager
     {
+        #region Fields
         private Settings _settings = null;
         private string _path = "";
+        #endregion
 
+        #region Constructor
         public SettingsManager(string path)
         {
             _path = path;
@@ -25,10 +31,14 @@ namespace SoftTeam.SoftBar.Core.Settings
             else
                 Load();
         }
+        #endregion
 
+        #region Properties
         public Settings Settings { get => _settings; internal set => _settings = value; }        
         public string Path { get => _path; set => _path = value; }
+        #endregion
 
+        #region Load/Save/Default settings
         public void Load()
         {
             XmlSerializer serializer = new XmlSerializer(typeof(Settings));
@@ -62,5 +72,6 @@ namespace SoftTeam.SoftBar.Core.Settings
 
             Save();
         }
+        #endregion
     }
 }

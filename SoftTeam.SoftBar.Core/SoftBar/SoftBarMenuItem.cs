@@ -92,7 +92,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             if (Warning)
             {
                 // Create a tool tip and set the warning image
-                Item.SuperTip = ToolTipHelper.CreateWarningToolTip(WarningText);
+                Item.SuperTip = HelperFunctions.CreateWarningToolTip(WarningText);
                 Item.ImageOptions.Image = new Bitmap(Properties.Resources.Warning_small);
             }
 

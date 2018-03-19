@@ -158,7 +158,6 @@
     <Compile Include="SoftBar\SoftBarMenu.cs" />
     <Compile Include="SoftBar\SoftBarMenuItem.cs" />
     <Compile Include="SoftBar\SoftBarSubMenu.cs" />
-    <Compile Include="Misc\ToolTipHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

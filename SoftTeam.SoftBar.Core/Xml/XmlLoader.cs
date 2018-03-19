@@ -13,18 +13,25 @@ namespace SoftTeam.SoftBar.Core.Xml
     /// </summary>
     public class XmlLoader
     {
+        #region Fields
         private string _path = string.Empty;
         private XmlArea _area = null;
         private List<string> _validationErrors = null;
+        #endregion
 
+        #region Properties
         public List<string> ValidationErrors { get => _validationErrors; set => _validationErrors = value; }
+        #endregion
 
+        #region Constructor
         public XmlLoader(string path)
         {
             _path = path;
             _area = new XmlArea();
         }
+        #endregion
 
+        #region ParseXml
         public XmlArea Load()
         {
             // Clear the validation errors
@@ -117,5 +124,6 @@ namespace SoftTeam.SoftBar.Core.Xml
 
             return area;
         }
+        #endregion
     }
 }

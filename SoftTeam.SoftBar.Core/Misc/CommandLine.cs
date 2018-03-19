@@ -7,11 +7,14 @@ namespace SoftTeam.SoftBar.Core.Misc
 {
     public class CommandLineHelper : IDisposable
     {
+        #region Fields
         private string _application = "";
         private string _document = "";
         private string _parameters = "";
         private Exception _lastExecutionException = null;
+        #endregion
 
+        #region Constructors
         public CommandLineHelper()
         {
         }
@@ -22,12 +25,30 @@ namespace SoftTeam.SoftBar.Core.Misc
             Document = document;
             Parameters = parameters;
         }
+        #endregion
 
+        #region Properties
         public string Application { get => _application; set => _application = value; }
         public string Document { get => _document; set => _document = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
         public Exception LastExecutionException { get => _lastExecutionException; set => _lastExecutionException = value; }
-        
+
+        private string CommandLineString
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Parameters))
+                    return $"{_application} {_document}";
+                else
+                {
+                    var parameters = _parameters.Replace("%%document%%", _document);
+                    return $"{_application} {parameters}";
+                }
+            }
+        }
+        #endregion
+
+        #region Misc functions
         public bool Execute()
         {
             try
@@ -39,19 +60,6 @@ namespace SoftTeam.SoftBar.Core.Misc
             {
                 _lastExecutionException = ex;
                 return false;
-            }
-        }
-
-        private string CommandLineString
-        {      
-            get {
-                if (string.IsNullOrEmpty(Parameters))
-                    return $"{_application} {_document}";
-                else
-                {
-                    var parameters = _parameters.Replace("%%document%%", _document);
-                    return $"{_application} {parameters}";
-                }
             }
         }
 
@@ -149,10 +157,12 @@ namespace SoftTeam.SoftBar.Core.Misc
 
             return true;
         }
+        #endregion
 
+        #region IDisposable
         public void Dispose()
-        {
-            
+        {            
         }
+        #endregion  
     }
 }

@@ -92,6 +92,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             Item.ShowPopup(new Point(_left, 0));
         }
         #endregion
+
+        #region Clear
         public void Clear()
         {
             _popupMenu.ClearLinks();
@@ -100,5 +102,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             _button.Dispose();
             _button = null;
         }
+        #endregion
     }
 }

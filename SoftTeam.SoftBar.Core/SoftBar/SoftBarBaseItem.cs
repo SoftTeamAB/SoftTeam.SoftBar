@@ -78,6 +78,5 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 Image = null;
         }
         #endregion
-
     }
 }

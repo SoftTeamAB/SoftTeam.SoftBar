@@ -8,6 +8,7 @@ namespace SoftTeam.SoftBar.Core.Misc
 {
     public static class Constants
     {
+        // General constants
         public const int SPACE = 0;
         public const int LEFT_MARGIN = 3;
         public const int TOP_MARGIN = 2;

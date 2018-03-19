@@ -7,9 +7,12 @@ using System.Xml.Serialization;
 
 namespace SoftTeam.SoftBar.Core.Settings
 {
+    /// <summary>
+    /// Main settings class
+    /// </summary>
     public class Settings
     {
-
+        #region Fields
         [XmlElement(ElementName = "MyTools")]
         public List<Tool> MyTools = new List<Tool>();
 
@@ -17,6 +20,7 @@ namespace SoftTeam.SoftBar.Core.Settings
         public List<Directory> MyDirectories = new List<Directory>();
 
         public List<Setting> MySettings = new List<Setting>();
+        #endregion
 
         #region Get/Set/Exists string settings
         public Setting GetSetting(string key)

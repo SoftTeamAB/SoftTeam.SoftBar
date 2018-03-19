@@ -10,6 +10,10 @@
         /// <summary>
         /// A private class that contains information about a draggable control and any 
         /// controls that should be attached to it (i e dragging multiple controls).
+        /// 
+        /// Original code by Intrueder : 
+        /// GitHub : https://github.com/intrueder/Control.Draggable
+        /// Nuget : https://www.nuget.org/packages/Control.Draggable/
         /// </summary>
         private class DraggableControlInfo
         {

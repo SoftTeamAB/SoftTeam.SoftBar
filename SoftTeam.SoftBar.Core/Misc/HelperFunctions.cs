@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
@@ -99,5 +100,18 @@ namespace SoftTeam.SoftBar.Core.Misc
                 return @"Xml\SoftBar.xsd";
 
         }
+
+        public static SuperToolTip CreateWarningToolTip(string errorMessage)
+        {
+            SuperToolTip toolTip = new SuperToolTip();
+            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+            args.Title.Text = "Warning!";
+            args.Contents.Text = errorMessage;
+            args.Contents.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
+            toolTip.Setup(args);
+
+            return toolTip;
+        }
+
     }
 }
