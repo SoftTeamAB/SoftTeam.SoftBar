@@ -26,6 +26,8 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         // Settings
         public const string General_DirectoriesMenuVisible = "General.DirectoriesMenuVisible";
+        public const string General_ToolsMenuVisible = "General.ToolsMenuVisible";
+        public const string General_Theme = "General.Theme";
 
         public const string DriveType_FixedDrive = "DriveType.FixedDrive";
         public const string DriveType_RemovableDrive = "DriveType.RemovableDrive";

@@ -32,6 +32,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             // General
             if (_manager.Settings.ExistsSetting(Constants.General_DirectoriesMenuVisible))
                 checkEditShowDirectoriesMenu.Checked = _manager.Settings.GetBooleanSetting(Constants.General_DirectoriesMenuVisible);
+            if (_manager.Settings.ExistsSetting(Constants.General_ToolsMenuVisible))
+                checkEditShowToolsMenu.Checked = _manager.Settings.GetBooleanSetting(Constants.General_ToolsMenuVisible);
+
+            comboBoxEditTheme.SelectedIndex = _manager.Settings.GetIntegerSetting(Constants.General_Theme);
 
             // Drive types
             if (_manager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
@@ -68,6 +72,8 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             // General
             _manager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
+            _manager.Settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, checkEditShowToolsMenu.Checked);
+            _manager.Settings.SetIntegerSetting(Constants.General_Theme, comboBoxEditTheme.SelectedIndex);
 
             // Drive types
             _manager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);
