@@ -1,6 +1,6 @@
 ﻿namespace SoftTeam.SoftBar.Core.Forms
 {
-    partial class AddToolsForm
+    partial class MyToolsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddToolsForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyToolsForm));
             this.pictureEditCalculator = new DevExpress.XtraEditors.PictureEdit();
             this.labelControlCalculator = new DevExpress.XtraEditors.LabelControl();
             this.labelControlDiskCleaner = new DevExpress.XtraEditors.LabelControl();

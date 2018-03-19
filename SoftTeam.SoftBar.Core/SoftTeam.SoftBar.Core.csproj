@@ -95,17 +95,17 @@
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
     <Compile Include="Misc\ControlExtension.cs" />
-    <Compile Include="Forms\AddToolsForm.cs">
+    <Compile Include="Forms\MyToolsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AddToolsForm.Designer.cs">
-      <DependentUpon>AddToolsForm.cs</DependentUpon>
+    <Compile Include="Forms\MyToolsForm.Designer.cs">
+      <DependentUpon>MyToolsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EditMyDirectoryForm.cs">
+    <Compile Include="Forms\MyDirectoriesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\EditMyDirectoryForm.Designer.cs">
-      <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
+    <Compile Include="Forms\MyDirectoriesForm.Designer.cs">
+      <DependentUpon>MyDirectoriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CommandLine.cs" />
     <Compile Include="Misc\ImageExtension.cs" />
@@ -188,11 +188,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\AddToolsForm.resx">
-      <DependentUpon>AddToolsForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MyToolsForm.resx">
+      <DependentUpon>MyToolsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\EditMyDirectoryForm.resx">
-      <DependentUpon>EditMyDirectoryForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\MyDirectoriesForm.resx">
+      <DependentUpon>MyDirectoriesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
@@ -209,6 +209,11 @@
   <ItemGroup>
     <None Include="Resources\toolbox.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\folder_music.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder_movie.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

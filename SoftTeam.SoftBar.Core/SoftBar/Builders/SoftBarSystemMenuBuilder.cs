@@ -78,6 +78,23 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             directoriesMenu.Button.Tag = directoriesMenu;
             directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
 
+            // My directories
+            bool firstItem = true;
+            foreach (var directory in _settingsManager.Settings.MyDirectories)
+            {
+                SoftBarMenuItem myDirectoryItem = new SoftBarMenuItem(_form, directory.Name, true);
+                myDirectoryItem.Setup();
+                myDirectoryItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+                myDirectoryItem.Item.Tag = directory;
+                myDirectoryItem.Item.ItemClick += _softBarArea.MyDirectory_ItemClick;
+                directoriesMenu.Item.AddItem(myDirectoryItem.Item);
+                if (firstItem)
+                {
+                    myDirectoryItem.Item.Links[0].BeginGroup = true;
+                    firstItem = false;
+                }
+            }
+
             // Add all drives
             DriveType? driveType = null;
             DriveInfo[] drives = DriveInfo.GetDrives();
@@ -153,7 +170,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Pictures", true);
                 downloadsItem.Setup();
-                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
                 downloadsItem.Item.ItemClick += _softBarArea.PicturesItem_ItemClick; ;
                 directoriesMenu.Item.AddItem(downloadsItem.Item);
             }
@@ -163,7 +180,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Videos", true);
                 downloadsItem.Setup();
-                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Movies);
                 downloadsItem.Item.ItemClick += _softBarArea.VideosItem_ItemClick; ;
                 directoriesMenu.Item.AddItem(downloadsItem.Item);
             }
@@ -173,11 +190,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Music", true);
                 downloadsItem.Setup();
-                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Music);
                 downloadsItem.Item.ItemClick += _softBarArea.MusicItem_ItemClick; ;
                 directoriesMenu.Item.AddItem(downloadsItem.Item);
             }
-
         }
 
         private void BuildToolsMenu()

@@ -55,7 +55,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Misc functions
 
         private void Reload(bool hardReload = false)
-        {
+        {            
+            foreach (var menu in Menus)
+                menu.Clear();
+
+            Menus.Clear();
+            
             if (hardReload)
             {
                 AppBarFunctions.SetAppBar(_form, AppBarEdge.None);
@@ -146,6 +151,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public void MusicItem_ItemClick(object sender, ItemClickEventArgs e)
         {
             CommandLineHelper.ExecuteCommandLine(@"Explorer.exe %USERPROFILE%\Music");
+        }
+
+        public void MyDirectory_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var directory = (Settings.Directory)e.Item.Tag;
+            CommandLineHelper.ExecuteCommandLine($"Explorer.exe {directory.Path}");
         }
 
         public void DriveItem_ItemClick(object sender, ItemClickEventArgs e)

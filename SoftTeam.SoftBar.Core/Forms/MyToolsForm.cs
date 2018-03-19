@@ -6,17 +6,35 @@ using SoftTeam.SoftBar.Core.Settings;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
-    public partial class AddToolsForm : DevExpress.XtraEditors.XtraForm
+    public partial class MyToolsForm : DevExpress.XtraEditors.XtraForm
     {
-        private Tool _selectedTool = null;
+        #region Properties
+        public Tool Tool { get; set; }
+        #endregion
 
-        public Tool SelectedTool { get => _selectedTool; }
-
-        public AddToolsForm()
+        #region Constructor
+        // Constructor for add tool
+        public MyToolsForm()
         {
             InitializeComponent();
         }
 
+        // Constructor for edit tool
+        public MyToolsForm(Tool tool)
+        {
+            InitializeComponent();
+
+            Tool = tool;
+
+            textEditToolName.Text = Tool.Name;
+            textEditToolPath.Text = Tool.Path;
+            textEditToolIconPath.Text = Tool.IconPath;
+            textEditToolParameters.Text = Tool.Parameters;
+            checkEditToolBeginGroup.Checked = Tool.BeginGroup;
+        }
+        #endregion
+
+        #region Button events
         private void simpleButtonCancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
@@ -25,13 +43,21 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
         {
-            _selectedTool = new Tool();
+            if (!System.IO.File.Exists(textEditToolPath.Text))
+            {
+                DialogResult result = XtraMessageBox.Show($"The tool path '{textEditToolPath.Text}' does not exist!\n\nDo you want to save it anyway?", "My directory", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.No)
+                    return;
+            }
 
-            _selectedTool.Name =  textEditToolName.Text;
-            _selectedTool.IconPath =  textEditToolIconPath.Text ;
-            _selectedTool.Path =  textEditToolPath.Text ;
-            _selectedTool.BeginGroup =     checkEditToolBeginGroup.Checked ;
-            _selectedTool.Parameters =  textEditToolParameters.Text;
+            if (Tool == null)
+                Tool = new Tool();
+
+            Tool.Name = textEditToolName.Text;
+            Tool.IconPath = textEditToolIconPath.Text;
+            Tool.Path = textEditToolPath.Text;
+            Tool.BeginGroup = checkEditToolBeginGroup.Checked;
+            Tool.Parameters = textEditToolParameters.Text;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -52,6 +78,19 @@ namespace SoftTeam.SoftBar.Core.Forms
             textEditToolPath.Text = xtraOpenFileDialogTool.FileName;
         }
 
+        private void simpleButtonTest_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textEditToolPath.Text))
+            {
+                XtraMessageBox.Show("Please click on a tool, or browse to the tool with the browse button to the right.");
+                return;
+            }
+
+            CommandLineHelper.ExecuteCommandAsync(textEditToolPath.Text);
+        }
+        #endregion
+
+        #region Misc functions
         private string SetPath(ToolPath tool)
         {
             string path = "";
@@ -134,20 +173,11 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             return path;
         }
+        #endregion
 
-        private void simpleButtonTest_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(textEditToolPath.Text))
-            {
-                XtraMessageBox.Show("Please click on a tool, or browse to the tool with the browse button to the right.");
-                return;
-            }
-
-            CommandLineHelper.ExecuteCommandAsync(textEditToolPath.Text);
-        }
-
+        #region Prepared tools
         private void pictureEditBash_Click(object sender, EventArgs e)
-        {            
+        {
             textEditToolName.Text = "Bash";
             textEditToolIconPath.Text = SetPath(ToolPath.Bash);
             textEditToolPath.Text = textEditToolIconPath.Text;
@@ -174,7 +204,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
 
         private void pictureEditCommandLine_Click(object sender, EventArgs e)
-        {            
+        {
             textEditToolName.Text = "Command line";
             textEditToolIconPath.Text = SetPath(ToolPath.CommandLine);
             textEditToolPath.Text = textEditToolIconPath.Text;
@@ -325,5 +355,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             checkEditToolBeginGroup.Checked = false;
             textEditToolParameters.Text = "";
         }
+        #endregion
     }
 }

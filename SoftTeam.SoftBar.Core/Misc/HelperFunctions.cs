@@ -72,10 +72,17 @@ namespace SoftTeam.SoftBar.Core.Misc
                 return null;
             else
             {
-                // Extract the icon...
-                Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                // and return an 16x16 image
-                return iconImage.ResizeImage(16, 16);
+                try
+                {
+                    // Extract the icon...
+                    Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
+                    // and return an 16x16 image
+                    return iconImage.ResizeImage(16, 16);
+                }
+                catch
+                {
+                    return null;
+                }
             }
         }
 
