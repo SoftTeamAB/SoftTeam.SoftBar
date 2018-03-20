@@ -1,30 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using DevExpress.XtraEditors;
-
-namespace SoftTeam.SoftBar.Core.Controls
+﻿namespace SoftTeam.SoftBar.Core.Controls
 {
     public partial class EditHeaderItemControl : DevExpress.XtraEditors.XtraUserControl
     {
+        #region Fields
         private string _name = "";
         private bool _beginGroup = false;
+        #endregion
 
+        #region Properties
         public new string Name { get => _name; set => _name = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
+        #endregion
 
-
+        #region Constructor
         public EditHeaderItemControl()
         {
             InitializeComponent();
         }
+        #endregion
 
+        #region Load/Save
         public void LoadValues()
         {
             textEditName.Text = Name;
@@ -36,5 +31,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             Name = textEditName.Text;
             BeginGroup = checkEditBeginGroup.Checked;
         }
+        #endregion
     }
 }

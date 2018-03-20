@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.Controls
 {
@@ -11,23 +12,21 @@ namespace SoftTeam.SoftBar.Core.Controls
     {
         #region Fields
         private int _level = 0;
-        private SoftBarBaseItem _item = null;
+        private XmlMenuItemBase _item = null;
         private MenuItemType _type = MenuItemType.None;
         private MenuItemSelectedStatus _selected = MenuItemSelectedStatus.NotSelected;
         private Color _color;
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
-        private MenuItemControl _previousMenuItem = null;
         private CustomizationForm _parentForm = null;
         #endregion
 
         #region Properties
         public MenuItemSelectedStatus Selected { get => _selected; set { _selected = value; UpdateColor(); } }
-        public MenuItemControl PreviousMenuItem { get => _previousMenuItem; set => _previousMenuItem = value; }
-        public SoftBarBaseItem Item { get => _item; set => _item = value; }
+        public XmlMenuItemBase Item { get => _item; set => _item = value; }
         #endregion
 
         #region Constructor
-        public MenuItemControl(CustomizationForm parentForm, MenuItemType type, SoftBarBaseItem item, int level, Color color, ObservableCollection<MenuItemControl> menuItems, MenuItemControl previousMenuItem = null)
+        public MenuItemControl(CustomizationForm parentForm, MenuItemType type, XmlMenuItemBase item, int level, Color color, ObservableCollection<MenuItemControl> menuItems)
         {
             InitializeComponent();
 
@@ -37,7 +36,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             _level = level;
             _color = color;
             _menuItems = menuItems;
-            _previousMenuItem = previousMenuItem;
 
             UpdateValues();
             this.BackColor = color;
@@ -45,24 +43,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         #endregion
 
         #region Events
-        public delegate void MenuItemClickedEventHandler(object sender, MenuSelectedEventArgs e);
-        public event MenuItemClickedEventHandler MenuSelected;
         public event EventHandler ClearSelectedRequested;
-
-        public class MenuSelectedEventArgs
-        {
-            public SoftBarBaseMenu Menu { get; set; }
-
-            public MenuSelectedEventArgs(SoftBarBaseMenu menu)
-            {
-                Menu = menu;
-            }
-        }
-
-        private void onMenuSelected()
-        {
-            MenuSelected?.Invoke(this, new MenuSelectedEventArgs((SoftBarBaseMenu)_item));
-        }
 
         private void onClearSelectedRequested()
         {
@@ -88,9 +69,6 @@ namespace SoftTeam.SoftBar.Core.Controls
                 Selected = MenuItemSelectedStatus.Selected;
 
             UpdateColor();
-
-            if (_item is SoftBarBaseMenu)
-                onMenuSelected();
         }
 
         private void UpdateColor()
@@ -115,14 +93,14 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             CustomizationMenuItemForm form = null;
 
-            if (_item is SoftBarMenu)
-                form = new CustomizationMenuItemForm((SoftBarMenu)_item);
-            else if (_item is SoftBarHeaderItem)
-                form = new CustomizationMenuItemForm((SoftBarHeaderItem)_item);
-            else if (_item is SoftBarSubMenu)
-                form = new CustomizationMenuItemForm((SoftBarSubMenu)_item);
-            else if (_item is SoftBarMenuItem)
-                form = new CustomizationMenuItemForm((SoftBarMenuItem)_item);
+            if (_item is XmlMenu)
+                form = new CustomizationMenuItemForm((XmlMenu)_item);
+            else if (_item is XmlHeaderItem)
+                form = new CustomizationMenuItemForm((XmlHeaderItem)_item);
+            else if (_item is XmlSubMenu)
+                form = new CustomizationMenuItemForm((XmlSubMenu)_item);
+            else if (_item is XmlMenuItem)
+                form = new CustomizationMenuItemForm((XmlMenuItem)_item);
 
             form.ShowDialog();
             UpdateValues();
@@ -136,7 +114,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             labelControlType.Text = HelperFunctions.GetTypeName(_type);
             pictureBoxIcon.BackColor = HelperFunctions.GetTypeColor(_type);
             labelControlName.Text = _item.Name;
-            pictureBoxIcon.Image = _item.Image;
             if (_item.BeginGroup)
                 pictureBoxBeginGroup.BringToFront();
             else

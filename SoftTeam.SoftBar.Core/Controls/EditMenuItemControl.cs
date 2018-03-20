@@ -2,48 +2,67 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
-using SoftTeam.SoftBar.Core.Extensions;
+using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core.Controls
 {
     public partial class EditMenuItemControl : DevExpress.XtraEditors.XtraUserControl
     {
+        #region Fields
         private string _name = "";
         private string _iconPath = "";
         private string _applicationPath = "";
         private string _documentPath = "";
         private string _parameters = "";
         private bool _beginGroup = false;
+        #endregion
 
+        #region Properties
         public new string Name { get => _name; set => _name = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
+        #endregion
 
+        #region Constructor
         public EditMenuItemControl()
         {
             InitializeComponent();
 
             tabPaneMenuItem.SelectedPage = tabNavigationPageAppearance;
         }
+        #endregion
 
-        private void simpleButtonIconPathBrowse_Click(object sender, EventArgs e)
+        #region Fields
+        public void LoadValues()
         {
-            xtraOpenFileDialogMenuItem.InitialDirectory = textEditIconPath.Text;
-            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll";
-            xtraOpenFileDialogMenuItem.CheckFileExists = true;
-            xtraOpenFileDialogMenuItem.FilterIndex = 0;
-            DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
+            textEditName.Text = Name;
+            textEditIconPath.Text = IconPath;
+            checkEditBeginGroup.Checked = BeginGroup;
 
-            if (result == DialogResult.OK)
-            {
-                textEditIconPath.Text = xtraOpenFileDialogMenuItem.FileName;
-                UpdateImage();
-            }
+            textEditApplicationPath.Text = ApplicationPath;
+            textEditDocumentPath.Text = DocumentPath;
+            textEditParameters.Text = Parameters;
+
+            UpdateImage();
         }
 
+        public void SaveValues()
+        {
+            Name = textEditName.Text;
+            IconPath = textEditIconPath.Text;
+            BeginGroup = checkEditBeginGroup.Checked;
+
+            ApplicationPath = textEditApplicationPath.Text;
+            DocumentPath = textEditDocumentPath.Text;
+            Parameters = textEditParameters.Text;
+
+        }
+        #endregion
+
+        #region Misc functions
         private void UpdateImage()
         {
             try
@@ -69,30 +88,22 @@ namespace SoftTeam.SoftBar.Core.Controls
                 pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
             }
         }
+        #endregion
 
-        public void LoadValues()
+        #region Events
+        private void simpleButtonIconPathBrowse_Click(object sender, EventArgs e)
         {
-            textEditName.Text = Name;
-            textEditIconPath.Text = IconPath;
-            checkEditBeginGroup.Checked = BeginGroup;
+            xtraOpenFileDialogMenuItem.InitialDirectory = textEditIconPath.Text;
+            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll";
+            xtraOpenFileDialogMenuItem.CheckFileExists = true;
+            xtraOpenFileDialogMenuItem.FilterIndex = 0;
+            DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
 
-            textEditApplicationPath.Text = ApplicationPath;
-            textEditDocumentPath.Text = DocumentPath;
-            textEditParameters.Text = Parameters;
-
-            UpdateImage();
-        }
-
-        public void SaveValues()
-        {
-            Name = textEditName.Text;
-            IconPath = textEditIconPath.Text;
-            BeginGroup = checkEditBeginGroup.Checked;
-
-            ApplicationPath = textEditApplicationPath.Text;
-            DocumentPath = textEditDocumentPath.Text;
-            Parameters = textEditParameters.Text;
-
+            if (result == DialogResult.OK)
+            {
+                textEditIconPath.Text = xtraOpenFileDialogMenuItem.FileName;
+                UpdateImage();
+            }
         }
 
         private void simpleButtonApplicationPathBrowse_Click(object sender, EventArgs e)
@@ -130,5 +141,6 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             UpdateImage();
         }
+        #endregion
     }
 }

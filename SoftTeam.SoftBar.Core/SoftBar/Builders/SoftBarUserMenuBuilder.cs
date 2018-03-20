@@ -15,11 +15,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         #endregion
 
         #region Constructor
-        public SoftBarUserMenuBuilder(MainAppBarForm form, SoftBarArea softBarArea, XmlArea area)
+        public SoftBarUserMenuBuilder(SoftBarManager manager)
         {
-            _form = form;
-            _area = area;
-            _softBarArea = softBarArea;
+            _form = manager.Form;
+            _area = manager.UserAreaXml;
+            _softBarArea = manager.UserArea;
         }
         #endregion
 

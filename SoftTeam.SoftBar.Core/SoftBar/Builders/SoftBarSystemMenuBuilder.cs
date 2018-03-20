@@ -18,11 +18,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         #endregion
 
         #region Constructor
-        public SoftBarSystemMenuBuilder(MainAppBarForm form, SoftBarArea softBarArea, SettingsManager settingsManager)
+        public SoftBarSystemMenuBuilder(SoftBarManager manager)
         {
-            _form = form;
-            _softBarArea = softBarArea;
-            _settingsManager = settingsManager;
+            _form = manager.Form;
+            _softBarArea = manager.SystemArea;
+            _settingsManager = manager.SettingsManager;
         }
         #endregion
 
@@ -66,11 +66,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             settingsItem.Item.ItemClick += _softBarArea.SettingsItem_ItemClick;
             systemMenu.Item.AddItem(settingsItem.Item);
 
-            // Temporarily removed
-            //// Customize the app bar menu
-            //SoftBarSubMenu customizeSubMenuItem = new SoftBarSubMenu(_form, "Customize");
-            //customizeSubMenuItem.Setup(_systemMenu.PopupMenu);
-            //customizeSubMenuItem.SubMenu.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
+            // Settings for the app bar
+            SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize", true);
+            customizeItem.Setup();
+            customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
+            customizeItem.Item.ItemClick += _softBarArea.CustomizeItem_ItemClick;
+            systemMenu.Item.AddItem(customizeItem.Item);
 
             // Exit the app bar
             SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true);

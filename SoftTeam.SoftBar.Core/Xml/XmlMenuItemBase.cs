@@ -6,6 +6,7 @@ namespace SoftTeam.SoftBar.Core.Xml
     {
         #region Fields
         protected string _name = string.Empty;
+        protected bool _beginGroup = false;
         #endregion
 
         #region Constructor
@@ -16,6 +17,7 @@ namespace SoftTeam.SoftBar.Core.Xml
 
         #region Properties
         public string Name { get => _name; set => _name = value; }
-        #endregion 
+        public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
+        #endregion
     }
 }

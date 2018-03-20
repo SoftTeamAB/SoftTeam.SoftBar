@@ -3,92 +3,92 @@ using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Drawing;
 using System.Collections.ObjectModel;
-using SoftTeam.SoftBar.Core.Helpers;
 using System.Windows.Forms;
+using SoftTeam.SoftBar.Core.Xml;
+using SoftTeam.SoftBar.Core.SoftBar;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields
-        private string _path = "";
+//        private string _path = "";
         private string _backupDirectory = @"C:\ProgramData\SoftTeam\SoftBar";
         private int _height = Constants.TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
-        private SoftBarManager _manager = null;
-        private MenuItemControl _previousMenuItem = null;
+        private XmlArea _area = null;
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
+        private SoftBarManager _manager = null;
         #endregion
 
         #region Constructors
-        public CustomizationForm(SoftBarManager manager, string path)
+        public CustomizationForm(SoftBarManager manager)
         {
             InitializeComponent();
 
-            _path = path;
-            RefreshMenuItems(manager);
             _manager = manager;
-            barStaticItemPath.Caption = _path;
+            _area = _manager.UserAreaXml;
+
+            barStaticItemPath.Caption = manager.Path;
+
+            RefreshMenuItems();
         }
         #endregion
 
         #region Calculate max level
-        private int CalculateMaxLevel(SoftBarManager manager)
+        private int CalculateDepth()
         {
             int maxLevel = 0;
 
-            foreach (var menu in manager.Menus)
+            foreach (var menu in _area.Menus)
                 CalculateMaxLevelEx(menu, ref maxLevel);
 
             return maxLevel;
         }
 
-        private void CalculateMaxLevelEx(SoftBarBaseMenu menu, ref int maxLevel)
+        private void CalculateMaxLevelEx(XmlMenuBase menu, ref int maxLevel)
         {
             _level += 1;
             if (_level > maxLevel)
                 maxLevel = _level;
 
-            foreach (SoftBarBaseItem menuItem in menu.MenuItems)
-                if (menuItem is SoftBarSubMenu)
-                    CalculateMaxLevelEx((SoftBarBaseMenu)menuItem, ref maxLevel);
+            foreach (XmlMenuItemBase menuItem in menu.MenuItems)
+                if (menuItem is XmlSubMenu)
+                    CalculateMaxLevelEx((XmlMenuBase)menuItem, ref maxLevel);
 
             _level -= 1;
         }
         #endregion
 
         #region Load menu for customization
-        private void RefreshMenuItems(SoftBarManager manager)
+        private void RefreshMenuItems()
         {
             ClearMenuItems();
 
-            _maxLevel = CalculateMaxLevel(manager);
+            _maxLevel = CalculateDepth();
 
-            foreach (var menu in manager.Menus)
+            foreach (var menu in _area.Menus)
             {
                 AddItemControl(MenuItemType.Menu, menu);
                 LoadMenu(menu);
             }
         }
 
-        private void LoadMenu(SoftBarBaseMenu menu)
+        private void LoadMenu(XmlMenuBase menu)
         {
             _level += 1;
 
-            foreach (SoftBarBaseItem menuItem in menu.MenuItems)
+            foreach (XmlMenuItemBase menuItem in menu.MenuItems)
             {
-                if (menuItem.SystemMenu)
-                    continue;
-
-                if (menuItem is SoftBarSubMenu)
+                if (menuItem is XmlSubMenu)
                 {
                     AddItemControl(MenuItemType.SubMenu, menuItem);
-                    LoadMenu((SoftBarBaseMenu)menuItem);
+                    LoadMenu((XmlMenuBase)menuItem);
                 }
-                else if (menuItem is SoftBarHeaderItem)
+                else if (menuItem is XmlHeaderItem)
                     AddItemControl(MenuItemType.HeaderItem, menuItem);
-                else if (menuItem is SoftBarMenuItem)
+                else if (menuItem is XmlMenuItem)
                     AddItemControl(MenuItemType.MenuItem, menuItem);
             }
             _level -= 1;
@@ -100,43 +100,19 @@ namespace SoftTeam.SoftBar.Core.Forms
             xtraScrollableControlMenu.Controls.Clear();
         }
 
-        private void AddItemControl(MenuItemType type, SoftBarBaseItem menu)
+        private void AddItemControl(MenuItemType type, XmlMenuItemBase menu)
         {
             var step = 128 / _maxLevel;
             var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
-            MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems, _previousMenuItem);
+            MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems);
             var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
             item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
             item.Size = new Size(width, Constants.ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
             _height += item.Height + Constants.SPACE;
-            menu.CustomizationMenuItem = item;
-            item.ClearSelectedRequested += Item_ClearSelectedRequested;
 
-            _previousMenuItem = item;
             _menuItems.Add(item);
-        }
-        #endregion
-
-        #region Clear selected menu item
-        private void Item_ClearSelectedRequested(object sender, EventArgs e)
-        {
-            foreach (var menuItem in _manager.Menus)
-            {
-                menuItem.CustomizationMenuItem.Selected = MenuItemSelectedStatus.NotSelected;
-                SetSelected(menuItem, MenuItemSelectedStatus.NotSelected);
-            }
-        }
-
-        private void SetSelected(SoftBarBaseMenu menu, MenuItemSelectedStatus selected)
-        {
-            foreach (var menuItem in menu.MenuItems)
-            {
-                menuItem.CustomizationMenuItem.Selected = selected;
-                if (menuItem is SoftBarSubMenu)
-                    SetSelected((SoftBarSubMenu)menuItem, selected);
-            }
         }
         #endregion
 
@@ -201,16 +177,16 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (menuItem == null) return;
 
             if (selected == null)
-                _manager.Menus.Insert(0, (SoftBarMenu)menuItem);
+                _area.Menus.Insert(0, (XmlMenu)menuItem);
             else
-                _manager.Menus.Insert(_manager.Menus.IndexOf((SoftBarMenu)selected)+1, (SoftBarMenu)menuItem);
+                _area.Menus.Insert(_area.Menus.IndexOf((XmlMenu)selected)+1, (XmlMenu)menuItem);
 
-            RefreshMenuItems(_manager);
+            RefreshMenuItems();
         }
 
-        private SoftBarBaseItem CreateMenu()
+        private XmlMenuItemBase CreateMenu()
         {
-            SoftBarMenu menu = new SoftBarMenu(_manager.Form, "[New item]", 0);
+            XmlMenu menu = new XmlMenu();
 
             using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(menu))
             {
@@ -243,7 +219,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             this.Close();
         }
 
-        private SoftBarBaseItem GetSelectedItem()
+        private XmlMenuItemBase GetSelectedItem()
         {
             foreach (var menuItem in _menuItems)
                 if (menuItem.Selected == MenuItemSelectedStatus.Selected)
@@ -275,7 +251,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void OpenSoftBarXml()
         {
-            CommandLineHelper.ExecuteCommandLine($"Notepad.exe {_path}");
+            CommandLineHelper.ExecuteCommandLine($"Notepad.exe {_manager.Path}");
         }
 
         private void OpenBackupDirectory()

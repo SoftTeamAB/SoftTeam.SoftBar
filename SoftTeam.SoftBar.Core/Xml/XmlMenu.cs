@@ -7,7 +7,6 @@ namespace SoftTeam.SoftBar.Core.Xml
     {
         #region Fields
         private string _iconPath = string.Empty;
-        private bool _beginGroup = false;
         #endregion
 
         #region Constructor
@@ -18,7 +17,6 @@ namespace SoftTeam.SoftBar.Core.Xml
 
         #region Properties
         public string IconPath { get => _iconPath; set => _iconPath = value; }
-        public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         #endregion
 
         #region ParseXml

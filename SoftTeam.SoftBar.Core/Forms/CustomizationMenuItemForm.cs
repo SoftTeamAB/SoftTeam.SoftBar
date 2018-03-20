@@ -1,6 +1,7 @@
 ﻿using System;
 
 using SoftTeam.SoftBar.Core.Misc;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -8,12 +9,12 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         private MenuItemType _type = MenuItemType.None;
 
-        private SoftBarMenu _menu = null;
-        private SoftBarHeaderItem _headerItem = null;
-        private SoftBarSubMenu _subMenu = null;
-        private SoftBarMenuItem _menuItem = null;
+        private XmlMenu _menu = null;
+        private XmlHeaderItem _headerItem = null;
+        private XmlSubMenu _subMenu = null;
+        private XmlMenuItem _menuItem = null;
 
-        public CustomizationMenuItemForm(SoftBarMenu menu)
+        public CustomizationMenuItemForm(XmlMenu menu)
         {
             InitializeComponent();
 
@@ -28,7 +29,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editMenu.LoadValues();
         }
 
-        public CustomizationMenuItemForm(SoftBarHeaderItem headerItem)
+        public CustomizationMenuItemForm(XmlHeaderItem headerItem)
         {
             InitializeComponent();
 
@@ -42,7 +43,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editHeaderItem.LoadValues();
         }
 
-        public CustomizationMenuItemForm(SoftBarSubMenu subMenu)
+        public CustomizationMenuItemForm(XmlSubMenu subMenu)
         {
             InitializeComponent();
 
@@ -57,7 +58,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editSubMenu.LoadValues();
         }
 
-        public CustomizationMenuItemForm(SoftBarMenuItem menuItem)
+        public CustomizationMenuItemForm(XmlMenuItem menuItem)
         {
             InitializeComponent();
 

@@ -10,7 +10,6 @@ namespace SoftTeam.SoftBar.Core.Xml
         private string _documentPath = string.Empty;
         private string _parameters = string.Empty;
         private string _iconPath = string.Empty;
-        private bool _beginGroup = false;
         #endregion
 
         #region Constructor
@@ -23,7 +22,6 @@ namespace SoftTeam.SoftBar.Core.Xml
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
-        public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
         #endregion
 

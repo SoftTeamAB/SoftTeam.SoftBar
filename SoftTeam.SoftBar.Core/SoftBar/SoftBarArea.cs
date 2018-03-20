@@ -25,36 +25,29 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private AreaType _type = AreaType.System;
         private List<SoftBarMenu> _menus = null;
         private int _left = 0;
-        private MainAppBarForm _form = null;
-        private SettingsManager _manager = null;
-        private string _path = "";
+        private SoftBarManager _manager = null;
         #endregion
 
         #region Properties
         public List<SoftBarMenu> Menus { get => _menus; set => _menus = value; }
-        public MainAppBarForm Form { get => _form; set => _form = value; }
+        //public MainAppBarForm Form { get => _form; set => _form = value; }
         public int Width { get => _left + _menus.Sum(m => m.Width + Constants.SEPARATOR_WIDTH); }
         public int Left { get => _left; set => _left = value; }
         public AreaType Type { get => _type; set => _type = value; }
         #endregion
 
         #region Constructor
-        public SoftBarArea(MainAppBarForm form, AreaType type, string path, int left=0)
+        public SoftBarArea(SoftBarManager manager, AreaType type, int left=0)
         {
-            _form = form;
+            _manager = manager;
             _type = type;
-            _path = path;
             _left = left;
             _menus = new List<SoftBarMenu>();
-            _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
-
-            Reload();
         }
         #endregion
 
         #region Misc functions
-
-        private void Reload(bool hardReload = false)
+        public void Load(bool hardReload = false)
         {            
             foreach (var menu in Menus)
                 menu.Clear();
@@ -63,29 +56,22 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             
             if (hardReload)
             {
-                AppBarFunctions.SetAppBar(_form, AppBarEdge.None);
+                AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.None);
                 Application.DoEvents();
-                AppBarFunctions.SetAppBar(_form, AppBarEdge.Top);
+                AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.Top);
             }
-
-            // Load settings
-            _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
 
 
             switch (_type)
             {
                 case AreaType.System:
                     // Create system area builder
-                    var systemMenuBuilder = new SoftBarSystemMenuBuilder(_form, this, _manager);
+                    var systemMenuBuilder = new SoftBarSystemMenuBuilder(_manager);
                     systemMenuBuilder.Build();
                     break;
                 case AreaType.User:
-                    // Create xml loader and load xml
-                    XmlLoader loader = new XmlLoader(_path);
-                    XmlArea area = loader.Load();
-
                     // Create user area builder
-                    var userMenuBuilder = new SoftBarUserMenuBuilder(_form, this, area);
+                    var userMenuBuilder = new SoftBarUserMenuBuilder(_manager);
                     userMenuBuilder.Build();
                     break;
             }
@@ -95,7 +81,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Events
         public void Reload_ItemClick(object sender, ItemClickEventArgs e)
         {
-            Reload(true);
+            Load(true);
         }
 
         public void Button_Click(object sender, EventArgs e)
@@ -106,7 +92,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void ExitItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _form.Close();
+            _manager.Form.Close();
         }
 
         public void SettingsItem_ItemClick(object sender, ItemClickEventArgs e)
@@ -119,7 +105,21 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 if (result == DialogResult.Cancel)
                     return;
 
-                Reload();
+                Load();
+            }
+        }
+
+        public void CustomizeItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            using (CustomizationForm form = new CustomizationForm(_manager))
+            {
+                _menus[Constants.SYSTEM_MENU].Item.HidePopup();
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return;
+
+                Load();
             }
         }
 
