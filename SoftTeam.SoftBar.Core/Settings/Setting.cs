@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Serialization;
-
-namespace SoftTeam.SoftBar.Core.Settings
+﻿namespace SoftTeam.SoftBar.Core.Settings
 {
     /// <summary>
     /// Class that handles a Key/Value pair
