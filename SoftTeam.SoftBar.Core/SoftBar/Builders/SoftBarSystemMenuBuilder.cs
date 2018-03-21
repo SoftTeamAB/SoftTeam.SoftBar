@@ -88,7 +88,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
 
             // My directories
-            bool firstItem = true;
             foreach (var directory in _settingsManager.Settings.MyDirectories)
             {
                 SoftBarMenuItem myDirectoryItem = new SoftBarMenuItem(_form, directory.Name, true);
@@ -97,11 +96,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 myDirectoryItem.Item.Tag = directory;
                 myDirectoryItem.Item.ItemClick += _softBarArea.MyDirectory_ItemClick;
                 directoriesMenu.Item.AddItem(myDirectoryItem.Item);
-                if (firstItem)
-                {
+                if (directory.BeginGroup)
                     myDirectoryItem.Item.Links[0].BeginGroup = true;
-                    firstItem = false;
-                }
             }
 
             // Add all drives

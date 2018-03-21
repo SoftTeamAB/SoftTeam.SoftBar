@@ -46,6 +46,13 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             _systemArea.Load();
             _userArea = new SoftBarArea(this, AreaType.User, _systemArea.Width);
             _userArea.Load();
+
+            _systemArea.OnAreaResized += _systemArea_OnAreaResized;
+        }
+
+        private void _systemArea_OnAreaResized(object sender, System.EventArgs e)
+        {
+            _userArea.Resize();
         }
         #endregion
     }

@@ -19,7 +19,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         {
             _form = manager.Form;
             _area = manager.UserAreaXml;
-            _softBarArea = manager.UserArea;
+            _softBarArea = manager.SystemArea;
         }
         #endregion
 

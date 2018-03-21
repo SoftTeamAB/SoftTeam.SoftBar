@@ -27,6 +27,15 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private SoftBarManager _manager = null;
         #endregion
 
+        #region Events
+        public event EventHandler OnAreaResized;
+
+        private void onAreaResized()
+        {
+            OnAreaResized?.Invoke(this, new EventArgs());
+        }
+        #endregion
+
         #region Properties
         public List<SoftBarMenu> Menus { get => _menus; set => _menus = value; }
         //public MainAppBarForm Form { get => _form; set => _form = value; }
@@ -46,6 +55,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Misc functions
+        public void Resize()
+        {
+            // The system area might have been resized, reload the user area
+            Load();
+        }
+
         public void Load(bool hardReload = false)
         {
             foreach (var menu in Menus)
@@ -59,7 +74,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 Application.DoEvents();
                 AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.Top);
             }
-
 
             switch (_type)
             {
@@ -104,7 +118,16 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 if (result == DialogResult.Cancel)
                     return;
 
+                // Reload the settings
+                _manager.SettingsManager.Load();
+
+                // Reload the menus
                 Load();
+
+                Application.DoEvents();
+
+                // Make sure the areaResized event is called
+                onAreaResized();
             }
         }
 
