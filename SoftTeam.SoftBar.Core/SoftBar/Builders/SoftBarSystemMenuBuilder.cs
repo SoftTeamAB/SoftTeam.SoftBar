@@ -35,11 +35,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 BuildDirectoriesMenu();
             if (_settingsManager.Settings.GetBooleanSetting(Constants.General_ToolsMenuVisible))
                 BuildToolsMenu();
-
-            if (_settingsManager.Settings.GetIntegerSetting(Constants.General_Theme)==0)
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Dark Style";
-            else
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Light Style";
         }
 
         private void BuildSystemMenu()

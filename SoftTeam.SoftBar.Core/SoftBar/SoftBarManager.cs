@@ -32,8 +32,13 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             _form = form;
             _path = path;
 
-            // Load settings
+            // Load settings and set theme
             _settingsManager = new SettingsManager(HelperFunctions.GetSettingsPath());
+
+            if (_settingsManager.Settings.GetIntegerSetting(Constants.General_Theme) == 0)
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Dark Style";
+            else
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Light Style";
 
             // Load user area XML
             XmlLoader loader = new XmlLoader(_path);
