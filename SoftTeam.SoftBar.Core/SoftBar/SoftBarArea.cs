@@ -2,8 +2,8 @@
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
-using SoftTeam.SoftBar.Core.Xml;
 using SoftTeam.SoftBar.Core.Settings;
+using SoftTeam.SoftBar.Core.SoftBar.Builders;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,7 +11,6 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using SoftTeam.SoftBar.Core.SoftBar.Builders;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
@@ -37,7 +36,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Constructor
-        public SoftBarArea(SoftBarManager manager, AreaType type, int left=0)
+        public SoftBarArea(SoftBarManager manager, AreaType type, int left = 0)
         {
             _manager = manager;
             _type = type;
@@ -48,12 +47,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         #region Misc functions
         public void Load(bool hardReload = false)
-        {            
+        {
             foreach (var menu in Menus)
                 menu.Clear();
 
             Menus.Clear();
-            
+
             if (hardReload)
             {
                 AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.None);
@@ -119,7 +118,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 if (result == DialogResult.Cancel)
                     return;
 
-                Load();
+                _manager.UserArea.Load();
             }
         }
 

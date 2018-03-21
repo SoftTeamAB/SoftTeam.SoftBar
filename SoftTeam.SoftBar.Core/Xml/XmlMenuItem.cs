@@ -9,7 +9,6 @@ namespace SoftTeam.SoftBar.Core.Xml
         private string _applicationPath = string.Empty;
         private string _documentPath = string.Empty;
         private string _parameters = string.Empty;
-        private string _iconPath = string.Empty;
         #endregion
 
         #region Constructor
@@ -21,7 +20,6 @@ namespace SoftTeam.SoftBar.Core.Xml
         #region Properties
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
-        public string IconPath { get => _iconPath; set => _iconPath = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
         #endregion
 

@@ -247,5 +247,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             _manager.Settings.MyTools.RemoveAt(index);
         }
         #endregion
+
+        private void comboBoxEditTheme_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (comboBoxEditTheme.SelectedIndex == 0)
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Dark Style";
+            else
+                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Light Style";
+        }
     }
 }

@@ -114,10 +114,22 @@ namespace SoftTeam.SoftBar.Core.Controls
             labelControlType.Text = HelperFunctions.GetTypeName(_type);
             pictureBoxIcon.BackColor = HelperFunctions.GetTypeColor(_type);
             labelControlName.Text = _item.Name;
+
             if (_item.BeginGroup)
                 pictureBoxBeginGroup.BringToFront();
             else
                 pictureBoxNoBeginGroup.BringToFront();
+
+            if (_item is XmlMenuItem)
+            {
+                var menuItem = (XmlMenuItem)_item;
+                if (!string.IsNullOrEmpty(menuItem.IconPath))
+                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(menuItem.IconPath);
+                else if (!string.IsNullOrEmpty(menuItem.ApplicationPath))
+                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(menuItem.ApplicationPath);
+            }
+            else
+                pictureBoxIcon.Image = HelperFunctions.ExtractIcon(_item.IconPath);
         }
         #endregion
     }

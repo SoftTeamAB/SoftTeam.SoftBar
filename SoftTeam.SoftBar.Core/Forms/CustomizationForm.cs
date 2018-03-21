@@ -12,7 +12,6 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields
-//        private string _path = "";
         private string _backupDirectory = @"C:\ProgramData\SoftTeam\SoftBar";
         private int _height = Constants.TOP_MARGIN;
         private int _level = 0;
@@ -31,6 +30,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             _area = _manager.UserAreaXml;
 
             barStaticItemPath.Caption = manager.Path;
+            barStaticItemBackupPath.Caption = _backupDirectory;
 
             RefreshMenuItems();
         }
@@ -119,12 +119,16 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Event handlers (bar & menu)
         private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
         private void barStaticItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Save();
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void barButtonItemAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -215,8 +219,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void Save()
         {
             // Save
-
-            this.Close();
         }
 
         private XmlMenuItemBase GetSelectedItem()

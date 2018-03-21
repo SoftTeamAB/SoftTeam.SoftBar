@@ -66,6 +66,9 @@
             this.simpleButtonEditDirectory = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonRemove = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageGeneral = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.labelControlMenus = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlTheme = new DevExpress.XtraEditors.LabelControl();
+            this.comboBoxEditTheme = new DevExpress.XtraEditors.ComboBoxEdit();
             this.checkEditShowToolsMenu = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditShowDirectoriesMenu = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageMyTools = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -76,9 +79,6 @@
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.comboBoxEditTheme = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControlTheme = new DevExpress.XtraEditors.LabelControl();
-            this.labelControlMenus = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -95,11 +95,11 @@
             this.tabNavigationPageMyDirectories.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).BeginInit();
             this.tabNavigationPageGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).BeginInit();
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -345,6 +345,40 @@
             this.tabNavigationPageGeneral.Name = "tabNavigationPageGeneral";
             this.tabNavigationPageGeneral.Size = new System.Drawing.Size(589, 327);
             // 
+            // labelControlMenus
+            // 
+            this.labelControlMenus.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlMenus.Appearance.Options.UseFont = true;
+            this.labelControlMenus.Location = new System.Drawing.Point(23, 92);
+            this.labelControlMenus.Name = "labelControlMenus";
+            this.labelControlMenus.Size = new System.Drawing.Size(37, 13);
+            this.labelControlMenus.TabIndex = 4;
+            this.labelControlMenus.Text = "Menus";
+            // 
+            // labelControlTheme
+            // 
+            this.labelControlTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlTheme.Appearance.Options.UseFont = true;
+            this.labelControlTheme.Location = new System.Drawing.Point(23, 22);
+            this.labelControlTheme.Name = "labelControlTheme";
+            this.labelControlTheme.Size = new System.Drawing.Size(39, 13);
+            this.labelControlTheme.TabIndex = 3;
+            this.labelControlTheme.Text = "Theme";
+            // 
+            // comboBoxEditTheme
+            // 
+            this.comboBoxEditTheme.EditValue = "Dark";
+            this.comboBoxEditTheme.Location = new System.Drawing.Point(23, 41);
+            this.comboBoxEditTheme.Name = "comboBoxEditTheme";
+            this.comboBoxEditTheme.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditTheme.Properties.Items.AddRange(new object[] {
+            "Dark",
+            "Light"});
+            this.comboBoxEditTheme.Size = new System.Drawing.Size(125, 20);
+            this.comboBoxEditTheme.TabIndex = 2;
+            this.comboBoxEditTheme.SelectedIndexChanged += new System.EventHandler(this.comboBoxEditTheme_SelectedIndexChanged);
+            // 
             // checkEditShowToolsMenu
             // 
             this.checkEditShowToolsMenu.Location = new System.Drawing.Point(23, 136);
@@ -469,39 +503,6 @@
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
-            // comboBoxEditTheme
-            // 
-            this.comboBoxEditTheme.EditValue = "Dark";
-            this.comboBoxEditTheme.Location = new System.Drawing.Point(23, 41);
-            this.comboBoxEditTheme.Name = "comboBoxEditTheme";
-            this.comboBoxEditTheme.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditTheme.Properties.Items.AddRange(new object[] {
-            "Dark",
-            "Light"});
-            this.comboBoxEditTheme.Size = new System.Drawing.Size(125, 20);
-            this.comboBoxEditTheme.TabIndex = 2;
-            // 
-            // labelControlTheme
-            // 
-            this.labelControlTheme.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControlTheme.Appearance.Options.UseFont = true;
-            this.labelControlTheme.Location = new System.Drawing.Point(23, 22);
-            this.labelControlTheme.Name = "labelControlTheme";
-            this.labelControlTheme.Size = new System.Drawing.Size(39, 13);
-            this.labelControlTheme.TabIndex = 3;
-            this.labelControlTheme.Text = "Theme";
-            // 
-            // labelControlMenus
-            // 
-            this.labelControlMenus.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControlMenus.Appearance.Options.UseFont = true;
-            this.labelControlMenus.Location = new System.Drawing.Point(23, 92);
-            this.labelControlMenus.Name = "labelControlMenus";
-            this.labelControlMenus.Size = new System.Drawing.Size(37, 13);
-            this.labelControlMenus.TabIndex = 4;
-            this.labelControlMenus.Text = "Menus";
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -536,12 +537,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).EndInit();
             this.tabNavigationPageGeneral.ResumeLayout(false);
             this.tabNavigationPageGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).EndInit();
             this.tabNavigationPageMyTools.ResumeLayout(false);
             this.tabNavigationPageMyTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -13,7 +13,7 @@ namespace SoftTeam.SoftBar
         static void Main()
         {
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Dark Style";
-
+            
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainAppBarForm());
