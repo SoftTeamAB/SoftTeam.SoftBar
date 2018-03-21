@@ -251,10 +251,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void comboBoxEditTheme_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            if (comboBoxEditTheme.SelectedIndex == 0)
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Dark Style";
-            else
-                DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = "DevExpress Light Style";
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = HelperFunctions.GetThemeName(comboBoxEditTheme.SelectedIndex);
         }
     }
 }

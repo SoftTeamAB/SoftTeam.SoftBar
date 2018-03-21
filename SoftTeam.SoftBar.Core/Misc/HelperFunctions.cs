@@ -113,5 +113,23 @@ namespace SoftTeam.SoftBar.Core.Misc
             return toolTip;
         }
 
+        public static string GetThemeName(int index)
+        {
+            switch(index)
+            {
+                case 0:
+                    return "DevExpress Dark Style";
+                case 1:
+                    return "DevExpress Light Style";
+                case 2:
+                    return "Office 2007 Green";
+                case 3:
+                    return "Office 2007 Blue";
+                case 4:
+                    return "Office 2007 Pink";
+                default:
+                    return "DevExpress Dark Style";
+            }
+        }
     }
 }
