@@ -19,7 +19,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         {
             _form = manager.Form;
             _area = manager.UserAreaXml;
-            _softBarArea = manager.SystemArea;
+            _softBarArea = manager.UserArea;
         }
         #endregion
 
@@ -33,7 +33,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 // Position the menu
                 barMenu.Left = _softBarArea.Width;
-                barMenu.Width = menu.Name.Length * 10;
+                //barMenu.Width = menu.Name.Length * 10;
 
                 // Set up the menu
                 barMenu.Setup();

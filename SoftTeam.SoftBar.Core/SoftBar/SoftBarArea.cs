@@ -32,7 +32,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         private void onAreaResized()
         {
-            OnAreaResized?.Invoke(this, new EventArgs());
+            OnAreaResized?.Invoke(this, EventArgs.Empty);
         }
         #endregion
 

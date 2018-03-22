@@ -68,10 +68,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             button.Text = name;
             button.Visible = true;
             button.Location = new Point(_left, 0);
-            button.Width = name.Length * 10;
+            button.Width = _width;
             button.Height = 32;
             button.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             button.ImageOptions.Image = Image;
+            button.ImageOptions.ImageToTextAlignment = ImageAlignToText.LeftCenter;
+            button.ImageOptions.ImageToTextIndent = 7;
             // Add the button to the form
             Form.Controls.Add(button);
 

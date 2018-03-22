@@ -3,6 +3,7 @@ using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 {
@@ -40,7 +41,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         private void BuildSystemMenu()
         {
             // Create the actual system menu
-            var systemMenu = new SoftBarMenu(_form, "SystemMenu", 0, true);
+            var systemMenu = new SoftBarMenu(_form, "SoftBar", 0, true);
+            systemMenu.Width = 120;
             _softBarArea.Menus.Add(systemMenu);
             systemMenu.Setup();
             systemMenu.Button.Click += _softBarArea.Button_Click;

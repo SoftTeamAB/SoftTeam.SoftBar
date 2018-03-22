@@ -3,6 +3,7 @@ using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
+using System.Drawing;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
@@ -42,17 +43,52 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             XmlLoader loader = new XmlLoader(_path);
             _userAreaXml = loader.Load();
 
+            // Setup system and user area
             _systemArea = new SoftBarArea(this, AreaType.System);
             _systemArea.Load();
             _userArea = new SoftBarArea(this, AreaType.User, _systemArea.Width);
             _userArea.Load();
 
+            // Resize event
             _systemArea.OnAreaResized += _systemArea_OnAreaResized;
+
+            // Paint event for separators
+            _form.Paint += _form_Paint;
         }
 
         private void _systemArea_OnAreaResized(object sender, System.EventArgs e)
         {
             _userArea.Resize();
+        }
+        #endregion
+
+        #region Separators
+        private void _form_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
+        {
+            // Draw separator after system menu
+            var left = _systemArea.Menus[0].Width;
+            DrawSeparator(e.Graphics, left);
+
+            // Draw another separator before user area
+            left = _systemArea.Width;
+            DrawSeparator(e.Graphics, left);
+        }
+
+        private void DrawSeparator(Graphics g, int left)
+        {
+            // Get the form color
+            var formColor = _form.BackColor;
+            // Get a lighter and a darker color
+            var darkColor = HelperFunctions.ChangeColorBrightness(formColor, -0.3f);
+            var lightColor = HelperFunctions.ChangeColorBrightness(formColor, -0.1f);
+
+            // Create the pens
+            Pen darkPen = new Pen(darkColor);
+            Pen lightPen = new Pen(lightColor);
+
+            // Draw the separator
+            g.DrawLine(darkPen, left, 2, left, _form.Height - 4);
+            g.DrawLine(lightPen, left + 1, 2, left + 1, _form.Height - 4);
         }
         #endregion
     }
