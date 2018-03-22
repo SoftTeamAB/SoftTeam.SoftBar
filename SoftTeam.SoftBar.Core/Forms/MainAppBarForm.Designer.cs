@@ -34,11 +34,11 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barLargeButtonItem1 = new DevExpress.XtraBars.BarLargeButtonItem();
             this.barLinkContainerItem1 = new DevExpress.XtraBars.BarLinkContainerItem();
-            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.xtraOpenFileDialogSoftBar = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).BeginInit();
             this.SuspendLayout();
@@ -51,10 +51,10 @@
             this.barManagerSoftBar.DockControls.Add(this.barDockControlRight);
             this.barManagerSoftBar.Form = this;
             this.barManagerSoftBar.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barStaticItem1,
+            this.barButtonItem1,
             this.barLargeButtonItem1,
             this.barLinkContainerItem1,
-            this.barStaticItem2,
+            this.barButtonItem2,
             this.barButtonItem1});
             this.barManagerSoftBar.MaxItemId = 5;
             this.barManagerSoftBar.ShowScreenTipsInMenus = true;
@@ -91,11 +91,11 @@
             this.barDockControlRight.Manager = this.barManagerSoftBar;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 32);
             // 
-            // barStaticItem1
+            // barButtonItem1
             // 
-            this.barStaticItem1.Caption = "barStaticItem1";
-            this.barStaticItem1.Id = 0;
-            this.barStaticItem1.Name = "barStaticItem1";
+            this.barButtonItem1.Caption = "barButtonItem1";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barLargeButtonItem1
             // 
@@ -108,17 +108,17 @@
             this.barLinkContainerItem1.Id = 2;
             this.barLinkContainerItem1.Name = "barLinkContainerItem1";
             // 
-            // barStaticItem2
+            // barButtonItem2
             // 
-            this.barStaticItem2.Caption = "barStaticItem2";
-            this.barStaticItem2.Id = 3;
-            this.barStaticItem2.Name = "barStaticItem2";
+            this.barButtonItem2.Caption = "barButtonItem2";
+            this.barButtonItem2.Id = 3;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
-            // barButtonItem1
+            // barButtonItem3
             // 
-            this.barButtonItem1.Caption = "barButtonItem1";
-            this.barButtonItem1.Id = 4;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem3.Caption = "barButtonItem3";
+            this.barButtonItem3.Id = 4;
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // xtraOpenFileDialogSoftBar
             // 
@@ -149,11 +149,11 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         public DevExpress.XtraBars.BarManager barManagerSoftBar;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarLargeButtonItem barLargeButtonItem1;
         private DevExpress.XtraBars.BarLinkContainerItem barLinkContainerItem1;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogSoftBar;
     }
 }

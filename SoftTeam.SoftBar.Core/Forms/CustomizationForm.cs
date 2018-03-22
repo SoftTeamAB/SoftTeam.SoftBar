@@ -29,8 +29,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _manager = manager;
             _area = _manager.UserAreaXml;
 
-            barStaticItemPath.Caption = manager.Path;
-            barStaticItemBackupPath.Caption = _backupDirectory;
+            barButtonItemPath.Caption = manager.Path;
+            barButtonItemBackupPath.Caption = _backupDirectory;
 
             RefreshMenuItems();
         }
@@ -117,13 +117,13 @@ namespace SoftTeam.SoftBar.Core.Forms
         #endregion
 
         #region Event handlers (bar & menu)
-        private void barStaticItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
 
-        private void barStaticItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Save();
 
@@ -151,22 +151,22 @@ namespace SoftTeam.SoftBar.Core.Forms
             AddMenuItem();
         }
 
-        private void barStaticItemAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemMenuAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddMenu();
         }
 
-        private void barStaticItemAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemMenuAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddSubMenu();
         }
 
-        private void barStaticItemHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemMenuAddHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddHeaderItem();
         }
 
-        private void barStaticItemMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemMenuAddMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddMenuItem();
         }
@@ -231,22 +231,22 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
 
         #region Bottom bar
-        private void barStaticItemPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenSoftBarXml();
         }
 
-        private void barStaticItemPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenSoftBarXml();
         }
 
-        private void barStaticItemBackupPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemBackupPathHeader_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenBackupDirectory();
         }
 
-        private void barStaticItemBackupPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void barButtonItemBackupPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             OpenBackupDirectory();
         }

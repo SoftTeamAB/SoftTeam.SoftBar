@@ -70,20 +70,20 @@
             this.barButtonItemAddHeaderItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddMenuItem = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItemFile = new DevExpress.XtraBars.BarSubItem();
-            this.barStaticItemExitAndSave = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemFileExitWithoutSave = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemExitAndSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemFileExitWithoutSave = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItemMenuAddMenu = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItemMenuAddSubMenu = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItemMenuHeaderItem = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItemMenuAddMenuItem = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemMenuAddMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMenuAddSubMenu = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMenuHeaderItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMenuAddMenuItem = new DevExpress.XtraBars.BarButtonItem();
             this.barBottom = new DevExpress.XtraBars.Bar();
-            this.barStaticItemPathHeader = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemPath = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemBackupPathHeader = new DevExpress.XtraBars.BarStaticItem();
-            this.barStaticItemBackupPath = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemPathHeader = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPath = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemBackupPathHeader = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemBackupPath = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -111,12 +111,12 @@
             this.barManagerCustomization.DockControls.Add(this.barDockControlRight);
             this.barManagerCustomization.Form = this;
             this.barManagerCustomization.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barStaticItem1,
+            this.barButtonItem1,
             this.barSubItemFile,
-            this.barStaticItemFileExitWithoutSave,
+            this.barButtonItemFileExitWithoutSave,
             this.barButtonItemAddMenu,
-            this.barStaticItemPathHeader,
-            this.barStaticItemPath,
+            this.barButtonItemPathHeader,
+            this.barButtonItemPath,
             this.barButtonItemAddMenuItem,
             this.barButtonItemAddHeaderItem,
             this.barButtonItemAddSubMenu,
@@ -125,9 +125,9 @@
             this.barButtonItemMenuAddSubMenu,
             this.barButtonItemMenuAddMenuItem,
             this.barButtonItemMenuHeaderItem,
-            this.barStaticItemExitAndSave,
-            this.barStaticItemBackupPathHeader,
-            this.barStaticItemBackupPath});
+            this.barButtonItemExitAndSave,
+            this.barButtonItemBackupPathHeader,
+            this.barButtonItemBackupPath});
             this.barManagerCustomization.MainMenu = this.bar2;
             this.barManagerCustomization.MaxItemId = 17;
             this.barManagerCustomization.ShowScreenTipsInMenus = true;
@@ -222,7 +222,7 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
             this.bar2.OptionsBar.AllowQuickCustomization = false;
@@ -230,42 +230,42 @@
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
             // 
-            // barStaticItem1
+            // barButtonItem1
             // 
-            this.barStaticItem1.Id = 0;
-            this.barStaticItem1.Name = "barStaticItem1";
+            this.barButtonItem1.Id = 0;
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // barSubItemFile
             // 
             this.barSubItemFile.Caption = "File";
             this.barSubItemFile.Id = 1;
             this.barSubItemFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemExitAndSave),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemFileExitWithoutSave)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemExitAndSave),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemFileExitWithoutSave)});
             this.barSubItemFile.Name = "barSubItemFile";
             // 
-            // barStaticItemExitAndSave
+            // barButtonItemExitAndSave
             // 
-            this.barStaticItemExitAndSave.Caption = "Exit (and save)";
-            this.barStaticItemExitAndSave.Id = 14;
-            this.barStaticItemExitAndSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemExitAndSave.ImageOptions.Image")));
-            this.barStaticItemExitAndSave.Name = "barStaticItemExitAndSave";
+            this.barButtonItemExitAndSave.Caption = "Exit (and save)";
+            this.barButtonItemExitAndSave.Id = 14;
+            this.barButtonItemExitAndSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemExitAndSave.ImageOptions.Image")));
+            this.barButtonItemExitAndSave.Name = "barButtonItemExitAndSave";
             toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
             toolTipTitleItem5.Text = "Exit (and save)";
             toolTipItem5.LeftIndent = 6;
             toolTipItem5.Text = "Exits the customization form and saves the changes you have made.";
             superToolTip5.Items.Add(toolTipTitleItem5);
             superToolTip5.Items.Add(toolTipItem5);
-            this.barStaticItemExitAndSave.SuperTip = superToolTip5;
-            this.barStaticItemExitAndSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemExitAndSave_ItemClick);
+            this.barButtonItemExitAndSave.SuperTip = superToolTip5;
+            this.barButtonItemExitAndSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExitAndSave_ItemClick);
             // 
-            // barStaticItemFileExitWithoutSave
+            // barButtonItemFileExitWithoutSave
             // 
-            this.barStaticItemFileExitWithoutSave.Caption = "Exit (without save)";
-            this.barStaticItemFileExitWithoutSave.Id = 2;
-            this.barStaticItemFileExitWithoutSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemFileExitWithoutSave.ImageOptions.Image")));
-            this.barStaticItemFileExitWithoutSave.Name = "barStaticItemFileExitWithoutSave";
-            this.barStaticItemFileExitWithoutSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItemFileExitWithoutSave.Caption = "Exit (without save)";
+            this.barButtonItemFileExitWithoutSave.Id = 2;
+            this.barButtonItemFileExitWithoutSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemFileExitWithoutSave.ImageOptions.Image")));
+            this.barButtonItemFileExitWithoutSave.Name = "barButtonItemFileExitWithoutSave";
+            this.barButtonItemFileExitWithoutSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
             toolTipTitleItem6.Text = "Exit (without save)";
             toolTipItem6.LeftIndent = 6;
@@ -276,8 +276,8 @@
             superToolTip6.Items.Add(toolTipItem6);
             superToolTip6.Items.Add(toolTipSeparatorItem1);
             superToolTip6.Items.Add(toolTipTitleItem7);
-            this.barStaticItemFileExitWithoutSave.SuperTip = superToolTip6;
-            this.barStaticItemFileExitWithoutSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemFileExitWithoutSave_ItemClick);
+            this.barButtonItemFileExitWithoutSave.SuperTip = superToolTip6;
+            this.barButtonItemFileExitWithoutSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFileExitWithoutSave_ItemClick);
             // 
             // barSubItem1
             // 
@@ -294,7 +294,7 @@
             // 
             this.barButtonItemMenuAddMenu.Caption = "Add menu";
             this.barButtonItemMenuAddMenu.Id = 10;
-            this.barButtonItemMenuAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemAddMenu.ImageOptions.Image")));
+            this.barButtonItemMenuAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddMenu.Name = "barButtonItemMenuAddMenu";
             toolTipTitleItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
             toolTipTitleItem8.Text = "Add menu";
@@ -304,13 +304,13 @@
             superToolTip7.Items.Add(toolTipTitleItem8);
             superToolTip7.Items.Add(toolTipItem7);
             this.barButtonItemMenuAddMenu.SuperTip = superToolTip7;
-            this.barButtonItemMenuAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemAddMenu_ItemClick);
+            this.barButtonItemMenuAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenu_ItemClick);
             // 
             // barButtonItemMenuAddSubMenu
             // 
             this.barButtonItemMenuAddSubMenu.Caption = "Add sub menu";
             this.barButtonItemMenuAddSubMenu.Id = 11;
-            this.barButtonItemMenuAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemAddSubMenu.ImageOptions.Image")));
+            this.barButtonItemMenuAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddSubMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddSubMenu.Name = "barButtonItemMenuAddSubMenu";
             toolTipTitleItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
             toolTipTitleItem9.Text = "Add sub menu";
@@ -320,13 +320,13 @@
             superToolTip8.Items.Add(toolTipTitleItem9);
             superToolTip8.Items.Add(toolTipItem8);
             this.barButtonItemMenuAddSubMenu.SuperTip = superToolTip8;
-            this.barButtonItemMenuAddSubMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemAddSubMenu_ItemClick);
+            this.barButtonItemMenuAddSubMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddSubMenu_ItemClick);
             // 
             // barButtonItemMenuHeaderItem
             // 
             this.barButtonItemMenuHeaderItem.Caption = "Add header item";
             this.barButtonItemMenuHeaderItem.Id = 13;
-            this.barButtonItemMenuHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemHeaderItem.ImageOptions.Image")));
+            this.barButtonItemMenuHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemHeaderItem.ImageOptions.Image")));
             this.barButtonItemMenuHeaderItem.Name = "barButtonItemMenuHeaderItem";
             superToolTip9.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
@@ -337,13 +337,13 @@
             superToolTip9.Items.Add(toolTipTitleItem10);
             superToolTip9.Items.Add(toolTipItem9);
             this.barButtonItemMenuHeaderItem.SuperTip = superToolTip9;
-            this.barButtonItemMenuHeaderItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemHeaderItem_ItemClick);
+            this.barButtonItemMenuHeaderItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddHeaderItem_ItemClick);
             // 
             // barButtonItemMenuAddMenuItem
             // 
             this.barButtonItemMenuAddMenuItem.Caption = "Add menu item";
             this.barButtonItemMenuAddMenuItem.Id = 12;
-            this.barButtonItemMenuAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barStaticItemMenuItem.ImageOptions.Image")));
+            this.barButtonItemMenuAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuItem.ImageOptions.Image")));
             this.barButtonItemMenuAddMenuItem.Name = "barButtonItemMenuAddMenuItem";
             toolTipTitleItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
             toolTipTitleItem11.Text = "Add menu item";
@@ -352,7 +352,7 @@
             superToolTip10.Items.Add(toolTipTitleItem11);
             superToolTip10.Items.Add(toolTipItem10);
             this.barButtonItemMenuAddMenuItem.SuperTip = superToolTip10;
-            this.barButtonItemMenuAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemMenuItem_ItemClick);
+            this.barButtonItemMenuAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenuItem_ItemClick);
             // 
             // barBottom
             // 
@@ -362,46 +362,46 @@
             this.barBottom.DockRow = 0;
             this.barBottom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
             this.barBottom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemPathHeader),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemPath),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemBackupPathHeader),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItemBackupPath)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPathHeader),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPath),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPathHeader),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPath)});
             this.barBottom.OptionsBar.AllowQuickCustomization = false;
             this.barBottom.OptionsBar.DrawDragBorder = false;
             this.barBottom.OptionsBar.UseWholeRow = true;
             this.barBottom.Text = "Status bar";
             // 
-            // barStaticItemPathHeader
+            // barButtonItemPathHeader
             // 
-            this.barStaticItemPathHeader.Caption = "SoftBar.xml path : ";
-            this.barStaticItemPathHeader.Id = 4;
-            this.barStaticItemPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barStaticItemPathHeader.ItemAppearance.Normal.Options.UseFont = true;
-            this.barStaticItemPathHeader.Name = "barStaticItemPathHeader";
-            this.barStaticItemPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemPathHeader_ItemClick);
+            this.barButtonItemPathHeader.Caption = "SoftBar.xml path : ";
+            this.barButtonItemPathHeader.Id = 4;
+            this.barButtonItemPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItemPathHeader.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItemPathHeader.Name = "barButtonItemPathHeader";
+            this.barButtonItemPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPathHeader_ItemClick);
             // 
-            // barStaticItemPath
+            // barButtonItemPath
             // 
-            this.barStaticItemPath.Caption = "[path]";
-            this.barStaticItemPath.Id = 5;
-            this.barStaticItemPath.Name = "barStaticItemPath";
-            this.barStaticItemPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemPath_ItemClick);
+            this.barButtonItemPath.Caption = "[path]";
+            this.barButtonItemPath.Id = 5;
+            this.barButtonItemPath.Name = "barButtonItemPath";
+            this.barButtonItemPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPath_ItemClick);
             // 
-            // barStaticItemBackupPathHeader
+            // barButtonItemBackupPathHeader
             // 
-            this.barStaticItemBackupPathHeader.Caption = "Backup directory :";
-            this.barStaticItemBackupPathHeader.Id = 15;
-            this.barStaticItemBackupPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barStaticItemBackupPathHeader.ItemAppearance.Normal.Options.UseFont = true;
-            this.barStaticItemBackupPathHeader.Name = "barStaticItemBackupPathHeader";
-            this.barStaticItemBackupPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemBackupPathHeader_ItemClick);
+            this.barButtonItemBackupPathHeader.Caption = "Backup directory :";
+            this.barButtonItemBackupPathHeader.Id = 15;
+            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItemBackupPathHeader.Name = "barButtonItemBackupPathHeader";
+            this.barButtonItemBackupPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPathHeader_ItemClick);
             // 
-            // barStaticItemBackupPath
+            // barButtonItemBackupPath
             // 
-            this.barStaticItemBackupPath.Caption = "[backup path]";
-            this.barStaticItemBackupPath.Id = 16;
-            this.barStaticItemBackupPath.Name = "barStaticItemBackupPath";
-            this.barStaticItemBackupPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barStaticItemBackupPath_ItemClick);
+            this.barButtonItemBackupPath.Caption = "[backup path]";
+            this.barButtonItemBackupPath.Id = 16;
+            this.barButtonItemBackupPath.Name = "barButtonItemBackupPath";
+            this.barButtonItemBackupPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPath_ItemClick);
             // 
             // barDockControlTop
             // 
@@ -460,27 +460,27 @@
         private DevExpress.XtraBars.Bar bar1;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenu;
         private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarSubItem barSubItemFile;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemFileExitWithoutSave;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemFileExitWithoutSave;
         private DevExpress.XtraBars.Bar barBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemPathHeader;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPathHeader;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemPath;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddHeaderItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddSubMenu;
         private DevExpress.XtraBars.BarSubItem barSubItem1;
-        private DevExpress.XtraBars.BarStaticItem barButtonItemMenuAddMenu;
-        private DevExpress.XtraBars.BarStaticItem barButtonItemMenuAddSubMenu;
-        private DevExpress.XtraBars.BarStaticItem barButtonItemMenuAddMenuItem;
-        private DevExpress.XtraBars.BarStaticItem barButtonItemMenuHeaderItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddSubMenu;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddMenuItem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuHeaderItem;
         public DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControlMenu;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemExitAndSave;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemBackupPathHeader;
-        private DevExpress.XtraBars.BarStaticItem barStaticItemBackupPath;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemExitAndSave;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemBackupPathHeader;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemBackupPath;
     }
 }

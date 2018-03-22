@@ -98,16 +98,16 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                     SoftBarMenuItem softBarMenuItem = new SoftBarMenuItem(_form, xmlMenuItem);
 
                     // Create the menu item
-                    var barStaticItem = softBarMenuItem.Setup();
+                    var barButtonItem = softBarMenuItem.Setup();
 
                     // Add the menu item to the menu
                     if (barMenu is SoftBarMenu)
-                        ((SoftBarMenu)barMenu).Item.AddItem(barStaticItem);
+                        ((SoftBarMenu)barMenu).Item.AddItem(barButtonItem);
                     else
-                        ((SoftBarSubMenu)barMenu).Item.AddItem(barStaticItem);
+                        ((SoftBarSubMenu)barMenu).Item.AddItem(barButtonItem);
 
                     // Create a new group if beginGroup is true
-                    if (softBarMenuItem.BeginGroup) barStaticItem.Links[0].BeginGroup = true;
+                    if (softBarMenuItem.BeginGroup) barButtonItem.Links[0].BeginGroup = true;
                 }
             }
         }

@@ -15,7 +15,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Fields
         private int _width;
         private int _left;
-        private BarStaticItem _item = null;
+        private BarButtonItem _item = null;
         private CommandLineHelper _commandLine = null;
         #endregion
 
@@ -58,14 +58,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
 
-        public BarStaticItem Item { get => _item; set => _item = value; }
+        public BarButtonItem Item { get => _item; set => _item = value; }
         #endregion
 
         #region Setup
-        public BarStaticItem Setup()
+        public BarButtonItem Setup()
         {
             // Create the BarButtonIem
-            Item = new BarStaticItem();
+            Item = new BarButtonItem();
             Item.Manager = Form.barManagerSoftBar;
             Item.Caption = Name;
             
