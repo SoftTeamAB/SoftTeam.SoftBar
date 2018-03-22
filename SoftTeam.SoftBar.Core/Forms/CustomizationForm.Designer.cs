@@ -64,17 +64,16 @@
             DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
             this.xtraScrollableControlMenu = new DevExpress.XtraEditors.XtraScrollableControl();
             this.barManagerCustomization = new DevExpress.XtraBars.BarManager(this.components);
-            this.bar1 = new DevExpress.XtraBars.Bar();
+            this.barToolBar = new DevExpress.XtraBars.Bar();
             this.barButtonItemAddMenu = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddSubMenu = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddHeaderItem = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemAddMenuItem = new DevExpress.XtraBars.BarButtonItem();
-            this.bar2 = new DevExpress.XtraBars.Bar();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barMenuBar = new DevExpress.XtraBars.Bar();
             this.barSubItemFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemExitAndSave = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemFileExitWithoutSave = new DevExpress.XtraBars.BarButtonItem();
-            this.barSubItem1 = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItemAddMenu = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemMenuAddMenu = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMenuAddSubMenu = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMenuHeaderItem = new DevExpress.XtraBars.BarButtonItem();
@@ -102,8 +101,8 @@
             // barManagerCustomization
             // 
             this.barManagerCustomization.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
-            this.bar1,
-            this.bar2,
+            this.barToolBar,
+            this.barMenuBar,
             this.barBottom});
             this.barManagerCustomization.DockControls.Add(this.barDockControlTop);
             this.barManagerCustomization.DockControls.Add(this.barDockControlBottom);
@@ -111,7 +110,6 @@
             this.barManagerCustomization.DockControls.Add(this.barDockControlRight);
             this.barManagerCustomization.Form = this;
             this.barManagerCustomization.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.barButtonItem1,
             this.barSubItemFile,
             this.barButtonItemFileExitWithoutSave,
             this.barButtonItemAddMenu,
@@ -120,7 +118,7 @@
             this.barButtonItemAddMenuItem,
             this.barButtonItemAddHeaderItem,
             this.barButtonItemAddSubMenu,
-            this.barSubItem1,
+            this.barSubItemAddMenu,
             this.barButtonItemMenuAddMenu,
             this.barButtonItemMenuAddSubMenu,
             this.barButtonItemMenuAddMenuItem,
@@ -128,24 +126,24 @@
             this.barButtonItemExitAndSave,
             this.barButtonItemBackupPathHeader,
             this.barButtonItemBackupPath});
-            this.barManagerCustomization.MainMenu = this.bar2;
+            this.barManagerCustomization.MainMenu = this.barMenuBar;
             this.barManagerCustomization.MaxItemId = 17;
             this.barManagerCustomization.ShowScreenTipsInMenus = true;
             this.barManagerCustomization.StatusBar = this.barBottom;
             // 
-            // bar1
+            // barToolBar
             // 
-            this.bar1.BarName = "Tools";
-            this.bar1.DockCol = 0;
-            this.bar1.DockRow = 1;
-            this.bar1.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barToolBar.BarName = "Tools";
+            this.barToolBar.DockCol = 0;
+            this.barToolBar.DockRow = 1;
+            this.barToolBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barToolBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddSubMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddHeaderItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddMenuItem)});
-            this.bar1.OptionsBar.AllowQuickCustomization = false;
-            this.bar1.Text = "Tools";
+            this.barToolBar.OptionsBar.AllowQuickCustomization = false;
+            this.barToolBar.Text = "Tools";
             // 
             // barButtonItemAddMenu
             // 
@@ -215,25 +213,19 @@
             this.barButtonItemAddMenuItem.SuperTip = superToolTip4;
             this.barButtonItemAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddMenuItem_ItemClick);
             // 
-            // bar2
+            // barMenuBar
             // 
-            this.bar2.BarName = "Main menu";
-            this.bar2.DockCol = 0;
-            this.bar2.DockRow = 0;
-            this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
+            this.barMenuBar.BarName = "Main menu";
+            this.barMenuBar.DockCol = 0;
+            this.barMenuBar.DockRow = 0;
+            this.barMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
+            this.barMenuBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemFile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem1)});
-            this.bar2.OptionsBar.AllowQuickCustomization = false;
-            this.bar2.OptionsBar.MultiLine = true;
-            this.bar2.OptionsBar.UseWholeRow = true;
-            this.bar2.Text = "Main menu";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Id = 0;
-            this.barButtonItem1.Name = "barButtonItem1";
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemAddMenu)});
+            this.barMenuBar.OptionsBar.AllowQuickCustomization = false;
+            this.barMenuBar.OptionsBar.MultiLine = true;
+            this.barMenuBar.OptionsBar.UseWholeRow = true;
+            this.barMenuBar.Text = "Main menu";
             // 
             // barSubItemFile
             // 
@@ -279,22 +271,22 @@
             this.barButtonItemFileExitWithoutSave.SuperTip = superToolTip6;
             this.barButtonItemFileExitWithoutSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFileExitWithoutSave_ItemClick);
             // 
-            // barSubItem1
+            // barSubItemAddMenu
             // 
-            this.barSubItem1.Caption = "Add";
-            this.barSubItem1.Id = 9;
-            this.barSubItem1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            this.barSubItemAddMenu.Caption = "Add";
+            this.barSubItemAddMenu.Id = 9;
+            this.barSubItemAddMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuAddMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuAddSubMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuHeaderItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuAddMenuItem)});
-            this.barSubItem1.Name = "barSubItem1";
+            this.barSubItemAddMenu.Name = "barSubItemAddMenu";
             // 
             // barButtonItemMenuAddMenu
             // 
             this.barButtonItemMenuAddMenu.Caption = "Add menu";
             this.barButtonItemMenuAddMenu.Id = 10;
-            this.barButtonItemMenuAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddMenu.ImageOptions.Image")));
+            this.barButtonItemMenuAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddMenu.Name = "barButtonItemMenuAddMenu";
             toolTipTitleItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
             toolTipTitleItem8.Text = "Add menu";
@@ -310,7 +302,7 @@
             // 
             this.barButtonItemMenuAddSubMenu.Caption = "Add sub menu";
             this.barButtonItemMenuAddSubMenu.Id = 11;
-            this.barButtonItemMenuAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddSubMenu.ImageOptions.Image")));
+            this.barButtonItemMenuAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddSubMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddSubMenu.Name = "barButtonItemMenuAddSubMenu";
             toolTipTitleItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
             toolTipTitleItem9.Text = "Add sub menu";
@@ -326,7 +318,7 @@
             // 
             this.barButtonItemMenuHeaderItem.Caption = "Add header item";
             this.barButtonItemMenuHeaderItem.Id = 13;
-            this.barButtonItemMenuHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemHeaderItem.ImageOptions.Image")));
+            this.barButtonItemMenuHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuHeaderItem.ImageOptions.Image")));
             this.barButtonItemMenuHeaderItem.Name = "barButtonItemMenuHeaderItem";
             superToolTip9.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
@@ -343,7 +335,7 @@
             // 
             this.barButtonItemMenuAddMenuItem.Caption = "Add menu item";
             this.barButtonItemMenuAddMenuItem.Id = 12;
-            this.barButtonItemMenuAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuItem.ImageOptions.Image")));
+            this.barButtonItemMenuAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddMenuItem.ImageOptions.Image")));
             this.barButtonItemMenuAddMenuItem.Name = "barButtonItemMenuAddMenuItem";
             toolTipTitleItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
             toolTipTitleItem11.Text = "Add menu item";
@@ -457,10 +449,9 @@
 
         #endregion
         private DevExpress.XtraBars.BarManager barManagerCustomization;
-        private DevExpress.XtraBars.Bar bar1;
+        private DevExpress.XtraBars.Bar barToolBar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenu;
-        private DevExpress.XtraBars.Bar bar2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.Bar barMenuBar;
         private DevExpress.XtraBars.BarSubItem barSubItemFile;
         private DevExpress.XtraBars.BarButtonItem barButtonItemFileExitWithoutSave;
         private DevExpress.XtraBars.Bar barBottom;
@@ -473,7 +464,7 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddHeaderItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddSubMenu;
-        private DevExpress.XtraBars.BarSubItem barSubItem1;
+        private DevExpress.XtraBars.BarSubItem barSubItemAddMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddSubMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuAddMenuItem;

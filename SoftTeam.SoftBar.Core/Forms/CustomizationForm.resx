@@ -343,7 +343,7 @@
         MXmihmy8279p6H7PWUPJh7m2uNydReQPiLFB/uRDeL0AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="barButtonItemAddMenu.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barButtonItemMenuAddMenu.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACt0RVh0Q29w
         eXJpZ2h0AENvcHlyaWdodCCpIDIwMDgtMjAxMSBJTkNPUlMgR21iSBCOIU8AAAMOSURBVDhPrZJrSNNR
@@ -383,7 +383,7 @@
         AABJRU5ErkJggg==
 </value>
   </data>
-  <data name="barButtonItemAddSubMenu.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barButtonItemMenuAddSubMenu.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACt0RVh0Q29w
         eXJpZ2h0AENvcHlyaWdodCCpIDIwMDgtMjAxMSBJTkNPUlMgR21iSBCOIU8AAALuSURBVDhPlZJ9LNQB
@@ -421,7 +421,7 @@
         j32IfM08UNFB50rpRnkbCOIXLqCanXpf7RQAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="barButtonItemHeaderItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barButtonItemMenuHeaderItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACt0RVh0Q29w
         eXJpZ2h0AENvcHlyaWdodCCpIDIwMDgtMjAxMSBJTkNPUlMgR21iSBCOIU8AAAK3SURBVDhPzZJ9LNRx
@@ -457,7 +457,7 @@
         h4GjVwbh4NFowPDT0BisMv3tioEg/gArzpLfEVGdagAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="barButtonItemMenuItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="barButtonItemMenuAddMenuItem.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAACt0RVh0Q29w
         eXJpZ2h0AENvcHlyaWdodCCpIDIwMDgtMjAxMSBJTkNPUlMgR21iSBCOIU8AAAJRSURBVDhPfZHrS1Nx
