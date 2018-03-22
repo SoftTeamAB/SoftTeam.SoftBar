@@ -49,6 +49,13 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             ClearSelectedRequested?.Invoke(this, new EventArgs());
         }
+
+        public event EventHandler ItemSelected;
+
+        private void onItemSelected()
+        {
+            ItemSelected?.Invoke(this, new EventArgs());
+        }
         #endregion
 
         #region Select menu item
@@ -59,15 +66,19 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void SelectMenuItem()
         {
-            var selected = Selected;
-
-            onClearSelectedRequested();
-
-            if (selected == MenuItemSelectedStatus.Selected)
+            // If it is selected...
+            if (Selected == MenuItemSelectedStatus.Selected)
+                // ...unselect it
                 Selected = MenuItemSelectedStatus.NotSelected;
             else
+            {
+                //...otherwise, clear all, and select it.
+                onClearSelectedRequested();
                 Selected = MenuItemSelectedStatus.Selected;
+                onItemSelected();
+            }
 
+            // Update the colors
             UpdateColor();
         }
 

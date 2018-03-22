@@ -39,5 +39,41 @@ namespace SoftTeam.SoftBar.Core.Xml
             }
         }
         #endregion
+
+        public XmlMenuBase GetParent(XmlMenuItemBase childItem)
+        {
+            if (childItem == null)
+                return null;
+
+            foreach (var menu in _menus)
+            {
+                if (menu == childItem)
+                    return null;
+
+                var subMenu = menu as XmlMenuBase;
+                var parent = subMenu.GetParent(childItem);
+                if (parent != null) return (XmlMenuBase)parent;
+            }
+
+            return null;
+        }
+
+        public XmlMenu GetParentMenu(XmlMenuItemBase childItem)
+        {
+            if (childItem == null)
+                return null;
+
+            var parent = GetParent(childItem);
+            while(parent !=null)
+            {
+                var nextParent = GetParent(parent);
+                if (nextParent == null)
+                    return (XmlMenu)parent;
+                else
+                    parent = nextParent;
+            }
+
+            return null;
+        }
     }
 }

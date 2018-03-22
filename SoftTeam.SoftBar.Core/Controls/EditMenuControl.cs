@@ -80,7 +80,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             Name = textEditName.Text;
             IconPath = textEditIconPath.Text;
             BeginGroup = checkEditBeginGroup.Checked;
-            MenuWidth = (int)spinEditWidth.EditValue;
+            MenuWidth = int.Parse(spinEditWidth.EditValue.ToString());
         }
         #endregion
     }

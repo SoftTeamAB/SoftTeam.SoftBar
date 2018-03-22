@@ -21,5 +21,26 @@ namespace SoftTeam.SoftBar.Core.Xml
         #region Properties
         public List<XmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
         #endregion
+
+        public XmlMenuBase GetParent(XmlMenuItemBase childItem)
+        {
+            if (childItem == null)
+                return null;
+
+            foreach (var item in _menuItems)
+            {
+                if (item == childItem)
+                    return this;
+
+                if (item is XmlSubMenu)
+                {
+                    var subMenu = item as XmlSubMenu;
+                    var parent = subMenu.GetParent(childItem);
+                    if (parent != null) return (XmlMenuBase)subMenu;
+                }
+            }
+
+            return null;
+        }
     }
 }

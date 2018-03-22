@@ -147,5 +147,33 @@ namespace SoftTeam.SoftBar.Test
             Assert.AreEqual(documentPath, ((XmlMenuItem)area.Menus[0].MenuItems[index]).DocumentPath);
             Assert.AreEqual(parameters, ((XmlMenuItem)area.Menus[0].MenuItems[index]).Parameters);
         }
+
+        [TestMethod]
+        public void TestGetParent()
+        {
+            var path = @"c:\temp\SoftBarTest\complexmenu.xml";
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
+
+            var parent1 = area.Menus[1].MenuItems[5];            
+            var child = ((XmlSubMenu)parent1).MenuItems[0];
+
+            Assert.AreSame(parent1, area.GetParent(child));
+        }
+
+        [TestMethod]
+        public void TestGetParentMenu()
+        {
+            var path = @"c:\temp\SoftBarTest\complexmenu.xml";
+            XmlLoader loader = new XmlLoader(path);
+            XmlArea area = loader.Load();
+
+            var parent = area.Menus[1];
+
+            var parent2 = area.Menus[1].MenuItems[5];
+            var child = ((XmlSubMenu)parent2).MenuItems[0];
+
+            Assert.AreSame(parent, area.GetParentMenu(child));
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Forms;
 using SoftTeam.SoftBar.Core.Xml;
 using SoftTeam.SoftBar.Core.SoftBar;
+using DevExpress.XtraEditors;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -19,6 +20,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private XmlArea _area = null;
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         private SoftBarManager _manager = null;
+        private MenuItemControl _selected = null;
         #endregion
 
         #region Constructors
@@ -73,6 +75,12 @@ namespace SoftTeam.SoftBar.Core.Forms
                 AddItemControl(MenuItemType.Menu, menu);
                 LoadMenu(menu);
             }
+
+            if (_selected != null)
+            {
+                _selected.Selected = MenuItemSelectedStatus.Selected;
+                xtraScrollableControlMenu.AutoScrollPosition = _selected.Location;
+            }            
         }
 
         private void LoadMenu(XmlMenuBase menu)
@@ -110,9 +118,23 @@ namespace SoftTeam.SoftBar.Core.Forms
             item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
             item.Size = new Size(width, Constants.ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
+            item.ClearSelectedRequested += Item_ClearSelectedRequested;
+            item.ItemSelected += Item_ItemSelected;
             _height += item.Height + Constants.SPACE;
 
             _menuItems.Add(item);
+        }
+
+        private void Item_ItemSelected(object sender, EventArgs e)
+        {
+            _selected = (MenuItemControl)sender;
+        }
+
+        private void Item_ClearSelectedRequested(object sender, EventArgs e)
+        {
+            _selected = null;
+            foreach (var item in _menuItems)
+                item.Selected = MenuItemSelectedStatus.NotSelected;
         }
         #endregion
 
@@ -138,7 +160,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void barButtonItemAddMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            AddSubMenu();
+            AddMenuItem();
         }
 
         private void barButtonItemAddHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -148,7 +170,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void barButtonItemAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            AddMenuItem();
+            AddSubMenu();
         }
 
         private void barButtonItemMenuAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -176,18 +198,116 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             var selected = GetSelectedItem();
 
-            var menuItem = CreateMenu();
+            var menu = CreateMenu();
 
-            if (menuItem == null) return;
+            if (menu == null) return;
 
             if (selected == null)
-                _area.Menus.Insert(0, (XmlMenu)menuItem);
+            {
+                // Create the new menu at position 0
+                _area.Menus.Insert(0, (XmlMenu)menu);
+            }
             else
-                _area.Menus.Insert(_area.Menus.IndexOf((XmlMenu)selected)+1, (XmlMenu)menuItem);
+            {
+                // Create the new menu after the selected nodes parent menu
+                var parentMenu = _area.GetParentMenu(selected);
+                _area.Menus.Insert(_area.Menus.IndexOf(parentMenu) + 1, (XmlMenu)menu);
+            }
 
             RefreshMenuItems();
         }
 
+        private void AddSubMenu()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "Select a menu node, or sub menu node, to create a sub menu in the first position in that menu.\n\nSelect a menu item or a header item to create a sub menu after the selected item.";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            var subMenu = CreateSubMenu();
+            if (subMenu == null) return;
+
+            if (selected is XmlMenu || selected is XmlSubMenu)
+            {
+                // Create the new menu item at position 0 in the menu or sub menu
+                var menu = selected as XmlMenuBase;
+                menu.MenuItems.Insert(0, subMenu);
+            }
+            else
+            {
+                // Create the new menu item after the selected nodes 
+                var parent = (XmlMenuBase)_area.GetParent(selected);
+                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, subMenu);
+            }
+
+            RefreshMenuItems();
+        }
+
+        private void AddHeaderItem()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "Select a menu node, or sub menu node, to create a header item in the first position in that menu.\n\nSelect a menu item or a header item to create a header item after the selected item.";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            var headerItem = CreateHeaderItem();
+            if (headerItem == null) return;
+
+            if (selected is XmlMenu || selected is XmlSubMenu)
+            {
+                // Create the new menu item at position 0 in the menu or sub menu
+                var menu = selected as XmlMenuBase;
+                menu.MenuItems.Insert(0, headerItem);
+            }
+            else
+            {
+                // Create the new menu item after the selected nodes 
+                var parent = (XmlMenuBase)_area.GetParent(selected);
+                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, headerItem);
+            }
+
+            RefreshMenuItems();
+        }
+
+        private void AddMenuItem()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "Select a menu node, or sub menu node, to create a menu item in the first position in that menu.\n\nSelect a menu item or a header item to create a menu item after the selected item.";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            var menuItem = CreateMenuItem();
+            if (menuItem == null) return;
+
+            if (selected is XmlMenu || selected is XmlSubMenu)
+            {
+                // Create the new menu item at position 0 in the menu or sub menu
+                var menu = selected as XmlMenuBase;
+                menu.MenuItems.Insert(0, menuItem);
+            }
+            else
+            {
+                // Create the new menu item after the selected nodes 
+                var parent = (XmlMenuBase)_area.GetParent(selected);
+                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, menuItem);
+            }
+
+            RefreshMenuItems();
+        }
+
+        #region CreateMenuItems
         private XmlMenuItemBase CreateMenu()
         {
             XmlMenu menu = new XmlMenu();
@@ -203,18 +323,51 @@ namespace SoftTeam.SoftBar.Core.Forms
             return menu;
         }
 
-        private void AddSubMenu()
+        private XmlMenuItemBase CreateSubMenu()
         {
-            throw new NotImplementedException();
+            XmlSubMenu subMenu = new XmlSubMenu();
+
+            using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(subMenu))
+            {
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return null;
+            }
+
+            return subMenu;
         }
-        private void AddHeaderItem()
+
+        private XmlMenuItemBase CreateHeaderItem()
         {
-            throw new NotImplementedException();
+            XmlHeaderItem headerItem = new XmlHeaderItem();
+
+            using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(headerItem))
+            {
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return null;
+            }
+
+            return headerItem;
         }
-        private void AddMenuItem()
+
+        private XmlMenuItemBase CreateMenuItem()
         {
-            throw new NotImplementedException();
+            XmlMenuItem menuItem = new XmlMenuItem();
+
+            using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(menuItem))
+            {
+                DialogResult result = form.ShowDialog();
+
+                if (result == DialogResult.Cancel)
+                    return null;
+            }
+
+            return menuItem;
         }
+        #endregion
 
         private void Save()
         {
