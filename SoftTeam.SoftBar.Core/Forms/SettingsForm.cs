@@ -41,18 +41,9 @@ namespace SoftTeam.SoftBar.Core.Forms
             spinEditDirectoriesMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_DirectoriesMenuWidth,100);
             spinEditToolsMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_ToolsMenuWidth,100);
 
-            string name = "SoftBar";
-            if (_manager.Settings.ExistsSetting(Constants.General_SystemMenuName))
-                name = _manager.Settings.GetSetting(Constants.General_SystemMenuName).Value;
-            textEditSystemMenuName.Text = name;
-            name = "Directories";
-            if (_manager.Settings.ExistsSetting(Constants.General_DirectoriesMenuName))
-                name = _manager.Settings.GetSetting(Constants.General_DirectoriesMenuName).Value;
-            textEditDirectoriesMenuName.Text = name;
-            name = "Tools";
-            if (_manager.Settings.ExistsSetting(Constants.General_ToolsMenuName))
-                name = _manager.Settings.GetSetting(Constants.General_ToolsMenuName).Value;
-            textEditToolsMenuName.Text = name;
+            textEditSystemMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_SystemMenuName, "SoftBar");
+            textEditDirectoriesMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_DirectoriesMenuName, "Directories");
+            textEditToolsMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_ToolsMenuName,"Tools");
 
             // Drive types
             if (_manager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
