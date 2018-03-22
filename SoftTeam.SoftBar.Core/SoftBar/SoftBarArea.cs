@@ -92,6 +92,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Events
+        public void aboutItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _menus[Constants.SYSTEM_MENU].Item.HidePopup();
+
+            using (AboutForm form = new AboutForm())
+                form.ShowDialog();
+        }
+
         public void Reload_ItemClick(object sender, ItemClickEventArgs e)
         {
             Load(true);

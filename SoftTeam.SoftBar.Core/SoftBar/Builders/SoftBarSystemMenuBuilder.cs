@@ -50,11 +50,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             systemMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.SystemMenu);
 
             // Reload the app bar menu item
-            SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, "Reload", true);
-            reloadItem.Setup();
-            reloadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Reload);
-            reloadItem.Item.ItemClick += _softBarArea.Reload_ItemClick;
-            systemMenu.Item.AddItem(reloadItem.Item);
+            //SoftBarMenuItem reloadItem = new SoftBarMenuItem(_form, "Reload", true);
+            //reloadItem.Setup();
+            //reloadItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Reload);
+            //reloadItem.Item.ItemClick += _softBarArea.Reload_ItemClick;
+            //systemMenu.Item.AddItem(reloadItem.Item);
 
             // Settings for the app bar
             SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, "Settings", true);
@@ -69,6 +69,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
             customizeItem.Item.ItemClick += _softBarArea.CustomizeItem_ItemClick;
             systemMenu.Item.AddItem(customizeItem.Item);
+
+            // About the app bar
+            SoftBarMenuItem aboutItem = new SoftBarMenuItem(_form, "About", true);
+            aboutItem.Setup();
+            aboutItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.information);
+            aboutItem.Item.ItemClick += _softBarArea.aboutItem_ItemClick;
+            systemMenu.Item.AddItem(aboutItem.Item);
+            aboutItem.Item.Links[0].BeginGroup = true;
 
             // Exit the app bar
             SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true);

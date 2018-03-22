@@ -126,6 +126,12 @@
     <Compile Include="Controls\MenuItemControl.Designer.cs">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +252,9 @@
     <EmbeddedResource Include="Controls\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -278,6 +287,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\folder_movie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\information.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

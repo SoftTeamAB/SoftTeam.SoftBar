@@ -68,7 +68,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             Item = new BarStaticItem();
             Item.Manager = Form.barManagerSoftBar;
             Item.Caption = Name;
-
+            
             // Associate the BarButtonItem with the MenuItem, used when clicked
             Item.Tag = this;
 

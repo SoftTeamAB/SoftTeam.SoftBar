@@ -56,11 +56,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             return Item;
         }
 
-        //public override void AddSubMenu(BarSubItem subMenu)
-        //{
-        //    Item.AddItem(subMenu);
-        //}
-
         private SimpleButton AddButton(string name)
         {
             // Create a button for the menu
@@ -74,6 +69,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             button.ImageOptions.Image = Image;
             button.ImageOptions.ImageToTextAlignment = ImageAlignToText.LeftCenter;
             button.ImageOptions.ImageToTextIndent = 7;
+            button.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+
             // Add the button to the form
             Form.Controls.Add(button);
 
@@ -84,6 +81,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         {
             // Create an empty menu and return it
             PopupMenu menu = new PopupMenu(Form.barManagerSoftBar);
+            
             return menu;
         }
         #endregion
