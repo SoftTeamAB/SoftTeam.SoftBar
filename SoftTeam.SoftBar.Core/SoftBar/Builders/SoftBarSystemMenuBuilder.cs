@@ -3,7 +3,6 @@ using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 {
