@@ -41,7 +41,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         private void BuildSystemMenu()
         {
             // Create the actual system menu
-            var systemMenu = new SoftBarMenu(_form, "SoftBar", 0, true);
+            var width = _settingsManager.Settings.GetIntegerSetting(Constants.General_SystemMenuWidth,100);
+            string name = "SoftBar";
+            if (_settingsManager.Settings.ExistsSetting(Constants.General_SystemMenuName))
+                name = _settingsManager.Settings.GetSetting(Constants.General_SystemMenuName).Value;
+
+            var systemMenu = new SoftBarMenu(_form, name, 0, width, true);
             systemMenu.Width = 120;
             _softBarArea.Menus.Add(systemMenu);
             systemMenu.Setup();
@@ -90,7 +95,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         private void BuildDirectoriesMenu()
         {
             // Create the actual directories menu
-            var directoriesMenu = new SoftBarMenu(_form, "Directories", _softBarArea.Width, true);
+            var width = _settingsManager.Settings.GetIntegerSetting(Constants.General_DirectoriesMenuWidth,100);
+            string name = "Directories";
+            if (_settingsManager.Settings.ExistsSetting(Constants.General_DirectoriesMenuName))
+                name = _settingsManager.Settings.GetSetting(Constants.General_DirectoriesMenuName).Value;
+
+            var directoriesMenu = new SoftBarMenu(_form, name, _softBarArea.Width, width, true);
             _softBarArea.Menus.Add(directoriesMenu);
             directoriesMenu.Setup();
             directoriesMenu.Button.Click += _softBarArea.Button_Click;
@@ -214,7 +224,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         private void BuildToolsMenu()
         {
             // Create the actual system menu
-            var toolsMenu = new SoftBarMenu(_form, "ToolsMenu", _softBarArea.Width, true);
+            var width = _settingsManager.Settings.GetIntegerSetting(Constants.General_ToolsMenuWidth,100);
+            string name = "Tools";
+            if (_settingsManager.Settings.ExistsSetting(Constants.General_ToolsMenuName))
+                name = _settingsManager.Settings.GetSetting(Constants.General_ToolsMenuName).Value;
+
+            var toolsMenu = new SoftBarMenu(_form, name, _softBarArea.Width,width, true);
             _softBarArea.Menus.Add(toolsMenu);
             toolsMenu.Setup();
             toolsMenu.Button.Click += _softBarArea.Button_Click;

@@ -51,6 +51,15 @@ namespace SoftTeam.SoftBar.Core.Settings
         private void CreateDefaultSettings()
         {
             _settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, true);
+            _settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, true);
+
+            _settings.SetSetting(Constants.General_SystemMenuName, "SoftBar");
+            _settings.SetSetting(Constants.General_DirectoriesMenuName, "Directories");
+            _settings.SetSetting(Constants.General_ToolsMenuName, "Tools");
+
+            _settings.SetIntegerSetting(Constants.General_SystemMenuWidth, 100);
+            _settings.SetIntegerSetting(Constants.General_DirectoriesMenuWidth, 100);
+            _settings.SetIntegerSetting(Constants.General_ToolsMenuWidth, 100);
 
             _settings.SetBooleanSetting(Constants.DriveType_FixedDrive, true);
             _settings.SetBooleanSetting(Constants.DriveType_RemovableDrive, true);

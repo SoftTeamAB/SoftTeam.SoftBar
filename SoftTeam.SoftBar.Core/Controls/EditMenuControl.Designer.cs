@@ -36,9 +36,9 @@
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
             this.textEditIconPath = new DevExpress.XtraEditors.TextEdit();
             this.labelControlEditMenu = new DevExpress.XtraEditors.LabelControl();
@@ -49,15 +49,18 @@
             this.xtraOpenFileDialogEditMenu = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.labelControlWidth = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditWidth = new DevExpress.XtraEditors.SpinEdit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditWidth.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // textEditName
             // 
-            this.textEditName.Location = new System.Drawing.Point(50, 89);
+            this.textEditName.Location = new System.Drawing.Point(50, 74);
             this.textEditName.Name = "textEditName";
             this.textEditName.Size = new System.Drawing.Size(307, 20);
             superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
@@ -73,7 +76,7 @@
             // 
             // textEditIconPath
             // 
-            this.textEditIconPath.Location = new System.Drawing.Point(50, 134);
+            this.textEditIconPath.Location = new System.Drawing.Point(50, 119);
             this.textEditIconPath.Name = "textEditIconPath";
             this.textEditIconPath.Size = new System.Drawing.Size(274, 20);
             superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
@@ -104,7 +107,7 @@
             // 
             // labelControlIconPath
             // 
-            this.labelControlIconPath.Location = new System.Drawing.Point(50, 115);
+            this.labelControlIconPath.Location = new System.Drawing.Point(50, 100);
             this.labelControlIconPath.Name = "labelControlIconPath";
             this.labelControlIconPath.Size = new System.Drawing.Size(46, 13);
             this.labelControlIconPath.TabIndex = 4;
@@ -112,7 +115,7 @@
             // 
             // labelControlName
             // 
-            this.labelControlName.Location = new System.Drawing.Point(50, 70);
+            this.labelControlName.Location = new System.Drawing.Point(50, 55);
             this.labelControlName.Name = "labelControlName";
             this.labelControlName.Size = new System.Drawing.Size(27, 13);
             this.labelControlName.TabIndex = 6;
@@ -120,22 +123,22 @@
             // 
             // checkEditBeginGroup
             // 
-            this.checkEditBeginGroup.Location = new System.Drawing.Point(50, 160);
+            this.checkEditBeginGroup.Location = new System.Drawing.Point(50, 190);
             this.checkEditBeginGroup.Name = "checkEditBeginGroup";
             this.checkEditBeginGroup.Properties.Caption = "Begin group";
             this.checkEditBeginGroup.Size = new System.Drawing.Size(100, 19);
-            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem4.Text = "Begin group";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.checkEditBeginGroup.SuperTip = superToolTip4;
+            superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem3.Text = "Begin group";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.checkEditBeginGroup.SuperTip = superToolTip3;
             this.checkEditBeginGroup.TabIndex = 2;
             // 
             // simpleButtonBrowse
             // 
-            this.simpleButtonBrowse.Location = new System.Drawing.Point(330, 132);
+            this.simpleButtonBrowse.Location = new System.Drawing.Point(330, 117);
             this.simpleButtonBrowse.Name = "simpleButtonBrowse";
             this.simpleButtonBrowse.Size = new System.Drawing.Size(27, 23);
             this.simpleButtonBrowse.TabIndex = 7;
@@ -154,10 +157,46 @@
             this.pictureBoxIcon.TabIndex = 8;
             this.pictureBoxIcon.TabStop = false;
             // 
-            // EditMenu
+            // labelControlWidth
+            // 
+            this.labelControlWidth.Location = new System.Drawing.Point(50, 145);
+            this.labelControlWidth.Name = "labelControlWidth";
+            this.labelControlWidth.Size = new System.Drawing.Size(46, 13);
+            this.labelControlWidth.TabIndex = 10;
+            this.labelControlWidth.Text = "Icon path";
+            // 
+            // spinEditWidth
+            // 
+            this.spinEditWidth.EditValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditWidth.Location = new System.Drawing.Point(50, 164);
+            this.spinEditWidth.Name = "spinEditWidth";
+            this.spinEditWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditWidth.Properties.IsFloatValue = false;
+            this.spinEditWidth.Properties.Mask.EditMask = "N00";
+            this.spinEditWidth.Properties.MaxValue = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.spinEditWidth.Properties.MinValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditWidth.Size = new System.Drawing.Size(117, 20);
+            this.spinEditWidth.TabIndex = 11;
+            // 
+            // EditMenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.spinEditWidth);
+            this.Controls.Add(this.labelControlWidth);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.simpleButtonBrowse);
             this.Controls.Add(this.labelControlName);
@@ -166,12 +205,13 @@
             this.Controls.Add(this.checkEditBeginGroup);
             this.Controls.Add(this.textEditIconPath);
             this.Controls.Add(this.textEditName);
-            this.Name = "EditMenu";
+            this.Name = "EditMenuControl";
             this.Size = new System.Drawing.Size(400, 250);
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditWidth.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -189,5 +229,7 @@
         private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogEditMenu;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraEditors.LabelControl labelControlWidth;
+        private DevExpress.XtraEditors.SpinEdit spinEditWidth;
     }
 }

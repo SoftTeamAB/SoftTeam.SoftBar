@@ -12,12 +12,14 @@ namespace SoftTeam.SoftBar.Core.Controls
         private string _name = "";
         private string _iconPath = "";
         private bool _beginGroup = false;
+        private int _menuWidth = 0;
         #endregion
 
         #region Properties
         public new string Name { get => _name; set => _name = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
+        public int MenuWidth { get => _menuWidth; set => _menuWidth = value; }
         #endregion
 
         #region Construction
@@ -68,6 +70,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             textEditName.Text = Name;
             textEditIconPath.Text = IconPath;
             checkEditBeginGroup.Checked = BeginGroup;
+            spinEditWidth.EditValue = MenuWidth;
 
             UpdateImage(IconPath);
         }
@@ -77,6 +80,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             Name = textEditName.Text;
             IconPath = textEditIconPath.Text;
             BeginGroup = checkEditBeginGroup.Checked;
+            MenuWidth = (int)spinEditWidth.EditValue;
         }
         #endregion
     }

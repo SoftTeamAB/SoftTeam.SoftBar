@@ -33,7 +33,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 // Position the menu
                 barMenu.Left = _softBarArea.Width;
-                //barMenu.Width = menu.Name.Length * 10;
 
                 // Set up the menu
                 barMenu.Setup();

@@ -24,6 +24,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             editMenu.Name = menu.Name;
             editMenu.IconPath = menu.IconPath;
             editMenu.BeginGroup = menu.BeginGroup;
+            editMenu.MenuWidth = menu.Width;
+
             _menu = menu;
 
             editMenu.LoadValues();

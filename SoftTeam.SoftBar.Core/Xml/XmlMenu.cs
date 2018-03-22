@@ -5,10 +5,18 @@ namespace SoftTeam.SoftBar.Core.Xml
     // Class for a menu (Xml)
     public class XmlMenu : XmlMenuBase
     {
+        #region Fields
+        private int _width = 0;
+        #endregion
+
         #region Constructor
         public XmlMenu()
         {
         }
+        #endregion
+
+        #region Properties
+        public int Width { get => _width; set => _width = value; }
         #endregion
 
         #region ParseXml
@@ -27,6 +35,11 @@ namespace SoftTeam.SoftBar.Core.Xml
             var beginGroupAttribute = parentMenuNode.Attributes["beginGroup"];
             if (beginGroupAttribute != null)
                 _beginGroup = beginGroupAttribute.Value.ToLower() == "true";
+
+            // Check if the menu has an beginGroup attribute
+            var widthAttribute = parentMenuNode.Attributes["width"];
+            if (widthAttribute != null)
+                _width = int.Parse(widthAttribute.Value);
 
             // Loop through the sub menus, header items and menu items
             foreach (XmlNode subMenuNode in parentMenuNode)

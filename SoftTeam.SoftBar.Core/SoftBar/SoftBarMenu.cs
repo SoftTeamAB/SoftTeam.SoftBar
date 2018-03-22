@@ -18,19 +18,19 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Constructor
-        // Old constructor - REMOVE
-        public SoftBarMenu(MainAppBarForm form, string name, int left, bool systemMenu = false) : base(form,name,systemMenu)
+        // Constructor for system menus
+        public SoftBarMenu(MainAppBarForm form, string name, int left, int width, bool systemMenu = false) : base(form,name,systemMenu)
         {
             _left = left;
-            _width = name.Length * 10;
+            _width = width;
             ParentPopupMenu = null;
             ParentSubMenu = null;
         }
-        // New constructor
+        // Constructor for user menus
         public SoftBarMenu(MainAppBarForm form, XmlMenu menu, bool systemMenu = false) : base(form, menu.Name, systemMenu)
         {
             _left = 0;
-            _width = menu.Name.Length * 10;
+            _width = menu.Width;
             IconPath = menu.IconPath;
             BeginGroup = menu.BeginGroup;
             ParentPopupMenu = null;

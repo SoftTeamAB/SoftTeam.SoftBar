@@ -118,7 +118,7 @@ namespace SoftTeam.SoftBar.Core.Xml
                 area.ParseXml(areaNode);
             }
             catch (Exception e)
-            {
+            {                
                 _validationErrors.Add(e.Message);
             }
 

@@ -72,13 +72,13 @@ namespace SoftTeam.SoftBar.Core.Settings
         #endregion    }
 
         #region Get/Set integer settings
-        public int GetIntegerSetting(string key)
+        public int GetIntegerSetting(string key, int defaultValue = 0)
         {
             foreach (var setting in MySettings)
                 if (setting.Key == key)
                     return int.Parse(setting.Value);
 
-            return 0;
+            return defaultValue;
         }
 
         public void SetIntegerSetting(string key, int value)

@@ -37,6 +37,23 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             comboBoxEditTheme.SelectedIndex = _manager.Settings.GetIntegerSetting(Constants.General_Theme);
 
+            spinEditSystemMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_SystemMenuWidth,100);
+            spinEditDirectoriesMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_DirectoriesMenuWidth,100);
+            spinEditToolsMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_ToolsMenuWidth,100);
+
+            string name = "SoftBar";
+            if (_manager.Settings.ExistsSetting(Constants.General_SystemMenuName))
+                name = _manager.Settings.GetSetting(Constants.General_SystemMenuName).Value;
+            textEditSystemMenuName.Text = name;
+            name = "Directories";
+            if (_manager.Settings.ExistsSetting(Constants.General_DirectoriesMenuName))
+                name = _manager.Settings.GetSetting(Constants.General_DirectoriesMenuName).Value;
+            textEditDirectoriesMenuName.Text = name;
+            name = "Tools";
+            if (_manager.Settings.ExistsSetting(Constants.General_ToolsMenuName))
+                name = _manager.Settings.GetSetting(Constants.General_ToolsMenuName).Value;
+            textEditToolsMenuName.Text = name;
+
             // Drive types
             if (_manager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
                 checkEditFixedDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_FixedDrive);
@@ -74,6 +91,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             _manager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
             _manager.Settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, checkEditShowToolsMenu.Checked);
             _manager.Settings.SetIntegerSetting(Constants.General_Theme, comboBoxEditTheme.SelectedIndex);
+
+            _manager.Settings.SetIntegerSetting(Constants.General_SystemMenuWidth, int.Parse(spinEditSystemMenuWidth.EditValue.ToString()));
+            _manager.Settings.SetIntegerSetting(Constants.General_DirectoriesMenuWidth, int.Parse(spinEditDirectoriesMenuWidth.EditValue.ToString()));
+            _manager.Settings.SetIntegerSetting(Constants.General_ToolsMenuWidth, int.Parse(spinEditToolsMenuWidth.EditValue.ToString()));
+
+            _manager.Settings.SetSetting(Constants.General_SystemMenuName, textEditSystemMenuName.Text);
+            _manager.Settings.SetSetting(Constants.General_DirectoriesMenuName, textEditDirectoriesMenuName.Text);
+            _manager.Settings.SetSetting(Constants.General_ToolsMenuName, textEditToolsMenuName.Text);
 
             // Drive types
             _manager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);
