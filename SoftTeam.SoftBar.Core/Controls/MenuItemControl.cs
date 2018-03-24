@@ -52,6 +52,11 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         public event EventHandler ItemSelected;
 
+        private void onNoItemSelected()
+        {
+            ItemSelected?.Invoke(null, new EventArgs());
+        }
+
         private void onItemSelected()
         {
             ItemSelected?.Invoke(this, new EventArgs());
@@ -68,8 +73,11 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             // If it is selected...
             if (Selected == MenuItemSelectedStatus.Selected)
+            {
                 // ...unselect it
                 Selected = MenuItemSelectedStatus.NotSelected;
+                onNoItemSelected();
+            }
             else
             {
                 //...otherwise, clear all, and select it.

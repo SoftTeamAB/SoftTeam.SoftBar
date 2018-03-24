@@ -62,6 +62,8 @@ namespace SoftTeam.SoftBar.Core.Xml
         {
             if (childItem == null)
                 return null;
+            if (childItem is XmlMenu)
+                return (XmlMenu)childItem;
 
             var parent = GetParent(childItem);
             while(parent !=null)

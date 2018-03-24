@@ -49,7 +49,7 @@
             // 
             this.simpleButtonWizard.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonWizard.Appearance.Options.UseFont = true;
-            this.simpleButtonWizard.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButtonWizard.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonWizard.ImageOptions.Image")));
             this.simpleButtonWizard.Location = new System.Drawing.Point(12, 125);
             this.simpleButtonWizard.Name = "simpleButtonWizard";
             this.simpleButtonWizard.Size = new System.Drawing.Size(342, 107);

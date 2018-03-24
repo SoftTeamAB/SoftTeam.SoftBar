@@ -36,7 +36,7 @@ namespace SoftTeam.SoftBar.Core.Xml
                 {
                     var subMenu = item as XmlSubMenu;
                     var parent = subMenu.GetParent(childItem);
-                    if (parent != null) return (XmlMenuBase)subMenu;
+                    if (parent != null) return (XmlMenuBase)parent;
                 }
             }
 

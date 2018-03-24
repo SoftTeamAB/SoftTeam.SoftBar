@@ -63,6 +63,9 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage(string path)
         {
+            if (string.IsNullOrEmpty(path))
+                return;
+
             try
             {
                 // Extract the icon...

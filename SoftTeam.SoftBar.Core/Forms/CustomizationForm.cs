@@ -20,7 +20,8 @@ namespace SoftTeam.SoftBar.Core.Forms
         private XmlArea _area = null;
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         private SoftBarManager _manager = null;
-        private MenuItemControl _selected = null;
+        private MenuItemControl _makeVisible = null;
+        private XmlMenuItemBase _makeVisibleNode = null;
         #endregion
 
         #region Constructors
@@ -76,11 +77,11 @@ namespace SoftTeam.SoftBar.Core.Forms
                 LoadMenu(menu);
             }
 
-            if (_selected != null)
+            if (_makeVisible != null)
             {
-                _selected.Selected = MenuItemSelectedStatus.Selected;
-                xtraScrollableControlMenu.AutoScrollPosition = _selected.Location;
-            }            
+                _makeVisible.Selected = MenuItemSelectedStatus.Selected;
+                xtraScrollableControlMenu.ScrollControlIntoView(_makeVisible);
+            }
         }
 
         private void LoadMenu(XmlMenuBase menu)
@@ -122,37 +123,32 @@ namespace SoftTeam.SoftBar.Core.Forms
             item.ItemSelected += Item_ItemSelected;
             _height += item.Height + Constants.SPACE;
 
+            if (_makeVisibleNode != null && _makeVisibleNode.Equals(menu))
+            {
+                _makeVisibleNode = null;
+                _makeVisible = item;
+            }
+
             _menuItems.Add(item);
         }
 
         private void Item_ItemSelected(object sender, EventArgs e)
         {
-            _selected = (MenuItemControl)sender;
+            if (sender == null)
+                _makeVisible = null;
+            else
+                _makeVisible = (MenuItemControl)sender;
         }
 
         private void Item_ClearSelectedRequested(object sender, EventArgs e)
         {
-            _selected = null;
+            _makeVisible = null;
             foreach (var item in _menuItems)
                 item.Selected = MenuItemSelectedStatus.NotSelected;
         }
         #endregion
 
         #region Event handlers (bar & menu)
-        private void barButtonItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void barButtonItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Save();
-
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-
         private void barButtonItemAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             AddMenu();
@@ -214,6 +210,8 @@ namespace SoftTeam.SoftBar.Core.Forms
                 _area.Menus.Insert(_area.Menus.IndexOf(parentMenu) + 1, (XmlMenu)menu);
             }
 
+            _makeVisibleNode = menu;
+
             RefreshMenuItems();
         }
 
@@ -223,8 +221,8 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "Select a menu node, or sub menu node, to create a sub menu in the first position in that menu.\n\nSelect a menu item or a header item to create a sub menu after the selected item.";
-                XtraMessageBox.Show(message);
+                var message = "A node must be selected to indicate where the new sub menu should be created!\n\nSelect a menu node, or sub menu node, to create a sub menu in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new sub menu node after the selected item node.";
+                XtraMessageBox.Show(message, "No node selected...");
                 return;
             }
 
@@ -244,6 +242,8 @@ namespace SoftTeam.SoftBar.Core.Forms
                 parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, subMenu);
             }
 
+            _makeVisibleNode = subMenu;
+
             RefreshMenuItems();
         }
 
@@ -253,7 +253,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "Select a menu node, or sub menu node, to create a header item in the first position in that menu.\n\nSelect a menu item or a header item to create a header item after the selected item.";
+                var message = "A node must be selected to indicate where the new header item should be created!\n\nSelect a menu node, or sub menu node, to create a header item in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new header item node after the selected item node.";
                 XtraMessageBox.Show(message);
                 return;
             }
@@ -274,6 +274,8 @@ namespace SoftTeam.SoftBar.Core.Forms
                 parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, headerItem);
             }
 
+            _makeVisibleNode = headerItem;
+
             RefreshMenuItems();
         }
 
@@ -283,7 +285,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "Select a menu node, or sub menu node, to create a menu item in the first position in that menu.\n\nSelect a menu item or a header item to create a menu item after the selected item.";
+                var message = "A node must be selected to indicate where the new menu item node should be created!\n\nSelect a menu node, or sub menu node, to create a menu item in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new menu item node after the selected item node.";
                 XtraMessageBox.Show(message);
                 return;
             }
@@ -303,6 +305,8 @@ namespace SoftTeam.SoftBar.Core.Forms
                 var parent = (XmlMenuBase)_area.GetParent(selected);
                 parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, menuItem);
             }
+
+            _makeVisibleNode = menuItem;
 
             RefreshMenuItems();
         }
@@ -369,11 +373,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
-        private void Save()
-        {
-            // Save
-        }
-
         private XmlMenuItemBase GetSelectedItem()
         {
             foreach (var menuItem in _menuItems)
@@ -412,6 +411,78 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void OpenBackupDirectory()
         {
             CommandLineHelper.ExecuteCommandLine($"Explorer.exe {_backupDirectory}");
+        }
+        #endregion
+
+        #region Save & Cancel
+        private void simpleButtonSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void simpleButtonCancel_Click(object sender, EventArgs e)
+        {
+            Cancel();
+        }
+
+        private void barButtonItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Save();
+        }
+
+        private void barButtonItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Cancel();
+        }
+
+        private void Save()
+        {
+            // Save
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void Cancel()
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+        #endregion
+
+        #region Remove item
+        private void barButtonItemRemoveItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RemoveItem();
+        }
+
+        private void barButtonItemMenuRemoveItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            RemoveItem();
+        }
+        private void RemoveItem()
+        {
+            var selected = GetSelectedItem();
+            string message = "";
+            if (selected == null)
+            {
+                message = "Please select the node that you want to remove, and hit <b>Remove item</b> item again!";
+                XtraMessageBox.Show(message, "No node selected...", DevExpress.Utils.DefaultBoolean.True);
+                return;
+            }
+
+            message = $"Are you sure you want to remove the node {selected.Name}?";
+            DialogResult result = XtraMessageBox.Show(message, "Remove node...", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True);
+            if (result == DialogResult.No)
+                return;
+
+            var parent = _area.GetParent(selected);
+            parent.MenuItems.Remove(selected);
+
+            selected = null;
+            _makeVisible = null;
+
+            RefreshMenuItems();
         }
         #endregion
     }
