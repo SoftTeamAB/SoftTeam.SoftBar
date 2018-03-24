@@ -2,14 +2,15 @@
 {
     public enum UserTypeEnum
     {
-        None=0,
-        FirstTimeUser=1,
-        Wizard=2
+        None = 0,
+        FirstTimeUser = 1,
+        PHSAppBarUser = 2,
+        Wizard = 3
     }
 
     public enum MenuItemType
     {
-        None=0,
+        None = 0,
         Menu,
         SubMenu,
         HeaderItem,
@@ -58,5 +59,11 @@
         System,
         User,
         Info
+    }
+
+    public enum FileType
+    {
+        Settings,
+        UserMenus
     }
 }

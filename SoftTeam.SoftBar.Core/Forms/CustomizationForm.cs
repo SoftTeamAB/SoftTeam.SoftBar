@@ -13,7 +13,6 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields
-        private string _backupDirectory = @"C:\ProgramData\SoftTeam\SoftBar";
         private int _height = Constants.TOP_MARGIN;
         private int _level = 0;
         private int _maxLevel = 0;
@@ -32,8 +31,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _manager = manager;
             _area = _manager.UserAreaXml;
 
-            barButtonItemPath.Caption = manager.Path;
-            barButtonItemBackupPath.Caption = _backupDirectory;
+            barButtonItemPath.Caption = manager.FileManager.MenuPath;
+            barButtonItemBackupPath.Caption = manager.FileManager.SoftBarDirectoryBackup;
 
             RefreshMenuItems();
         }
@@ -405,12 +404,12 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void OpenSoftBarXml()
         {
-            CommandLineHelper.ExecuteCommandLine($"Notepad.exe {_manager.Path}");
+            CommandLineHelper.ExecuteCommandLine($"Notepad.exe {_manager.FileManager.MenuPath}");
         }
 
         private void OpenBackupDirectory()
         {
-            CommandLineHelper.ExecuteCommandLine($"Explorer.exe {_backupDirectory}");
+            CommandLineHelper.ExecuteCommandLine($"Explorer.exe {_manager.FileManager.SoftBarDirectoryBackup}");
         }
         #endregion
 

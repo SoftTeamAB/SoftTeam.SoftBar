@@ -25,13 +25,13 @@ namespace SoftTeam.SoftBar.Core.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("c:\\temp\\menu.xml")]
-        public string SoftBarXmlPath {
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SoftBarPath {
             get {
-                return ((string)(this["SoftBarXmlPath"]));
+                return ((string)(this["SoftBarPath"]));
             }
             set {
-                this["SoftBarXmlPath"] = value;
+                this["SoftBarPath"] = value;
             }
         }
     }

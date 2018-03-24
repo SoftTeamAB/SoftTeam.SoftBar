@@ -118,7 +118,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void SettingsItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            using (SettingsForm form = new SettingsForm())
+            using (SettingsForm form = new SettingsForm(_manager))
             {
                 _menus[Constants.SYSTEM_MENU].Item.HidePopup();
                 DialogResult result = form.ShowDialog();

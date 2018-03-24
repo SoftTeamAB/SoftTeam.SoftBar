@@ -132,6 +132,12 @@
     <Compile Include="Forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\ChooseDirectoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChooseDirectoryForm.Designer.cs">
+      <DependentUpon>ChooseDirectoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,7 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />
     <Compile Include="Settings\Tool.cs" />
     <Compile Include="SoftBar\Builders\SoftBarSystemMenuBuilder.cs" />
@@ -260,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChooseDirectoryForm.resx">
+      <DependentUpon>ChooseDirectoryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
+using SoftTeam.SoftBar.Core.SoftBar;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -10,16 +11,19 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class SettingsForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields
-        private SettingsManager _manager;
+        private SettingsManager _settingsManager=null;
+        private SoftBarManager _manager = null;
         #endregion
 
         #region Constructor
-        public SettingsForm()
+        public SettingsForm(SoftBarManager manager)
         {
             InitializeComponent();
 
+            _manager = manager;
+
             // Load settings
-            _manager = new SettingsManager(HelperFunctions.GetSettingsPath());
+            _settingsManager = new SettingsManager(manager.FileManager.SettingsPath);
             LoadSettings();
 
             tabPaneSettings.SelectedPage = tabNavigationPageGeneral;
@@ -30,86 +34,88 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void LoadSettings()
         {
             // General
-            if (_manager.Settings.ExistsSetting(Constants.General_DirectoriesMenuVisible))
-                checkEditShowDirectoriesMenu.Checked = _manager.Settings.GetBooleanSetting(Constants.General_DirectoriesMenuVisible);
-            if (_manager.Settings.ExistsSetting(Constants.General_ToolsMenuVisible))
-                checkEditShowToolsMenu.Checked = _manager.Settings.GetBooleanSetting(Constants.General_ToolsMenuVisible);
+            if (_settingsManager.Settings.ExistsSetting(Constants.General_DirectoriesMenuVisible))
+                checkEditShowDirectoriesMenu.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.General_DirectoriesMenuVisible);
+            if (_settingsManager.Settings.ExistsSetting(Constants.General_ToolsMenuVisible))
+                checkEditShowToolsMenu.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.General_ToolsMenuVisible);
 
-            comboBoxEditTheme.SelectedIndex = _manager.Settings.GetIntegerSetting(Constants.General_Theme);
+            comboBoxEditTheme.SelectedIndex = _settingsManager.Settings.GetIntegerSetting(Constants.General_Theme);
 
-            spinEditSystemMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_SystemMenuWidth,100);
-            spinEditDirectoriesMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_DirectoriesMenuWidth,100);
-            spinEditToolsMenuWidth.EditValue = _manager.Settings.GetIntegerSetting(Constants.General_ToolsMenuWidth,100);
+            spinEditSystemMenuWidth.EditValue = _settingsManager.Settings.GetIntegerSetting(Constants.General_SystemMenuWidth,100);
+            spinEditDirectoriesMenuWidth.EditValue = _settingsManager.Settings.GetIntegerSetting(Constants.General_DirectoriesMenuWidth,100);
+            spinEditToolsMenuWidth.EditValue = _settingsManager.Settings.GetIntegerSetting(Constants.General_ToolsMenuWidth,100);
 
-            textEditSystemMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_SystemMenuName, "SoftBar");
-            textEditDirectoriesMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_DirectoriesMenuName, "Directories");
-            textEditToolsMenuName.Text = _manager.Settings.GetStringSetting(Constants.General_ToolsMenuName,"Tools");
+            textEditSystemMenuName.Text = _settingsManager.Settings.GetStringSetting(Constants.General_SystemMenuName, "SoftBar");
+            textEditDirectoriesMenuName.Text = _settingsManager.Settings.GetStringSetting(Constants.General_DirectoriesMenuName, "Directories");
+            textEditToolsMenuName.Text = _settingsManager.Settings.GetStringSetting(Constants.General_ToolsMenuName,"Tools");
 
             // Drive types
-            if (_manager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
-                checkEditFixedDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_FixedDrive);
-            if (_manager.Settings.ExistsSetting(Constants.DriveType_RemovableDrive))
-                checkEditRemovableDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_RemovableDrive);
-            if (_manager.Settings.ExistsSetting(Constants.DriveType_CDRomDrive))
-                checkEditCDRom.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_CDRomDrive);
-            if (_manager.Settings.ExistsSetting(Constants.DriveType_NetworkDrive))
-                checkEditNetworkDrives.Checked = _manager.Settings.GetBooleanSetting(Constants.DriveType_NetworkDrive);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
+                checkEditFixedDrives.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DriveType_FixedDrive);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DriveType_RemovableDrive))
+                checkEditRemovableDrives.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DriveType_RemovableDrive);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DriveType_CDRomDrive))
+                checkEditCDRom.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DriveType_CDRomDrive);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DriveType_NetworkDrive))
+                checkEditNetworkDrives.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DriveType_NetworkDrive);
 
             // Speical folders
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Desktop))
-                checkEditSpecialDesktop.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Desktop);
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Documents))
-                checkEditSpecialDocuments.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Documents);
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Downloads))
-                checkEditSpecialDownloads.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Downloads);
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Pictures))
-                checkEditSpecialPictures.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Pictures);
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Videos))
-                checkEditSpecialVideos.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Videos);
-            if (_manager.Settings.ExistsSetting(Constants.SpecialFolder_Music))
-                checkEditSpecialMusic.Checked = _manager.Settings.GetBooleanSetting(Constants.SpecialFolder_Music);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Desktop))
+                checkEditSpecialDesktop.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Desktop);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Documents))
+                checkEditSpecialDocuments.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Documents);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Downloads))
+                checkEditSpecialDownloads.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Downloads);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Pictures))
+                checkEditSpecialPictures.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Pictures);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Videos))
+                checkEditSpecialVideos.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Videos);
+            if (_settingsManager.Settings.ExistsSetting(Constants.SpecialFolder_Music))
+                checkEditSpecialMusic.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.SpecialFolder_Music);
 
             // My directories
-            listBoxControlMyDirectories.DataSource = _manager.Settings.MyDirectories;
+            listBoxControlMyDirectories.DataSource = _settingsManager.Settings.MyDirectories;
 
             // My tools
-            listBoxControlMyTools.DataSource = _manager.Settings.MyTools;
+            listBoxControlMyTools.DataSource = _settingsManager.Settings.MyTools;
         }
 
         private void SaveSettings()
         {
+            _manager.FileManager.Backup(FileType.Settings);
+
             // General
-            _manager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, checkEditShowToolsMenu.Checked);
-            _manager.Settings.SetIntegerSetting(Constants.General_Theme, comboBoxEditTheme.SelectedIndex);
+            _settingsManager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, checkEditShowToolsMenu.Checked);
+            _settingsManager.Settings.SetIntegerSetting(Constants.General_Theme, comboBoxEditTheme.SelectedIndex);
 
-            _manager.Settings.SetIntegerSetting(Constants.General_SystemMenuWidth, int.Parse(spinEditSystemMenuWidth.EditValue.ToString()));
-            _manager.Settings.SetIntegerSetting(Constants.General_DirectoriesMenuWidth, int.Parse(spinEditDirectoriesMenuWidth.EditValue.ToString()));
-            _manager.Settings.SetIntegerSetting(Constants.General_ToolsMenuWidth, int.Parse(spinEditToolsMenuWidth.EditValue.ToString()));
+            _settingsManager.Settings.SetIntegerSetting(Constants.General_SystemMenuWidth, int.Parse(spinEditSystemMenuWidth.EditValue.ToString()));
+            _settingsManager.Settings.SetIntegerSetting(Constants.General_DirectoriesMenuWidth, int.Parse(spinEditDirectoriesMenuWidth.EditValue.ToString()));
+            _settingsManager.Settings.SetIntegerSetting(Constants.General_ToolsMenuWidth, int.Parse(spinEditToolsMenuWidth.EditValue.ToString()));
 
-            _manager.Settings.SetSetting(Constants.General_SystemMenuName, textEditSystemMenuName.Text);
-            _manager.Settings.SetSetting(Constants.General_DirectoriesMenuName, textEditDirectoriesMenuName.Text);
-            _manager.Settings.SetSetting(Constants.General_ToolsMenuName, textEditToolsMenuName.Text);
+            _settingsManager.Settings.SetSetting(Constants.General_SystemMenuName, textEditSystemMenuName.Text);
+            _settingsManager.Settings.SetSetting(Constants.General_DirectoriesMenuName, textEditDirectoriesMenuName.Text);
+            _settingsManager.Settings.SetSetting(Constants.General_ToolsMenuName, textEditToolsMenuName.Text);
 
             // Drive types
-            _manager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.DriveType_RemovableDrive, checkEditRemovableDrives.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.DriveType_CDRomDrive, checkEditCDRom.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.DriveType_NetworkDrive, checkEditNetworkDrives.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DriveType_RemovableDrive, checkEditRemovableDrives.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DriveType_CDRomDrive, checkEditCDRom.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DriveType_NetworkDrive, checkEditNetworkDrives.Checked);
 
             // Special folders
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Desktop, checkEditSpecialDesktop.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Documents, checkEditSpecialDocuments.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Downloads, checkEditSpecialDownloads.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Pictures, checkEditSpecialPictures.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Videos, checkEditSpecialVideos.Checked);
-            _manager.Settings.SetBooleanSetting(Constants.SpecialFolder_Music, checkEditSpecialMusic.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Desktop, checkEditSpecialDesktop.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Documents, checkEditSpecialDocuments.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Downloads, checkEditSpecialDownloads.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Pictures, checkEditSpecialPictures.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Videos, checkEditSpecialVideos.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.SpecialFolder_Music, checkEditSpecialMusic.Checked);
 
             // My directories
-            _manager.Settings.MyDirectories = (List<Directory>)listBoxControlMyDirectories.DataSource;
+            _settingsManager.Settings.MyDirectories = (List<Directory>)listBoxControlMyDirectories.DataSource;
 
             // My tools
-            listBoxControlMyTools.DataSource = (List<Tool>)_manager.Settings.MyTools;
+            listBoxControlMyTools.DataSource = (List<Tool>)_settingsManager.Settings.MyTools;
 
             //// My directories
             //_manager.Settings.MyDirectories.Clear();
@@ -142,7 +148,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void simpleButtonSave_Click(object sender, EventArgs e)
         {
             SaveSettings();
-            _manager.Save();
+            _settingsManager.Save();
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -164,7 +170,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 if (result == DialogResult.Cancel) return;
 
-                _manager.Settings.MyDirectories.Add(form.Directory);
+                _settingsManager.Settings.MyDirectories.Add(form.Directory);
             }
         }
 
@@ -189,7 +195,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 if (result == DialogResult.Cancel) return;
 
-                _manager.Settings.MyDirectories[index] = form.Directory;
+                _settingsManager.Settings.MyDirectories[index] = form.Directory;
             }
         }
 
@@ -205,7 +211,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (result == DialogResult.No)
                 return;
 
-            _manager.Settings.MyDirectories.RemoveAt(index);
+            _settingsManager.Settings.MyDirectories.RemoveAt(index);
         }
         #endregion
 
@@ -219,7 +225,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 if (result == DialogResult.Cancel)
                     return;
 
-                _manager.Settings.MyTools.Add(form.Tool);
+                _settingsManager.Settings.MyTools.Add(form.Tool);
             }
         }
 
@@ -244,7 +250,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 if (result == DialogResult.Cancel) return;
 
-                _manager.Settings.MyTools[index] = form.Tool;
+                _settingsManager.Settings.MyTools[index] = form.Tool;
             }
         }
 
@@ -260,7 +266,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (result == DialogResult.No)
                 return;
 
-            _manager.Settings.MyTools.RemoveAt(index);
+            _settingsManager.Settings.MyTools.RemoveAt(index);
         }
         #endregion
 

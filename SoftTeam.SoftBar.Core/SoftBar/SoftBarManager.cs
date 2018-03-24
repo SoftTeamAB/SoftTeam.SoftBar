@@ -16,31 +16,32 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private SettingsManager _settingsManager = null;
         private MainAppBarForm _form = null;
         private string _path = "";
+        private SoftBarFileManager _fileManager = null;
         #endregion
 
         #region Properties
         public MainAppBarForm Form { get => _form; set => _form = value; }
         public SoftBarArea UserArea { get => _userArea; set => _userArea = value; }
         public SoftBarArea SystemArea { get => _systemArea; set => _systemArea = value; }
-
-        public string Path { get => _path; set => _path = value; }
         public XmlArea UserAreaXml { get => _userAreaXml; set => _userAreaXml = value; }
         public SettingsManager SettingsManager { get => _settingsManager; set => _settingsManager = value; }
+        public SoftBarFileManager FileManager { get => _fileManager; set => _fileManager = value; }
         #endregion
 
         #region Constructor
         public SoftBarManager(MainAppBarForm form, string path)
         {
             _form = form;
-            _path = path;
+
+            _fileManager = new SoftBarFileManager(path);
 
             // Load settings and set theme
-            _settingsManager = new SettingsManager(HelperFunctions.GetSettingsPath());
+            _settingsManager = new SettingsManager(_fileManager.SettingsPath);
             BonusSkins.Register();
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = HelperFunctions.GetThemeName(_settingsManager.Settings.GetIntegerSetting(Constants.General_Theme));
 
             // Load user area XML
-            XmlLoader loader = new XmlLoader(_path);
+            XmlLoader loader = new XmlLoader(_fileManager.MenuPath);
             _userAreaXml = loader.Load();
 
             // Setup system and user area

@@ -32,5 +32,11 @@ namespace SoftTeam.SoftBar.Core.Forms
             UserType = UserTypeEnum.Wizard;
             this.Close();
         }
+
+        private void simpleButtonPHSAppBarUser_Click(object sender, EventArgs e)
+        {
+            UserType = UserTypeEnum.PHSAppBarUser;
+            this.Close();
+        }
     }
 }

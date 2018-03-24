@@ -56,16 +56,16 @@ namespace SoftTeam.SoftBar.Core.Misc
             }
         }
 
-        public static string GetSettingsPath()
-        {
-            var path = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
-            path = System.IO.Path.Combine(path, "SoftTeam AB");
-            path = System.IO.Path.Combine(path, "SoftBar");
-            System.IO.Directory.CreateDirectory(path);
-            path = System.IO.Path.Combine(path, "settings.xml");
+        //public static string GetSettingsPath()
+        //{
+        //    var path = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
+        //    path = System.IO.Path.Combine(path, "SoftTeam AB");
+        //    path = System.IO.Path.Combine(path, "SoftBar");
+        //    System.IO.Directory.CreateDirectory(path);
+        //    path = System.IO.Path.Combine(path, "settings.xml");
 
-            return path;
-        }
+        //    return path;
+        //}
 
         public static Image ExtractIcon(string path)
         {
