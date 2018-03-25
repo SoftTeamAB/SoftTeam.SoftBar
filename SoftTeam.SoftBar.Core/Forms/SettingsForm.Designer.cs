@@ -66,6 +66,20 @@
             this.simpleButtonEditDirectory = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonRemove = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageGeneral = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.textEditToolsMenuName = new DevExpress.XtraEditors.TextEdit();
+            this.textEditDirectoriesMenuName = new DevExpress.XtraEditors.TextEdit();
+            this.textEditSystemMenuName = new DevExpress.XtraEditors.TextEdit();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlNames = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlToolsMenuWidth = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditToolsMenuWidth = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControlDirectoriesMenuWidth = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditDirectoriesMenuWidth = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControlSystemMenuWidth = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditSystemMenuWidth = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControlWidths = new DevExpress.XtraEditors.LabelControl();
             this.labelControlMenus = new DevExpress.XtraEditors.LabelControl();
             this.labelControlTheme = new DevExpress.XtraEditors.LabelControl();
             this.comboBoxEditTheme = new DevExpress.XtraEditors.ComboBoxEdit();
@@ -79,20 +93,6 @@
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.labelControlWidths = new DevExpress.XtraEditors.LabelControl();
-            this.spinEditSystemMenuWidth = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControlSystemMenuWidth = new DevExpress.XtraEditors.LabelControl();
-            this.labelControlDirectoriesMenuWidth = new DevExpress.XtraEditors.LabelControl();
-            this.spinEditDirectoriesMenuWidth = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControlToolsMenuWidth = new DevExpress.XtraEditors.LabelControl();
-            this.spinEditToolsMenuWidth = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControlNames = new DevExpress.XtraEditors.LabelControl();
-            this.textEditSystemMenuName = new DevExpress.XtraEditors.TextEdit();
-            this.textEditDirectoriesMenuName = new DevExpress.XtraEditors.TextEdit();
-            this.textEditToolsMenuName = new DevExpress.XtraEditors.TextEdit();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -109,17 +109,17 @@
             this.tabNavigationPageMyDirectories.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).BeginInit();
             this.tabNavigationPageGeneral.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditToolsMenuName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDirectoriesMenuName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSystemMenuName.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditToolsMenuWidth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditDirectoriesMenuWidth.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditSystemMenuWidth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).BeginInit();
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditSystemMenuWidth.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditDirectoriesMenuWidth.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditToolsMenuWidth.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSystemMenuName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDirectoriesMenuName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditToolsMenuName.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -267,7 +267,7 @@
             // 
             // tabNavigationPageMyDirectories
             // 
-            this.tabNavigationPageMyDirectories.Caption = "My directories";
+            this.tabNavigationPageMyDirectories.Caption = "My folders";
             this.tabNavigationPageMyDirectories.Controls.Add(this.labelControlMyDirectoriesHeader);
             this.tabNavigationPageMyDirectories.Controls.Add(this.listBoxControlMyDirectories);
             this.tabNavigationPageMyDirectories.Controls.Add(this.simpleButtonAddDirectory);
@@ -378,6 +378,173 @@
             this.tabNavigationPageGeneral.Controls.Add(this.checkEditShowDirectoriesMenu);
             this.tabNavigationPageGeneral.Name = "tabNavigationPageGeneral";
             this.tabNavigationPageGeneral.Size = new System.Drawing.Size(589, 327);
+            // 
+            // textEditToolsMenuName
+            // 
+            this.textEditToolsMenuName.Location = new System.Drawing.Point(423, 213);
+            this.textEditToolsMenuName.Name = "textEditToolsMenuName";
+            this.textEditToolsMenuName.Size = new System.Drawing.Size(100, 20);
+            this.textEditToolsMenuName.TabIndex = 18;
+            // 
+            // textEditDirectoriesMenuName
+            // 
+            this.textEditDirectoriesMenuName.Location = new System.Drawing.Point(423, 187);
+            this.textEditDirectoriesMenuName.Name = "textEditDirectoriesMenuName";
+            this.textEditDirectoriesMenuName.Size = new System.Drawing.Size(100, 20);
+            this.textEditDirectoriesMenuName.TabIndex = 17;
+            // 
+            // textEditSystemMenuName
+            // 
+            this.textEditSystemMenuName.Location = new System.Drawing.Point(423, 161);
+            this.textEditSystemMenuName.Name = "textEditSystemMenuName";
+            this.textEditSystemMenuName.Size = new System.Drawing.Size(100, 20);
+            this.textEditSystemMenuName.TabIndex = 16;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(276, 216);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(54, 13);
+            this.labelControl1.TabIndex = 15;
+            this.labelControl1.Text = "Tools menu";
+            // 
+            // labelControl2
+            // 
+            this.labelControl2.Location = new System.Drawing.Point(276, 190);
+            this.labelControl2.Name = "labelControl2";
+            this.labelControl2.Size = new System.Drawing.Size(80, 13);
+            this.labelControl2.TabIndex = 14;
+            this.labelControl2.Text = "Directories menu";
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(276, 164);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(64, 13);
+            this.labelControl3.TabIndex = 13;
+            this.labelControl3.Text = "System menu";
+            // 
+            // labelControlNames
+            // 
+            this.labelControlNames.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlNames.Appearance.Options.UseFont = true;
+            this.labelControlNames.Location = new System.Drawing.Point(276, 145);
+            this.labelControlNames.Name = "labelControlNames";
+            this.labelControlNames.Size = new System.Drawing.Size(38, 13);
+            this.labelControlNames.TabIndex = 12;
+            this.labelControlNames.Text = "Names";
+            // 
+            // labelControlToolsMenuWidth
+            // 
+            this.labelControlToolsMenuWidth.Location = new System.Drawing.Point(14, 216);
+            this.labelControlToolsMenuWidth.Name = "labelControlToolsMenuWidth";
+            this.labelControlToolsMenuWidth.Size = new System.Drawing.Size(54, 13);
+            this.labelControlToolsMenuWidth.TabIndex = 11;
+            this.labelControlToolsMenuWidth.Text = "Tools menu";
+            // 
+            // spinEditToolsMenuWidth
+            // 
+            this.spinEditToolsMenuWidth.EditValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditToolsMenuWidth.Location = new System.Drawing.Point(109, 213);
+            this.spinEditToolsMenuWidth.Name = "spinEditToolsMenuWidth";
+            this.spinEditToolsMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditToolsMenuWidth.Properties.IsFloatValue = false;
+            this.spinEditToolsMenuWidth.Properties.Mask.EditMask = "N00";
+            this.spinEditToolsMenuWidth.Properties.MaxValue = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.spinEditToolsMenuWidth.Properties.MinValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditToolsMenuWidth.Size = new System.Drawing.Size(100, 20);
+            this.spinEditToolsMenuWidth.TabIndex = 10;
+            // 
+            // labelControlDirectoriesMenuWidth
+            // 
+            this.labelControlDirectoriesMenuWidth.Location = new System.Drawing.Point(14, 190);
+            this.labelControlDirectoriesMenuWidth.Name = "labelControlDirectoriesMenuWidth";
+            this.labelControlDirectoriesMenuWidth.Size = new System.Drawing.Size(80, 13);
+            this.labelControlDirectoriesMenuWidth.TabIndex = 9;
+            this.labelControlDirectoriesMenuWidth.Text = "Directories menu";
+            // 
+            // spinEditDirectoriesMenuWidth
+            // 
+            this.spinEditDirectoriesMenuWidth.EditValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditDirectoriesMenuWidth.Location = new System.Drawing.Point(109, 187);
+            this.spinEditDirectoriesMenuWidth.Name = "spinEditDirectoriesMenuWidth";
+            this.spinEditDirectoriesMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditDirectoriesMenuWidth.Properties.IsFloatValue = false;
+            this.spinEditDirectoriesMenuWidth.Properties.Mask.EditMask = "N00";
+            this.spinEditDirectoriesMenuWidth.Properties.MaxValue = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.spinEditDirectoriesMenuWidth.Properties.MinValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditDirectoriesMenuWidth.Size = new System.Drawing.Size(100, 20);
+            this.spinEditDirectoriesMenuWidth.TabIndex = 8;
+            // 
+            // labelControlSystemMenuWidth
+            // 
+            this.labelControlSystemMenuWidth.Location = new System.Drawing.Point(14, 164);
+            this.labelControlSystemMenuWidth.Name = "labelControlSystemMenuWidth";
+            this.labelControlSystemMenuWidth.Size = new System.Drawing.Size(64, 13);
+            this.labelControlSystemMenuWidth.TabIndex = 7;
+            this.labelControlSystemMenuWidth.Text = "System menu";
+            // 
+            // spinEditSystemMenuWidth
+            // 
+            this.spinEditSystemMenuWidth.EditValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditSystemMenuWidth.Location = new System.Drawing.Point(109, 161);
+            this.spinEditSystemMenuWidth.Name = "spinEditSystemMenuWidth";
+            this.spinEditSystemMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditSystemMenuWidth.Properties.IsFloatValue = false;
+            this.spinEditSystemMenuWidth.Properties.Mask.EditMask = "N00";
+            this.spinEditSystemMenuWidth.Properties.MaxValue = new decimal(new int[] {
+            500,
+            0,
+            0,
+            0});
+            this.spinEditSystemMenuWidth.Properties.MinValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditSystemMenuWidth.Size = new System.Drawing.Size(100, 20);
+            this.spinEditSystemMenuWidth.TabIndex = 6;
+            // 
+            // labelControlWidths
+            // 
+            this.labelControlWidths.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlWidths.Appearance.Options.UseFont = true;
+            this.labelControlWidths.Location = new System.Drawing.Point(14, 145);
+            this.labelControlWidths.Name = "labelControlWidths";
+            this.labelControlWidths.Size = new System.Drawing.Size(39, 13);
+            this.labelControlWidths.TabIndex = 5;
+            this.labelControlWidths.Text = "Widths";
             // 
             // labelControlMenus
             // 
@@ -541,173 +708,6 @@
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
-            // labelControlWidths
-            // 
-            this.labelControlWidths.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControlWidths.Appearance.Options.UseFont = true;
-            this.labelControlWidths.Location = new System.Drawing.Point(14, 145);
-            this.labelControlWidths.Name = "labelControlWidths";
-            this.labelControlWidths.Size = new System.Drawing.Size(39, 13);
-            this.labelControlWidths.TabIndex = 5;
-            this.labelControlWidths.Text = "Widths";
-            // 
-            // spinEditSystemMenuWidth
-            // 
-            this.spinEditSystemMenuWidth.EditValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditSystemMenuWidth.Location = new System.Drawing.Point(109, 161);
-            this.spinEditSystemMenuWidth.Name = "spinEditSystemMenuWidth";
-            this.spinEditSystemMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditSystemMenuWidth.Properties.IsFloatValue = false;
-            this.spinEditSystemMenuWidth.Properties.Mask.EditMask = "N00";
-            this.spinEditSystemMenuWidth.Properties.MaxValue = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.spinEditSystemMenuWidth.Properties.MinValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditSystemMenuWidth.Size = new System.Drawing.Size(100, 20);
-            this.spinEditSystemMenuWidth.TabIndex = 6;
-            // 
-            // labelControlSystemMenuWidth
-            // 
-            this.labelControlSystemMenuWidth.Location = new System.Drawing.Point(14, 164);
-            this.labelControlSystemMenuWidth.Name = "labelControlSystemMenuWidth";
-            this.labelControlSystemMenuWidth.Size = new System.Drawing.Size(64, 13);
-            this.labelControlSystemMenuWidth.TabIndex = 7;
-            this.labelControlSystemMenuWidth.Text = "System menu";
-            // 
-            // labelControlDirectoriesMenuWidth
-            // 
-            this.labelControlDirectoriesMenuWidth.Location = new System.Drawing.Point(14, 190);
-            this.labelControlDirectoriesMenuWidth.Name = "labelControlDirectoriesMenuWidth";
-            this.labelControlDirectoriesMenuWidth.Size = new System.Drawing.Size(80, 13);
-            this.labelControlDirectoriesMenuWidth.TabIndex = 9;
-            this.labelControlDirectoriesMenuWidth.Text = "Directories menu";
-            // 
-            // spinEditDirectoriesMenuWidth
-            // 
-            this.spinEditDirectoriesMenuWidth.EditValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditDirectoriesMenuWidth.Location = new System.Drawing.Point(109, 187);
-            this.spinEditDirectoriesMenuWidth.Name = "spinEditDirectoriesMenuWidth";
-            this.spinEditDirectoriesMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditDirectoriesMenuWidth.Properties.IsFloatValue = false;
-            this.spinEditDirectoriesMenuWidth.Properties.Mask.EditMask = "N00";
-            this.spinEditDirectoriesMenuWidth.Properties.MaxValue = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.spinEditDirectoriesMenuWidth.Properties.MinValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditDirectoriesMenuWidth.Size = new System.Drawing.Size(100, 20);
-            this.spinEditDirectoriesMenuWidth.TabIndex = 8;
-            // 
-            // labelControlToolsMenuWidth
-            // 
-            this.labelControlToolsMenuWidth.Location = new System.Drawing.Point(14, 216);
-            this.labelControlToolsMenuWidth.Name = "labelControlToolsMenuWidth";
-            this.labelControlToolsMenuWidth.Size = new System.Drawing.Size(54, 13);
-            this.labelControlToolsMenuWidth.TabIndex = 11;
-            this.labelControlToolsMenuWidth.Text = "Tools menu";
-            // 
-            // spinEditToolsMenuWidth
-            // 
-            this.spinEditToolsMenuWidth.EditValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditToolsMenuWidth.Location = new System.Drawing.Point(109, 213);
-            this.spinEditToolsMenuWidth.Name = "spinEditToolsMenuWidth";
-            this.spinEditToolsMenuWidth.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditToolsMenuWidth.Properties.IsFloatValue = false;
-            this.spinEditToolsMenuWidth.Properties.Mask.EditMask = "N00";
-            this.spinEditToolsMenuWidth.Properties.MaxValue = new decimal(new int[] {
-            500,
-            0,
-            0,
-            0});
-            this.spinEditToolsMenuWidth.Properties.MinValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditToolsMenuWidth.Size = new System.Drawing.Size(100, 20);
-            this.spinEditToolsMenuWidth.TabIndex = 10;
-            // 
-            // labelControl1
-            // 
-            this.labelControl1.Location = new System.Drawing.Point(276, 216);
-            this.labelControl1.Name = "labelControl1";
-            this.labelControl1.Size = new System.Drawing.Size(54, 13);
-            this.labelControl1.TabIndex = 15;
-            this.labelControl1.Text = "Tools menu";
-            // 
-            // labelControl2
-            // 
-            this.labelControl2.Location = new System.Drawing.Point(276, 190);
-            this.labelControl2.Name = "labelControl2";
-            this.labelControl2.Size = new System.Drawing.Size(80, 13);
-            this.labelControl2.TabIndex = 14;
-            this.labelControl2.Text = "Directories menu";
-            // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(276, 164);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(64, 13);
-            this.labelControl3.TabIndex = 13;
-            this.labelControl3.Text = "System menu";
-            // 
-            // labelControlNames
-            // 
-            this.labelControlNames.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelControlNames.Appearance.Options.UseFont = true;
-            this.labelControlNames.Location = new System.Drawing.Point(276, 145);
-            this.labelControlNames.Name = "labelControlNames";
-            this.labelControlNames.Size = new System.Drawing.Size(38, 13);
-            this.labelControlNames.TabIndex = 12;
-            this.labelControlNames.Text = "Names";
-            // 
-            // textEditSystemMenuName
-            // 
-            this.textEditSystemMenuName.Location = new System.Drawing.Point(423, 161);
-            this.textEditSystemMenuName.Name = "textEditSystemMenuName";
-            this.textEditSystemMenuName.Size = new System.Drawing.Size(100, 20);
-            this.textEditSystemMenuName.TabIndex = 16;
-            // 
-            // textEditDirectoriesMenuName
-            // 
-            this.textEditDirectoriesMenuName.Location = new System.Drawing.Point(423, 187);
-            this.textEditDirectoriesMenuName.Name = "textEditDirectoriesMenuName";
-            this.textEditDirectoriesMenuName.Size = new System.Drawing.Size(100, 20);
-            this.textEditDirectoriesMenuName.TabIndex = 17;
-            // 
-            // textEditToolsMenuName
-            // 
-            this.textEditToolsMenuName.Location = new System.Drawing.Point(423, 213);
-            this.textEditToolsMenuName.Name = "textEditToolsMenuName";
-            this.textEditToolsMenuName.Size = new System.Drawing.Size(100, 20);
-            this.textEditToolsMenuName.TabIndex = 18;
-            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -742,18 +742,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyDirectories)).EndInit();
             this.tabNavigationPageGeneral.ResumeLayout(false);
             this.tabNavigationPageGeneral.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditToolsMenuName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditDirectoriesMenuName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSystemMenuName.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditToolsMenuWidth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditDirectoriesMenuWidth.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditSystemMenuWidth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditTheme.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowToolsMenu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).EndInit();
             this.tabNavigationPageMyTools.ResumeLayout(false);
             this.tabNavigationPageMyTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditSystemMenuWidth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditDirectoriesMenuWidth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.spinEditToolsMenuWidth.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSystemMenuName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditDirectoriesMenuName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditToolsMenuName.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
