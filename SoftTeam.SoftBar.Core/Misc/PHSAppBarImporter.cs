@@ -1,25 +1,32 @@
 ﻿using SoftTeam.SoftBar.Core.Xml;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
 namespace SoftTeam.SoftBar.Core.Misc
 {
+    /// <summary>
+    /// Class for importing from the old PHS AppBar
+    /// </summary>
     public class PHSAppBarImporter : IDisposable
     {
+        #region Fields
         private StringReader _reader;
         private XmlArea _area = new XmlArea();
         private string nextLine = "";
+        #endregion
 
+        #region Constructor
         public PHSAppBarImporter(string path)
         {
             if (!File.Exists(path))
                 throw new FileNotFoundException(path);
 
-            _reader = new StringReader(File.ReadAllText(path,Encoding.UTF7));
+            _reader = new StringReader(File.ReadAllText(path, Encoding.UTF7));
         }
+        #endregion
 
+        #region Import
         public XmlArea Import()
         {
             ReadVersionItem();
@@ -131,7 +138,9 @@ namespace SoftTeam.SoftBar.Core.Misc
 
             return s;
         }
+        #endregion
 
+        #region IDisposable
         public void Dispose()
         {
             _reader.Close();
@@ -140,5 +149,6 @@ namespace SoftTeam.SoftBar.Core.Misc
 
             _area = null;
         }
+        #endregion
     }
 }

@@ -1,29 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.Xml
 {
     public class XmlSaver : IDisposable
     {
+        #region Fields
         private XmlArea _area;
         private string _path;
+        #endregion
 
+        #region Constructors
         public XmlSaver(XmlArea area, string path)
         {
             _area = area;
             _path = path;
         }
+        #endregion
 
+        #region IDisposable
         public void Dispose()
         {
             _area = null;
             _path = null;
         }
+        #endregion
 
+        #region Save
         public void Save()
         {
             XmlDocument doc = new XmlDocument();
@@ -115,5 +119,6 @@ namespace SoftTeam.SoftBar.Core.Xml
                 }
             }
         }
+        #endregion
     }
 }
