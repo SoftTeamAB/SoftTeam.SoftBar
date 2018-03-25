@@ -15,7 +15,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private XmlArea _userAreaXml = null;
         private SettingsManager _settingsManager = null;
         private MainAppBarForm _form = null;
-        private string _path = "";
         private SoftBarFileManager _fileManager = null;
         #endregion
 

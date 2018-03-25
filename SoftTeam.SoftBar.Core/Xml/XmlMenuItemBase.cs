@@ -8,6 +8,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         protected string _name = string.Empty;
         protected bool _beginGroup = false;
         protected string _iconPath = string.Empty;
+        protected int _iconNumber = 0;
         #endregion
 
         #region Constructor
@@ -20,6 +21,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         public string Name { get => _name; set => _name = value; }
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
+        public int IconNumber { get => _iconNumber; set => _iconNumber = value; }
         #endregion
     }
 }

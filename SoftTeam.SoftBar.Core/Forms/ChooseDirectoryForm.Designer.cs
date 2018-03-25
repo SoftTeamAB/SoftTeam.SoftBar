@@ -70,7 +70,6 @@
             this.labelControlChoosenDirectory.Size = new System.Drawing.Size(63, 13);
             this.labelControlChoosenDirectory.TabIndex = 2;
             this.labelControlChoosenDirectory.Text = "labelControl1";
-            this.labelControlChoosenDirectory.Click += new System.EventHandler(this.labelControlChoosenDirectory_Click);
             // 
             // xtraFolderBrowserDialogSoftBar
             // 

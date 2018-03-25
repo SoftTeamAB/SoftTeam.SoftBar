@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
-using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
@@ -13,8 +6,11 @@ namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class ChooseDirectoryForm : DevExpress.XtraEditors.XtraForm
     {
+        #region Fields
         public string Path = "";
+        #endregion
 
+        #region Constructor
         public ChooseDirectoryForm()
         {
             InitializeComponent();
@@ -28,12 +24,9 @@ namespace SoftTeam.SoftBar.Core.Forms
             else
                 labelControlChoosenDirectory.Text = Path;
         }
+        #endregion
 
-        private void labelControlChoosenDirectory_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        #region Events
         private void radioGroupChooseDirectory_SelectedIndexChanged(object sender, EventArgs e)
         {
             simpleButtonChooseDirectory.Enabled = (radioGroupChooseDirectory.SelectedIndex == 1);
@@ -72,5 +65,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+        #endregion
     }
 }

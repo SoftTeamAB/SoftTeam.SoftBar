@@ -1,0 +1,599 @@
+﻿[VERS]3
+
+[MENU]Document
+	[TEXT]Kataloger
+	[LINE]
+
+	[DESC]Temp
+	[ITEM]c:\temp
+	[ICON]c:\temp
+	[NUMB]0
+	[DESC]Windows
+	[ITEM]c:\winnt
+	[ICON]c:\winnt
+	[NUMB]0
+	[DESC]System
+	[ITEM]c:\winnt\system32
+	[ICON]c:\winnt\system32
+	[NUMB]0
+	[DESC]Download
+	[ITEM]D:\Download
+	[ICON]D:\Download
+	[NUMB]0
+	[DESC]Hogia32\Utveckling\Work
+	[ITEM]c:\Hogia32\Utveckling\Work
+	[ICON]c:\Hogia32\Utveckling\Work
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Internet
+	[LINE]
+
+	[DESC]Hogia Telefonlista Sök
+	[ITEM]http://www.infonet.hogia.se/telekatalogen/tele.htm
+	[ICON]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[NUMB]0
+	[DESC]Aftonbladet
+	[ITEM]http://www.aftonbladet.se
+	[ICON]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[NUMB]0
+	[DESC]IDG
+	[ITEM]http://www.idg.se
+	[ICON]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[NUMB]0
+	[DESC]Alta Vista
+	[ITEM]http://www.altavista.com
+	[ICON]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Dokument
+	[LINE]
+
+	[DESC]Framework Important
+	[ITEM]d:\Hogia Dokument\Ramverket\Framework Important.doc
+	[ICON]d:\Hogia Dokument\Ramverket\Framework Important.doc
+	[NUMB]0
+	[DESC]IP-Adresser
+	[ITEM]d:\Hogia Dokument\IP-Addresses.xls
+	[ICON]d:\Hogia Dokument\IP-Addresses.xls
+	[NUMB]0
+	[DESC]Telefonlista
+	[ITEM]d:\Hogia Dokument\TelenrFabriksgatan.xls
+	[ICON]d:\Hogia Dokument\TelenrFabriksgatan.xls
+	[NUMB]0
+	[DESC]Hogia Tidrapport
+	[ITEM]c:\Hogia Dokument\Hogia Tidrapport.xls
+	[ICON]c:\Hogia Dokument\Hogia Tidrapport.xls
+	[NUMB]0
+	[DESC]VB Struldokument
+	[ITEM]C:\Hogia32\Development\VB docs\Struldokument VB.doc
+	[ICON]C:\Hogia32\Development\VB docs\Struldokument VB.doc
+	[NUMB]0
+	[DESC]Tidregistrering TODO 
+	[ITEM]d:\Hogia Dokument\TODO Tidregistrering via Internet.doc
+	[ICON]d:\Hogia Dokument\TODO Tidregistrering via Internet.doc
+	[NUMB]0
+	[DESC]Hogia Fun 
+	[ITEM]d:\Hogia Dokument\HogiaFun.doc
+	[ICON]d:\Hogia Dokument\HogiaFun.doc
+	[NUMB]0
+
+[MENU]WinNT
+	[TEXT]Windows NT Tools
+	[LINE]
+
+	[DESC]Explorer
+	[ITEM]c:\winnt\explorer.exe
+	[ICON]c:\winnt\explorer.exe
+	[NUMB]1
+	[DESC]MS-Dos prompt
+	[ITEM]C:\winnt\System32\cmd.exe
+	[ICON]C:\winnt\System32\cmd.exe
+	[NUMB]0
+	[DESC]NT Handle
+	[ITEM]C:\Program Files\NTHandleEx\HandleEx.exe
+	[ICON]C:\Program Files\NTHandleEx\HandleEx.exe
+	[NUMB]0
+	[DESC]Anteckningar
+	[ITEM]c:\winnt\notepad.exe
+	[ICON]c:\winnt\notepad.exe
+	[NUMB]0
+	[DESC]Wordpad
+	[ITEM]C:\Program files\Windows NT\Accessories\WORDPAD.EXE
+	[ICON]C:\Program files\Windows NT\Accessories\WORDPAD.EXE
+	[NUMB]0
+	[DESC]Calculator
+	[ITEM]c:\winnt\system32\calc.exe
+	[ICON]c:\winnt\system32\calc.exe
+	[NUMB]0
+	[DESC]RegEdit
+	[ITEM]c:\winnt\regedit.exe
+	[ICON]c:\winnt\regedit.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]System Tools
+	[LINE]
+
+	[DESC]NSLookup
+	[ITEM]c:\winnt\system32\nslookup.exe
+	[ICON]c:\winnt\system32\nslookup.exe
+	[NUMB]0
+	[DESC]Disk defragmentering
+	[ITEM]C:\WINnt\system32\DEFRAG.EXE
+	[ICON]C:\WINnt\system32\DEFRAG.EXE
+	[NUMB]0
+	[DESC]Scandisk
+	[ITEM]C:\WINnt\system32\SCANDSKW.EXE
+	[ICON]C:\WINnt\system32\SCANDSKW.EXE
+	[NUMB]0
+	[DESC]Nätövervakaren
+	[ITEM]C:\WINnt\system32\NETWATCH.EXE
+	[ICON]C:\WINnt\system32\NETWATCH.EXE
+	[NUMB]0
+	[DESC]Systemresursmätaren
+	[ITEM]C:\WINnt\system32\RSRCMTR.EXE
+	[ICON]C:\WINnt\system32\RSRCMTR.EXE
+	[NUMB]0
+	[DESC]Systemövervakaren
+	[ITEM]C:\WINnt\system32\SYSMON.EXE
+	[ICON]C:\WINnt\system32\SYSMON.EXE
+	[NUMB]0
+	[MENU]WinNT Admin
+	[TEXT]Windows NT Admin Tools
+	[LINE]
+	[DESC]Backup
+	[ITEM]c:\WinNT\system32\ntbackup.exe
+	[ICON]c:\WinNT\system32\ntbackup.exe
+	[NUMB]0
+	[DESC]Disk Administrator
+	[ITEM]c:\WinNT\system32\windisk.exe
+	[ICON]c:\WinNT\system32\windisk.exe
+	[NUMB]0
+	[DESC]Event Viewer
+	[ITEM]c:\WinNT\system32\eventvwr.exe
+	[ICON]c:\WinNT\system32\eventvwr.exe
+	[NUMB]0
+	[DESC]Performance Monitor
+	[ITEM]c:\WinNT\system32\perfmon.exe
+	[ICON]c:\WinNT\system32\perfmon.exe
+	[NUMB]0
+	[DESC]Remote Access Admin
+	[ITEM]c:\WinNT\system32\rasadmin.exe
+	[ICON]c:\WinNT\system32\rasadmin.exe
+	[NUMB]0
+	[DESC]User Manager
+	[ITEM]c:\WinNT\system32\musrmgr.exe
+	[ICON]c:\WinNT\system32\musrmgr.exe
+	[NUMB]0
+	[DESC]Windows NT Diagnostics
+	[ITEM]c:\WinNT\system32\winmsd.exe
+	[ICON]c:\WinNT\system32\winmsd.exe
+	[NUMB]0
+	[LINE]
+	[TEXT]Windows NT Server Admin Tools
+	[LINE]
+	[DESC]User Manager for domains
+	[ITEM]c:\program files\NT Server Admin Tools\Usrmgr.exe
+	[ICON]c:\program files\NT Server Admin Tools\Usrmgr.exe
+	[NUMB]0
+	[DESC]Server manager
+	[ITEM]c:\program files\NT Server Admin Tools\Srvmgr.exe
+	[ICON]c:\program files\NT Server Admin Tools\Srvmgr.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Other tools
+	[LINE]
+
+	[DESC]PHS Domain Explorer
+	[ITEM]c:\projekt\ADSI\DomainExplorer.exe
+	[ICON]c:\projekt\ADSI\DomainExplorer.exe
+	[NUMB]0
+
+[MENU]Programming
+	[TEXT]Microsoft Visual Studio 6
+	[LINE]
+
+	[DESC]Visual Basic 6.0
+	[ITEM]C:\Program Files\Microsoft Visual Studio\VB98\VB6.EXE
+	[ICON]C:\Program Files\Microsoft Visual Studio\VB98\VB6.EXE
+	[NUMB]0
+	[DESC]Visual InterDev 6.0
+	[ITEM]C:\Program Files\Microsoft Visual Studio\Common\IDE\IDE98\DEVENV.EXE
+	[ICON]C:\Program Files\Microsoft Visual Studio\Common\IDE\IDE98\DEVENV.EXE
+	[NUMB]0
+	[DESC]Visual C++ 6.0
+	[ITEM]C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\MSDEV.EXE
+	[ICON]C:\Program Files\Microsoft Visual Studio\Common\MSDev98\Bin\MSDEV.EXE
+	[NUMB]0
+	[DESC]Visual SourceSafe 6.0
+	[ITEM]C:\Program Files\Microsoft Visual Studio\Common\VSS\win32\SSEXP.EXE
+	[ICON]C:\Program Files\Microsoft Visual Studio\Common\VSS\win32\SSEXP.EXE
+	[NUMB]0
+	[DESC]Visual SourceSafe 6.0 Admin
+	[ITEM]C:\Program Files\Microsoft Visual Studio\Common\VSS\win32\SSADMIN.EXE
+	[ICON]C:\Program Files\Microsoft Visual Studio\Common\VSS\win32\SSADMIN.EXE
+	[NUMB]0
+	[DESC]MSDN Library 6.0
+	[ITEM]C:\WINNT\hh.exe C:\Program Files\Microsoft Visual Studio\MSDN98\98VSa\1033\msdnvs6a.col
+	[ICON]C:\WINNT\hh.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Rational Rose 98
+	[LINE]
+
+	[DESC]Rational Rose 98
+	[ITEM]C:\Program Files\Rational\Rational Rose 98 Modeler Edition\rose.exe
+	[ICON]C:\Program Files\Rational\Rational Rose 98 Modeler Edition\rose.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Misc. Programming
+	[LINE]
+
+	[DESC]ConnectionStringBuilder
+	[ITEM]C:\Projekt\ConnectionStringBuilder\ConnectionBuilder.exe
+	[ICON]C:\Projekt\ConnectionStringBuilder\ConnectionBuilder.exe
+	[NUMB]0
+	[DESC]Microsoft Homer
+	[ITEM]C:\Program Files\Microsoft Homer\hclient.exe
+	[ICON]C:\Program Files\Microsoft Homer\hclient.exe
+	[NUMB]0
+	[DESC]Wise for Windows Installer
+	[ITEM]C:\Program Files\Wise for Windows Installer\WfWiRC4.exe
+	[ICON]C:\Program Files\Wise for Windows Installer\WfWiRC4.exe
+	[NUMB]0
+	[DESC]Wise InstallMaster 8
+	[ITEM]C:\Program Files\Wise InstallMaster 8.0\INSTALLMASTER.EXE
+	[ICON]C:\Program Files\Wise InstallMaster 8.0\INSTALLMASTER.EXE
+	[NUMB]0
+	[DESC]VB Compress Pro 6.02
+	[ITEM]C:\Program files\VB Compress Pro 6\VBCP632.EXE
+	[ICON]C:\Program files\VB Compress Pro 6\VBCP632.EXE
+	[NUMB]0
+	[DESC]DLL Deamon
+	[ITEM]C:\Program files\DLL Demon\DLLDemon.exe
+	[ICON]C:\Program files\DLL Demon\DLLDemon.exe
+	[NUMB]0
+	[DESC]Win 32 API Help
+	[ITEM]D:\Docs\WinAPI\VBPG32.HLP
+	[ICON]D:\Docs\WinAPI\VBPG32.HLP
+	[NUMB]0
+	[DESC]MSCD Exam Guide
+	[ITEM]D:\Docs\MCSD Exam Guide\tp70175.pdf
+	[ICON]D:\Docs\MCSD Exam Guide\tp70175.pdf
+	[NUMB]0
+	[DESC]Visual Basic 3
+	[ITEM]C:\Program Files\VB3\VB.EXE
+	[ICON]C:\Program Files\VB3\VB.EXE
+	[NUMB]0
+	[DESC]Project Upgrade
+	[ITEM]C:\Program Files\Microsoft Visual Studio\VB98\Tools\ProjUpgd\PrjUpgd.exe
+	[ICON]C:\Program Files\Microsoft Visual Studio\VB98\Tools\ProjUpgd\PrjUpgd.exe
+	[NUMB]0
+
+[MENU]SQL-Server
+
+	[TEXT]SQL-Server 7.0
+	[LINE]
+
+	[DESC]Enterprise Manager 7.0
+	[ITEM]C:\WINNT\system32\mmc.exe /s "C:\Program Files\Microsoft SQL Server\80\Tools\BINN\SQL Server Enterprise Manager.MSC"
+	[ICON]C:\WINNT\system32\mmc.exe
+	[NUMB]0
+	[DESC]Query Analyzer 7.0
+	[ITEM]"C:\Program Files\Microsoft SQL Server\80\Tools\Binn\isqlw.exe"
+	[ICON]"C:\Program Files\Microsoft SQL Server\80\Tools\Binn\isqlw.exe"
+	[NUMB]0
+	[DESC]Service Manager 7.0
+	[ITEM]C:\MSSQL7\Binn\sqlmangr.exe
+	[ICON]C:\MSSQL7\Binn\sqlmangr.exe
+	[NUMB]0
+	[DESC]Import and Export Data
+	[ITEM]C:\MSSQL7\Binn\dtswiz.exe
+	[ICON]C:\MSSQL7\Binn\dtswiz.exe
+	[NUMB]0
+	[DESC]Performance monitor
+	[ITEM]C:\MSSQL7\Binn\sqlctrs.pmc
+	[ICON]C:\MSSQL7\Binn\sqlctrs.pmc
+	[NUMB]0
+	[DESC]Profiler
+	[ITEM]C:\MSSQL7\Binn\sqltrace.exe
+	[ICON]C:\MSSQL7\Binn\sqltrace.exe
+	[NUMB]0
+	[DESC]Client Network Utility
+	[ITEM]C:\WINNT\system32\cliconfg.exe
+	[ICON]C:\WINNT\system32\cliconfg.exe
+	[NUMB]0
+	[DESC]Server Network Utility
+	[ITEM]C:\MSSQL7\Binn\svrnetcn.exe
+	[ICON]C:\MSSQL7\Binn\svrnetcn.exe
+	[NUMB]0
+	[DESC]Books Online
+	[ITEM]C:\WINNT\hh.exe C:\MSSQL7\BOOKS\SQLBOL.CHM
+	[ICON]C:\WINNT\hh.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]SQL-Server 6.5
+	[LINE]
+
+	[DESC]Enterprise Manager 6.5
+	[ITEM]C:\MSSQL\BINN\SQLEW.EXE
+	[ICON]C:\MSSQL\BINN\SQLEW.EXE
+	[NUMB]0
+	[DESC]ISQL_w 6.5
+	[ITEM]C:\MSSQL\BINN\ISQLW.EXE
+	[ICON]C:\MSSQL\BINN\ISQLW.EXE
+	[NUMB]0
+	[DESC]Books Online 6.5
+	[ITEM]C:\MSSQL\BINN\INFOVIEW.EXE SQLBOOKS.MVB
+	[ICON]C:\MSSQL\BINN\INFOVIEW.EXE
+	[NUMB]0
+
+[MENU]Office 2000
+	[TEXT]Microsoft Office 2000
+	[LINE]
+
+	[DESC]Word 2000
+	[ITEM]c:\program files\microsoft office\office\winword.exe
+	[ICON]c:\program files\microsoft office\office\winword.exe
+	[NUMB]0
+	[DESC]Excel 2000
+	[ITEM]c:\program files\microsoft office\office\excel.exe
+	[ICON]c:\program files\microsoft office\office\excel.exe
+	[NUMB]0
+	[DESC]Access 2000
+	[ITEM]c:\program files\microsoft office\office\msaccess.exe
+	[ICON]c:\program files\microsoft office\office\msaccess.exe
+	[NUMB]0
+	[DESC]PowerPoint 2000
+	[ITEM]C:\Program files\Microsoft Office\Office\POWERPNT.EXE
+	[ICON]C:\Program files\Microsoft Office\Office\POWERPNT.EXE
+	[NUMB]0
+	[DESC]Outlook 2000
+	[ITEM]c:\program files\microsoft office\office\outlook.exe
+	[ICON]c:\program files\microsoft office\office\outlook.exe
+	[NUMB]0
+	[DESC]Frontpage 2000
+	[ITEM]c:\program files\microsoft office\office\frontpg.exe
+	[ICON]c:\program files\microsoft office\office\frontpg.exe
+	[NUMB]0
+
+[MENU]Internet
+	[TEXT]Microsoft Internet Explorer 5.0
+	[LINE]
+
+	[DESC]Internet Explorer 4.0
+	[ITEM]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[ICON]C:\Program Files\Plus!\Microsoft Internet\IEXPLORE.EXE
+	[NUMB]0
+	[DESC]Outlook Express
+	[ITEM]C:\Program files\Outlook Express\MSIMN.EXE
+	[ICON]C:\Program files\Outlook Express\MSIMN.EXE
+	[NUMB]0
+	[DESC]NetMeeting
+	[ITEM]C:\Program Files\NetMeetingNT\conf.exe
+	[ICON]C:\Program Files\NetMeetingNT\conf.exe
+	[NUMB]0
+	[DESC]Adress bok
+	[ITEM]C:\Program files\Outlook Express\WAB.EXE
+	[ICON]C:\Program files\Outlook Express\WAB.EXE
+	[NUMB]0
+	[DESC]Frontpage Express
+	[ITEM]C:\Program files\Microsoft FrontPage Express\BIN\FPXPRESS.EXE
+	[ICON]C:\Program files\Microsoft FrontPage Express\BIN\FPXPRESS.EXE
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Misc. Internet
+	[LINE]
+
+	[DESC]Netscape Communicator 4.51
+	[ITEM]C:\Program files\Netscape\Communicator\Program\netscape.exe
+	[ICON]C:\Program files\Netscape\Communicator\Program\netscape.exe
+	[NUMB]0
+	[DESC]Netscape Messenger 4.51
+	[ITEM]C:\Program Files\Netscape\Communicator\Program\netscape.exe  -mail
+	[ICON]C:\Program Files\Netscape\Communicator\Program\netscape.exe
+	[NUMB]0
+	[DESC]3D FTP
+	[ITEM]C:\Program Files\3D-FTP\3dftp.exe
+	[ICON]C:\Program Files\3D-FTP\3dftp.exe
+	[NUMB]0
+	[DESC]Cute FTP 32
+	[ITEM]c:\program files\cuteftp\cutftp32.exe
+	[ICON]c:\program files\cuteftp\cutftp32.exe
+	[NUMB]0
+	[DESC]WebGrabber
+	[ITEM]C:\Program files\WebGrabber\web.exe
+	[ICON]C:\Program files\WebGrabber\web.exe
+	[NUMB]0
+	[DESC]mIrc 32
+	[ITEM]C:\Program files\mirc\mirc32.exe
+	[ICON]C:\Program files\mirc\mirc32.exe
+	[NUMB]0
+	[DESC]ICQ Mirabilis
+	[ITEM]C:\PROGRAM files\ICQ\ICQ.exe
+	[ICON]C:\PROGRAM files\ICQ\ICQ.exe
+	[NUMB]0
+
+	[LINE]
+
+	[DESC]Dialup Networking
+	[ITEM]c:\winnt\system32\rasphone.exe
+	[ICON]c:\winnt\system32\rasphone.exe
+	[NUMB]0
+	[DESC]War FTP Deamon
+	[ITEM]C:\Program Files\War-ftpd
+	[ICON]C:\Program Files\War-ftpd
+	[NUMB]0
+
+[MENU]Misc
+
+	[TEXT]Graphics && Tools
+	[LINE]
+
+	[DESC]Paint Shop Pro 5.0
+	[ITEM]C:\Program files\Paint Shop Pro 5\Psp.exe
+	[ICON]C:\Program files\Paint Shop Pro 5\Psp.exe
+	[NUMB]0
+	[DESC]ACDSee 32 Browser
+	[ITEM]C:\Program files\ACDSee32\ACDSee32.exe
+	[ICON]C:\Program files\ACDSee32\ACDSee32.exe
+	[NUMB]0
+	[DESC]PartitionMagic 4.0
+	[ITEM]C:\Program Files\PowerQuest\PartitionMagic4\WinNT\Pm40nt.exe
+	[ICON]C:\Program Files\PowerQuest\PartitionMagic4\WinNT\Pm40nt.exe
+	[NUMB]0
+	[DESC]WinMerge
+	[ITEM]C:\Program Files\WinMerge\WinMerge.exe
+	[ICON]C:\Program Files\WinMerge\WinMerge.exe
+	[NUMB]0
+	[DESC]WPS
+	[ITEM]C:\Program Files\WPS.EXE
+	[ICON]C:\Program Files\WPS.EXE
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Games
+	[LINE]
+
+	[DESC]Alfa Centauri
+	[ITEM]D:\Games\Firaxis Games\Sid Meier's Alpha Centauri\terran.exe
+	[ICON]D:\Games\Firaxis Games\Sid Meier's Alpha Centauri\terran.exe
+	[NUMB]0
+	[DESC]Baldurs Gate
+	[ITEM]C:\Program files\Black Isle\Baldur's Gate\Baldur.exe
+	[ICON]C:\Program files\Black Isle\Baldur's Gate\Baldur.exe
+	[NUMB]0
+	[DESC]ChessMaster 6000
+	[ITEM]C:\Program files\Chessmaster 6000\cm6000.exe
+	[ICON]C:\Program files\Chessmaster 6000\cm6000.exe
+	[NUMB]0
+	[DESC]Quake III
+	[ITEM]C:\Program Files\Quake3\Quake3.exe
+	[ICON]C:\Program Files\Quake3\Quake3.exe
+	[NUMB]0
+	[DESC]Quake II
+	[ITEM]D:\Games\Quake2\Quake2.lnk
+	[ICON]D:\Games\Quake2\Quake2.lnk
+	[NUMB]0
+	[DESC]Age Of Empires
+	[ITEM]c:\games\aoe\empires.exe
+	[ICON]c:\games\aoe\empires.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Misc
+	[LINE]
+
+	[DESC]PHS Tid
+	[ITEM]e:\tid\tid.exe
+	[ICON]e:\tid\tid.exe
+	[NUMB]0
+	[DESC]SkyMap 5.0 Pro
+	[ITEM]C:\Program Files\SkyMap Pro 5\skymap32.exe
+	[ICON]C:\Program Files\SkyMap Pro 5\skymap32.exe
+	[NUMB]0
+	[DESC]Adressbok
+	[ITEM]c:\my documents\Per Hultqvist.wab
+	[ICON]c:\my documents\Per Hultqvist.wab
+	[NUMB]0
+	[DESC]Telefonlista Hogia
+	[ITEM]c:\my documents\telefonlista.pdf
+	[ICON]c:\my documents\telefonlista.pdf
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Music
+	[LINE]
+
+	[DESC]WinAMP
+	[ITEM]c:\program files\winamp\winamp.exe
+	[ICON]c:\program files\winamp\winamp.exe
+	[NUMB]0
+	[DESC]Metallica
+	[ITEM]D:\MP3\Metallica.m3u
+	[ICON]D:\MP3\Metallica.m3u
+	[NUMB]0
+	[DESC]Klassiskt
+	[ITEM]D:\MP3\Klassiskt.m3u
+	[ICON]D:\MP3\Klassiskt.m3u
+	[NUMB]0
+	[DESC]Pop & Rock
+	[ITEM]D:\MP3\PopRock.m3u
+	[ICON]D:\MP3\PopRock.m3u
+	[NUMB]0
+	[DESC]Latest
+	[ITEM]D:\MP3\Latest.m3u
+	[ICON]D:\MP3\Latest.m3u
+	[NUMB]0
+
+[MENU]Hogia
+
+	[TEXT]Hogia Affärssystem
+	[LINE]
+
+	[DESC]Excelsior
+	[ITEM]C:\Hogia32\Excelsior\Current\Excelsior32e.exe
+	[ICON]C:\Hogia32\Excelsior\Current\Excelsior32e.exe
+	[NUMB]0
+	[DESC]Hogia Affärssystem
+	[ITEM]C:\Hogia32\Utveckling\Bin\Bin\Hogia32.exe
+	[ICON]C:\Hogia32\Utveckling\Bin\Bin\Hogia32.exe
+	[NUMB]0
+	[DESC]Hogia Affärssystem Admin
+	[ITEM]C:\Hogia32\Utveckling\Bin\Bin\Admin.exe
+	[ICON]C:\Hogia32\Utveckling\Bin\Bin\Admin.exe
+	[NUMB]0
+	[DESC]Hogia Affärssystem Admin 7.0
+	[ITEM]C:\Hogia32\Utveckling\Bin\Bin\Admin7.exe
+	[ICON]C:\Hogia32\Utveckling\Bin\Bin\Admin7.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Misc
+	[LINE]
+
+	[DESC]Domain Explorer
+	[ITEM]C:\Projekt\ADSI\DomainExplorer.exe
+	[ICON]C:\Projekt\ADSI\DomainExplorer.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Internal Tools
+	[LINE]
+
+	[DESC]Hogia Register Tool
+	[ITEM]C:\Hogia32\Internal Tools\Hogia Registry Tool\HogiaRegTool.exe
+	[ICON]C:\Hogia32\Internal Tools\Hogia Registry Tool\HogiaRegTool.exe
+	[NUMB]0
+	[DESC]VB Project Analyzer
+	[ITEM]C:\Projekt\VB Project Analyzer\ProjectAnalyzer.exe
+	[ICON]C:\Projekt\VB Project Analyzer\ProjectAnalyzer.exe
+	[NUMB]0
+	[DESC]Hogia Database Trasher
+	[ITEM]C:\Hogia32\Internal Tools\Hogia Database Trasher\HDBTrash.exe
+	[ICON]C:\Hogia32\Internal Tools\Hogia Database Trasher\HDBTrash.exe
+	[NUMB]0
+	[DESC]Hogia DB Printer
+	[ITEM]C:\Hogia32\Internal Tools\DB Definition Printer\DBPrint.exe
+	[ICON]C:\Hogia32\Internal Tools\DB Definition Printer\DBPrint.exe
+	[NUMB]0
+	[DESC]Unregister
+	[ITEM]C:\Hogia32\Utveckling\Bin\Object\Unregister.exe
+	[ICON]C:\Hogia32\Utveckling\Bin\Object\Unregister.exe
+	[NUMB]0
+
+	[LINE]
+	[TEXT]Framework
+	[LINE]
+
+	[DESC]Datadictionary
+	[ITEM]C:\Hogia\Bin\datadictionary.exe
+	[ICON]C:\Hogia\Bin\datadictionary.exe
+	[NUMB]0

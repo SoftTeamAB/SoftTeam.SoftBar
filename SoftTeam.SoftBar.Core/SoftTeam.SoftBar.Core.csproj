@@ -180,6 +180,7 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="Misc\PHSAppBarImporter.cs" />
     <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />
     <Compile Include="Settings\Tool.cs" />
@@ -192,6 +193,7 @@
     <Compile Include="Xml\XmlMenuBase.cs" />
     <Compile Include="Xml\XmlMenuItem.cs" />
     <Compile Include="Xml\XmlMenuItemBase.cs" />
+    <Compile Include="Xml\XmlSaver.cs" />
     <Compile Include="Xml\XmlSubMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -309,6 +311,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\information.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PHSAppBar.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -51,7 +51,8 @@
             this.simpleButtonFirstTimeUser.Location = new System.Drawing.Point(12, 12);
             this.simpleButtonFirstTimeUser.Name = "simpleButtonFirstTimeUser";
             this.simpleButtonFirstTimeUser.Size = new System.Drawing.Size(342, 107);
-            toolTipTitleItem1.Text = "I am a First time user!";
+            toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem1.Text = "I am a first time user!";
             toolTipItem1.LeftIndent = 6;
             toolTipItem1.Text = "Click this if you are a completely new user.";
             superToolTip1.Items.Add(toolTipTitleItem1);
@@ -69,7 +70,8 @@
             this.simpleButtonWizard.Location = new System.Drawing.Point(12, 238);
             this.simpleButtonWizard.Name = "simpleButtonWizard";
             this.simpleButtonWizard.Size = new System.Drawing.Size(342, 107);
-            toolTipTitleItem2.Text = "I already have a menu.xml!";
+            toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem2.Text = "I am a wizard!";
             toolTipItem2.LeftIndent = 6;
             toolTipItem2.Text = "Click this if you are an experienced SoftBar user and already have a menu.xml fil" +
     "e that you want to use.";
@@ -77,18 +79,19 @@
             superToolTip2.Items.Add(toolTipItem2);
             this.simpleButtonWizard.SuperTip = superToolTip2;
             this.simpleButtonWizard.TabIndex = 1;
-            this.simpleButtonWizard.Text = "I already have a menu.xml!";
+            this.simpleButtonWizard.Text = "I am a wizard!";
             this.simpleButtonWizard.Click += new System.EventHandler(this.simpleButtonWizard_Click);
             // 
             // simpleButtonPHSAppBarUser
             // 
             this.simpleButtonPHSAppBarUser.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonPHSAppBarUser.Appearance.Options.UseFont = true;
-            this.simpleButtonPHSAppBarUser.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButtonPHSAppBarUser.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonPHSAppBarUser.ImageOptions.Image")));
             this.simpleButtonPHSAppBarUser.Location = new System.Drawing.Point(12, 125);
             this.simpleButtonPHSAppBarUser.Name = "simpleButtonPHSAppBarUser";
             this.simpleButtonPHSAppBarUser.Size = new System.Drawing.Size(342, 107);
-            toolTipTitleItem3.Text = "I already use PHS AppBar!";
+            toolTipTitleItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem3.Text = "I am an old timer!";
             toolTipItem3.LeftIndent = 6;
             toolTipItem3.Text = "Click this if your name is Paul and you have an old PHS AppBar config.ini file th" +
     "at you want to convert.";
@@ -96,7 +99,7 @@
             superToolTip3.Items.Add(toolTipItem3);
             this.simpleButtonPHSAppBarUser.SuperTip = superToolTip3;
             this.simpleButtonPHSAppBarUser.TabIndex = 2;
-            this.simpleButtonPHSAppBarUser.Text = "I already use PHS AppBar!";
+            this.simpleButtonPHSAppBarUser.Text = "I am an old timer!";
             this.simpleButtonPHSAppBarUser.Click += new System.EventHandler(this.simpleButtonPHSAppBarUser_Click);
             // 
             // StartupForm

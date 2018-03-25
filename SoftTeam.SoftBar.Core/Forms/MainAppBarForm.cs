@@ -2,13 +2,12 @@
 using System.Windows.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.SoftBar;
+using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MainAppBarForm : DevExpress.XtraEditors.XtraForm
     {
-        
-
         public MainAppBarForm()
         {
             InitializeComponent();
@@ -17,45 +16,50 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void MainAppBarForm_Load(object sender, EventArgs e)
         {
             bool exit = false;
-            bool firstTimeUser = false;
+            bool showCustomizationForm = false;
+            UserTypeEnum userType = UserTypeEnum.None;
 
             // Get the path for the xml file
             var path = Core.Properties.Settings.Default.SoftBarPath;
 
             // First time user
-            if (string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(System.IO.Path.Combine(path,"menu.xml")))
             {
                 using (StartupForm form = new StartupForm())
                 {
                     form.ShowDialog();
 
-                    switch (form.UserType)
+                    userType = form.UserType;
+
+                    switch (userType)
                     {
                         case UserTypeEnum.None:
                             exit = true;
                             break;
                         case UserTypeEnum.FirstTimeUser:
-                            firstTimeUser = true;
+                            showCustomizationForm = true;
                             path = ChooseWorkingDirectory();
                             break;
                         case UserTypeEnum.PHSAppBarUser:
-                            // ToDo : Import from PHS AppBar
+                            showCustomizationForm = true;
                             path = ChooseWorkingDirectory();
+                            var success = ImportFromPHSAppBar(path);
+                            if (!success)
+                                exit = true;
                             break;
                         case UserTypeEnum.Wizard:
-                            xtraOpenFileDialogSoftBar.FileName = "menu.xml";
-                            xtraOpenFileDialogSoftBar.CheckFileExists = true;
-                            xtraOpenFileDialogSoftBar.Title = "Open menu.xml";
-                            DialogResult result = xtraOpenFileDialogSoftBar.ShowDialog();
-
-                            if (result == DialogResult.Cancel)
+                            var fileName = ChooseMenuXmlPath();
+                            if (string.IsNullOrEmpty(fileName))
                                 exit = true;
-
-                            path = System.IO.Path.GetDirectoryName(xtraOpenFileDialogSoftBar.FileName);
+                            else
+                                path = System.IO.Path.GetDirectoryName(fileName);
                             break;
                     }
                 }
             }
+
+            if (string.IsNullOrEmpty(path))
+                exit = true;
 
             // If the user has cancelled the initial dialogs, let's quit...
             if (exit)
@@ -67,10 +71,17 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Set up the app bar at the top of the screen
             AppBarFunctions.SetAppBar(this, AppBarEdge.Top);
 
+            // Save the path (working folder) for the xml file
+            if (Core.Properties.Settings.Default.SoftBarPath != path)
+            {
+                Core.Properties.Settings.Default.SoftBarPath = path;
+                Core.Properties.Settings.Default.Save();
+            }
+
             // Create the app bar from XML
             SoftBarManager manager = new SoftBarManager(this, path);
 
-            if (firstTimeUser)
+            if (showCustomizationForm)
             {
                 using (CustomizationForm form = new CustomizationForm(manager))
                 {
@@ -78,6 +89,40 @@ namespace SoftTeam.SoftBar.Core.Forms
                 }
             }
 
+        }
+
+        private bool ImportFromPHSAppBar(string workingDirectory)
+        {
+            xtraOpenFileDialogSoftBar.FileName = "Config.ini";
+            xtraOpenFileDialogSoftBar.CheckFileExists = true;
+            xtraOpenFileDialogSoftBar.Title = "Open PHSAppBar config.ini";
+            DialogResult result = xtraOpenFileDialogSoftBar.ShowDialog();
+            if (result == DialogResult.Cancel)
+                return false;
+
+            // Import from PHSAppBar config.ini
+            XmlArea area = null;
+            using (PHSAppBarImporter importer = new PHSAppBarImporter(xtraOpenFileDialogSoftBar.FileName))
+                area = importer.Import();
+
+            // Save xml
+            using (XmlSaver saver = new XmlSaver(area, System.IO.Path.Combine(workingDirectory, "menu.xml")))
+                saver.Save();
+
+            return true;
+        }
+
+        private string ChooseMenuXmlPath()
+        {
+            xtraOpenFileDialogSoftBar.FileName = "menu.xml";
+            xtraOpenFileDialogSoftBar.CheckFileExists = true;
+            xtraOpenFileDialogSoftBar.Title = "Open SoftBarmenu.xml";
+            DialogResult result = xtraOpenFileDialogSoftBar.ShowDialog();
+
+            if (result == DialogResult.Cancel)
+                return "";
+            else
+                return xtraOpenFileDialogSoftBar.FileName;
         }
 
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
