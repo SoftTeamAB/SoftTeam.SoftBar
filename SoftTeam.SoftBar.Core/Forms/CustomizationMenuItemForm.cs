@@ -109,6 +109,10 @@ namespace SoftTeam.SoftBar.Core.Forms
                     _menuItem.Name = editMenuItem.Name;
                     _menuItem.IconPath = editMenuItem.IconPath;
                     _menuItem.BeginGroup = editMenuItem.BeginGroup;
+
+                    _menuItem.ApplicationPath = editMenuItem.ApplicationPath;
+                    _menuItem.DocumentPath = editMenuItem.DocumentPath;
+                    _menuItem.Parameters = editMenuItem.Parameters;
                     break;
             }
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

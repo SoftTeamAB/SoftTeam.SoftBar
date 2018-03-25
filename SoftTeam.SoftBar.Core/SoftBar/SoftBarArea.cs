@@ -4,6 +4,7 @@ using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.SoftBar.Builders;
+using SoftTeam.SoftBar.Core.Xml;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -149,6 +150,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 if (result == DialogResult.Cancel)
                     return;
 
+                // Backup the old file
+                _manager.FileManager.Backup(FileType.UserMenus);
+                // Save the new xml file
+                using (XmlSaver saver = new XmlSaver(_manager.UserAreaXml, _manager.FileManager.MenuPath))
+                    saver.Save();
+                // Reload the user menu
                 _manager.UserArea.Load();
             }
         }
