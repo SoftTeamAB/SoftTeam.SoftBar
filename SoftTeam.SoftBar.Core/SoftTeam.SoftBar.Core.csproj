@@ -180,6 +180,7 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="Misc\ObjectExtension.cs" />
     <Compile Include="Misc\PHSAppBarImporter.cs" />
     <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />

@@ -145,10 +145,15 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             using (CustomizationForm form = new CustomizationForm(_manager))
             {
                 _menus[Constants.SYSTEM_MENU].Item.HidePopup();
+                var areaBackup = _manager.UserAreaXml.Copy();
+                
                 DialogResult result = form.ShowDialog();
 
                 if (result == DialogResult.Cancel)
+                {
+                    _manager.UserAreaXml = areaBackup;
                     return;
+                }
 
                 // Backup the old file
                 _manager.FileManager.Backup(FileType.UserMenus);
