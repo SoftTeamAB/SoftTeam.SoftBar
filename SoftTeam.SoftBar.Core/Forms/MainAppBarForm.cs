@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.SoftBar;
 using SoftTeam.SoftBar.Core.Xml;
@@ -16,7 +17,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void MainAppBarForm_Load(object sender, EventArgs e)
         {
             bool exit = false;
-            bool showCustomizationForm = false;
+            bool newUser = false;
             UserTypeEnum userType = UserTypeEnum.None;
 
             // Get the path for the xml file
@@ -37,11 +38,11 @@ namespace SoftTeam.SoftBar.Core.Forms
                             exit = true;
                             break;
                         case UserTypeEnum.FirstTimeUser:
-                            showCustomizationForm = true;
+                            newUser = true;
                             path = ChooseWorkingDirectory();
                             break;
                         case UserTypeEnum.PHSAppBarUser:
-                            showCustomizationForm = true;
+                            newUser = true;
                             path = ChooseWorkingDirectory();
                             var success = ImportFromPHSAppBar(path);
                             if (!success)
@@ -78,14 +79,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Create the app bar from XML
             SoftBarManager manager = new SoftBarManager(this, path);
 
-            if (showCustomizationForm)
+            if (newUser)
             {
-                using (CustomizationForm form = new CustomizationForm(manager))
-                {
-                    form.ShowDialog();
-                }
+                var header = $"Since you are a new SoftBar user, it is recommended" + Environment.NewLine + 
+                              "that you check out <b>System/Settings</b> to set up <b>SoftBar</b>," + Environment.NewLine + 
+                              "and <b>System/Customize</b> to create your own menus!";
+                var message = $"SoftBar - New user";
+                XtraMessageBox.Show(message, header, MessageBoxButtons.OK, MessageBoxIcon.Information, DevExpress.Utils.DefaultBoolean.True);
             }
-
         }
 
         private bool ImportFromPHSAppBar(string workingDirectory)

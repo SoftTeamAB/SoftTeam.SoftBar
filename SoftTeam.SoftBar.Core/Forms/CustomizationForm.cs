@@ -20,7 +20,10 @@ namespace SoftTeam.SoftBar.Core.Forms
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         private SoftBarManager _manager = null;
         private MenuItemControl _makeVisible = null;
-        private XmlMenuItemBase _makeVisibleNode = null;
+        private XmlMenuItemBase _selectedNode = null;
+        private bool _after = true;
+        private bool _inside = false;
+        private CustomizationInfoForm _infoForm = null;
         #endregion
 
         #region Constructors
@@ -122,7 +125,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void AddItemControl(MenuItemType type, XmlMenuItemBase menu)
         {
             var step = 128 / _maxLevel;
-            var color = Color.FromArgb(50, _level * step+127, _level * step+127, _level * step+127);
+            var color = Color.FromArgb(50, _level * step + 127, _level * step + 127, _level * step + 127);
             MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems);
             var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
@@ -133,9 +136,9 @@ namespace SoftTeam.SoftBar.Core.Forms
             item.ItemSelected += Item_ItemSelected;
             _height += item.Height + Constants.SPACE;
 
-            if (_makeVisibleNode != null && _makeVisibleNode.Equals(menu))
+            if (_selectedNode != null && _selectedNode.Equals(menu))
             {
-                _makeVisibleNode = null;
+                _selectedNode = null;
                 _makeVisible = item;
             }
 
@@ -205,27 +208,31 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
+        #region Add menu items
         private void AddMenu()
         {
             var selected = GetSelectedItem();
 
+            CaptureControlKeys(selected);
             var menu = CreateMenu();
-
             if (menu == null) return;
 
-            if (selected == null)
+            if (selected == null && _area.Menus.Count > 0)
             {
-                // Create the new menu at position 0
-                _area.Menus.Insert(0, (XmlMenu)menu);
+                XtraMessageBox.Show("Please select the menu you want create a new menu AFTER. Hold down shift to create the menu before the selected menu.");
+                return;
             }
             else
             {
-                // Create the new menu after the selected nodes parent menu
+                // Create the new menu before or after the selected nodes parent menu
                 var parentMenu = _area.GetParentMenu(selected);
-                _area.Menus.Insert(_area.Menus.IndexOf(parentMenu) + 1, (XmlMenu)menu);
+                if (!_after)
+                    _area.Menus.Insert(_area.Menus.IndexOf(parentMenu), (XmlMenu)menu);
+                else
+                    _area.Menus.Insert(_area.Menus.IndexOf(parentMenu) + 1, (XmlMenu)menu);
             }
 
-            _makeVisibleNode = menu;
+            _selectedNode = menu;
 
             RefreshMenuItems();
         }
@@ -241,23 +248,27 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
+            CaptureControlKeys(selected);
             var subMenu = CreateSubMenu();
             if (subMenu == null) return;
 
-            if (selected is XmlMenu || selected is XmlSubMenu)
+            if (selected is XmlMenu || (selected is XmlSubMenu && _inside))
             {
-                // Create the new menu item at position 0 in the menu or sub menu
+                // Create the new menu item at position 0 in the menu 
                 var menu = selected as XmlMenuBase;
                 menu.MenuItems.Insert(0, subMenu);
             }
             else
             {
-                // Create the new menu item after the selected nodes 
+                // Create the new menu item before or after the selected nodes 
                 var parent = (XmlMenuBase)_area.GetParent(selected);
-                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, subMenu);
+                if (!_after)
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), subMenu);
+                else
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, subMenu);
             }
 
-            _makeVisibleNode = subMenu;
+            _selectedNode = subMenu;
 
             RefreshMenuItems();
         }
@@ -273,10 +284,11 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
+            CaptureControlKeys(selected);
             var headerItem = CreateHeaderItem();
             if (headerItem == null) return;
 
-            if (selected is XmlMenu || selected is XmlSubMenu)
+            if (selected is XmlMenu || (selected is XmlSubMenu && _inside))
             {
                 // Create the new menu item at position 0 in the menu or sub menu
                 var menu = selected as XmlMenuBase;
@@ -284,12 +296,15 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
             else
             {
-                // Create the new menu item after the selected nodes 
+                // Create the new menu item before or after the selected nodes 
                 var parent = (XmlMenuBase)_area.GetParent(selected);
-                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, headerItem);
+                if (!_after)
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), headerItem);
+                else
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, headerItem);
             }
 
-            _makeVisibleNode = headerItem;
+            _selectedNode = headerItem;
 
             RefreshMenuItems();
         }
@@ -305,10 +320,11 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
+            CaptureControlKeys(selected);
             var menuItem = CreateMenuItem();
             if (menuItem == null) return;
 
-            if (selected is XmlMenu || selected is XmlSubMenu)
+            if (selected is XmlMenu || (selected is XmlSubMenu && _inside))
             {
                 // Create the new menu item at position 0 in the menu or sub menu
                 var menu = selected as XmlMenuBase;
@@ -318,13 +334,17 @@ namespace SoftTeam.SoftBar.Core.Forms
             {
                 // Create the new menu item after the selected nodes 
                 var parent = (XmlMenuBase)_area.GetParent(selected);
-                parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, menuItem);
+                if (!_after)
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), menuItem);
+                else
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, menuItem);
             }
 
-            _makeVisibleNode = menuItem;
+            _selectedNode = menuItem;
 
             RefreshMenuItems();
         }
+        #endregion
 
         #region CreateMenuItems
         private XmlMenuItemBase CreateMenu()
@@ -388,6 +408,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
+        #region GetSelectedItem
         private XmlMenuItemBase GetSelectedItem()
         {
             foreach (var menuItem in _menuItems)
@@ -396,6 +417,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             return null;
         }
+        #endregion
 
         #region Bottom bar
         private void barButtonItemPath_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -500,5 +522,51 @@ namespace SoftTeam.SoftBar.Core.Forms
             RefreshMenuItems();
         }
         #endregion
+
+        private void xtraScrollableControlMenu_Click(object sender, EventArgs e)
+        {
+            ClearSelected();
+        }
+
+        private void CaptureControlKeys(XmlMenuItemBase selected)
+        {
+            // Default values
+            _inside = false;
+            _after = true;
+
+            // If we are inside a sub menu...
+            if (selected is XmlSubMenu)
+            {
+                // ...and the CTRL key is pressed, create item inside the menu.
+                if (Control.ModifierKeys == Keys.Control)
+                    _inside = true;
+                else if (Control.ModifierKeys == Keys.Shift)
+                    _after = false;
+            }
+            else
+            {
+                // If shift key is pressed, create item before the selected item
+                if (Control.ModifierKeys == Keys.Shift)
+                    _after = false;
+            }
+        }
+
+        private void pictureBoxPlacementInfo_MouseEnter(object sender, EventArgs e)
+        {
+            _infoForm = new CustomizationInfoForm();
+            _infoForm.Show();
+
+            var left = this.Left + pictureBoxPlacementInfo.Left - _infoForm.Width;
+            var top = this.Top + pictureBoxPlacementInfo.Top + pictureBoxPlacementInfo.Height;
+
+            _infoForm.Location = new Point(left, top);
+        }
+
+        private void pictureBoxPlacementInfo_MouseLeave(object sender, EventArgs e)
+        {
+            _infoForm.Close();
+            _infoForm.Dispose();
+            _infoForm = null;
+        }
     }
 }

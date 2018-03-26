@@ -110,6 +110,10 @@ namespace SoftTeam.SoftBar.Core.Controls
         #region Edit menu item
         private void MenuItem_DoubleClick(object sender, EventArgs e)
         {
+            // Make sure that this item is selected when we edit it
+            onClearSelectedRequested();
+            Selected = MenuItemSelectedStatus.Selected;
+
             CustomizationMenuItemForm form = null;
 
             if (_item is XmlMenu)

@@ -97,9 +97,11 @@
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControlScroll = new DevExpress.XtraEditors.PanelControl();
+            this.pictureBoxPlacementInfo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlScroll)).BeginInit();
             this.panelControlScroll.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlacementInfo)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraScrollableControlMenu
@@ -109,6 +111,7 @@
             this.xtraScrollableControlMenu.Name = "xtraScrollableControlMenu";
             this.xtraScrollableControlMenu.Size = new System.Drawing.Size(754, 407);
             this.xtraScrollableControlMenu.TabIndex = 0;
+            this.xtraScrollableControlMenu.Click += new System.EventHandler(this.xtraScrollableControlMenu_Click);
             // 
             // barManagerCustomization
             // 
@@ -505,11 +508,24 @@
             this.panelControlScroll.Size = new System.Drawing.Size(754, 31);
             this.panelControlScroll.TabIndex = 11;
             // 
+            // pictureBoxPlacementInfo
+            // 
+            this.pictureBoxPlacementInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxPlacementInfo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPlacementInfo.Image")));
+            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(705, 55);
+            this.pictureBoxPlacementInfo.Name = "pictureBoxPlacementInfo";
+            this.pictureBoxPlacementInfo.Size = new System.Drawing.Size(34, 34);
+            this.pictureBoxPlacementInfo.TabIndex = 0;
+            this.pictureBoxPlacementInfo.TabStop = false;
+            this.pictureBoxPlacementInfo.MouseEnter += new System.EventHandler(this.pictureBoxPlacementInfo_MouseEnter);
+            this.pictureBoxPlacementInfo.MouseLeave += new System.EventHandler(this.pictureBoxPlacementInfo_MouseLeave);
+            // 
             // CustomizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(754, 516);
+            this.Controls.Add(this.pictureBoxPlacementInfo);
             this.Controls.Add(this.xtraScrollableControlMenu);
             this.Controls.Add(this.panelControlScroll);
             this.Controls.Add(this.barDockControlLeft);
@@ -523,6 +539,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlScroll)).EndInit();
             this.panelControlScroll.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxPlacementInfo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -559,5 +576,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.PanelControl panelControlScroll;
+        private System.Windows.Forms.PictureBox pictureBoxPlacementInfo;
     }
 }
