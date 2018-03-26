@@ -81,10 +81,10 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (newUser)
             {
-                var header = $"Since you are a new SoftBar user, it is recommended" + Environment.NewLine + 
-                              "that you check out <b>System/Settings</b> to set up <b>SoftBar</b>," + Environment.NewLine + 
-                              "and <b>System/Customize</b> to create your own menus!";
-                var message = $"SoftBar - New user";
+                var header = $"SoftBar - New user";
+                var message = $"Since you are a new SoftBar user, it is recommended" + Environment.NewLine +
+                              "that you check out <b>System/Settings</b> to set up <b>SoftBar</b>," + Environment.NewLine +
+                              "and <b>System/Customize</b> to create your own menus!"; 
                 XtraMessageBox.Show(message, header, MessageBoxButtons.OK, MessageBoxIcon.Information, DevExpress.Utils.DefaultBoolean.True);
             }
         }

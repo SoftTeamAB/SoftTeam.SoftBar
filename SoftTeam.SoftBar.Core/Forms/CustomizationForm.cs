@@ -514,7 +514,10 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
 
             var parent = _area.GetParent(selected);
-            parent.MenuItems.Remove(selected);
+            if (parent == null)
+                _area.Menus.Remove((XmlMenu)selected);
+            else
+                parent.MenuItems.Remove(selected);
 
             selected = null;
             _makeVisible = null;

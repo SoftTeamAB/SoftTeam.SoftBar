@@ -54,9 +54,12 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonSave_Click(object sender, EventArgs e)
         {
-            Path = Environment.ExpandEnvironmentVariables(labelControlChoosenDirectory.Text);
-
-            if (!System.IO.Directory.Exists(Path))
+            if (radioGroupChooseDirectory.SelectedIndex ==0)
+            {
+                Path = Environment.ExpandEnvironmentVariables(labelControlChoosenDirectory.Text);
+                System.IO.Directory.CreateDirectory(Path);
+            }
+            else if (!System.IO.Directory.Exists(Path))
             {
                 XtraMessageBox.Show("Please select an existing directory!", "Directory does not exist!");
                 return;
