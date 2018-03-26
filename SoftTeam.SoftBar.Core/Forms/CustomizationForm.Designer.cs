@@ -49,6 +49,7 @@
             DevExpress.Utils.SuperToolTip superToolTip21 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem24 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem21 = new DevExpress.Utils.ToolTipItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomizationForm));
             DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem14 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
@@ -66,7 +67,6 @@
             DevExpress.Utils.SuperToolTip superToolTip19 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem22 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem19 = new DevExpress.Utils.ToolTipItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomizationForm));
             this.xtraScrollableControlMenu = new DevExpress.XtraEditors.XtraScrollableControl();
             this.barManagerCustomization = new DevExpress.XtraBars.BarManager(this.components);
             this.barToolBar = new DevExpress.XtraBars.Bar();
@@ -87,9 +87,9 @@
             this.barButtonItemMenuRemoveItem = new DevExpress.XtraBars.BarButtonItem();
             this.barBottom = new DevExpress.XtraBars.Bar();
             this.barButtonItemPathHeader = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemPath = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPath = new DevExpress.XtraBars.BarStaticItem();
             this.barButtonItemBackupPathHeader = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemBackupPath = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemBackupPath = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
@@ -98,6 +98,7 @@
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControlScroll = new DevExpress.XtraEditors.PanelControl();
             this.pictureBoxPlacementInfo = new System.Windows.Forms.PictureBox();
+            this.toolTipControllerCustomization = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlScroll)).BeginInit();
             this.panelControlScroll.SuspendLayout();
@@ -109,7 +110,7 @@
             this.xtraScrollableControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControlMenu.Location = new System.Drawing.Point(0, 53);
             this.xtraScrollableControlMenu.Name = "xtraScrollableControlMenu";
-            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(754, 407);
+            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(716, 407);
             this.xtraScrollableControlMenu.TabIndex = 0;
             this.xtraScrollableControlMenu.Click += new System.EventHandler(this.xtraScrollableControlMenu_Click);
             // 
@@ -147,6 +148,7 @@
             this.barManagerCustomization.MaxItemId = 19;
             this.barManagerCustomization.ShowScreenTipsInMenus = true;
             this.barManagerCustomization.StatusBar = this.barBottom;
+            this.barManagerCustomization.ToolTipController = this.toolTipControllerCustomization;
             // 
             // barToolBar
             // 
@@ -423,8 +425,13 @@
             // 
             // barButtonItemPath
             // 
+            this.barButtonItemPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.barButtonItemPath.Caption = "[path]";
             this.barButtonItemPath.Id = 5;
+            this.barButtonItemPath.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
             this.barButtonItemPath.Name = "barButtonItemPath";
             this.barButtonItemPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPath_ItemClick);
             // 
@@ -439,8 +446,13 @@
             // 
             // barButtonItemBackupPath
             // 
+            this.barButtonItemBackupPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
             this.barButtonItemBackupPath.Caption = "[backup path]";
             this.barButtonItemBackupPath.Id = 16;
+            this.barButtonItemBackupPath.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemBackupPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
             this.barButtonItemBackupPath.Name = "barButtonItemBackupPath";
             this.barButtonItemBackupPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPath_ItemClick);
             // 
@@ -450,7 +462,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerCustomization;
-            this.barDockControlTop.Size = new System.Drawing.Size(754, 53);
+            this.barDockControlTop.Size = new System.Drawing.Size(716, 53);
             // 
             // barDockControlBottom
             // 
@@ -458,7 +470,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 491);
             this.barDockControlBottom.Manager = this.barManagerCustomization;
-            this.barDockControlBottom.Size = new System.Drawing.Size(754, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(716, 25);
             // 
             // barDockControlLeft
             // 
@@ -472,7 +484,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(754, 53);
+            this.barDockControlRight.Location = new System.Drawing.Point(716, 53);
             this.barDockControlRight.Manager = this.barManagerCustomization;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
             // 
@@ -480,7 +492,7 @@
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
-            this.simpleButtonCancel.Location = new System.Drawing.Point(667, 4);
+            this.simpleButtonCancel.Location = new System.Drawing.Point(629, 4);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonCancel.TabIndex = 5;
@@ -491,7 +503,7 @@
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
-            this.simpleButtonSave.Location = new System.Drawing.Point(586, 4);
+            this.simpleButtonSave.Location = new System.Drawing.Point(548, 4);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonSave.TabIndex = 6;
@@ -505,14 +517,14 @@
             this.panelControlScroll.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControlScroll.Location = new System.Drawing.Point(0, 460);
             this.panelControlScroll.Name = "panelControlScroll";
-            this.panelControlScroll.Size = new System.Drawing.Size(754, 31);
+            this.panelControlScroll.Size = new System.Drawing.Size(716, 31);
             this.panelControlScroll.TabIndex = 11;
             // 
             // pictureBoxPlacementInfo
             // 
             this.pictureBoxPlacementInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPlacementInfo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPlacementInfo.Image")));
-            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(705, 55);
+            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(667, 55);
             this.pictureBoxPlacementInfo.Name = "pictureBoxPlacementInfo";
             this.pictureBoxPlacementInfo.Size = new System.Drawing.Size(34, 34);
             this.pictureBoxPlacementInfo.TabIndex = 0;
@@ -520,11 +532,15 @@
             this.pictureBoxPlacementInfo.MouseEnter += new System.EventHandler(this.pictureBoxPlacementInfo_MouseEnter);
             this.pictureBoxPlacementInfo.MouseLeave += new System.EventHandler(this.pictureBoxPlacementInfo_MouseLeave);
             // 
+            // toolTipControllerCustomization
+            // 
+            this.toolTipControllerCustomization.GetActiveObjectInfo += new DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventHandler(this.toolTipControllerCustomization_GetActiveObjectInfo);
+            // 
             // CustomizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(754, 516);
+            this.ClientSize = new System.Drawing.Size(716, 516);
             this.Controls.Add(this.pictureBoxPlacementInfo);
             this.Controls.Add(this.xtraScrollableControlMenu);
             this.Controls.Add(this.panelControlScroll);
@@ -558,7 +574,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem barButtonItemPathHeader;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemPath;
+        private DevExpress.XtraBars.BarStaticItem barButtonItemPath;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenuItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddHeaderItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddSubMenu;
@@ -570,12 +586,13 @@
         public DevExpress.XtraEditors.XtraScrollableControl xtraScrollableControlMenu;
         private DevExpress.XtraBars.BarButtonItem barButtonItemExitAndSave;
         private DevExpress.XtraBars.BarButtonItem barButtonItemBackupPathHeader;
-        private DevExpress.XtraBars.BarButtonItem barButtonItemBackupPath;
+        private DevExpress.XtraBars.BarStaticItem barButtonItemBackupPath;
         private DevExpress.XtraBars.BarButtonItem barButtonItemRemoveItem;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuRemoveItem;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.PanelControl panelControlScroll;
         private System.Windows.Forms.PictureBox pictureBoxPlacementInfo;
+        private DevExpress.Utils.ToolTipController toolTipControllerCustomization;
     }
 }

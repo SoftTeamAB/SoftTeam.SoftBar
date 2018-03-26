@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using SoftTeam.SoftBar.Core.Xml;
 using SoftTeam.SoftBar.Core.SoftBar;
 using DevExpress.XtraEditors;
+using DevExpress.XtraBars;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
@@ -570,6 +571,18 @@ namespace SoftTeam.SoftBar.Core.Forms
             _infoForm.Close();
             _infoForm.Dispose();
             _infoForm = null;
+        }
+
+        private void toolTipControllerCustomization_GetActiveObjectInfo(object sender, DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventArgs e)
+        {
+            if (e.Info != null && e.Info.Object is BarStaticItemLink)
+            {
+                var item = e.Info.Object as BarStaticItemLink;
+                if (item.Item.Name == "barButtonItemBackupPath")
+                    e.Info.SuperTip = HelperFunctions.CreateInformationToolTip("Click to open folder...\n" + barButtonItemBackupPath.Caption);
+                else
+                    e.Info.SuperTip = HelperFunctions.CreateInformationToolTip("Click to open file...\n" + barButtonItemPath.Caption);
+            }
         }
     }
 }

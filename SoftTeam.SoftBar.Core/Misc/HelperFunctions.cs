@@ -114,6 +114,18 @@ namespace SoftTeam.SoftBar.Core.Misc
             return toolTip;
         }
 
+        public static SuperToolTip CreateInformationToolTip(string message)
+        {
+            SuperToolTip toolTip = new SuperToolTip();
+            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+            args.Title.Text = "Information!";
+            args.Contents.Text = message;
+            args.Contents.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.information);
+            toolTip.Setup(args);
+
+            return toolTip;
+        }
+
         public static string GetThemeName(int index)
         {
             switch(index)
