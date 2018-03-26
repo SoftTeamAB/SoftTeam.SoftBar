@@ -69,10 +69,13 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Load menu for customization
         private void RefreshMenuItems()
         {
+            // Remove all the old menu items
             ClearMenuItems();
 
+            // Calculate the new depth of the tree
             _maxLevel = CalculateDepth();
 
+            // Create the new menu item controls, recursively
             foreach (var menu in _area.Menus)
             {
                 AddItemControl(MenuItemType.Menu, menu);
@@ -81,7 +84,11 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (_makeVisible != null)
             {
+                // Clear old selected item
+                ClearSelected();
+                // Set the new item as selected
                 _makeVisible.Selected = MenuItemSelectedStatus.Selected;
+                // Scroll it into view
                 xtraScrollableControlMenu.ScrollControlIntoView(_makeVisible);
             }
         }
@@ -94,6 +101,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             {
                 if (menuItem is XmlSubMenu)
                 {
+                    // Create the new sub menu and load its menu items recursively
                     AddItemControl(MenuItemType.SubMenu, menuItem);
                     LoadMenu((XmlMenuBase)menuItem);
                 }
@@ -145,6 +153,11 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void Item_ClearSelectedRequested(object sender, EventArgs e)
         {
             _makeVisible = null;
+            ClearSelected();
+        }
+
+        private void ClearSelected()
+        {
             foreach (var item in _menuItems)
                 item.Selected = MenuItemSelectedStatus.NotSelected;
         }
