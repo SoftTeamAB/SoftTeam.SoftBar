@@ -246,10 +246,6 @@
     <None Include="Resources\preferences.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\add.png" />
-    <None Include="Xml\SoftBar.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\EditHeaderItemControl.resx">

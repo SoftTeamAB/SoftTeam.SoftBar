@@ -20,7 +20,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             UserTypeEnum userType = UserTypeEnum.None;
 
             // Get the path for the xml file
-            var path = Core.Properties.Settings.Default.SoftBarPath;
+            var path = HelperFunctions.GetWorkingDirectory();
 
             // First time user
             if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(System.IO.Path.Combine(path,"menu.xml")))
@@ -72,11 +72,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             AppBarFunctions.SetAppBar(this, AppBarEdge.Top);
 
             // Save the path (working folder) for the xml file
-            if (Core.Properties.Settings.Default.SoftBarPath != path)
-            {
-                Core.Properties.Settings.Default.SoftBarPath = path;
-                Core.Properties.Settings.Default.Save();
-            }
+            if (HelperFunctions.GetWorkingDirectory() != path)
+                HelperFunctions.SetWorkingDirectory(path);
 
             // Create the app bar from XML
             SoftBarManager manager = new SoftBarManager(this, path);

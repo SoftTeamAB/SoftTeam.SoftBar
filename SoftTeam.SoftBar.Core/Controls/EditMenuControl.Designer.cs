@@ -161,9 +161,9 @@
             // 
             this.labelControlWidth.Location = new System.Drawing.Point(50, 145);
             this.labelControlWidth.Name = "labelControlWidth";
-            this.labelControlWidth.Size = new System.Drawing.Size(46, 13);
+            this.labelControlWidth.Size = new System.Drawing.Size(28, 13);
             this.labelControlWidth.TabIndex = 10;
-            this.labelControlWidth.Text = "Icon path";
+            this.labelControlWidth.Text = "Width";
             // 
             // spinEditWidth
             // 

@@ -34,6 +34,9 @@ namespace SoftTeam.SoftBar.Core.Forms
             barButtonItemPath.Caption = manager.FileManager.MenuPath;
             barButtonItemBackupPath.Caption = manager.FileManager.SoftBarDirectoryBackup;
 
+            var darkerColor = HelperFunctions.ChangeColorBrightness(this.BackColor, -0.2f);
+            panelControlScroll.BackColor = darkerColor;
+
             RefreshMenuItems();
         }
         #endregion
@@ -111,7 +114,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void AddItemControl(MenuItemType type, XmlMenuItemBase menu)
         {
             var step = 128 / _maxLevel;
-            var color = Color.FromArgb(50, _level * step, _level * step, _level * step);
+            var color = Color.FromArgb(50, _level * step+127, _level * step+127, _level * step+127);
             MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems);
             var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
@@ -314,7 +317,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private XmlMenuItemBase CreateMenu()
         {
             XmlMenu menu = new XmlMenu();
-
+            menu.Width = 100;
             using (CustomizationMenuItemForm form = new CustomizationMenuItemForm(menu))
             {
                 DialogResult result = form.ShowDialog();

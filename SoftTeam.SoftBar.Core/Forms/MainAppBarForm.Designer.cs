@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainAppBarForm));
             this.barManagerSoftBar = new DevExpress.XtraBars.BarManager(this.components);
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -45,7 +46,6 @@
             this.barManagerSoftBar.DockControls.Add(this.barDockControlLeft);
             this.barManagerSoftBar.DockControls.Add(this.barDockControlRight);
             this.barManagerSoftBar.Form = this;
-            this.barManagerSoftBar.Items.AddRange(new DevExpress.XtraBars.BarItem[] {});
             this.barManagerSoftBar.MaxItemId = 5;
             this.barManagerSoftBar.ShowScreenTipsInMenus = true;
             // 
@@ -94,8 +94,10 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainAppBarForm";
-            this.Text = "MainAppBarForm";
+            this.ShowInTaskbar = false;
+            this.Text = "SoftTeam SoftBar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainAppBarForm_FormClosing);
             this.Load += new System.EventHandler(this.MainAppBarForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).EndInit();

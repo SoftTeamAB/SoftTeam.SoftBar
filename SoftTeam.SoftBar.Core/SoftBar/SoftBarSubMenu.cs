@@ -13,6 +13,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Constructor
         public SoftBarSubMenu(MainAppBarForm form, XmlSubMenu subMenu, bool systemMenu = false) : base (form,subMenu.Name,systemMenu)
         {
+            IconPath = subMenu.IconPath;
         }
         #endregion
 

@@ -1,4 +1,5 @@
 ﻿using DevExpress.Utils;
+using Microsoft.Win32;
 using System;
 using System.Drawing;
 using System.IO;
@@ -163,6 +164,65 @@ namespace SoftTeam.SoftBar.Core.Misc
             }
 
             return Color.FromArgb(color.A, (int)red, (int)green, (int)blue);
+        }
+
+        public static string GetWorkingDirectory()
+        {
+            var path = "";
+
+            try
+            {
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\SoftTeam\\SoftBar"))
+                {
+                    if (key != null)
+                    {
+                        Object o = key.GetValue("WorkingDirectory");
+                        if (o != null)
+                            path = o.ToString();  
+                    }
+                }
+            }
+            catch 
+            {
+            }
+
+            return path;
+        }
+
+        public static string SetWorkingDirectory(string path)
+        {
+            try
+            {
+                // Make sure the keys exists
+                CreateWorkingDirectoryRegistryKeys();
+
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\SoftTeam\\SoftBar",true))
+                {
+                    if (key != null)
+                        key.SetValue("WorkingDirectory", path);
+                }
+            }
+            catch
+            {
+            }
+
+            return path;
+        }
+
+        private static void CreateWorkingDirectoryRegistryKeys()
+        {
+            try
+            {
+                using (RegistryKey softTeamKey = Registry.CurrentUser.CreateSubKey("Software\\SoftTeam", true))
+                {
+                    using (RegistryKey softBarKey = Registry.CurrentUser.CreateSubKey("Software\\SoftTeam\\SoftBar", true))
+                    {
+                    }
+                }
+            }
+            catch
+            {
+            }
         }
     }
 }

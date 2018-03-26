@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.Forms
@@ -18,6 +19,16 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void AboutForm_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void hyperlinkLabelControlSoftTeam_HyperlinkClick(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)
+        {
+            Process.Start("http://www.softteam.se");
+        }
+
+        private void hyperlinkLabelControlGitHub_HyperlinkClick(object sender, DevExpress.Utils.HyperlinkClickEventArgs e)
+        {
+            Process.Start("https://github.com/Hultan/SoftTeam.SoftBar");
         }
     }
 }

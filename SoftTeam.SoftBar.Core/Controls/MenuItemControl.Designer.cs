@@ -37,7 +37,6 @@
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.labelControlType = new DevExpress.XtraEditors.LabelControl();
-            this.defaultLookAndFeelSoftBar = new DevExpress.LookAndFeel.DefaultLookAndFeel(this.components);
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.pictureBoxBeginGroup = new System.Windows.Forms.PictureBox();
             this.pictureBoxNoBeginGroup = new System.Windows.Forms.PictureBox();
@@ -57,10 +56,6 @@
             this.labelControlType.Text = "type";
             this.labelControlType.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.labelControlType.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
-            // 
-            // defaultLookAndFeelSoftBar
-            // 
-            this.defaultLookAndFeelSoftBar.LookAndFeel.SkinName = "DevExpress Dark Style";
             // 
             // pictureBoxIcon
             // 
@@ -130,7 +125,7 @@
             this.labelControlName.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.labelControlName.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
             // 
-            // MenuItem
+            // MenuItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -140,7 +135,7 @@
             this.Controls.Add(this.labelControlType);
             this.Controls.Add(this.pictureBoxBeginGroup);
             this.Controls.Add(this.pictureBoxNoBeginGroup);
-            this.Name = "MenuItem";
+            this.Name = "MenuItemControl";
             this.Size = new System.Drawing.Size(398, 36);
             this.DoubleClick += new System.EventHandler(this.MenuItem_DoubleClick);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MenuItem_MouseDown);
@@ -154,7 +149,6 @@
 
         #endregion
         private DevExpress.XtraEditors.LabelControl labelControlType;
-        private DevExpress.LookAndFeel.DefaultLookAndFeel defaultLookAndFeelSoftBar;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
         private System.Windows.Forms.PictureBox pictureBoxBeginGroup;
         private System.Windows.Forms.PictureBox pictureBoxNoBeginGroup;

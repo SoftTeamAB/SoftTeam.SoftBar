@@ -67,7 +67,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             try
             {
-                var path = IconPath;
+                var path = IconPath.Replace("\"","");
                 if (string.IsNullOrEmpty(path))
                     path = ApplicationPath;
 
@@ -134,11 +134,13 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void textEditIconPath_EditValueChanged(object sender, EventArgs e)
         {
+            IconPath = textEditIconPath.Text;
             UpdateImage();
         }
 
         private void textEditApplicationPath_EditValueChanged(object sender, EventArgs e)
         {
+            ApplicationPath = textEditApplicationPath.Text;
             UpdateImage();
         }
         #endregion
