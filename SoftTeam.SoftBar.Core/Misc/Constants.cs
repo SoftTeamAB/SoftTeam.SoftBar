@@ -29,6 +29,9 @@
         public const string General_DirectoriesMenuName = "General.DirectoriesMenuName";
         public const string General_ToolsMenuName = "General.ToolsMenuName";
 
+        public const string DirectoriesMenu_SubFolderMyFolders = "DirectoriesMenu.SubFolderMyFolders";
+        public const string DirectoriesMenu_SubFolderMyDrives = "DirectoriesMenu.SubFolderDrives";
+        public const string DirectoriesMenu_SubFolderMySpecialFolders = "DirectoriesMenu.SubFolderSpecialFolders";
 
         public const string DriveType_FixedDrive = "DriveType.FixedDrive";
         public const string DriveType_RemovableDrive = "DriveType.RemovableDrive";

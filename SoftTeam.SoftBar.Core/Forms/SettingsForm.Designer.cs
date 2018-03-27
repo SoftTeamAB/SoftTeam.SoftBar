@@ -28,25 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase3 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition7 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition8 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition9 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement7 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement8 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement9 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition3 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition6 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase4 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition10 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition11 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition12 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement10 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement11 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement12 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition4 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             this.tabPaneSettings = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageDirectories = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
+            this.checkEditSubFolderSpecialFolders = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEditSubFolderDrives = new DevExpress.XtraEditors.CheckEdit();
+            this.checkEditSubFolderMyFolders = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditSpecialVideos = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditSpecialPictures = new DevExpress.XtraEditors.CheckEdit();
             this.checkEditSpecialMusic = new DevExpress.XtraEditors.CheckEdit();
@@ -96,6 +100,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderSpecialFolders.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderDrives.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderMyFolders.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialVideos.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialPictures.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialMusic.Properties)).BeginInit();
@@ -143,6 +150,10 @@
             // tabNavigationPageDirectories
             // 
             this.tabNavigationPageDirectories.Caption = "Directories menu";
+            this.tabNavigationPageDirectories.Controls.Add(this.labelControl4);
+            this.tabNavigationPageDirectories.Controls.Add(this.checkEditSubFolderSpecialFolders);
+            this.tabNavigationPageDirectories.Controls.Add(this.checkEditSubFolderDrives);
+            this.tabNavigationPageDirectories.Controls.Add(this.checkEditSubFolderMyFolders);
             this.tabNavigationPageDirectories.Controls.Add(this.checkEditSpecialVideos);
             this.tabNavigationPageDirectories.Controls.Add(this.checkEditSpecialPictures);
             this.tabNavigationPageDirectories.Controls.Add(this.checkEditSpecialMusic);
@@ -158,9 +169,43 @@
             this.tabNavigationPageDirectories.Name = "tabNavigationPageDirectories";
             this.tabNavigationPageDirectories.Size = new System.Drawing.Size(589, 327);
             // 
+            // labelControl4
+            // 
+            this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl4.Appearance.Options.UseFont = true;
+            this.labelControl4.Location = new System.Drawing.Point(18, 10);
+            this.labelControl4.Name = "labelControl4";
+            this.labelControl4.Size = new System.Drawing.Size(127, 13);
+            this.labelControl4.TabIndex = 15;
+            this.labelControl4.Text = "Create sub menus for :";
+            // 
+            // checkEditSubFolderSpecialFolders
+            // 
+            this.checkEditSubFolderSpecialFolders.Location = new System.Drawing.Point(18, 79);
+            this.checkEditSubFolderSpecialFolders.Name = "checkEditSubFolderSpecialFolders";
+            this.checkEditSubFolderSpecialFolders.Properties.Caption = "My special folders section";
+            this.checkEditSubFolderSpecialFolders.Size = new System.Drawing.Size(238, 19);
+            this.checkEditSubFolderSpecialFolders.TabIndex = 14;
+            // 
+            // checkEditSubFolderDrives
+            // 
+            this.checkEditSubFolderDrives.Location = new System.Drawing.Point(18, 54);
+            this.checkEditSubFolderDrives.Name = "checkEditSubFolderDrives";
+            this.checkEditSubFolderDrives.Properties.Caption = "My drives section";
+            this.checkEditSubFolderDrives.Size = new System.Drawing.Size(238, 19);
+            this.checkEditSubFolderDrives.TabIndex = 13;
+            // 
+            // checkEditSubFolderMyFolders
+            // 
+            this.checkEditSubFolderMyFolders.Location = new System.Drawing.Point(18, 29);
+            this.checkEditSubFolderMyFolders.Name = "checkEditSubFolderMyFolders";
+            this.checkEditSubFolderMyFolders.Properties.Caption = "My folders section";
+            this.checkEditSubFolderMyFolders.Size = new System.Drawing.Size(238, 19);
+            this.checkEditSubFolderMyFolders.TabIndex = 12;
+            // 
             // checkEditSpecialVideos
             // 
-            this.checkEditSpecialVideos.Location = new System.Drawing.Point(14, 284);
+            this.checkEditSpecialVideos.Location = new System.Drawing.Point(262, 287);
             this.checkEditSpecialVideos.Name = "checkEditSpecialVideos";
             this.checkEditSpecialVideos.Properties.Caption = "Videos";
             this.checkEditSpecialVideos.Size = new System.Drawing.Size(266, 19);
@@ -168,7 +213,7 @@
             // 
             // checkEditSpecialPictures
             // 
-            this.checkEditSpecialPictures.Location = new System.Drawing.Point(14, 259);
+            this.checkEditSpecialPictures.Location = new System.Drawing.Point(262, 262);
             this.checkEditSpecialPictures.Name = "checkEditSpecialPictures";
             this.checkEditSpecialPictures.Properties.Caption = "Pictures";
             this.checkEditSpecialPictures.Size = new System.Drawing.Size(266, 19);
@@ -176,7 +221,7 @@
             // 
             // checkEditSpecialMusic
             // 
-            this.checkEditSpecialMusic.Location = new System.Drawing.Point(14, 234);
+            this.checkEditSpecialMusic.Location = new System.Drawing.Point(262, 237);
             this.checkEditSpecialMusic.Name = "checkEditSpecialMusic";
             this.checkEditSpecialMusic.Properties.Caption = "Music";
             this.checkEditSpecialMusic.Size = new System.Drawing.Size(266, 19);
@@ -185,7 +230,7 @@
             // checkEditSpecialDownloads
             // 
             this.checkEditSpecialDownloads.EditValue = true;
-            this.checkEditSpecialDownloads.Location = new System.Drawing.Point(14, 209);
+            this.checkEditSpecialDownloads.Location = new System.Drawing.Point(262, 212);
             this.checkEditSpecialDownloads.Name = "checkEditSpecialDownloads";
             this.checkEditSpecialDownloads.Properties.Caption = "Downloads";
             this.checkEditSpecialDownloads.Size = new System.Drawing.Size(266, 19);
@@ -194,7 +239,7 @@
             // checkEditSpecialDocuments
             // 
             this.checkEditSpecialDocuments.EditValue = true;
-            this.checkEditSpecialDocuments.Location = new System.Drawing.Point(14, 184);
+            this.checkEditSpecialDocuments.Location = new System.Drawing.Point(262, 187);
             this.checkEditSpecialDocuments.Name = "checkEditSpecialDocuments";
             this.checkEditSpecialDocuments.Properties.Caption = "Documents";
             this.checkEditSpecialDocuments.Size = new System.Drawing.Size(266, 19);
@@ -203,7 +248,7 @@
             // checkEditSpecialDesktop
             // 
             this.checkEditSpecialDesktop.EditValue = true;
-            this.checkEditSpecialDesktop.Location = new System.Drawing.Point(14, 159);
+            this.checkEditSpecialDesktop.Location = new System.Drawing.Point(262, 162);
             this.checkEditSpecialDesktop.Name = "checkEditSpecialDesktop";
             this.checkEditSpecialDesktop.Properties.Caption = "Desktop";
             this.checkEditSpecialDesktop.Size = new System.Drawing.Size(266, 19);
@@ -213,7 +258,7 @@
             // 
             this.labelControlSpecialFoldersHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControlSpecialFoldersHeader.Appearance.Options.UseFont = true;
-            this.labelControlSpecialFoldersHeader.Location = new System.Drawing.Point(14, 140);
+            this.labelControlSpecialFoldersHeader.Location = new System.Drawing.Point(262, 143);
             this.labelControlSpecialFoldersHeader.Name = "labelControlSpecialFoldersHeader";
             this.labelControlSpecialFoldersHeader.Size = new System.Drawing.Size(195, 13);
             this.labelControlSpecialFoldersHeader.TabIndex = 5;
@@ -223,7 +268,7 @@
             // 
             this.labelControlDriveTypesHeader.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControlDriveTypesHeader.Appearance.Options.UseFont = true;
-            this.labelControlDriveTypesHeader.Location = new System.Drawing.Point(14, 7);
+            this.labelControlDriveTypesHeader.Location = new System.Drawing.Point(262, 10);
             this.labelControlDriveTypesHeader.Name = "labelControlDriveTypesHeader";
             this.labelControlDriveTypesHeader.Size = new System.Drawing.Size(312, 13);
             this.labelControlDriveTypesHeader.TabIndex = 4;
@@ -232,7 +277,7 @@
             // checkEditNetworkDrives
             // 
             this.checkEditNetworkDrives.EditValue = true;
-            this.checkEditNetworkDrives.Location = new System.Drawing.Point(14, 101);
+            this.checkEditNetworkDrives.Location = new System.Drawing.Point(262, 104);
             this.checkEditNetworkDrives.Name = "checkEditNetworkDrives";
             this.checkEditNetworkDrives.Properties.Caption = "Mapped network drives";
             this.checkEditNetworkDrives.Size = new System.Drawing.Size(266, 19);
@@ -241,7 +286,7 @@
             // checkEditCDRom
             // 
             this.checkEditCDRom.EditValue = true;
-            this.checkEditCDRom.Location = new System.Drawing.Point(14, 76);
+            this.checkEditCDRom.Location = new System.Drawing.Point(262, 79);
             this.checkEditCDRom.Name = "checkEditCDRom";
             this.checkEditCDRom.Properties.Caption = "CD Rom drives";
             this.checkEditCDRom.Size = new System.Drawing.Size(266, 19);
@@ -250,7 +295,7 @@
             // checkEditRemovableDrives
             // 
             this.checkEditRemovableDrives.EditValue = true;
-            this.checkEditRemovableDrives.Location = new System.Drawing.Point(14, 51);
+            this.checkEditRemovableDrives.Location = new System.Drawing.Point(262, 54);
             this.checkEditRemovableDrives.Name = "checkEditRemovableDrives";
             this.checkEditRemovableDrives.Properties.Caption = "Removable drives (floppy, USB)";
             this.checkEditRemovableDrives.Size = new System.Drawing.Size(266, 19);
@@ -259,7 +304,7 @@
             // checkEditFixedDrives
             // 
             this.checkEditFixedDrives.EditValue = true;
-            this.checkEditFixedDrives.Location = new System.Drawing.Point(14, 26);
+            this.checkEditFixedDrives.Location = new System.Drawing.Point(262, 29);
             this.checkEditFixedDrives.Name = "checkEditFixedDrives";
             this.checkEditFixedDrives.Properties.Caption = "Fixed drives";
             this.checkEditFixedDrives.Size = new System.Drawing.Size(266, 19);
@@ -293,35 +338,35 @@
             this.listBoxControlMyDirectories.Name = "listBoxControlMyDirectories";
             this.listBoxControlMyDirectories.Size = new System.Drawing.Size(557, 243);
             this.listBoxControlMyDirectories.TabIndex = 0;
-            tableColumnDefinition1.Length.Value = 28D;
-            tableColumnDefinition2.Length.Value = 183D;
-            tableColumnDefinition3.Length.Value = 336D;
-            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition3);
-            templatedItemElement1.FieldName = "Image";
-            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement1.Text = "Image";
-            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ColumnIndex = 1;
-            templatedItemElement2.FieldName = "Name";
-            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement2.Text = "Name";
-            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement3.ColumnIndex = 2;
-            templatedItemElement3.FieldName = "Path";
-            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement3.Text = "Path";
-            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase1.Elements.Add(templatedItemElement1);
-            itemTemplateBase1.Elements.Add(templatedItemElement2);
-            itemTemplateBase1.Elements.Add(templatedItemElement3);
-            itemTemplateBase1.Name = "Directory";
-            itemTemplateBase1.Rows.Add(tableRowDefinition1);
-            this.listBoxControlMyDirectories.Templates.Add(itemTemplateBase1);
+            tableColumnDefinition7.Length.Value = 28D;
+            tableColumnDefinition8.Length.Value = 183D;
+            tableColumnDefinition9.Length.Value = 336D;
+            itemTemplateBase3.Columns.Add(tableColumnDefinition7);
+            itemTemplateBase3.Columns.Add(tableColumnDefinition8);
+            itemTemplateBase3.Columns.Add(tableColumnDefinition9);
+            templatedItemElement7.FieldName = "Image";
+            templatedItemElement7.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement7.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement7.Text = "Image";
+            templatedItemElement7.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement8.ColumnIndex = 1;
+            templatedItemElement8.FieldName = "Name";
+            templatedItemElement8.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement8.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement8.Text = "Name";
+            templatedItemElement8.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement9.ColumnIndex = 2;
+            templatedItemElement9.FieldName = "Path";
+            templatedItemElement9.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement9.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement9.Text = "Path";
+            templatedItemElement9.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase3.Elements.Add(templatedItemElement7);
+            itemTemplateBase3.Elements.Add(templatedItemElement8);
+            itemTemplateBase3.Elements.Add(templatedItemElement9);
+            itemTemplateBase3.Name = "Directory";
+            itemTemplateBase3.Rows.Add(tableRowDefinition3);
+            this.listBoxControlMyDirectories.Templates.Add(itemTemplateBase3);
             this.listBoxControlMyDirectories.DoubleClick += new System.EventHandler(this.listBoxControlMyDirectories_DoubleClick);
             // 
             // simpleButtonAddDirectory
@@ -637,36 +682,36 @@
             this.listBoxControlMyTools.Name = "listBoxControlMyTools";
             this.listBoxControlMyTools.Size = new System.Drawing.Size(557, 238);
             this.listBoxControlMyTools.TabIndex = 2;
-            tableColumnDefinition4.Length.Value = 27D;
-            tableColumnDefinition5.Length.Value = 151D;
-            tableColumnDefinition6.Length.Value = 375D;
-            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition5);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition6);
-            templatedItemElement4.ColumnIndex = 1;
-            templatedItemElement4.FieldName = "Name";
-            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement4.Text = "Name";
-            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement5.ColumnIndex = 2;
-            templatedItemElement5.FieldName = "Path";
-            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement5.Text = "Path";
-            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement6.FieldName = "Image";
-            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement6.Text = "Image";
-            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            itemTemplateBase2.Elements.Add(templatedItemElement4);
-            itemTemplateBase2.Elements.Add(templatedItemElement5);
-            itemTemplateBase2.Elements.Add(templatedItemElement6);
-            itemTemplateBase2.Name = "ToolsTemplate";
-            tableRowDefinition2.Length.Value = 20D;
-            itemTemplateBase2.Rows.Add(tableRowDefinition2);
-            this.listBoxControlMyTools.Templates.Add(itemTemplateBase2);
+            tableColumnDefinition10.Length.Value = 27D;
+            tableColumnDefinition11.Length.Value = 151D;
+            tableColumnDefinition12.Length.Value = 375D;
+            itemTemplateBase4.Columns.Add(tableColumnDefinition10);
+            itemTemplateBase4.Columns.Add(tableColumnDefinition11);
+            itemTemplateBase4.Columns.Add(tableColumnDefinition12);
+            templatedItemElement10.ColumnIndex = 1;
+            templatedItemElement10.FieldName = "Name";
+            templatedItemElement10.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement10.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement10.Text = "Name";
+            templatedItemElement10.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement11.ColumnIndex = 2;
+            templatedItemElement11.FieldName = "Path";
+            templatedItemElement11.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement11.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement11.Text = "Path";
+            templatedItemElement11.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement12.FieldName = "Image";
+            templatedItemElement12.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement12.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement12.Text = "Image";
+            templatedItemElement12.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase4.Elements.Add(templatedItemElement10);
+            itemTemplateBase4.Elements.Add(templatedItemElement11);
+            itemTemplateBase4.Elements.Add(templatedItemElement12);
+            itemTemplateBase4.Name = "ToolsTemplate";
+            tableRowDefinition4.Length.Value = 20D;
+            itemTemplateBase4.Rows.Add(tableRowDefinition4);
+            this.listBoxControlMyTools.Templates.Add(itemTemplateBase4);
             this.listBoxControlMyTools.DoubleClick += new System.EventHandler(this.listBoxControlMyTools_DoubleClick);
             // 
             // simpleButtonRemoveTool
@@ -727,6 +772,9 @@
             this.tabPaneSettings.ResumeLayout(false);
             this.tabNavigationPageDirectories.ResumeLayout(false);
             this.tabNavigationPageDirectories.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderSpecialFolders.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderDrives.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditSubFolderMyFolders.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialVideos.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialPictures.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditSpecialMusic.Properties)).EndInit();
@@ -808,5 +856,9 @@
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControlNames;
+        private DevExpress.XtraEditors.LabelControl labelControl4;
+        private DevExpress.XtraEditors.CheckEdit checkEditSubFolderSpecialFolders;
+        private DevExpress.XtraEditors.CheckEdit checkEditSubFolderDrives;
+        private DevExpress.XtraEditors.CheckEdit checkEditSubFolderMyFolders;
     }
 }

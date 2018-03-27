@@ -49,6 +49,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             textEditDirectoriesMenuName.Text = _settingsManager.Settings.GetStringSetting(Constants.General_DirectoriesMenuName, "Directories");
             textEditToolsMenuName.Text = _settingsManager.Settings.GetStringSetting(Constants.General_ToolsMenuName,"Tools");
 
+            // Directories menu
+            if (_settingsManager.Settings.ExistsSetting(Constants.DirectoriesMenu_SubFolderMyFolders))
+                checkEditSubFolderMyFolders.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DirectoriesMenu_SubFolderMyDrives))
+                checkEditSubFolderDrives.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyDrives);
+            if (_settingsManager.Settings.ExistsSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
+                checkEditSubFolderSpecialFolders.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders);
+
             // Drive types
             if (_settingsManager.Settings.ExistsSetting(Constants.DriveType_FixedDrive))
                 checkEditFixedDrives.Checked = _settingsManager.Settings.GetBooleanSetting(Constants.DriveType_FixedDrive);
@@ -96,6 +104,12 @@ namespace SoftTeam.SoftBar.Core.Forms
             _settingsManager.Settings.SetSetting(Constants.General_SystemMenuName, textEditSystemMenuName.Text);
             _settingsManager.Settings.SetSetting(Constants.General_DirectoriesMenuName, textEditDirectoriesMenuName.Text);
             _settingsManager.Settings.SetSetting(Constants.General_ToolsMenuName, textEditToolsMenuName.Text);
+
+            // Directories menu
+            _settingsManager.Settings.SetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders, checkEditSubFolderMyFolders.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyDrives, checkEditSubFolderDrives.Checked);
+            _settingsManager.Settings.SetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders, checkEditSubFolderSpecialFolders.Checked);
+
 
             // Drive types
             _settingsManager.Settings.SetBooleanSetting(Constants.DriveType_FixedDrive, checkEditFixedDrives.Checked);

@@ -1,6 +1,7 @@
 ﻿using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Xml;
+using System.Drawing;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
@@ -14,6 +15,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public SoftBarSubMenu(MainAppBarForm form, XmlSubMenu subMenu, bool systemMenu = false) : base (form,subMenu.Name,systemMenu)
         {
             IconPath = subMenu.IconPath;
+        }
+        public SoftBarSubMenu(MainAppBarForm form, string name, Image icon, bool systemMenu = false) : base(form, name, systemMenu)
+        {
+            Image = icon;
         }
         #endregion
 
