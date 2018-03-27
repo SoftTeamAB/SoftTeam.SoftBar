@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
@@ -8,6 +9,10 @@ namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MyToolsForm : DevExpress.XtraEditors.XtraForm
     {
+        #region Fields
+        private CommandLineHelper _commandLine;
+        #endregion
+
         #region Properties
         public Tool Tool { get; set; }
         #endregion
@@ -86,7 +91,17 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
-            CommandLineHelper.ExecuteCommandAsync(textEditToolPath.Text);
+            if (_commandLine != null)
+            {
+                _commandLine.Dispose();
+                _commandLine = null;
+            }
+
+            _commandLine = new CommandLineHelper();
+            _commandLine.Application = textEditToolPath.Text;
+            _commandLine.Parameters = textEditToolParameters.Text;
+
+            _commandLine.Execute();
         }
         #endregion
 
@@ -130,7 +145,10 @@ namespace SoftTeam.SoftBar.Core.Forms
                     break;
 
                 case ToolPath.OnScreenKeyboard:
-                    path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\osk.exe";
+                    if (Environment.Is64BitOperatingSystem)
+                        path = Path.Combine(System.IO.Directory.GetDirectories(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Windows), "winsxs"), "amd64_microsoft-windows-osk_*")[0], "osk.exe");
+                    else
+                        path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\osk.exe";
                     break;
                 case ToolPath.Paint:
                     path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\mspaint.exe";
@@ -139,7 +157,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                     path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\perfmon.exe";
                     break;
                 case ToolPath.RegistryEditor:
-                    path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\regedit.exe";
+                    path = @"[WINDOWSFOLDER]\[SYSTEM32FOLDER]\regedit.exe";
                     break;
                 case ToolPath.ResourceMonitor:
                     path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\resmon.exe";

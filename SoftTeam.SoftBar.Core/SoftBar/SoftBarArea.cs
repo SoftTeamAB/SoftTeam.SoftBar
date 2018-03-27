@@ -209,8 +209,15 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void toolItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var tool = ((Tool)e.Item.Tag);
-            Process.Start(tool.Path);
+            try
+            {
+                var tool = ((Tool)e.Item.Tag);
+                Process.Start(tool.Path);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Failed to start item : " + ex.Message);
+            }
         }
 
         #endregion

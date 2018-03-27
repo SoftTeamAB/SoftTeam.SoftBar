@@ -709,7 +709,7 @@
             this.groupControlTool.TabIndex = 56;
             this.groupControlTool.Text = "Tool information";
             // 
-            // AddToolsForm
+            // MyToolsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -762,7 +762,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "AddToolsForm";
+            this.Name = "MyToolsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Add tools to the tools menu...";
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditCalculator.Properties)).EndInit();
