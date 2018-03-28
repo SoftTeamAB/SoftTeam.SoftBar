@@ -110,9 +110,9 @@
             // 
             this.labelControlIconPath.Location = new System.Drawing.Point(50, 100);
             this.labelControlIconPath.Name = "labelControlIconPath";
-            this.labelControlIconPath.Size = new System.Drawing.Size(46, 13);
+            this.labelControlIconPath.Size = new System.Drawing.Size(87, 13);
             this.labelControlIconPath.TabIndex = 4;
-            this.labelControlIconPath.Text = "Icon path";
+            this.labelControlIconPath.Text = "Icon path (24x24)";
             // 
             // labelControlName
             // 
@@ -152,9 +152,9 @@
             // 
             // pictureBoxIcon
             // 
-            this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(51, 9);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxIcon.TabIndex = 8;
             this.pictureBoxIcon.TabStop = false;
             // 

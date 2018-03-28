@@ -100,7 +100,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             directoriesMenu.Setup();
             directoriesMenu.Button.Click += _softBarArea.Button_Click;
             directoriesMenu.Button.Tag = directoriesMenu;
-            directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+            directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder_medium);
 
             // My directories
             SoftBarSubMenu myDirectoriesSubMenu=null;

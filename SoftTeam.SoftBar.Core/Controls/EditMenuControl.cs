@@ -33,9 +33,10 @@ namespace SoftTeam.SoftBar.Core.Controls
         private void simpleButtonBrowse_Click(object sender, EventArgs e)
         {
             xtraOpenFileDialogEditMenu.InitialDirectory = textEditIconPath.Text;
-            xtraOpenFileDialogEditMenu.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll";
+            // 
+            xtraOpenFileDialogEditMenu.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
             xtraOpenFileDialogEditMenu.CheckFileExists = true;
-            xtraOpenFileDialogEditMenu.FilterIndex = 0;
+            xtraOpenFileDialogEditMenu.FilterIndex = 7;
             DialogResult result = xtraOpenFileDialogEditMenu.ShowDialog();
 
             if (result == DialogResult.OK)
@@ -47,22 +48,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage(string path)
         {
-            try
-            {
-                Image image = HelperFunctions.GetFileImage(path, ImageSize.Large);
-
-                if (image == null)
-                    // Return an error image
-                    pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                else
-                    // Return the correct image
-                    pictureBoxIcon.Image = image;
-            }
-            catch 
-            {
-                // Return an error image
-                pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-            }
+            pictureBoxIcon.Image = HelperFunctions.GetFileImage(path, ImageSize.Medium_24x24);
         }
         #endregion
 

@@ -315,9 +315,6 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\toolbox.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\folder_music.png" />
   </ItemGroup>
   <ItemGroup>
@@ -328,10 +325,15 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PHSAppBar.txt" />
+    <None Include="Resources\clipboard_medium.png" />
+    <None Include="Resources\folder_medium.png" />
+    <None Include="Resources\sign_warning_medium.png" />
+    <None Include="Resources\toolbox.png" />
     <None Include="Resources\server_network.png" />
     <None Include="Resources\server.png" />
     <None Include="Resources\tag.png" />
     <None Include="Resources\clipboard.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

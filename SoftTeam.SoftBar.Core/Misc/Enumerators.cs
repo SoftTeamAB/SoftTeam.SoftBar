@@ -69,7 +69,8 @@
 
     public enum ImageSize
     {
-        Small,
-        Large
+        Small_16x16,
+        Medium_24x24,
+        Large_32x32
     }
 }

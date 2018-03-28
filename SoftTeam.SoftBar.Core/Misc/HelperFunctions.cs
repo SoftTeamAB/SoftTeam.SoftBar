@@ -71,7 +71,7 @@ namespace SoftTeam.SoftBar.Core.Misc
         //    return path;
         //}
 
-        public static Image GetFileImage(string path, ImageSize size = ImageSize.Small)
+        public static Image GetFileImage(string path, ImageSize size = ImageSize.Small_16x16)
         {
             if (string.IsNullOrEmpty(path))
                 return null;
@@ -105,29 +105,34 @@ namespace SoftTeam.SoftBar.Core.Misc
                     if (image != null)
                     {
                         // Return image in correct size
-                        if (size == ImageSize.Small)
+                        if (size == ImageSize.Small_16x16)
                             return image.ResizeImage(16, 16);
+                        else if (size == ImageSize.Medium_24x24)
+                            return image.ResizeImage(24, 24);
                         else
                             return image.ResizeImage(32, 32);
                     }
                     else
-                    {
                         // Return warning image in correct size
-                        if (size == ImageSize.Small)
-                            return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                        else
-                            return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
-                    }
+                        return ReturnWarninImage(size);
                 }
                 catch
                 {
                     // Return warning image in correct size
-                    if (size == ImageSize.Small)
-                        return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                    else
-                        return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
+                    return ReturnWarninImage(size);
                 }
             }
+        }
+
+        private static Image ReturnWarninImage(ImageSize size)
+        {
+            // Return warning image in correct size
+            if (size == ImageSize.Small_16x16)
+                return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+            if (size == ImageSize.Medium_24x24)
+                return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_medium);
+            else
+                return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
         }
 
         public static string GetXmlSchemaPath(bool debug = false)

@@ -56,9 +56,9 @@
             // 
             // pictureBoxIcon
             // 
-            this.pictureBoxIcon.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(50, 12);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxIcon.TabIndex = 16;
             this.pictureBoxIcon.TabStop = false;
             // 
@@ -83,9 +83,9 @@
             // 
             this.labelControlIconPath.Location = new System.Drawing.Point(50, 115);
             this.labelControlIconPath.Name = "labelControlIconPath";
-            this.labelControlIconPath.Size = new System.Drawing.Size(46, 13);
+            this.labelControlIconPath.Size = new System.Drawing.Size(87, 13);
             this.labelControlIconPath.TabIndex = 13;
-            this.labelControlIconPath.Text = "Icon path";
+            this.labelControlIconPath.Text = "Icon path (16x16)";
             // 
             // labelControlEditSubMenu
             // 

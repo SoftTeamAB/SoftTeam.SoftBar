@@ -19,7 +19,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
     /// A SoftBar area, can be System, User or Info.
     /// - Each area can containt multiple buttons and menus
     /// </summary>
-    public class SoftBarArea
+    public class SoftBarArea : IDisposable
     {
         #region Fields
         private AreaType _type = AreaType.System;
@@ -56,18 +56,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #endregion
 
         #region Misc functions
-        public void Resize()
-        {
-            // The system area might have been resized, reload the user area
-            Load();
-        }
-
         public void Load(bool hardReload = false)
         {
-            foreach (var menu in Menus)
-                menu.Clear();
-
-            Menus.Clear();
+            ClearMenus();
 
             if (hardReload)
             {
@@ -94,6 +85,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     userMenuBuilder.Build();
                     break;
             }
+        }
+
+        private void ClearMenus()
+        {
+            foreach (var menu in Menus)
+                menu.Clear();
+
+            Menus.Clear();
         }
         #endregion
 
@@ -137,7 +136,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 // Reload the settings
                 _manager.SettingsManager.Load();
 
-                // Reload the menus
+                // Reload the system menus
                 Load();
 
                 Application.DoEvents();
@@ -250,6 +249,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public void ClipboardMenu_Clicked(object sender, EventArgs e)
         {
             Menus[0].Item.ShowPopup(new Point(Menus[0].Left, 0));
+        }
+
+        public void Dispose()
+        {
+            ClearMenus();
         }
 
         #endregion

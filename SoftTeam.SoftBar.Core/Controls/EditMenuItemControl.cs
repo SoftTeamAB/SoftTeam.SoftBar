@@ -65,22 +65,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         #region Misc functions
         private void UpdateImage()
         {
-            try
-            {
-                Image image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Large);
-
-                if (image == null)
-                    // Return an error image
-                    pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                else
-                    // Return the correct image
-                    pictureBoxIcon.Image = image;
-            }
-            catch
-            {
-                // Return an error image
-                pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-            }
+            pictureBoxIcon.Image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Small_16x16);
         }
         #endregion
 
@@ -88,9 +73,9 @@ namespace SoftTeam.SoftBar.Core.Controls
         private void simpleButtonIconPathBrowse_Click(object sender, EventArgs e)
         {
             xtraOpenFileDialogMenuItem.InitialDirectory = textEditIconPath.Text;
-            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll";
+            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
             xtraOpenFileDialogMenuItem.CheckFileExists = true;
-            xtraOpenFileDialogMenuItem.FilterIndex = 0;
+            xtraOpenFileDialogMenuItem.FilterIndex = 7;
             DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
 
             if (result == DialogResult.OK)

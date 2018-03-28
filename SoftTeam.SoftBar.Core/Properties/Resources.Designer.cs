@@ -83,6 +83,16 @@ namespace SoftTeam.SoftBar.Core.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard_medium {
+            get {
+                object obj = ResourceManager.GetObject("clipboard_medium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Directories {
             get {
                 object obj = ResourceManager.GetObject("Directories", resourceCulture);
@@ -126,6 +136,16 @@ namespace SoftTeam.SoftBar.Core.Properties {
         internal static System.Drawing.Bitmap floppy_drive {
             get {
                 object obj = ResourceManager.GetObject("floppy_drive", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap folder_medium {
+            get {
+                object obj = ResourceManager.GetObject("folder_medium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -276,6 +296,16 @@ namespace SoftTeam.SoftBar.Core.Properties {
         internal static System.Drawing.Bitmap Warning {
             get {
                 object obj = ResourceManager.GetObject("Warning", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Warning_medium {
+            get {
+                object obj = ResourceManager.GetObject("Warning_medium", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -42,22 +42,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Misc functions
         private void UpdateImage()
         {
-            try
-            {
-                Image image = HelperFunctions.GetFileImage(IconPath, ImageSize.Small);
-
-                if (image == null)
-                    // Return an error image
-                    Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                else
-                    // Return the correct image
-                    Image = image;
-            }
-            catch
-            {
-                // Return an error image
-                Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-            }
+            Image = HelperFunctions.GetFileImage(IconPath, ImageSize.Medium_24x24);
         }
         #endregion
     }

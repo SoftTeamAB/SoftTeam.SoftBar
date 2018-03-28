@@ -44,7 +44,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Setup();
             _specialsMenu.Button.Click += _manager.SpecialsArea.ClipboardMenu_Clicked;
             _specialsMenu.Button.Tag = _specialsMenu;
-            _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
+            _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
 
             // Computer name
             SoftBarMenuItem computerNameItem = new SoftBarMenuItem(_manager.Form, "Computer name", true);
