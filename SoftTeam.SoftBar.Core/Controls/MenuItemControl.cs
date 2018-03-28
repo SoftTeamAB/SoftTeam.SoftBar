@@ -148,12 +148,12 @@ namespace SoftTeam.SoftBar.Core.Controls
                 var menuItem = (XmlMenuItem)_item;
                 var path = Environment.ExpandEnvironmentVariables(menuItem.IconPath);
                 if (!string.IsNullOrEmpty(menuItem.IconPath))
-                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(path);
+                    pictureBoxIcon.Image = HelperFunctions.GetFileImage(path);
                 else if (!string.IsNullOrEmpty(menuItem.ApplicationPath))
-                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(menuItem.ApplicationPath);
+                    pictureBoxIcon.Image = HelperFunctions.GetFileImage(menuItem.ApplicationPath);
             }
             else
-                pictureBoxIcon.Image = HelperFunctions.ExtractIcon(_item.IconPath);
+                pictureBoxIcon.Image = HelperFunctions.GetFileImage(_item.IconPath);
         }
         #endregion
     }

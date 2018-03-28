@@ -110,7 +110,7 @@ namespace SoftTeam.SoftBar.Core.Xml
 
                     if (!string.IsNullOrEmpty(item.Parameters))
                     {
-                        var parametersNode = doc.CreateElement("parametersPath");
+                        var parametersNode = doc.CreateElement("parameters");
                         parametersNode.InnerText = item.Parameters;
                         itemNode.AppendChild(parametersNode);
                     }

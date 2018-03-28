@@ -71,7 +71,7 @@ namespace SoftTeam.SoftBar.Core.Misc
         //    return path;
         //}
 
-        public static Image ExtractIcon(string path)
+        public static Image GetFileImage(string path, ImageSize size = ImageSize.Small)
         {
             if (string.IsNullOrEmpty(path))
                 return null;
@@ -79,14 +79,53 @@ namespace SoftTeam.SoftBar.Core.Misc
             {
                 try
                 {
-                    // Extract the icon...
-                    Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                    // and return an 16x16 image
-                    return iconImage.ResizeImage(16, 16);
+                    // Remove quotationmarks
+                    path = path.Replace("\"", "");
+
+                    // Expand environment variables
+                    path = Environment.ExpandEnvironmentVariables(path);
+
+                    Image image = null;
+                    // Make sure that the file exists
+                    if (System.IO.File.Exists(path))
+                    {
+                        FileInfo info = new FileInfo(path);
+                        // Get file extension
+                        var ext = info.Extension.ToUpper();
+
+                        // Formats Image.FromFile can handle:
+                        if (ext == ".BMP" || ext == ".GIF" || ext == ".JPG" || ext == ".JPEG" || ext == ".JPE" || ext == ".JIF" ||
+                            ext == ".JFIF" || ext == ".JFI" || ext == ".PNG" || ext == ".TIFF" || ext == ".TIF")
+                            image = Image.FromFile(path);
+                        else
+                            // TODO : Icon number
+                            image = Icon.ExtractAssociatedIcon(path).ToBitmap();
+                    }
+
+                    if (image != null)
+                    {
+                        // Return image in correct size
+                        if (size == ImageSize.Small)
+                            return image.ResizeImage(16, 16);
+                        else
+                            return image.ResizeImage(32, 32);
+                    }
+                    else
+                    {
+                        // Return warning image in correct size
+                        if (size == ImageSize.Small)
+                            return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                        else
+                            return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
+                    }
                 }
                 catch
                 {
-                    return null;
+                    // Return warning image in correct size
+                    if (size == ImageSize.Small)
+                        return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                    else
+                        return new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
                 }
             }
         }

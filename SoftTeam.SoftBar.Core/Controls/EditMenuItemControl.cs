@@ -67,20 +67,14 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             try
             {
-                var path = IconPath.Replace("\"","");
-                if (string.IsNullOrEmpty(path))
-                    path = ApplicationPath;
+                Image image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Large);
 
-                if (!string.IsNullOrEmpty(path))
-                {
-                    path = Environment.ExpandEnvironmentVariables(path);
-                    // Extract the icon...
-                    Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                    // and return an 16x16 image
-                    pictureBoxIcon.Image = iconImage.ResizeImage(32, 32);
-                }
+                if (image == null)
+                    // Return an error image
+                    pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
                 else
-                    pictureBoxIcon.Image = null;
+                    // Return the correct image
+                    pictureBoxIcon.Image = image;
             }
             catch
             {

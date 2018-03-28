@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditSubMenuControl));
             DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -108,13 +108,13 @@
             this.checkEditBeginGroup.Name = "checkEditBeginGroup";
             this.checkEditBeginGroup.Properties.Caption = "Begin group";
             this.checkEditBeginGroup.Size = new System.Drawing.Size(100, 19);
-            superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem3.Text = "Begin group";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.checkEditBeginGroup.SuperTip = superToolTip3;
+            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem1.Text = "Begin group";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.checkEditBeginGroup.SuperTip = superToolTip1;
             this.checkEditBeginGroup.TabIndex = 11;
             // 
             // textEditIconPath
@@ -132,28 +132,29 @@
             superToolTip2.Items.Add(toolTipItem2);
             this.textEditIconPath.SuperTip = superToolTip2;
             this.textEditIconPath.TabIndex = 10;
+            this.textEditIconPath.EditValueChanged += new System.EventHandler(this.textEditIconPath_EditValueChanged);
             // 
             // textEditName
             // 
             this.textEditName.Location = new System.Drawing.Point(50, 89);
             this.textEditName.Name = "textEditName";
             this.textEditName.Size = new System.Drawing.Size(307, 20);
-            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem4.Text = "Name";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "The name of this menu item. This is the name that will appear in the menu, when i" +
+            superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem3.Text = "Name";
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "The name of this menu item. This is the name that will appear in the menu, when i" +
     "t is opened.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.textEditName.SuperTip = superToolTip4;
+            superToolTip3.Items.Add(toolTipTitleItem3);
+            superToolTip3.Items.Add(toolTipItem3);
+            this.textEditName.SuperTip = superToolTip3;
             this.textEditName.TabIndex = 9;
             // 
             // xtraOpenFileDialogEditSubMenu
             // 
             this.xtraOpenFileDialogEditSubMenu.FileName = "xtraOpenFileDialog1";
             // 
-            // EditSubMenu
+            // EditSubMenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +166,7 @@
             this.Controls.Add(this.checkEditBeginGroup);
             this.Controls.Add(this.textEditIconPath);
             this.Controls.Add(this.textEditName);
-            this.Name = "EditSubMenu";
+            this.Name = "EditSubMenuControl";
             this.Size = new System.Drawing.Size(400, 250);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();

@@ -292,7 +292,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 // Set the image depending of the drive type
                 toolItem.Setup();
-                toolItem.Item.ImageOptions.Image = HelperFunctions.ExtractIcon(tool.IconPath);
+                toolItem.Item.ImageOptions.Image = HelperFunctions.GetFileImage(tool.IconPath);
                 toolItem.Item.Tag = tool;
                 toolItem.Item.ItemClick += _softBarArea.toolItem_ItemClick;
                 toolsMenu.Item.AddItem(toolItem.Item);

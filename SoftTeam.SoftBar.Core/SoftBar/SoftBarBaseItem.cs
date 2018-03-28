@@ -42,42 +42,22 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Misc functions
         private void UpdateImage()
         {
-            // If we have a potential icon...
-            if (!string.IsNullOrEmpty(IconPath))
+            try
             {
-                try
-                {
-                    var path = Environment.ExpandEnvironmentVariables(IconPath);
-                    if (!File.Exists(path))
-                    {                        
-                        // Set warning message
-                        Warning = true;
-                        WarningText = "IconPath does not exist!";
-                        // Return an error image
-                        Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                    }
-                    else
-                    {
+                Image image = HelperFunctions.GetFileImage(IconPath, ImageSize.Small);
 
-                        // Extract the icon...
-                        Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                        // and return an 16x16 image
-                        Image = iconImage.ResizeImage(16, 16);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    // Set warning message
-                    Warning = true;
-                    WarningText = $"Unknown icon exception! : \n\n{ex.Message}";
-
+                if (image == null)
                     // Return an error image
                     Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
-                }
+                else
+                    // Return the correct image
+                    Image = image;
             }
-            else
-                // Return no image
-                Image = null;
+            catch
+            {
+                // Return an error image
+                Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+            }
         }
         #endregion
     }

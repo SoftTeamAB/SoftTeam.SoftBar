@@ -19,7 +19,7 @@ namespace SoftTeam.SoftBar.Core.Settings
         #region Properties and overrides
         public Image Image
         {
-            get { return HelperFunctions.ExtractIcon(IconPath); }
+            get { return HelperFunctions.GetFileImage(IconPath); }
         }
 
         public override string ToString()

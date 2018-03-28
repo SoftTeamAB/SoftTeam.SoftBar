@@ -47,18 +47,19 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage(string path)
         {
-            if (string.IsNullOrEmpty(path)) return;
             try
             {
-                path = Environment.ExpandEnvironmentVariables(path);
-                // Extract the icon...
-                Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
-                // and return an 16x16 image
-                pictureBoxIcon.Image = iconImage.ResizeImage(32, 32);
+                Image image = HelperFunctions.GetFileImage(path, ImageSize.Large);
+
+                if (image == null)
+                    // Return an error image
+                    pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
+                else
+                    // Return the correct image
+                    pictureBoxIcon.Image = image;
             }
-            catch (Exception ex)
+            catch 
             {
-                XtraMessageBox.Show(ex.Message);
                 // Return an error image
                 pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
             }
@@ -84,5 +85,11 @@ namespace SoftTeam.SoftBar.Core.Controls
             MenuWidth = int.Parse(spinEditWidth.EditValue.ToString());
         }
         #endregion
+
+        private void textEditIconPath_EditValueChanged(object sender, EventArgs e)
+        {
+            IconPath = textEditIconPath.Text;
+            UpdateImage(IconPath);
+        }
     }
 }

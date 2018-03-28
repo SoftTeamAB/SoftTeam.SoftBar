@@ -66,4 +66,10 @@
         Settings,
         UserMenus
     }
+
+    public enum ImageSize
+    {
+        Small,
+        Large
+    }
 }

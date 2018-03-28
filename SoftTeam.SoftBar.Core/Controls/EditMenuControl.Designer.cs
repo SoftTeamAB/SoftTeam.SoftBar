@@ -89,6 +89,7 @@
             superToolTip2.Items.Add(toolTipItem2);
             this.textEditIconPath.SuperTip = superToolTip2;
             this.textEditIconPath.TabIndex = 1;
+            this.textEditIconPath.EditValueChanged += new System.EventHandler(this.textEditIconPath_EditValueChanged);
             // 
             // labelControlEditMenu
             // 
