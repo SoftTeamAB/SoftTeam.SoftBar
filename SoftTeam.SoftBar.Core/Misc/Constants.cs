@@ -25,9 +25,11 @@
         public const string General_SystemMenuWidth = "General.SystemMenuWidth";
         public const string General_DirectoriesMenuWidth = "General.DirectoriesMenuWidth";
         public const string General_ToolsMenuWidth = "General.ToolsMenuWidth";
+        public const string General_ClipboardMenuWidth = "General.ClipboardMenuWidth";
         public const string General_SystemMenuName = "General.SystemMenuName";
         public const string General_DirectoriesMenuName = "General.DirectoriesMenuName";
         public const string General_ToolsMenuName = "General.ToolsMenuName";
+        public const string General_ClipboardMenuName = "General.ClipboardMenuName";
 
         public const string DirectoriesMenu_SubFolderMyFolders = "DirectoriesMenu.SubFolderMyFolders";
         public const string DirectoriesMenu_SubFolderMyDrives = "DirectoriesMenu.SubFolderDrives";

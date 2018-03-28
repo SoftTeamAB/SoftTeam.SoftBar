@@ -82,7 +82,7 @@ namespace SoftTeam.SoftBar.Core.Controls
                 else
                     pictureBoxIcon.Image = null;
             }
-            catch (Exception ex)
+            catch
             {
                 // Return an error image
                 pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);

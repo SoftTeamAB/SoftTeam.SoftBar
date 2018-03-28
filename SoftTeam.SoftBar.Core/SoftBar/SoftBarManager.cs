@@ -5,6 +5,7 @@ using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
@@ -13,6 +14,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Fields
         private SoftBarArea _systemArea = null;
         private SoftBarArea _userArea = null;
+        private SoftBarArea _specialsArea = null;
         private XmlArea _userAreaXml = null;
         private SettingsManager _settingsManager = null;
         private MainAppBarForm _form = null;
@@ -28,6 +30,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public SettingsManager SettingsManager { get => _settingsManager; set => _settingsManager = value; }
         public SoftBarFileManager FileManager { get => _fileManager; set => _fileManager = value; }
         public ClipboardManager ClipboardManager { get => _clipboardManager; set => _clipboardManager = value; }
+        public SoftBarArea SpecialsArea { get => _specialsArea; set => _specialsArea = value; }
         #endregion
 
         #region Constructor
@@ -46,20 +49,31 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             XmlLoader loader = new XmlLoader(_fileManager.MenuPath);
             _userAreaXml = loader.Load();
 
+            // Make sure the app bar has been placed on top of screen
+            Application.DoEvents();
+
+            // Clipboard
+            _clipboardManager = new ClipboardManager(_form, 10);
+            _clipboardManager.ClipboardItemAdded += _clipboardManager_ClipboardItemAdded;
+
             // Setup system and user area
             _systemArea = new SoftBarArea(this, AreaType.System);
             _systemArea.Load();
+            _specialsArea = new SoftBarArea(this, AreaType.Specials);
+            _specialsArea.Load();
             _userArea = new SoftBarArea(this, AreaType.User, _systemArea.Width);
             _userArea.Load();
 
             // Resize event
             _systemArea.OnAreaResized += _systemArea_OnAreaResized;
 
-            // Clipboard
-            _clipboardManager = new ClipboardManager(10);
-
             // Paint event for separators
             _form.Paint += _form_Paint;
+        }
+
+        private void _clipboardManager_ClipboardItemAdded(object sender, System.EventArgs e)
+        {
+            _specialsArea.Load();
         }
 
         private void _systemArea_OnAreaResized(object sender, System.EventArgs e)

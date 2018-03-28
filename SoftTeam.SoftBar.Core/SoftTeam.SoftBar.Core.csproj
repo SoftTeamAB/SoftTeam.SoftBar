@@ -328,6 +328,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PHSAppBar.txt" />
+    <None Include="Resources\server_network.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\tag.png" />
+    <None Include="Resources\clipboard.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

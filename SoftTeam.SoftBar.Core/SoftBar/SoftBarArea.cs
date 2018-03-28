@@ -83,6 +83,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     var systemMenuBuilder = new SoftBarSystemMenuBuilder(_manager);
                     systemMenuBuilder.Build();
                     break;
+                case AreaType.Specials:
+                    // Create system area builder
+                    var specialsMenuBuilder = new SoftBarSpecialsMenuBuilder(_manager);
+                    specialsMenuBuilder.Build();
+                    break;
                 case AreaType.User:
                     // Create user area builder
                     var userMenuBuilder = new SoftBarUserMenuBuilder(_manager);
@@ -114,6 +119,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void ExitItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            // Make sure to dispose the clipboard since it has an active timer
+            _manager.ClipboardManager.Dispose();
             _manager.Form.Close();
         }
 
@@ -218,6 +225,31 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             {
                 XtraMessageBox.Show("Failed to start item : " + ex.Message);
             }
+        }
+
+        public void computerNameItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Clipboard.SetText(Environment.MachineName);
+        }
+
+        public void ipItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (System.Net.NetworkInformation.NetworkInterface.GetIsNetworkAvailable())
+            {
+                var ip = HelperFunctions.GetLocalIPAddress();
+                Clipboard.SetText(ip);
+            }
+        }
+
+        public void clipboardItem_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var text = (string)e.Item.Tag;
+                Clipboard.SetText(text);
+        }
+
+        public void ClipboardMenu_Clicked(object sender, EventArgs e)
+        {
+            Menus[0].Item.ShowPopup(new Point(Menus[0].Left, 0));
         }
 
         #endregion

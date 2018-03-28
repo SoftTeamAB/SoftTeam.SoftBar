@@ -58,7 +58,7 @@
     {
         System,
         User,
-        Info
+        Specials
     }
 
     public enum FileType

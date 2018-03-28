@@ -44,7 +44,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             var name = _settingsManager.Settings.GetStringSetting(Constants.General_SystemMenuName, "SoftBar");
 
             var systemMenu = new SoftBarMenu(_form, name, 0, width, true);
-            systemMenu.Width = 120;
+            systemMenu.Width = width;
             _softBarArea.Menus.Add(systemMenu);
             systemMenu.Setup();
             systemMenu.Button.Click += _softBarArea.Button_Click;

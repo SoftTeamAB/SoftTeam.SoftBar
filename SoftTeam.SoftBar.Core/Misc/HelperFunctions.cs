@@ -3,6 +3,8 @@ using Microsoft.Win32;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -236,6 +238,19 @@ namespace SoftTeam.SoftBar.Core.Misc
             catch
             {
             }
+        }
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
     }
 }
