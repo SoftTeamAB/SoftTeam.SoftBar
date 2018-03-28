@@ -146,8 +146,9 @@ namespace SoftTeam.SoftBar.Core.Controls
             if (_item is XmlMenuItem)
             {
                 var menuItem = (XmlMenuItem)_item;
+                var path = Environment.ExpandEnvironmentVariables(menuItem.IconPath);
                 if (!string.IsNullOrEmpty(menuItem.IconPath))
-                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(menuItem.IconPath);
+                    pictureBoxIcon.Image = HelperFunctions.ExtractIcon(path);
                 else if (!string.IsNullOrEmpty(menuItem.ApplicationPath))
                     pictureBoxIcon.Image = HelperFunctions.ExtractIcon(menuItem.ApplicationPath);
             }

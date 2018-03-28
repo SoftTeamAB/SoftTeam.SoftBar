@@ -50,6 +50,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             if (string.IsNullOrEmpty(path)) return;
             try
             {
+                path = Environment.ExpandEnvironmentVariables(path);
                 // Extract the icon...
                 Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
                 // and return an 16x16 image

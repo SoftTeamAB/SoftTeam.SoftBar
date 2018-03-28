@@ -47,8 +47,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             {
                 try
                 {
-                    if (!File.Exists(IconPath))
-                    {
+                    var path = Environment.ExpandEnvironmentVariables(IconPath);
+                    if (!File.Exists(path))
+                    {                        
                         // Set warning message
                         Warning = true;
                         WarningText = "IconPath does not exist!";
@@ -57,8 +58,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     }
                     else
                     {
+
                         // Extract the icon...
-                        Image iconImage = Icon.ExtractAssociatedIcon(IconPath).ToBitmap();
+                        Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
                         // and return an 16x16 image
                         Image = iconImage.ResizeImage(16, 16);
                     }

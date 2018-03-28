@@ -73,6 +73,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
                 if (!string.IsNullOrEmpty(path))
                 {
+                    path = Environment.ExpandEnvironmentVariables(path);
                     // Extract the icon...
                     Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
                     // and return an 16x16 image
@@ -83,7 +84,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             }
             catch (Exception ex)
             {
-                XtraMessageBox.Show(ex.Message);
                 // Return an error image
                 pictureBoxIcon.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning_small);
             }

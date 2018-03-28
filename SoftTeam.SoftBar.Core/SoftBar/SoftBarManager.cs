@@ -1,4 +1,5 @@
 ﻿using DevExpress.UserSkins;
+using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
@@ -16,6 +17,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private SettingsManager _settingsManager = null;
         private MainAppBarForm _form = null;
         private SoftBarFileManager _fileManager = null;
+        private ClipboardManager _clipboardManager = null;
         #endregion
 
         #region Properties
@@ -25,6 +27,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public XmlArea UserAreaXml { get => _userAreaXml; set => _userAreaXml = value; }
         public SettingsManager SettingsManager { get => _settingsManager; set => _settingsManager = value; }
         public SoftBarFileManager FileManager { get => _fileManager; set => _fileManager = value; }
+        public ClipboardManager ClipboardManager { get => _clipboardManager; set => _clipboardManager = value; }
         #endregion
 
         #region Constructor
@@ -51,6 +54,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
             // Resize event
             _systemArea.OnAreaResized += _systemArea_OnAreaResized;
+
+            // Clipboard
+            _clipboardManager = new ClipboardManager(10);
 
             // Paint event for separators
             _form.Paint += _form_Paint;

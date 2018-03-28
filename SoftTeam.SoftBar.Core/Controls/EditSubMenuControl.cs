@@ -68,6 +68,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
             try
             {
+                path = Environment.ExpandEnvironmentVariables(path);
                 // Extract the icon...
                 Image iconImage = Icon.ExtractAssociatedIcon(path).ToBitmap();
                 // and return an 16x16 image

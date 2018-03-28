@@ -64,6 +64,8 @@ namespace SoftTeam.SoftBar.Core.Misc
                 {
                     beginGroup = true;
                     nextLine = GetNextLine();
+                    if (nextLine.StartsWith("[MENU]"))
+                        return true;
                     if (nextLine == null)
                         return false;
                 }

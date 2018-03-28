@@ -96,6 +96,12 @@
   <ItemGroup>
     <Compile Include="AppBar\AppBarFunctions.cs" />
     <Compile Include="AppBar\Interop.cs" />
+    <Compile Include="Clipboard\ClipboardItem.cs" />
+    <Compile Include="Clipboard\ClipboardItemAudio.cs" />
+    <Compile Include="Clipboard\ClipboardItemFiles.cs" />
+    <Compile Include="Clipboard\ClipboardItemImage.cs" />
+    <Compile Include="Clipboard\ClipboardItemText.cs" />
+    <Compile Include="Clipboard\ClipboardManager.cs" />
     <Compile Include="Controls\EditHeaderItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,8 +192,10 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="Misc\LimitedStack.cs" />
     <Compile Include="Misc\ObjectExtension.cs" />
     <Compile Include="Misc\PHSAppBarImporter.cs" />
+    <Compile Include="SoftBar\Builders\SoftBarSpecialsMenuBuilder.cs" />
     <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />
     <Compile Include="Settings\Tool.cs" />

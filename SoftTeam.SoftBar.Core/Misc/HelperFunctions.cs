@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.Misc
 {
@@ -98,7 +99,7 @@ namespace SoftTeam.SoftBar.Core.Misc
                 return xsdPath;
             }
             else
-                return @"Xml\SoftBar.xsd";
+                return Path.Combine(Path.GetDirectoryName(Application.ExecutablePath), @"Xml\SoftBar.xsd");
 
         }
 
