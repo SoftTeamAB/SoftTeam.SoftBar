@@ -29,7 +29,7 @@ namespace SoftTeam.SoftBar.Core
         /// <summary>
         /// Internal class for registration of an app bar
         /// </summary>
-        private class RegisterInfo
+        public class RegisterInfo
         {
             public int CallbackId { get; set; }
             public bool IsRegistered { get; set; }
@@ -103,7 +103,7 @@ namespace SoftTeam.SoftBar.Core
         /// </summary>
         /// <param name="appbarWindow"></param>
         /// <returns></returns>
-        private static RegisterInfo GetRegisterInfo(Form appbarWindow)
+        public static RegisterInfo GetRegisterInfo(Form appbarWindow)
         {
             RegisterInfo reg;
             if (RegisteredWindowInfo.ContainsKey(appbarWindow))
@@ -212,6 +212,11 @@ namespace SoftTeam.SoftBar.Core
             appbarWindow.Height = rect.Height;
             appbarWindow.Top = rect.Top;
             appbarWindow.Left = rect.Left;
+
+            Console.WriteLine("Top : " + rect.Top);
+            Console.WriteLine("Left : " + rect.Left);
+            Console.WriteLine("Width : " + rect.Width);
+            Console.WriteLine("Height : " + rect.Height);
         }
 
         private static void ABSetPos(RegisterInfo info, Form appbarWindow)

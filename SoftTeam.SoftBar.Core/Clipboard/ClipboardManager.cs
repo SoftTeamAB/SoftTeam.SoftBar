@@ -48,30 +48,37 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         #region Clipboard
         private void CheckClipboard()
         {
-            // Checks if a new item (text or image) has been added
-            if (Clipboard.ContainsText())
+            try
             {
-                string text = Clipboard.GetText();
-                string hash = CalculateHashCode(text);
-                // Don't add the text if it is already in the list
-                if (!ContainsHash(hash))
+                // Checks if a new item (text or image) has been added
+                if (Clipboard.ContainsText())
                 {
-                    ClipboardItemText textItem = new ClipboardItemText(text, hash);
-                    ClipboardList.Push(textItem);
-                    onClipboardItemAdded();
+                    string text = Clipboard.GetText();
+                    string hash = CalculateHashCode(text);
+                    // Don't add the text if it is already in the list
+                    if (!ContainsHash(hash))
+                    {
+                        ClipboardItemText textItem = new ClipboardItemText(text, hash);
+                        ClipboardList.Push(textItem);
+                        onClipboardItemAdded();
+                    }
+                }
+                else if (Clipboard.ContainsImage())
+                {
+                    Image image = Clipboard.GetImage();
+                    string hash = CalculateHashCode(image);
+                    // Don't add the image if it is already in the list
+                    if (!ContainsHash(hash))
+                    {
+                        ClipboardItemImage imageItem = new ClipboardItemImage(image, hash);
+                        ClipboardList.Push(imageItem);
+                        onClipboardItemAdded();
+                    }
                 }
             }
-            else if (Clipboard.ContainsImage())
+            catch
             {
-                Image image = Clipboard.GetImage();
-                string hash = CalculateHashCode(image);
-                // Don't add the image if it is already in the list
-                if (!ContainsHash(hash))
-                {
-                    ClipboardItemImage imageItem = new ClipboardItemImage(image, hash);
-                    ClipboardList.Push(imageItem);
-                    onClipboardItemAdded();
-                }
+                // Ignore errors 
             }
         }
 

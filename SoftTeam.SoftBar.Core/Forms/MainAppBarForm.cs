@@ -1,17 +1,25 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.SoftBar;
 using SoftTeam.SoftBar.Core.Xml;
+using static SoftTeam.SoftBar.Core.AppBarFunctions;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MainAppBarForm : DevExpress.XtraEditors.XtraForm
     {
+        [DllImport("user32")]
+        public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
+
         public MainAppBarForm()
         {
             InitializeComponent();
+
+            IntPtr hWnd = this.Handle;            
+            PostMessage(hWnd, (int)Interop.ABNotify.ABN_STATECHANGE, IntPtr.Zero, IntPtr.Zero);
         }
 
         private void MainAppBarForm_Load(object sender, EventArgs e)
@@ -138,6 +146,22 @@ namespace SoftTeam.SoftBar.Core.Forms
 
                 return form.Path;
             }
+        }
+
+        protected override void WndProc(ref Message msg)
+        {
+            RegisterInfo info = AppBarFunctions.GetRegisterInfo(this);
+            bool handled = false;
+            info.WndProc(msg.HWnd, msg.Msg, msg.WParam, msg.LParam, ref handled);
+
+            //if (msg.Msg == (int)Interop.ABNotify.ABN_STATECHANGE)
+            //    Console.WriteLine("ABN_STATECHANGE");
+            //if (msg.Msg == (int)Interop.ABNotify.ABN_FULLSCREENAPP)
+            //    Console.WriteLine("ABN_FULLSCREENAPP");
+            //if (msg.Msg == (int)Interop.ABNotify.ABN_POSCHANGED)
+            //    Console.WriteLine("ABN_POSCHANGED");
+
+            base.WndProc(ref msg);
         }
     }
 }

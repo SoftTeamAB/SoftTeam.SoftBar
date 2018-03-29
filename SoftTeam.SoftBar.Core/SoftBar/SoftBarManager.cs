@@ -89,17 +89,17 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Separators
         private void _form_Paint(object sender, System.Windows.Forms.PaintEventArgs e)
         {
-            // Draw separator after system menu
-            var left = _systemArea.Menus[0].Width - 3;
-            DrawSeparator(e.Graphics, left);
+            //// Draw separator after system menu
+            //var left = _systemArea.Menus[0].Width - 3;
+            //DrawSeparator(e.Graphics, left);
 
-            // Draw another separator before user area
-            left = _systemArea.Width - 11;
-            DrawSeparator(e.Graphics, left);
+            //// Draw another separator before user area
+            //left = _systemArea.Width - 11;
+            //DrawSeparator(e.Graphics, left);
 
-            // Draw another separator before specials menu are (clipboard etc)
-            left = _form.Width - _specialsArea.Width;
-            DrawSeparator(e.Graphics, left);
+            //// Draw another separator before specials menu are (clipboard etc)
+            //left = _form.Width - _specialsArea.Width;
+            //DrawSeparator(e.Graphics, left);
         }
 
         private void DrawSeparator(Graphics g, int left)

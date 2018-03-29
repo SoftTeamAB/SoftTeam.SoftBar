@@ -83,8 +83,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, text, true);
                 cliboardItem.Setup();
-                
-                cliboardItem.Item.Glyph= new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
+
+                cliboardItem.Item.Glyph = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard).ResizeImage(60,100);
                 cliboardItem.Item.ItemClick += _manager.SpecialsArea.clipboardItem_ItemClick;
 
                 cliboardItem.Item.Tag = item;
@@ -101,11 +101,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         private void Manager_CustomDrawItem(object sender, DevExpress.XtraBars.BarItemCustomDrawEventArgs e)
         {
             BarButtonItemLink link = e.LinkInfo?.Link as BarButtonItemLink;
-
-            if (link!=null && link.Item.Tag is ClipboardItem)
+            
+            if (link != null && link.Item.Tag is ClipboardItem)
             {
-                e.DrawBackground();
-                e.DrawGlyph();
+                BarButtonItem item = link.Item as BarButtonItem;
+                item.Glyph = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
+                
+                e.DrawBackground();                
+                e.DrawGlyph();                
 
                 if (link.Item.Tag is ClipboardItemText)
                 {
