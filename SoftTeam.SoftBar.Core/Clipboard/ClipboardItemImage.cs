@@ -15,9 +15,10 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         {
         }
 
-        public ClipboardItemImage(Image image)
+        public ClipboardItemImage(Image image, string hash)
         {
             Image = image;
+            Hash = hash;
         }
 
         public Image Image { get => _image; set => _image = value; }

@@ -14,9 +14,10 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         {
         }
 
-        public ClipboardItemText(string text)
+        public ClipboardItemText(string text, string hash)
         {
             Text = text;
+            Hash = hash;
         }
 
         public string Text { get => _text; set => _text = value; }

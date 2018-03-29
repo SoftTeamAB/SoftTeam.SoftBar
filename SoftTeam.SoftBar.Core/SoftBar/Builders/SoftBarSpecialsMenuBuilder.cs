@@ -1,4 +1,5 @@
-﻿using SoftTeam.SoftBar.Core.ClipboardList;
+﻿using DevExpress.XtraBars;
+using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
@@ -21,7 +22,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         #region Constructor
         public SoftBarSpecialsMenuBuilder(SoftBarManager manager)
         {
-            _manager = manager;            
+            _manager = manager;
         }
         #endregion
 
@@ -45,6 +46,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Button.Click += _manager.SpecialsArea.ClipboardMenu_Clicked;
             _specialsMenu.Button.Tag = _specialsMenu;
             _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
+            _specialsMenu.Item.Manager.CustomDrawItem += Manager_CustomDrawItem;
 
             // Computer name
             SoftBarMenuItem computerNameItem = new SoftBarMenuItem(_manager.Form, "Computer name", true);
@@ -62,17 +64,30 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
             bool first = true;
             foreach (var item in _manager.ClipboardManager.ClipboardList)
-            {                
-                // Settings for the app bar
-                var text = ((ClipboardItemText)item).Text;
-                text.Replace("\n", " ");
-                if (text.Length > 20)
-                    text = text.Substring(0, 20);
+            {
+                string text = "";
+
+                if (item is ClipboardItemText)
+                {
+                    // Settings for the app bar
+                    text = ((ClipboardItemText)item).Text;
+                    text.Replace("\n", " ");
+                    if (text.Length > 20)
+                        text = text.Substring(0, 20);
+                }
+                else if (item is ClipboardItemImage)
+                {
+                    //var image = ((ClipboardItemImage)item).Image;
+                    text = "";
+                }
+
                 SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, text, true);
                 cliboardItem.Setup();
-                cliboardItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
+                
+                cliboardItem.Item.Glyph= new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
                 cliboardItem.Item.ItemClick += _manager.SpecialsArea.clipboardItem_ItemClick;
-                cliboardItem.Item.Tag = ((ClipboardItemText)item).Text;
+
+                cliboardItem.Item.Tag = item;
                 _specialsMenu.Item.AddItem(cliboardItem.Item);
 
                 if (first)
@@ -82,6 +97,37 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 }
             }
         }
-        #endregion
+
+        private void Manager_CustomDrawItem(object sender, DevExpress.XtraBars.BarItemCustomDrawEventArgs e)
+        {
+            BarButtonItemLink link = e.LinkInfo?.Link as BarButtonItemLink;
+
+            if (link!=null && link.Item.Tag is ClipboardItem)
+            {
+                e.DrawBackground();
+                e.DrawGlyph();
+
+                if (link.Item.Tag is ClipboardItemText)
+                {
+                    var text = ((ClipboardItemText)link.Item.Tag).Text;
+                    var color = link.Item.ItemAppearance.Normal.ForeColor;
+                    var point = new Point(e.Bounds.Location.X + 30, e.Bounds.Location.Y + 3);
+                    e.Graphics.DrawString(text, link.Font, new SolidBrush(Color.White), point);
+                    e.Handled = true;
+                }
+                else if (link.Item.Tag is ClipboardItemImage)
+                {
+                    var image = ((ClipboardItemImage)link.Item.Tag).Image;
+
+                    var location = new Point(e.Bounds.X + 30, e.Bounds.Y + 2);
+                    var size = new Size(e.Bounds.Width - 32, e.Bounds.Height - 4);
+                    var imageBounds = new Rectangle(location, size);
+                    e.Graphics.DrawImage(image, imageBounds);
+                    e.Handled = true;
+                }
+            }
+        }
     }
+    #endregion
 }
+

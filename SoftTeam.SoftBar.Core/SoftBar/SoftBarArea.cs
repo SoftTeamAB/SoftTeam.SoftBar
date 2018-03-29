@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
+using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
@@ -242,8 +243,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void clipboardItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var text = (string)e.Item.Tag;
-                Clipboard.SetText(text);
+            if (e.Item.Tag is ClipboardItemText)
+                Clipboard.SetText(((ClipboardItemText)e.Item.Tag).Text);
+            else if (e.Item.Tag is ClipboardItemImage)
+                Clipboard.SetImage(((ClipboardItemImage)e.Item.Tag).Image);
         }
 
         public void ClipboardMenu_Clicked(object sender, EventArgs e)
