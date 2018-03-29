@@ -63,9 +63,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
             if (hardReload)
             {
-                AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.None);
-                Application.DoEvents();
-                AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.Top);
+                //AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.None);
+                //Application.DoEvents();
+                //AppBarFunctions.SetAppBar(_manager.Form, AppBarEdge.Top);
             }
 
             switch (_type)

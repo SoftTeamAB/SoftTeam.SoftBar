@@ -5,21 +5,17 @@ using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.SoftBar;
 using SoftTeam.SoftBar.Core.Xml;
-using static SoftTeam.SoftBar.Core.AppBarFunctions;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MainAppBarForm : DevExpress.XtraEditors.XtraForm
     {
-        [DllImport("user32")]
-        public static extern bool PostMessage(IntPtr hwnd, int msg, IntPtr wparam, IntPtr lparam);
+        AppBar _appBar;
 
         public MainAppBarForm()
         {
             InitializeComponent();
-
-            IntPtr hWnd = this.Handle;            
-            PostMessage(hWnd, (int)Interop.ABNotify.ABN_STATECHANGE, IntPtr.Zero, IntPtr.Zero);
+            _appBar = new AppBar();
         }
 
         private void MainAppBarForm_Load(object sender, EventArgs e)
@@ -78,7 +74,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
 
             // Set up the app bar at the top of the screen
-            AppBarFunctions.SetAppBar(this, AppBarEdge.Top);
+            _appBar.RegisterBar(this);
 
             // Save the path (working folder) for the xml file
             if (HelperFunctions.GetWorkingDirectory() != path)
@@ -133,9 +129,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (AppBarFunctions.Edge != AppBarEdge.None)
-                // Remove the app bar when the form closes
-                AppBarFunctions.SetAppBar(this, AppBarEdge.None);
+            _appBar.RegisterBar(this);
         }
 
         private string ChooseWorkingDirectory()
@@ -148,20 +142,24 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
         }
 
-        protected override void WndProc(ref Message msg)
+        protected override void WndProc(ref Message m)
         {
-            RegisterInfo info = AppBarFunctions.GetRegisterInfo(this);
-            bool handled = false;
-            info.WndProc(msg.HWnd, msg.Msg, msg.WParam, msg.LParam, ref handled);
+            _appBar.WndProc(this, ref m);
 
-            //if (msg.Msg == (int)Interop.ABNotify.ABN_STATECHANGE)
-            //    Console.WriteLine("ABN_STATECHANGE");
-            //if (msg.Msg == (int)Interop.ABNotify.ABN_FULLSCREENAPP)
-            //    Console.WriteLine("ABN_FULLSCREENAPP");
-            //if (msg.Msg == (int)Interop.ABNotify.ABN_POSCHANGED)
-            //    Console.WriteLine("ABN_POSCHANGED");
-
-            base.WndProc(ref msg);
+            base.WndProc(ref m);
         }
+
+        protected override System.Windows.Forms.CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style &= (~0x00C00000); // WS_CAPTION
+                cp.Style &= (~0x00800000); // WS_BORDER
+                cp.ExStyle = 0x00000080 | 0x00000008; // WS_EX_TOOLWINDOW | WS_EX_TOPMOST
+                return cp;
+            }
+        }
+
     }
 }

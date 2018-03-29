@@ -94,8 +94,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppBar\AppBarFunctions.cs" />
-    <Compile Include="AppBar\Interop.cs" />
+    <Compile Include="AppBar\AppBar.cs" />
     <Compile Include="Clipboard\ClipboardItem.cs" />
     <Compile Include="Clipboard\ClipboardItemAudio.cs" />
     <Compile Include="Clipboard\ClipboardItemFiles.cs" />
