@@ -64,10 +64,19 @@ namespace SoftTeam.SoftBar.Core.Misc
                 {
                     beginGroup = true;
                     nextLine = GetNextLine();
-                    if (nextLine.StartsWith("[MENU]"))
-                        return true;
+
                     if (nextLine == null)
+                    {
+                        // This menu is done, and we've reached the end of the file
+                        _area.Menus.Add(menu);
                         return false;
+                    }
+                    else if (nextLine.StartsWith("[MENU]"))
+                    {
+                        // This menu is done, let's read another one
+                        _area.Menus.Add(menu);
+                        return true;
+                    }
                 }
 
                 if (nextLine.StartsWith("[TEXT]"))

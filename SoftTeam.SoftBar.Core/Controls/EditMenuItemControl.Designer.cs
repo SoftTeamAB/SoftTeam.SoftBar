@@ -48,6 +48,9 @@
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -59,6 +62,7 @@
             this.xtraOpenFileDialogMenuItem = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.tabPaneMenuItem = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageAppearance = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.checkEditRunAsAdministrator = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageCommandLine = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.labelControlParameters = new DevExpress.XtraEditors.LabelControl();
             this.textEditParameters = new DevExpress.XtraEditors.TextEdit();
@@ -76,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneMenuItem)).BeginInit();
             this.tabPaneMenuItem.SuspendLayout();
             this.tabNavigationPageAppearance.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditRunAsAdministrator.Properties)).BeginInit();
             this.tabNavigationPageCommandLine.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditParameters.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDocumentPath.Properties)).BeginInit();
@@ -200,6 +205,7 @@
             // tabNavigationPageAppearance
             // 
             this.tabNavigationPageAppearance.Caption = "Appearance";
+            this.tabNavigationPageAppearance.Controls.Add(this.checkEditRunAsAdministrator);
             this.tabNavigationPageAppearance.Controls.Add(this.checkEditBeginGroup);
             this.tabNavigationPageAppearance.Controls.Add(this.labelControlName);
             this.tabNavigationPageAppearance.Controls.Add(this.textEditIconPath);
@@ -211,6 +217,22 @@
             this.tabNavigationPageAppearance.Name = "tabNavigationPageAppearance";
             this.tabNavigationPageAppearance.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageAppearance.Size = new System.Drawing.Size(376, 158);
+            // 
+            // checkEditRunAsAdministrator
+            // 
+            this.checkEditRunAsAdministrator.Location = new System.Drawing.Point(131, 109);
+            this.checkEditRunAsAdministrator.Name = "checkEditRunAsAdministrator";
+            this.checkEditRunAsAdministrator.Properties.Caption = "Run as administrator";
+            this.checkEditRunAsAdministrator.Size = new System.Drawing.Size(135, 19);
+            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem4.Text = "Begin group";
+            toolTipItem4.LeftIndent = 6;
+            toolTipItem4.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
+            superToolTip4.Items.Add(toolTipTitleItem4);
+            superToolTip4.Items.Add(toolTipItem4);
+            this.checkEditRunAsAdministrator.SuperTip = superToolTip4;
+            this.checkEditRunAsAdministrator.TabIndex = 16;
+            this.checkEditRunAsAdministrator.Visible = false;
             // 
             // tabNavigationPageCommandLine
             // 
@@ -242,16 +264,16 @@
             this.textEditParameters.Location = new System.Drawing.Point(36, 126);
             this.textEditParameters.Name = "textEditParameters";
             this.textEditParameters.Size = new System.Drawing.Size(307, 20);
-            superToolTip4.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem4.Text = "Parameters";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Leave empty for default behaviour.\r\n\r\nIf you need to specify additional parameter" +
+            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem5.Text = "Parameters";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Leave empty for default behaviour.\r\n\r\nIf you need to specify additional parameter" +
     "s, include %%document%% wherever you need the <b>document path</b> to go.\r\n\r\nExa" +
     "mple :\r\n/F /doc:%%document%% /l";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.textEditParameters.SuperTip = superToolTip4;
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.textEditParameters.SuperTip = superToolTip5;
             this.textEditParameters.TabIndex = 29;
             // 
             // simpleButtonDocumentPathBrowse
@@ -276,15 +298,15 @@
             this.textEditDocumentPath.Location = new System.Drawing.Point(36, 81);
             this.textEditDocumentPath.Name = "textEditDocumentPath";
             this.textEditDocumentPath.Size = new System.Drawing.Size(274, 20);
-            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem5.Text = "Document path";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "The document that should be loaded with the application specified in <b>Applicati" +
+            superToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem6.Text = "Document path";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "The document that should be loaded with the application specified in <b>Applicati" +
     "on path</b>.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.textEditDocumentPath.SuperTip = superToolTip5;
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.textEditDocumentPath.SuperTip = superToolTip6;
             this.textEditDocumentPath.TabIndex = 26;
             // 
             // simpleButtonApplicationPathBrowse
@@ -309,14 +331,14 @@
             this.textEditApplicationPath.Location = new System.Drawing.Point(36, 39);
             this.textEditApplicationPath.Name = "textEditApplicationPath";
             this.textEditApplicationPath.Size = new System.Drawing.Size(274, 20);
-            superToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem6.Text = "Application path";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "The application that should be opened.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.textEditApplicationPath.SuperTip = superToolTip6;
+            superToolTip7.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem7.Text = "Application path";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "The application that should be opened.";
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.textEditApplicationPath.SuperTip = superToolTip7;
             this.textEditApplicationPath.TabIndex = 23;
             this.textEditApplicationPath.EditValueChanged += new System.EventHandler(this.textEditApplicationPath_EditValueChanged);
             // 
@@ -337,6 +359,7 @@
             this.tabPaneMenuItem.ResumeLayout(false);
             this.tabNavigationPageAppearance.ResumeLayout(false);
             this.tabNavigationPageAppearance.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.checkEditRunAsAdministrator.Properties)).EndInit();
             this.tabNavigationPageCommandLine.ResumeLayout(false);
             this.tabNavigationPageCommandLine.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.textEditParameters.Properties)).EndInit();
@@ -369,5 +392,6 @@
         private DevExpress.XtraEditors.LabelControl labelControlApplicationPath;
         private DevExpress.XtraEditors.TextEdit textEditApplicationPath;
         private DevExpress.Utils.ToolTipController toolTipControllerEditMenuItem;
+        private DevExpress.XtraEditors.CheckEdit checkEditRunAsAdministrator;
     }
 }

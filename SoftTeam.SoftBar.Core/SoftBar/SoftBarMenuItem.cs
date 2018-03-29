@@ -45,6 +45,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             DocumentPath = menuItem.DocumentPath;
             Parameters = menuItem.Parameters;
             BeginGroup = menuItem.BeginGroup;
+            RunAsAdministrator = menuItem.RunAsAdministrator;
         }
         #endregion
 
@@ -55,6 +56,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             set { _commandLine.Application = value; if (string.IsNullOrEmpty(IconPath)) IconPath = value; }
         }
         public string Parameters { get => _commandLine.Parameters; set=>_commandLine.Parameters = value; }
+        public bool RunAsAdministrator { get => _commandLine.RunAsAdministrator; set => _commandLine.RunAsAdministrator = value; }
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
 
@@ -105,7 +107,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         {
             // Get the menu item that was clicked
             var menuItem = (SoftBarMenuItem)e.Item.Tag;
-
+            
             if (_commandLine.CanExecute())
                 _commandLine.Execute();
         }

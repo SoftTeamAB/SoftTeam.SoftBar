@@ -9,6 +9,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         private string _applicationPath = string.Empty;
         private string _documentPath = string.Empty;
         private string _parameters = string.Empty;
+        private bool _runAsAdministrator = false;
         #endregion
 
         #region Constructor
@@ -21,6 +22,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
+        public bool RunAsAdministrator { get => _runAsAdministrator; set => _runAsAdministrator = value; }
         #endregion
 
         #region ParseXml
@@ -39,6 +41,11 @@ namespace SoftTeam.SoftBar.Core.Xml
             var beginGroupAttribute = menuItemNode.Attributes["beginGroup"];
             if (beginGroupAttribute != null)
                 _beginGroup = beginGroupAttribute.Value.ToLower() == "true";
+
+            // Check if the menu has an runAsAdministrator attribute
+            var runAsAdministratorAttribute = menuItemNode.Attributes["runAsAdministrator"];
+            if (runAsAdministratorAttribute != null)
+                _runAsAdministrator = runAsAdministratorAttribute.Value.ToLower() == "true";
 
             // Get and store the application and document path
             var applicationNodeElement = menuItemNode.SelectSingleNode("applicationPath");

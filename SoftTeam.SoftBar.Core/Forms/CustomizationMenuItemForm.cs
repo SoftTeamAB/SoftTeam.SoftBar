@@ -70,6 +70,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             editMenuItem.Name = menuItem.Name;
             editMenuItem.IconPath = menuItem.IconPath;
             editMenuItem.BeginGroup = menuItem.BeginGroup;
+            editMenuItem.RunAsAdministrator = menuItem.RunAsAdministrator;
 
             editMenuItem.ApplicationPath = menuItem.ApplicationPath;
             editMenuItem.DocumentPath = menuItem.DocumentPath;
@@ -109,6 +110,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                     _menuItem.Name = editMenuItem.Name;
                     _menuItem.IconPath = editMenuItem.IconPath;
                     _menuItem.BeginGroup = editMenuItem.BeginGroup;
+                    _menuItem.RunAsAdministrator = editMenuItem.RunAsAdministrator;
 
                     _menuItem.ApplicationPath = editMenuItem.ApplicationPath;
                     _menuItem.DocumentPath = editMenuItem.DocumentPath;

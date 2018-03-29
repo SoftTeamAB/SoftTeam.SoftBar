@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
+using System.Security.Principal;
 using System.Threading;
 
 namespace SoftTeam.SoftBar.Core.Misc
@@ -11,6 +13,7 @@ namespace SoftTeam.SoftBar.Core.Misc
         private string _application = "";
         private string _document = "";
         private string _parameters = "";
+        private bool _runAsAdministrator = false;
         private Exception _lastExecutionException = null;
         #endregion
 
@@ -19,11 +22,12 @@ namespace SoftTeam.SoftBar.Core.Misc
         {
         }
 
-        public CommandLineHelper(string application, string document, string parameters)
+        public CommandLineHelper(string application, string document, string parameters, bool runAsAdministrator)
         {
             Application = application;
             Document = document;
             Parameters = parameters;
+            RunAsAdministrator = runAsAdministrator;
         }
         #endregion
 
@@ -31,6 +35,8 @@ namespace SoftTeam.SoftBar.Core.Misc
         public string Application { get => _application; set => _application = value; }
         public string Document { get => _document; set => _document = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
+        public bool RunAsAdministrator { get => _runAsAdministrator; set => _runAsAdministrator = value; }
+
         public Exception LastExecutionException { get => _lastExecutionException; set => _lastExecutionException = value; }
 
         private string CommandLineString
@@ -51,16 +57,20 @@ namespace SoftTeam.SoftBar.Core.Misc
         #region Misc functions
         public bool Execute()
         {
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.Verb = "runas";
+            startInfo.FileName = CommandLineString;
             try
             {
-                Process.Start(CommandLineString);
-                return true;
+                Process.Start(startInfo);
             }
             catch (Exception ex)
             {
                 _lastExecutionException = ex;
+                //User denied access
                 return false;
             }
+            return true;
         }
 
         public static void ExecuteCommandLine(string commandLine)
@@ -106,7 +116,7 @@ namespace SoftTeam.SoftBar.Core.Misc
                 // Display the command output.
                 Console.WriteLine(result);
             }
-            catch 
+            catch
             {
                 // Log the exception
             }
@@ -161,7 +171,7 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         #region IDisposable
         public void Dispose()
-        {            
+        {
         }
         #endregion  
     }

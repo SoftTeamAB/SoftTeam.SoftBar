@@ -15,6 +15,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         private string _documentPath = "";
         private string _parameters = "";
         private bool _beginGroup = false;
+        private bool _runAsAdministrator = false;
         #endregion
 
         #region Properties
@@ -24,6 +25,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         public string ApplicationPath { get => _applicationPath; set => _applicationPath = value; }
         public string DocumentPath { get => _documentPath; set => _documentPath = value; }
         public string Parameters { get => _parameters; set => _parameters = value; }
+        public bool RunAsAdministrator { get => _runAsAdministrator; set => _runAsAdministrator = value; }
         #endregion
 
         #region Constructor
@@ -41,6 +43,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             textEditName.Text = Name;
             textEditIconPath.Text = IconPath;
             checkEditBeginGroup.Checked = BeginGroup;
+            checkEditRunAsAdministrator.Checked = RunAsAdministrator;
 
             textEditApplicationPath.Text = ApplicationPath;
             textEditDocumentPath.Text = DocumentPath;
@@ -54,6 +57,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             Name = textEditName.Text;
             IconPath = textEditIconPath.Text;
             BeginGroup = checkEditBeginGroup.Checked;
+            RunAsAdministrator = checkEditRunAsAdministrator.Checked;
 
             ApplicationPath = textEditApplicationPath.Text;
             DocumentPath = textEditDocumentPath.Text;

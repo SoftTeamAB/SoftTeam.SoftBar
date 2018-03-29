@@ -15,6 +15,7 @@
             <xs:attribute name="name" type="xs:string" use="required" />
             <xs:attribute name="iconPath" type="xs:string" use="optional" />
             <xs:attribute name="beginGroup" type="xs:boolean" use="optional" />
+            <xs:attribute name="runAsAdministrator" type="xs:boolean" use="optional" />
           </xs:complexType>
         </xs:element>
         <xs:element name="headerItem" minOccurs="0" maxOccurs="unbounded">
