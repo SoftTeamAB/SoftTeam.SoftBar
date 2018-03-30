@@ -68,6 +68,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             button.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             button.ImageOptions.Image = Image;
             button.ImageOptions.ImageToTextAlignment = ImageAlignToText.LeftCenter;
+            button.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             button.ImageOptions.ImageToTextIndent = 7;
             button.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
 

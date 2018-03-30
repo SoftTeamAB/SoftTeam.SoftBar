@@ -90,6 +90,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                     _menu.Name = editMenu.Name;
                     _menu.IconPath = editMenu.IconPath;
                     _menu.BeginGroup = editMenu.BeginGroup;
+                    _menu.Width = editMenu.MenuWidth;
                     break;
                 case MenuItemType.HeaderItem:
                     editHeaderItem.SaveValues();
