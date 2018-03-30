@@ -194,12 +194,14 @@
     <Compile Include="Misc\LimitedStack.cs" />
     <Compile Include="Misc\ObjectExtension.cs" />
     <Compile Include="Misc\PHSAppBarImporter.cs" />
+    <Compile Include="Misc\StringExtension.cs" />
     <Compile Include="SoftBar\Builders\SoftBarSpecialsMenuBuilder.cs" />
     <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />
     <Compile Include="Settings\Tool.cs" />
     <Compile Include="SoftBar\Builders\SoftBarSystemMenuBuilder.cs" />
     <Compile Include="SoftBar\Builders\SoftBarUserMenuBuilder.cs" />
+    <Compile Include="SoftBar\SoftBarStaticItem.cs" />
     <Compile Include="Xml\XmlArea.cs" />
     <Compile Include="Xml\XmlHeaderItem.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
@@ -324,6 +326,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="PHSAppBar.txt" />
+    <None Include="Resources\empty.svg" />
     <None Include="Resources\clipboard_medium.png" />
     <None Include="Resources\folder_medium.png" />
     <None Include="Resources\sign_warning_medium.png" />

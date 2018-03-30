@@ -84,9 +84,16 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
 
         private void _timer_Elapsed(object sender)
         {
-            // Force CheckClipboard to execute on the main thread
-            // otherwise the Clipboard won't work
-            _form.Invoke(new MethodInvoker(() => CheckClipboard()));
+            try
+            {
+                // Force CheckClipboard to execute on the main thread
+                // otherwise the Clipboard won't work
+                _form.Invoke(new MethodInvoker(() => CheckClipboard()));
+            }
+            catch
+            {
+
+            }
         }
         #endregion
 

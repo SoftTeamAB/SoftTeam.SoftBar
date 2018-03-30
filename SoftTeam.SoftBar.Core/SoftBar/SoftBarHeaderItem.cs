@@ -15,6 +15,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public SoftBarHeaderItem(MainAppBarForm form, XmlHeaderItem headerItem, bool systemMenu = false) : base(form, headerItem.Name, systemMenu)
         {
         }
+
+        public SoftBarHeaderItem(MainAppBarForm form, string text, bool systemMenu = false) : base(form, text, systemMenu)
+        {
+        }
         #endregion
 
         #region Properties

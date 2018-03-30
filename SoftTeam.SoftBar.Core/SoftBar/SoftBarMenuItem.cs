@@ -31,7 +31,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         }
 
         // Used for system items
-        public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = false) : base(form, name, systemMenu)
+        public SoftBarMenuItem(MainAppBarForm form, string name, bool systemMenu = true) : base(form, name, systemMenu)
         {
             _commandLine = new CommandLineHelper();
         }

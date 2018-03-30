@@ -1,4 +1,6 @@
-﻿using DevExpress.XtraBars;
+﻿using DevExpress.Skins;
+using DevExpress.Utils.Svg;
+using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
@@ -48,87 +50,131 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
             _specialsMenu.Item.Manager.CustomDrawItem += Manager_CustomDrawItem;
 
-            // Computer name
+            // My computer name
             SoftBarMenuItem computerNameItem = new SoftBarMenuItem(_manager.Form, "Computer name", true);
             computerNameItem.Setup();
-            computerNameItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server);
+            computerNameItem.Item.Tag = "clipboardComputerName";
             computerNameItem.Item.ItemClick += _manager.SpecialsArea.computerNameItem_ItemClick;
             _specialsMenu.Item.AddItem(computerNameItem.Item);
 
-            // My ip
+            // My computer ip
             SoftBarMenuItem ipItem = new SoftBarMenuItem(_manager.Form, "Computer ip", true);
             ipItem.Setup();
-            ipItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server_network);
+            ipItem.Item.Tag = "clipboardIp";
             ipItem.Item.ItemClick += _manager.SpecialsArea.ipItem_ItemClick;
             _specialsMenu.Item.AddItem(ipItem.Item);
 
-            bool first = true;
+            // Clipboard items header
+            SoftBarHeaderItem clipboardHeaderItem = new SoftBarHeaderItem(_manager.Form, "Clipboard history", true);
+            clipboardHeaderItem.Setup();
+            _specialsMenu.Item.AddItem(clipboardHeaderItem.Item);
+
+            // Clipboard items
             foreach (var item in _manager.ClipboardManager.ClipboardList)
             {
-                string text = "";
+                SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, "", true);
+                cliboardItem.Setup();
 
                 if (item is ClipboardItemText)
                 {
-                    // Settings for the app bar
-                    text = ((ClipboardItemText)item).Text;
-                    text.Replace("\n", " ");
-                    if (text.Length > 20)
-                        text = text.Substring(0, 20);
+                    // Create and SvgImage to reserve space where
+                    // where the text will be drawned
+                    var text = ((ClipboardItemText)item).Text.RestrictSize();
+                    cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
+                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 16);
                 }
                 else if (item is ClipboardItemImage)
                 {
-                    //var image = ((ClipboardItemImage)item).Image;
-                    text = "";
+                    // Create and SvgImage to reserve space where
+                    // where the image will be drawned                    
+                    cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
+                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, 60);
                 }
 
-                SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, text, true);
-                cliboardItem.Setup();
-
-                cliboardItem.Item.Glyph = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard).ResizeImage(60,100);
                 cliboardItem.Item.ItemClick += _manager.SpecialsArea.clipboardItem_ItemClick;
 
                 cliboardItem.Item.Tag = item;
                 _specialsMenu.Item.AddItem(cliboardItem.Item);
-
-                if (first)
-                {
-                    cliboardItem.Item.Links[0].BeginGroup = true;
-                    first = false;
-                }
             }
         }
 
         private void Manager_CustomDrawItem(object sender, DevExpress.XtraBars.BarItemCustomDrawEventArgs e)
         {
-            BarButtonItemLink link = e.LinkInfo?.Link as BarButtonItemLink;
-            
-            if (link != null && link.Item.Tag is ClipboardItem)
+            BarItemLink link = e.LinkInfo?.Link as BarItemLink;
+            if (link == null) return;
+            if (link.Item.Tag == null) return;
+
+            var font = new Font("Tahoma", 8.25f);
+            if (link.Item.Tag.ToString() == "clipboardComputerName")
+            {
+                // Draw my computer name item
+                e.DrawBackground();
+                DrawItem(e.Graphics, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server), "Computer name", font);
+                e.Handled = true;
+            }
+            else if (link.Item.Tag.ToString() == "clipboardIp")
+            {
+                // Draw my ip item
+                e.DrawBackground();
+                DrawItem(e.Graphics, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server_network), "Computer ip", font);
+                e.Handled = true;
+            }
+            else if (link.Item.Tag is ClipboardItem)
             {
                 BarButtonItem item = link.Item as BarButtonItem;
-                item.Glyph = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard);
-                
-                e.DrawBackground();                
-                e.DrawGlyph();                
+
+                e.DrawBackground();
+                e.DrawGlyph();
 
                 if (link.Item.Tag is ClipboardItemText)
                 {
-                    var text = ((ClipboardItemText)link.Item.Tag).Text;
-                    var color = link.Item.ItemAppearance.Normal.ForeColor;
-                    var point = new Point(e.Bounds.Location.X + 30, e.Bounds.Location.Y + 3);
-                    e.Graphics.DrawString(text, link.Font, new SolidBrush(Color.White), point);
+                    // Get theme fore color for the text
+                    Skin currentSkin = DevExpress.Skins.EditorsSkins.GetSkin(_manager.Form.LookAndFeel);
+                    var color = currentSkin.TranslateColor(SystemColors.ControlText);
+                    // Get the text that should be drawned
+                    var text = ((ClipboardItemText)link.Item.Tag).Text.RestrictSize();
+                    // Get the position to draw the text
+                    var point = new Point(e.Bounds.Location.X + 2, e.Bounds.Location.Y + 2);
+                    // Draw the text
+                    e.Graphics.DrawString(text, font, new SolidBrush(color), point);
                     e.Handled = true;
                 }
                 else if (link.Item.Tag is ClipboardItemImage)
                 {
+                    // Get the image to be drawned
                     var image = ((ClipboardItemImage)link.Item.Tag).Image;
-
-                    var location = new Point(e.Bounds.X + 30, e.Bounds.Y + 2);
-                    var size = new Size(e.Bounds.Width - 32, e.Bounds.Height - 4);
+                    // Get the position for the image
+                    var location = new Point(e.Bounds.X + 2, e.Bounds.Y + 2);
+                    // Get the size for the image
+                    var size = new Size(e.Bounds.Width - 4, e.Bounds.Height - 4);
+                    // Create the bounds
                     var imageBounds = new Rectangle(location, size);
+                    // Draw the image
                     e.Graphics.DrawImage(image, imageBounds);
                     e.Handled = true;
                 }
             }
+        }
+
+        private void DrawItem(Graphics g, Rectangle bounds, Image image, string text, Font font)
+        {
+            // Get the position for the image
+            var location = new Point(bounds.X + 4, bounds.Y + 4);
+            // Get the size for the image
+            var size = new Size(16, 16);
+            // Create the bounds
+            var imageBounds = new Rectangle(location, size);
+            // Draw the image
+            g.DrawImage(image, imageBounds);
+
+
+            // Get theme fore color for the text
+            Skin currentSkin = DevExpress.Skins.EditorsSkins.GetSkin(_manager.Form.LookAndFeel);
+            var color = currentSkin.TranslateColor(SystemColors.ControlText);
+            // Get the position to draw the text
+            var point = new Point(bounds.Location.X + 32, bounds.Location.Y + 4);
+            // Draw the text
+            g.DrawString(text, font, new SolidBrush(color), point);
         }
     }
     #endregion

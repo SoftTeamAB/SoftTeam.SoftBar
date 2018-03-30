@@ -52,6 +52,7 @@
     <Compile Include="SettingsTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SettingsManagerTest.cs" />
+    <Compile Include="StringExtensionTest.cs" />
     <Compile Include="XmlLoadingTest.cs" />
   </ItemGroup>
   <ItemGroup>
