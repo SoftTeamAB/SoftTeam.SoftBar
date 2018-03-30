@@ -210,8 +210,15 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void DriveItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var drive = ((DriveInfo)e.Item.Tag);
-            Process.Start(drive.Name);
+            try
+            {
+                var drive = ((DriveInfo)e.Item.Tag);
+                Process.Start(drive.Name);
+            }
+            catch (Exception ex)
+            {
+                XtraMessageBox.Show("Failed to start item : " + ex.Message);
+            }
         }
 
         public void toolItem_ItemClick(object sender, ItemClickEventArgs e)
