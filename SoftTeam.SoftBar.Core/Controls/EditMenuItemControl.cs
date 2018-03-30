@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 
 namespace SoftTeam.SoftBar.Core.Controls
@@ -16,6 +17,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         private string _parameters = "";
         private bool _beginGroup = false;
         private bool _runAsAdministrator = false;
+        private MenuItemInfoForm _infoForm = null;
         #endregion
 
         #region Properties
@@ -127,5 +129,24 @@ namespace SoftTeam.SoftBar.Core.Controls
             UpdateImage();
         }
         #endregion
+
+        private void pictureBoxMenuItemInfo_MouseEnter(object sender, EventArgs e)
+        {
+            _infoForm = new MenuItemInfoForm();
+            _infoForm.Show();
+
+            var location = this.ParentForm.PointToScreen(pictureBoxMenuItemInfo.Location);
+            var left = location.X - _infoForm.Width;
+            var top = location.Y + pictureBoxMenuItemInfo.Height;
+
+            _infoForm.Location = new Point(left, top);
+        }
+
+        private void pictureBoxMenuItemInfo_MouseLeave(object sender, EventArgs e)
+        {
+            _infoForm.Close();
+            _infoForm.Dispose();
+            _infoForm = null;
+        }
     }
 }

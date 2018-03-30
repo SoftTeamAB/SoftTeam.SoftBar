@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
@@ -16,6 +17,8 @@ namespace SoftTeam.SoftBar.Core.Misc
         private bool _runAsAdministrator = false;
         private Exception _lastExecutionException = null;
         #endregion
+
+        const int ERROR_CANCELLED = 1223; //The operation was canceled by the user.
 
         #region Constructors
         public CommandLineHelper()
@@ -39,16 +42,23 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         public Exception LastExecutionException { get => _lastExecutionException; set => _lastExecutionException = value; }
 
-        private string CommandLineString
+        private string FileName => string.IsNullOrEmpty(_application) ? _document : _application;
+
+        private string Arguments
         {
             get
             {
-                if (string.IsNullOrEmpty(Parameters))
-                    return $"{_application} {_document}";
+                if (string.IsNullOrEmpty(_document))
+                    return _parameters;
                 else
                 {
-                    var parameters = _parameters.Replace("%%document%%", _document);
-                    return $"{_application} {parameters}";
+                    if (string.IsNullOrEmpty(_parameters))
+                        return _document;
+                    else
+                    {
+                        var parameters = _parameters.Replace("%%document%%", _document);
+                        return $"{parameters}";
+                    }
                 }
             }
         }
@@ -57,12 +67,21 @@ namespace SoftTeam.SoftBar.Core.Misc
         #region Misc functions
         public bool Execute()
         {
-            ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.Verb = "runas";
-            startInfo.FileName = CommandLineString;
+            ProcessStartInfo startInfo = new ProcessStartInfo(FileName,Arguments);
+            if (RunAsAdministrator)
+            {
+                startInfo.Verb = "runas";
+                startInfo.UseShellExecute = true;
+            }
+
             try
             {
                 Process.Start(startInfo);
+            }
+            catch (Win32Exception ex)
+            {
+                if (ex.NativeErrorCode != ERROR_CANCELLED)
+                    throw;
             }
             catch (Exception ex)
             {
@@ -155,17 +174,6 @@ namespace SoftTeam.SoftBar.Core.Misc
             {
 
             }
-        }
-
-        public bool CanExecute()
-        {
-            if (!string.IsNullOrEmpty(_application) && !string.IsNullOrEmpty(_document))
-                return false;
-
-            if (!File.Exists(_application))
-                return false;
-
-            return true;
         }
         #endregion
 

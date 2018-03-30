@@ -96,16 +96,16 @@
             // 
             // labelControlInfo
             // 
-            this.labelControlInfo.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControlInfo.Appearance.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControlInfo.Appearance.ForeColor = System.Drawing.Color.Black;
             this.labelControlInfo.Appearance.Options.UseFont = true;
             this.labelControlInfo.Appearance.Options.UseForeColor = true;
             this.labelControlInfo.Appearance.Options.UseTextOptions = true;
             this.labelControlInfo.Appearance.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
             this.labelControlInfo.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.labelControlInfo.Location = new System.Drawing.Point(86, 25);
+            this.labelControlInfo.Location = new System.Drawing.Point(86, 19);
             this.labelControlInfo.Name = "labelControlInfo";
-            this.labelControlInfo.Size = new System.Drawing.Size(186, 35);
+            this.labelControlInfo.Size = new System.Drawing.Size(204, 51);
             this.labelControlInfo.TabIndex = 4;
             this.labelControlInfo.Text = "The default is to always create a new item AFTER the selected (green) item.";
             // 

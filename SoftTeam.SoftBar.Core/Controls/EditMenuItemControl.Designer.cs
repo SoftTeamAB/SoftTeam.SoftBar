@@ -64,6 +64,7 @@
             this.tabNavigationPageAppearance = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.checkEditRunAsAdministrator = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageCommandLine = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.pictureBoxMenuItemInfo = new System.Windows.Forms.PictureBox();
             this.labelControlParameters = new DevExpress.XtraEditors.LabelControl();
             this.textEditParameters = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonDocumentPathBrowse = new DevExpress.XtraEditors.SimpleButton();
@@ -82,6 +83,7 @@
             this.tabNavigationPageAppearance.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRunAsAdministrator.Properties)).BeginInit();
             this.tabNavigationPageCommandLine.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuItemInfo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditParameters.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDocumentPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditApplicationPath.Properties)).BeginInit();
@@ -232,11 +234,11 @@
             superToolTip4.Items.Add(toolTipItem4);
             this.checkEditRunAsAdministrator.SuperTip = superToolTip4;
             this.checkEditRunAsAdministrator.TabIndex = 16;
-            this.checkEditRunAsAdministrator.Visible = false;
             // 
             // tabNavigationPageCommandLine
             // 
             this.tabNavigationPageCommandLine.Caption = "CommandLine";
+            this.tabNavigationPageCommandLine.Controls.Add(this.pictureBoxMenuItemInfo);
             this.tabNavigationPageCommandLine.Controls.Add(this.labelControlParameters);
             this.tabNavigationPageCommandLine.Controls.Add(this.textEditParameters);
             this.tabNavigationPageCommandLine.Controls.Add(this.simpleButtonDocumentPathBrowse);
@@ -250,6 +252,17 @@
             this.tabNavigationPageCommandLine.Name = "tabNavigationPageCommandLine";
             this.tabNavigationPageCommandLine.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCommandLine.Size = new System.Drawing.Size(376, 158);
+            // 
+            // pictureBoxMenuItemInfo
+            // 
+            this.pictureBoxMenuItemInfo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxMenuItemInfo.Image")));
+            this.pictureBoxMenuItemInfo.Location = new System.Drawing.Point(350, 3);
+            this.pictureBoxMenuItemInfo.Name = "pictureBoxMenuItemInfo";
+            this.pictureBoxMenuItemInfo.Size = new System.Drawing.Size(24, 24);
+            this.pictureBoxMenuItemInfo.TabIndex = 31;
+            this.pictureBoxMenuItemInfo.TabStop = false;
+            this.pictureBoxMenuItemInfo.MouseEnter += new System.EventHandler(this.pictureBoxMenuItemInfo_MouseEnter);
+            this.pictureBoxMenuItemInfo.MouseLeave += new System.EventHandler(this.pictureBoxMenuItemInfo_MouseLeave);
             // 
             // labelControlParameters
             // 
@@ -362,6 +375,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEditRunAsAdministrator.Properties)).EndInit();
             this.tabNavigationPageCommandLine.ResumeLayout(false);
             this.tabNavigationPageCommandLine.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxMenuItemInfo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditParameters.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditDocumentPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditApplicationPath.Properties)).EndInit();
@@ -393,5 +407,6 @@
         private DevExpress.XtraEditors.TextEdit textEditApplicationPath;
         private DevExpress.Utils.ToolTipController toolTipControllerEditMenuItem;
         private DevExpress.XtraEditors.CheckEdit checkEditRunAsAdministrator;
+        private System.Windows.Forms.PictureBox pictureBoxMenuItemInfo;
     }
 }

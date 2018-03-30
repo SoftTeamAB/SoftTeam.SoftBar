@@ -51,11 +51,12 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         #region Properties
         public string DocumentPath { get => _commandLine.Document; set => _commandLine.Document = value; }
-        public string ApplicationPath {
+        public string ApplicationPath
+        {
             get => _commandLine.Application;
             set { _commandLine.Application = value; if (string.IsNullOrEmpty(IconPath)) IconPath = value; }
         }
-        public string Parameters { get => _commandLine.Parameters; set=>_commandLine.Parameters = value; }
+        public string Parameters { get => _commandLine.Parameters; set => _commandLine.Parameters = value; }
         public bool RunAsAdministrator { get => _commandLine.RunAsAdministrator; set => _commandLine.RunAsAdministrator = value; }
         public int Width { get => _width; set => _width = value; }
         public int Left { get => _left; set => _left = value; }
@@ -70,7 +71,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             Item = new BarButtonItem();
             Item.Manager = Form.barManagerSoftBar;
             Item.Caption = Name;
-            
+
             // Associate the BarButtonItem with the MenuItem, used when clicked
             Item.Tag = this;
 
@@ -105,11 +106,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Events
         private void Item_ItemClick(object sender, ItemClickEventArgs e)
         {
-            // Get the menu item that was clicked
-            var menuItem = (SoftBarMenuItem)e.Item.Tag;
-            
-            if (_commandLine.CanExecute())
-                _commandLine.Execute();
+            _commandLine.Execute();
         }
         #endregion
     }
