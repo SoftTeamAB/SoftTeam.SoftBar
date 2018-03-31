@@ -207,6 +207,27 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             AddMenuItem();
         }
+
+        private void barButtonItemMenuMoveUp_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MoveUp();
+        }
+
+        private void barButtonItemMenuMoveDown_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MoveDown();
+        }
+
+        private void barButtonItemMoveUp_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MoveUp();
+        }
+
+        private void barButtonItemMoveDown_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MoveDown();
+        }
+
         #endregion
 
         #region Add menu items

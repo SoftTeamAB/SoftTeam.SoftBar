@@ -30,43 +30,43 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomizationForm));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip3 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem3 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem3 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem1 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem2 = new DevExpress.Utils.ToolTipSeparatorItem();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem13 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip34 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem40 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem34 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip35 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem41 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem35 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip36 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem42 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem36 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip37 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem43 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem37 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip38 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem44 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem38 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem7 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem45 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip44 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem52 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem44 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip39 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem46 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem39 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.ToolTipSeparatorItem toolTipSeparatorItem8 = new DevExpress.Utils.ToolTipSeparatorItem();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem47 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.SuperToolTip superToolTip40 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem48 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem40 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip41 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem49 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem41 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip43 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem51 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem43 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip42 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem50 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem42 = new DevExpress.Utils.ToolTipItem();
             this.xtraScrollableControlMenu = new DevExpress.XtraEditors.XtraScrollableControl();
             this.barManagerCustomization = new DevExpress.XtraBars.BarManager(this.components);
             this.barToolBar = new DevExpress.XtraBars.Bar();
@@ -99,6 +99,10 @@
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.panelControlScroll = new DevExpress.XtraEditors.PanelControl();
             this.pictureBoxPlacementInfo = new System.Windows.Forms.PictureBox();
+            this.barButtonItemMoveUp = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMoveDown = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMenuMoveUp = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemMenuMoveDown = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlScroll)).BeginInit();
             this.panelControlScroll.SuspendLayout();
@@ -110,7 +114,7 @@
             this.xtraScrollableControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControlMenu.Location = new System.Drawing.Point(0, 53);
             this.xtraScrollableControlMenu.Name = "xtraScrollableControlMenu";
-            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(716, 407);
+            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(758, 407);
             this.xtraScrollableControlMenu.TabIndex = 0;
             this.xtraScrollableControlMenu.Click += new System.EventHandler(this.xtraScrollableControlMenu_Click);
             // 
@@ -143,9 +147,13 @@
             this.barButtonItemBackupPathHeader,
             this.barButtonItemBackupPath,
             this.barButtonItemRemoveItem,
-            this.barButtonItemMenuRemoveItem});
+            this.barButtonItemMenuRemoveItem,
+            this.barButtonItemMoveUp,
+            this.barButtonItemMoveDown,
+            this.barButtonItemMenuMoveUp,
+            this.barButtonItemMenuMoveDown});
             this.barManagerCustomization.MainMenu = this.barMenuBar;
-            this.barManagerCustomization.MaxItemId = 19;
+            this.barManagerCustomization.MaxItemId = 23;
             this.barManagerCustomization.ShowScreenTipsInMenus = true;
             this.barManagerCustomization.StatusBar = this.barBottom;
             this.barManagerCustomization.ToolTipController = this.toolTipControllerCustomization;
@@ -161,6 +169,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddSubMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddHeaderItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddMenuItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMoveUp, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMoveDown),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemRemoveItem, true)});
             this.barToolBar.OptionsBar.AllowQuickCustomization = false;
             this.barToolBar.Text = "Tools";
@@ -172,14 +182,14 @@
             this.barButtonItemAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddMenu.ImageOptions.Image")));
             this.barButtonItemAddMenu.Name = "barButtonItemAddMenu";
             this.barButtonItemAddMenu.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Text = "Add menu";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Creates a new button on the application bar, and a top level drop down menu once " +
+            toolTipTitleItem40.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem40.Text = "Add menu";
+            toolTipItem34.LeftIndent = 6;
+            toolTipItem34.Text = "Creates a new button on the application bar, and a top level drop down menu once " +
     "you have added at least one sub menu, header item or menu item to the menu.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.barButtonItemAddMenu.SuperTip = superToolTip1;
+            superToolTip34.Items.Add(toolTipTitleItem40);
+            superToolTip34.Items.Add(toolTipItem34);
+            this.barButtonItemAddMenu.SuperTip = superToolTip34;
             this.barButtonItemAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddMenu_ItemClick);
             // 
             // barButtonItemAddSubMenu
@@ -189,14 +199,14 @@
             this.barButtonItemAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddSubMenu.ImageOptions.Image")));
             this.barButtonItemAddSubMenu.Name = "barButtonItemAddSubMenu";
             this.barButtonItemAddSubMenu.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Text = "Add sub menu";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Adds a sub menu to a menu or a sub menu.\r\n\r\nA sub menu can contain more sub menus" +
+            toolTipTitleItem41.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem41.Text = "Add sub menu";
+            toolTipItem35.LeftIndent = 6;
+            toolTipItem35.Text = "Adds a sub menu to a menu or a sub menu.\r\n\r\nA sub menu can contain more sub menus" +
     ", header items, and menu items.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.barButtonItemAddSubMenu.SuperTip = superToolTip2;
+            superToolTip35.Items.Add(toolTipTitleItem41);
+            superToolTip35.Items.Add(toolTipItem35);
+            this.barButtonItemAddSubMenu.SuperTip = superToolTip35;
             this.barButtonItemAddSubMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddSubMenu_ItemClick);
             // 
             // barButtonItemAddHeaderItem
@@ -206,15 +216,15 @@
             this.barButtonItemAddHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddHeaderItem.ImageOptions.Image")));
             this.barButtonItemAddHeaderItem.Name = "barButtonItemAddHeaderItem";
             this.barButtonItemAddHeaderItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem3.Text = "Add header item";
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "A header item is an alternative way (alternative to using the <b>begin group</b> " +
+            superToolTip36.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem42.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem42.Text = "Add header item";
+            toolTipItem36.LeftIndent = 6;
+            toolTipItem36.Text = "A header item is an alternative way (alternative to using the <b>begin group</b> " +
     "check box) of creating sections in your menu";
-            superToolTip3.Items.Add(toolTipTitleItem3);
-            superToolTip3.Items.Add(toolTipItem3);
-            this.barButtonItemAddHeaderItem.SuperTip = superToolTip3;
+            superToolTip36.Items.Add(toolTipTitleItem42);
+            superToolTip36.Items.Add(toolTipItem36);
+            this.barButtonItemAddHeaderItem.SuperTip = superToolTip36;
             this.barButtonItemAddHeaderItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddHeaderItem_ItemClick);
             // 
             // barButtonItemAddMenuItem
@@ -224,13 +234,13 @@
             this.barButtonItemAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemAddMenuItem.ImageOptions.Image")));
             this.barButtonItemAddMenuItem.Name = "barButtonItemAddMenuItem";
             this.barButtonItemAddMenuItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem4.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem4.Text = "Add menu item";
-            toolTipItem4.LeftIndent = 6;
-            toolTipItem4.Text = "Adds a menu item to start an application or document.";
-            superToolTip4.Items.Add(toolTipTitleItem4);
-            superToolTip4.Items.Add(toolTipItem4);
-            this.barButtonItemAddMenuItem.SuperTip = superToolTip4;
+            toolTipTitleItem43.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem43.Text = "Add menu item";
+            toolTipItem37.LeftIndent = 6;
+            toolTipItem37.Text = "Adds a menu item to start an application or document.";
+            superToolTip37.Items.Add(toolTipTitleItem43);
+            superToolTip37.Items.Add(toolTipItem37);
+            this.barButtonItemAddMenuItem.SuperTip = superToolTip37;
             this.barButtonItemAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemAddMenuItem_ItemClick);
             // 
             // barButtonItemRemoveItem
@@ -240,19 +250,19 @@
             this.barButtonItemRemoveItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemRemoveItem.ImageOptions.Image")));
             this.barButtonItemRemoveItem.Name = "barButtonItemRemoveItem";
             this.barButtonItemRemoveItem.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem5.Text = "Remove item";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Removes the selected node.";
-            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
-            toolTipTitleItem6.LeftIndent = 6;
-            toolTipTitleItem6.Text = "DELETE";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            superToolTip5.Items.Add(toolTipSeparatorItem1);
-            superToolTip5.Items.Add(toolTipTitleItem6);
-            this.barButtonItemRemoveItem.SuperTip = superToolTip5;
+            superToolTip38.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem44.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem44.Text = "Remove item";
+            toolTipItem38.LeftIndent = 6;
+            toolTipItem38.Text = "Removes the selected node.";
+            toolTipTitleItem45.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem45.LeftIndent = 6;
+            toolTipTitleItem45.Text = "DELETE";
+            superToolTip38.Items.Add(toolTipTitleItem44);
+            superToolTip38.Items.Add(toolTipItem38);
+            superToolTip38.Items.Add(toolTipSeparatorItem7);
+            superToolTip38.Items.Add(toolTipTitleItem45);
+            this.barButtonItemRemoveItem.SuperTip = superToolTip38;
             this.barButtonItemRemoveItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemRemoveItem_ItemClick);
             // 
             // barMenuBar
@@ -284,13 +294,13 @@
             this.barButtonItemExitAndSave.Id = 14;
             this.barButtonItemExitAndSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemExitAndSave.ImageOptions.Image")));
             this.barButtonItemExitAndSave.Name = "barButtonItemExitAndSave";
-            toolTipTitleItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
-            toolTipTitleItem7.Text = "Exit (and save)";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Exits the customization form and saves the changes you have made.";
-            superToolTip6.Items.Add(toolTipTitleItem7);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.barButtonItemExitAndSave.SuperTip = superToolTip6;
+            toolTipTitleItem52.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
+            toolTipTitleItem52.Text = "Exit (and save)";
+            toolTipItem44.LeftIndent = 6;
+            toolTipItem44.Text = "Exits the customization form and saves the changes you have made.";
+            superToolTip44.Items.Add(toolTipTitleItem52);
+            superToolTip44.Items.Add(toolTipItem44);
+            this.barButtonItemExitAndSave.SuperTip = superToolTip44;
             this.barButtonItemExitAndSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExitAndSave_ItemClick);
             // 
             // barButtonItemFileExitWithoutSave
@@ -300,17 +310,17 @@
             this.barButtonItemFileExitWithoutSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemFileExitWithoutSave.ImageOptions.Image")));
             this.barButtonItemFileExitWithoutSave.Name = "barButtonItemFileExitWithoutSave";
             this.barButtonItemFileExitWithoutSave.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            toolTipTitleItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
-            toolTipTitleItem8.Text = "Exit (without save)";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "Exits the customization form without saving.";
-            toolTipTitleItem9.LeftIndent = 6;
-            toolTipTitleItem9.Text = "Warning: You will loose all customizations you have made!";
-            superToolTip7.Items.Add(toolTipTitleItem8);
-            superToolTip7.Items.Add(toolTipItem7);
-            superToolTip7.Items.Add(toolTipSeparatorItem2);
-            superToolTip7.Items.Add(toolTipTitleItem9);
-            this.barButtonItemFileExitWithoutSave.SuperTip = superToolTip7;
+            toolTipTitleItem46.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image6")));
+            toolTipTitleItem46.Text = "Exit (without save)";
+            toolTipItem39.LeftIndent = 6;
+            toolTipItem39.Text = "Exits the customization form without saving.";
+            toolTipTitleItem47.LeftIndent = 6;
+            toolTipTitleItem47.Text = "Warning: You will loose all customizations you have made!";
+            superToolTip39.Items.Add(toolTipTitleItem46);
+            superToolTip39.Items.Add(toolTipItem39);
+            superToolTip39.Items.Add(toolTipSeparatorItem8);
+            superToolTip39.Items.Add(toolTipTitleItem47);
+            this.barButtonItemFileExitWithoutSave.SuperTip = superToolTip39;
             this.barButtonItemFileExitWithoutSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFileExitWithoutSave_ItemClick);
             // 
             // barSubItemAddMenu
@@ -322,6 +332,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuAddSubMenu),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuHeaderItem, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuAddMenuItem),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuMoveUp, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuMoveDown),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemMenuRemoveItem, true)});
             this.barSubItemAddMenu.Name = "barSubItemAddMenu";
             // 
@@ -331,14 +343,14 @@
             this.barButtonItemMenuAddMenu.Id = 10;
             this.barButtonItemMenuAddMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddMenu.Name = "barButtonItemMenuAddMenu";
-            toolTipTitleItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
-            toolTipTitleItem10.Text = "Add menu";
-            toolTipItem8.LeftIndent = 6;
-            toolTipItem8.Text = "Creates a new button on the application bar, and a top level drop down menu once " +
+            toolTipTitleItem48.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image7")));
+            toolTipTitleItem48.Text = "Add menu";
+            toolTipItem40.LeftIndent = 6;
+            toolTipItem40.Text = "Creates a new button on the application bar, and a top level drop down menu once " +
     "you have added at least one sub menu, header item or menu item to the menu.";
-            superToolTip8.Items.Add(toolTipTitleItem10);
-            superToolTip8.Items.Add(toolTipItem8);
-            this.barButtonItemMenuAddMenu.SuperTip = superToolTip8;
+            superToolTip40.Items.Add(toolTipTitleItem48);
+            superToolTip40.Items.Add(toolTipItem40);
+            this.barButtonItemMenuAddMenu.SuperTip = superToolTip40;
             this.barButtonItemMenuAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenu_ItemClick);
             // 
             // barButtonItemMenuAddSubMenu
@@ -347,14 +359,14 @@
             this.barButtonItemMenuAddSubMenu.Id = 11;
             this.barButtonItemMenuAddSubMenu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddSubMenu.ImageOptions.Image")));
             this.barButtonItemMenuAddSubMenu.Name = "barButtonItemMenuAddSubMenu";
-            toolTipTitleItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
-            toolTipTitleItem11.Text = "Add sub menu";
-            toolTipItem9.LeftIndent = 6;
-            toolTipItem9.Text = "Adds a sub menu to a menu or a sub menu.\r\n\r\nA sub menu can contain more sub menus" +
+            toolTipTitleItem49.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image8")));
+            toolTipTitleItem49.Text = "Add sub menu";
+            toolTipItem41.LeftIndent = 6;
+            toolTipItem41.Text = "Adds a sub menu to a menu or a sub menu.\r\n\r\nA sub menu can contain more sub menus" +
     ", header items, and menu items.";
-            superToolTip9.Items.Add(toolTipTitleItem11);
-            superToolTip9.Items.Add(toolTipItem9);
-            this.barButtonItemMenuAddSubMenu.SuperTip = superToolTip9;
+            superToolTip41.Items.Add(toolTipTitleItem49);
+            superToolTip41.Items.Add(toolTipItem41);
+            this.barButtonItemMenuAddSubMenu.SuperTip = superToolTip41;
             this.barButtonItemMenuAddSubMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddSubMenu_ItemClick);
             // 
             // barButtonItemMenuHeaderItem
@@ -363,15 +375,15 @@
             this.barButtonItemMenuHeaderItem.Id = 13;
             this.barButtonItemMenuHeaderItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuHeaderItem.ImageOptions.Image")));
             this.barButtonItemMenuHeaderItem.Name = "barButtonItemMenuHeaderItem";
-            superToolTip10.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem12.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
-            toolTipTitleItem12.Text = "Add header item";
-            toolTipItem10.LeftIndent = 6;
-            toolTipItem10.Text = "A header item is an alternative way (alternative to using the <b>begin group</b> " +
+            superToolTip43.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem51.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image10")));
+            toolTipTitleItem51.Text = "Add header item";
+            toolTipItem43.LeftIndent = 6;
+            toolTipItem43.Text = "A header item is an alternative way (alternative to using the <b>begin group</b> " +
     "check box) of creating sections in your menu";
-            superToolTip10.Items.Add(toolTipTitleItem12);
-            superToolTip10.Items.Add(toolTipItem10);
-            this.barButtonItemMenuHeaderItem.SuperTip = superToolTip10;
+            superToolTip43.Items.Add(toolTipTitleItem51);
+            superToolTip43.Items.Add(toolTipItem43);
+            this.barButtonItemMenuHeaderItem.SuperTip = superToolTip43;
             this.barButtonItemMenuHeaderItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddHeaderItem_ItemClick);
             // 
             // barButtonItemMenuAddMenuItem
@@ -380,13 +392,13 @@
             this.barButtonItemMenuAddMenuItem.Id = 12;
             this.barButtonItemMenuAddMenuItem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuAddMenuItem.ImageOptions.Image")));
             this.barButtonItemMenuAddMenuItem.Name = "barButtonItemMenuAddMenuItem";
-            toolTipTitleItem13.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image11")));
-            toolTipTitleItem13.Text = "Add menu item";
-            toolTipItem11.LeftIndent = 6;
-            toolTipItem11.Text = "Adds a menu item to start an application or document.";
-            superToolTip11.Items.Add(toolTipTitleItem13);
-            superToolTip11.Items.Add(toolTipItem11);
-            this.barButtonItemMenuAddMenuItem.SuperTip = superToolTip11;
+            toolTipTitleItem50.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image9")));
+            toolTipTitleItem50.Text = "Add menu item";
+            toolTipItem42.LeftIndent = 6;
+            toolTipItem42.Text = "Adds a menu item to start an application or document.";
+            superToolTip42.Items.Add(toolTipTitleItem50);
+            superToolTip42.Items.Add(toolTipItem42);
+            this.barButtonItemMenuAddMenuItem.SuperTip = superToolTip42;
             this.barButtonItemMenuAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenuItem_ItemClick);
             // 
             // barButtonItemMenuRemoveItem
@@ -462,7 +474,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerCustomization;
-            this.barDockControlTop.Size = new System.Drawing.Size(716, 53);
+            this.barDockControlTop.Size = new System.Drawing.Size(758, 53);
             // 
             // barDockControlBottom
             // 
@@ -470,7 +482,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 491);
             this.barDockControlBottom.Manager = this.barManagerCustomization;
-            this.barDockControlBottom.Size = new System.Drawing.Size(716, 25);
+            this.barDockControlBottom.Size = new System.Drawing.Size(758, 25);
             // 
             // barDockControlLeft
             // 
@@ -484,7 +496,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(716, 53);
+            this.barDockControlRight.Location = new System.Drawing.Point(758, 53);
             this.barDockControlRight.Manager = this.barManagerCustomization;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
             // 
@@ -496,7 +508,7 @@
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
-            this.simpleButtonCancel.Location = new System.Drawing.Point(629, 4);
+            this.simpleButtonCancel.Location = new System.Drawing.Point(671, 4);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonCancel.TabIndex = 5;
@@ -507,7 +519,7 @@
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
-            this.simpleButtonSave.Location = new System.Drawing.Point(548, 4);
+            this.simpleButtonSave.Location = new System.Drawing.Point(590, 4);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(75, 23);
             this.simpleButtonSave.TabIndex = 6;
@@ -521,14 +533,14 @@
             this.panelControlScroll.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControlScroll.Location = new System.Drawing.Point(0, 460);
             this.panelControlScroll.Name = "panelControlScroll";
-            this.panelControlScroll.Size = new System.Drawing.Size(716, 31);
+            this.panelControlScroll.Size = new System.Drawing.Size(758, 31);
             this.panelControlScroll.TabIndex = 11;
             // 
             // pictureBoxPlacementInfo
             // 
             this.pictureBoxPlacementInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPlacementInfo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPlacementInfo.Image")));
-            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(667, 55);
+            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(709, 55);
             this.pictureBoxPlacementInfo.Name = "pictureBoxPlacementInfo";
             this.pictureBoxPlacementInfo.Size = new System.Drawing.Size(34, 34);
             this.pictureBoxPlacementInfo.TabIndex = 0;
@@ -536,11 +548,47 @@
             this.pictureBoxPlacementInfo.MouseEnter += new System.EventHandler(this.pictureBoxPlacementInfo_MouseEnter);
             this.pictureBoxPlacementInfo.MouseLeave += new System.EventHandler(this.pictureBoxPlacementInfo_MouseLeave);
             // 
+            // barButtonItemMoveUp
+            // 
+            this.barButtonItemMoveUp.Caption = "Move up";
+            this.barButtonItemMoveUp.Id = 19;
+            this.barButtonItemMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMoveUp.ImageOptions.Image")));
+            this.barButtonItemMoveUp.Name = "barButtonItemMoveUp";
+            this.barButtonItemMoveUp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItemMoveUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMoveUp_ItemClick);
+            // 
+            // barButtonItemMoveDown
+            // 
+            this.barButtonItemMoveDown.Caption = "Move down";
+            this.barButtonItemMoveDown.Id = 20;
+            this.barButtonItemMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMoveDown.ImageOptions.Image")));
+            this.barButtonItemMoveDown.Name = "barButtonItemMoveDown";
+            this.barButtonItemMoveDown.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItemMoveDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMoveDown_ItemClick);
+            // 
+            // barButtonItemMenuMoveUp
+            // 
+            this.barButtonItemMenuMoveUp.Caption = "Move up";
+            this.barButtonItemMenuMoveUp.Id = 21;
+            this.barButtonItemMenuMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuMoveUp.ImageOptions.Image")));
+            this.barButtonItemMenuMoveUp.Name = "barButtonItemMenuMoveUp";
+            this.barButtonItemMenuMoveUp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItemMenuMoveUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuMoveUp_ItemClick);
+            // 
+            // barButtonItemMenuMoveDown
+            // 
+            this.barButtonItemMenuMoveDown.Caption = "Move down";
+            this.barButtonItemMenuMoveDown.Id = 22;
+            this.barButtonItemMenuMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuMoveDown.ImageOptions.Image")));
+            this.barButtonItemMenuMoveDown.Name = "barButtonItemMenuMoveDown";
+            this.barButtonItemMenuMoveDown.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItemMenuMoveDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuMoveDown_ItemClick);
+            // 
             // CustomizationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 516);
+            this.ClientSize = new System.Drawing.Size(758, 516);
             this.Controls.Add(this.pictureBoxPlacementInfo);
             this.Controls.Add(this.xtraScrollableControlMenu);
             this.Controls.Add(this.panelControlScroll);
@@ -595,5 +643,9 @@
         private DevExpress.XtraEditors.PanelControl panelControlScroll;
         private System.Windows.Forms.PictureBox pictureBoxPlacementInfo;
         private DevExpress.Utils.ToolTipController toolTipControllerCustomization;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMoveUp;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMoveDown;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuMoveUp;
+        private DevExpress.XtraBars.BarButtonItem barButtonItemMenuMoveDown;
     }
 }
