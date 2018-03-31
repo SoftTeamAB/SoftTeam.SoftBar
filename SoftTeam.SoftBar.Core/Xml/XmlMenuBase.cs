@@ -5,7 +5,7 @@ namespace SoftTeam.SoftBar.Core.Xml
     /// <summary>
     /// Base class for all sub menus and menus
     /// </summary>
-    public class XmlMenuBase : XmlMenuItemBase
+    public abstract class XmlMenuBase : XmlMenuItemBase
     {
         #region Fields
         protected List<XmlMenuItemBase> _menuItems = null;

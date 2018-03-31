@@ -23,6 +23,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         #region Properties
         public MenuItemSelectedStatus Selected { get => _selected; set { _selected = value; UpdateColor(); } }
         public XmlMenuItemBase Item { get => _item; set => _item = value; }
+        public int ItemHeight { get => CalculateItemHeight(); }
         #endregion
 
         #region Constructor
@@ -154,6 +155,14 @@ namespace SoftTeam.SoftBar.Core.Controls
             }
             else
                 pictureBoxIcon.Image = HelperFunctions.GetFileImage(_item.IconPath);
+        }
+        #endregion
+
+        #region Private functions
+        private int CalculateItemHeight()
+        {
+            var count = _item.CountItems();
+            return count * Constants.ITEM_HEIGHT + (count - 1) * Constants.SEPARATOR_WIDTH;
         }
         #endregion
     }

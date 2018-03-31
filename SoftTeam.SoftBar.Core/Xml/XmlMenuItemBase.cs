@@ -2,7 +2,7 @@
 namespace SoftTeam.SoftBar.Core.Xml
 {
     // Base class for menu items, header items and sub menus
-    public class XmlMenuItemBase
+    public abstract class XmlMenuItemBase
     {
         #region Fields
         protected string _name = string.Empty;
@@ -22,6 +22,11 @@ namespace SoftTeam.SoftBar.Core.Xml
         public bool BeginGroup { get => _beginGroup; set => _beginGroup = value; }
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public int IconNumber { get => _iconNumber; set => _iconNumber = value; }
+        #endregion
+
+        #region Abstract functions
+        public abstract int CountItems();
+        public abstract bool ContainsItem(XmlMenuItemBase item);
         #endregion
     }
 }

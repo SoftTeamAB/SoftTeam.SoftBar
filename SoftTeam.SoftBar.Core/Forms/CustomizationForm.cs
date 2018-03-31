@@ -527,32 +527,10 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
+        #region Random events
         private void xtraScrollableControlMenu_Click(object sender, EventArgs e)
         {
             ClearSelected();
-        }
-
-        private void CaptureControlKeys(XmlMenuItemBase selected)
-        {
-            // Default values
-            _inside = false;
-            _after = true;
-
-            // If we are inside a sub menu...
-            if (selected is XmlSubMenu)
-            {
-                // ...and the CTRL key is pressed, create item inside the menu.
-                if (Control.ModifierKeys == Keys.Control)
-                    _inside = true;
-                else if (Control.ModifierKeys == Keys.Shift)
-                    _after = false;
-            }
-            else
-            {
-                // If shift key is pressed, create item before the selected item
-                if (Control.ModifierKeys == Keys.Shift)
-                    _after = false;
-            }
         }
 
         private void pictureBoxPlacementInfo_MouseEnter(object sender, EventArgs e)
@@ -584,5 +562,179 @@ namespace SoftTeam.SoftBar.Core.Forms
                     e.Info.SuperTip = HelperFunctions.CreateInformationToolTip("Click to open file...\n" + barButtonItemPath.Caption);
             }
         }
+        #endregion
+
+        #region Keys
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Up)
+            {
+                MoveUp();
+            }
+            else if (keyData == Keys.Down)
+            {
+                MoveDown();
+            }
+            else if (keyData == Keys.Right)
+            {
+                MoveIn();
+            }
+            else if (keyData == Keys.Left)
+            {
+                MoveOut();
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void CaptureControlKeys(XmlMenuItemBase selected)
+        {
+            // Default values
+            _inside = false;
+            _after = true;
+
+            // If we are inside a sub menu...
+            if (selected is XmlSubMenu)
+            {
+                // ...and the CTRL key is pressed, create item inside the menu.
+                if (Control.ModifierKeys == Keys.Control)
+                    _inside = true;
+                else if (Control.ModifierKeys == Keys.Shift)
+                    _after = false;
+            }
+            else
+            {
+                // If shift key is pressed, create item before the selected item
+                if (Control.ModifierKeys == Keys.Shift)
+                    _after = false;
+            }
+        }
+        #endregion
+
+        #region Move items
+        /// <summary>
+        /// Moves an item up
+        /// </summary>
+        private void MoveUp()
+        {
+            var selected = GetSelectedItem();
+            if (selected == null) return;
+
+            if (selected is XmlMenu)
+            {
+                // We are on the first level, check if we can move up
+                var index = _area.Menus.IndexOf((XmlMenu)selected);
+                if (index == 0) return;
+                // Get the item above us
+                var above = _area.Menus[index - 1];
+                // Switch places in the GUI
+                SwitchPlaces(GetMenuItemControl(above), GetMenuItemControl(selected));
+                // Switch places in the data structure behind the scene
+                _area.Menus.Remove((XmlMenu)selected);
+                _area.Menus.Insert(index - 1, (XmlMenu)selected);
+            }
+            else
+            {
+                // We are inside a menu/sub menu, check if we can move up
+                var parent = _area.GetParent(selected);
+                var index = parent.MenuItems.IndexOf(selected);
+                if (index == 0) return;
+                // Get the item above us
+                var above = parent.MenuItems[index - 1];
+                // Switch places in the GUI
+                SwitchPlaces(GetMenuItemControl(above), GetMenuItemControl(selected));
+                // Switch places in the data structure behind the scene
+                parent.MenuItems.Remove(selected);
+                parent.MenuItems.Insert(index - 1, selected);
+            }
+
+            _selectedNode = selected;
+        }
+
+        /// <summary>
+        /// Moves an item down
+        /// </summary>
+        private void MoveDown()
+        {
+            var selected = GetSelectedItem();
+            if (selected == null) return;
+
+            if (selected is XmlMenu)
+            {
+                // We are on the first level, check if we can move down
+                var index = _area.Menus.IndexOf((XmlMenu)selected);
+                if (index == _area.Menus.Count - 1) return;
+                // Get the item below us
+                var below = _area.Menus[index + 1];
+                // Switch places in the GUI
+                SwitchPlaces(GetMenuItemControl(selected), GetMenuItemControl(below));
+                // Switch places in the data structure behind the scene
+                _area.Menus.Remove((XmlMenu)selected);
+                _area.Menus.Insert(index + 1, (XmlMenu)selected);
+            }
+            else
+            {
+                // We are inside a menu/sub menu, check if we can move down
+                var parent = _area.GetParent(selected);
+                var index = parent.MenuItems.IndexOf(selected);
+                if (index == parent.MenuItems.Count - 1) return;
+                // Get the item below us
+                var below = parent.MenuItems[index + 1];
+                // Switch places in the GUI
+                SwitchPlaces(GetMenuItemControl(selected), GetMenuItemControl(below));
+                // Switch places in the data structure behind the scene
+                parent.MenuItems.Remove(selected);
+                parent.MenuItems.Insert(index + 1, selected);
+            }
+
+            _selectedNode = selected;
+        }
+
+        /// <summary>
+        /// Moves an item into a sub menu
+        /// </summary>
+        private void MoveIn()
+        {
+        }
+
+        /// <summary>
+        /// Moves an item out of a sub menu
+        /// </summary>
+        private void MoveOut()
+        {
+        }
+
+        // Get the MenuItemControl for a menu item node
+        private MenuItemControl GetMenuItemControl(XmlMenuItemBase item)
+        {
+            foreach (var control in _menuItems)
+            {
+                if (control.Item.Equals(item))
+                    return control;
+            }
+
+            // Should not happen!
+            return null;
+        }
+
+        // Switch places between two MenuItemControls in the GUI
+        private void SwitchPlaces(MenuItemControl item1, MenuItemControl item2)
+        {
+            // Calculate how much we need to move the items
+            // and all the sub nodes of the items
+            var item2Delta = -item1.ItemHeight;
+            var item1Delta = item2.ItemHeight;
+
+            // Move the items
+            foreach (var item in _menuItems)
+            {
+                if (item1.Item.ContainsItem(item.Item))
+                    item.Location = new Point(item.Location.X, item.Location.Y + item1Delta);
+
+                if (item2.Item.ContainsItem(item.Item))
+                    item.Location = new Point(item.Location.X, item.Location.Y + item2Delta);
+            }
+        }
+        #endregion
     }
 }

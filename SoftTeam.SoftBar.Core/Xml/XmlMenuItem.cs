@@ -57,5 +57,17 @@ namespace SoftTeam.SoftBar.Core.Xml
 
         }
         #endregion
+
+        #region Overrides
+        public override int CountItems()
+        {
+            return 1;
+        }
+
+        public override bool ContainsItem(XmlMenuItemBase item)
+        {
+            return item.Equals(this);
+        }
+        #endregion
     }
 }
