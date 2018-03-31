@@ -39,7 +39,7 @@ namespace SoftTeam.SoftBar.Core.Controls
         }
         #endregion
 
-        #region Fields
+        #region Misc functions
         public void LoadValues()
         {
             textEditName.Text = Name;
@@ -64,11 +64,8 @@ namespace SoftTeam.SoftBar.Core.Controls
             ApplicationPath = textEditApplicationPath.Text;
             DocumentPath = textEditDocumentPath.Text;
             Parameters = textEditParameters.Text;
-
         }
-        #endregion
 
-        #region Misc functions
         private void UpdateImage()
         {
             pictureBoxIcon.Image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Small_16x16);
@@ -128,7 +125,6 @@ namespace SoftTeam.SoftBar.Core.Controls
             ApplicationPath = textEditApplicationPath.Text;
             UpdateImage();
         }
-        #endregion
 
         private void pictureBoxMenuItemInfo_MouseEnter(object sender, EventArgs e)
         {
@@ -148,5 +144,14 @@ namespace SoftTeam.SoftBar.Core.Controls
             _infoForm.Dispose();
             _infoForm = null;
         }
+
+        private void simpleButtonTest_Click(object sender, EventArgs e)
+        {
+            SaveValues();
+
+            using (CommandLineHelper cmd = new CommandLineHelper(ApplicationPath, DocumentPath, Parameters, RunAsAdministrator))
+                cmd.Execute();
+        }
     }
+    #endregion
 }

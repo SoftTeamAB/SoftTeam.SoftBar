@@ -42,15 +42,18 @@
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip7 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem7 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem7 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -74,6 +77,7 @@
             this.labelControlApplicationPath = new DevExpress.XtraEditors.LabelControl();
             this.textEditApplicationPath = new DevExpress.XtraEditors.TextEdit();
             this.toolTipControllerEditMenuItem = new DevExpress.Utils.ToolTipController(this.components);
+            this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -193,14 +197,14 @@
             // 
             this.tabPaneMenuItem.Controls.Add(this.tabNavigationPageAppearance);
             this.tabPaneMenuItem.Controls.Add(this.tabNavigationPageCommandLine);
-            this.tabPaneMenuItem.Location = new System.Drawing.Point(3, 41);
+            this.tabPaneMenuItem.Location = new System.Drawing.Point(3, 34);
             this.tabPaneMenuItem.Name = "tabPaneMenuItem";
             this.tabPaneMenuItem.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPageAppearance,
             this.tabNavigationPageCommandLine});
-            this.tabPaneMenuItem.RegularSize = new System.Drawing.Size(394, 206);
+            this.tabPaneMenuItem.RegularSize = new System.Drawing.Size(394, 213);
             this.tabPaneMenuItem.SelectedPage = this.tabNavigationPageCommandLine;
-            this.tabPaneMenuItem.Size = new System.Drawing.Size(394, 206);
+            this.tabPaneMenuItem.Size = new System.Drawing.Size(394, 213);
             this.tabPaneMenuItem.TabIndex = 23;
             this.tabPaneMenuItem.Text = "Menu item";
             // 
@@ -238,6 +242,7 @@
             // tabNavigationPageCommandLine
             // 
             this.tabNavigationPageCommandLine.Caption = "CommandLine";
+            this.tabNavigationPageCommandLine.Controls.Add(this.simpleButtonTest);
             this.tabNavigationPageCommandLine.Controls.Add(this.pictureBoxMenuItemInfo);
             this.tabNavigationPageCommandLine.Controls.Add(this.labelControlParameters);
             this.tabNavigationPageCommandLine.Controls.Add(this.textEditParameters);
@@ -251,7 +256,7 @@
             this.tabNavigationPageCommandLine.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCommandLine.Name = "tabNavigationPageCommandLine";
             this.tabNavigationPageCommandLine.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabNavigationPageCommandLine.Size = new System.Drawing.Size(376, 158);
+            this.tabNavigationPageCommandLine.Size = new System.Drawing.Size(376, 165);
             // 
             // pictureBoxMenuItemInfo
             // 
@@ -276,24 +281,24 @@
             // 
             this.textEditParameters.Location = new System.Drawing.Point(36, 126);
             this.textEditParameters.Name = "textEditParameters";
-            this.textEditParameters.Size = new System.Drawing.Size(307, 20);
-            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem5.Text = "Parameters";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Leave empty for default behaviour.\r\n\r\nIf you need to specify additional parameter" +
+            this.textEditParameters.Size = new System.Drawing.Size(274, 20);
+            superToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem6.Text = "Parameters";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Leave empty for default behaviour.\r\n\r\nIf you need to specify additional parameter" +
     "s, include %%document%% wherever you need the <b>document path</b> to go.\r\n\r\nExa" +
     "mple :\r\n/F /doc:%%document%% /l";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.textEditParameters.SuperTip = superToolTip5;
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.textEditParameters.SuperTip = superToolTip6;
             this.textEditParameters.TabIndex = 29;
             // 
             // simpleButtonDocumentPathBrowse
             // 
-            this.simpleButtonDocumentPathBrowse.Location = new System.Drawing.Point(316, 79);
+            this.simpleButtonDocumentPathBrowse.Location = new System.Drawing.Point(316, 77);
             this.simpleButtonDocumentPathBrowse.Name = "simpleButtonDocumentPathBrowse";
-            this.simpleButtonDocumentPathBrowse.Size = new System.Drawing.Size(27, 23);
+            this.simpleButtonDocumentPathBrowse.Size = new System.Drawing.Size(28, 28);
             this.simpleButtonDocumentPathBrowse.TabIndex = 28;
             this.simpleButtonDocumentPathBrowse.Text = "...";
             this.simpleButtonDocumentPathBrowse.Click += new System.EventHandler(this.simpleButtonDocumentPathBrowse_Click);
@@ -311,22 +316,22 @@
             this.textEditDocumentPath.Location = new System.Drawing.Point(36, 81);
             this.textEditDocumentPath.Name = "textEditDocumentPath";
             this.textEditDocumentPath.Size = new System.Drawing.Size(274, 20);
-            superToolTip6.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
-            toolTipTitleItem6.Text = "Document path";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "The document that should be loaded with the application specified in <b>Applicati" +
+            superToolTip7.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
+            toolTipTitleItem7.Text = "Document path";
+            toolTipItem7.LeftIndent = 6;
+            toolTipItem7.Text = "The document that should be loaded with the application specified in <b>Applicati" +
     "on path</b>.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.textEditDocumentPath.SuperTip = superToolTip6;
+            superToolTip7.Items.Add(toolTipTitleItem7);
+            superToolTip7.Items.Add(toolTipItem7);
+            this.textEditDocumentPath.SuperTip = superToolTip7;
             this.textEditDocumentPath.TabIndex = 26;
             // 
             // simpleButtonApplicationPathBrowse
             // 
-            this.simpleButtonApplicationPathBrowse.Location = new System.Drawing.Point(316, 37);
+            this.simpleButtonApplicationPathBrowse.Location = new System.Drawing.Point(316, 36);
             this.simpleButtonApplicationPathBrowse.Name = "simpleButtonApplicationPathBrowse";
-            this.simpleButtonApplicationPathBrowse.Size = new System.Drawing.Size(27, 23);
+            this.simpleButtonApplicationPathBrowse.Size = new System.Drawing.Size(28, 28);
             this.simpleButtonApplicationPathBrowse.TabIndex = 25;
             this.simpleButtonApplicationPathBrowse.Text = "...";
             this.simpleButtonApplicationPathBrowse.Click += new System.EventHandler(this.simpleButtonApplicationPathBrowse_Click);
@@ -344,16 +349,33 @@
             this.textEditApplicationPath.Location = new System.Drawing.Point(36, 39);
             this.textEditApplicationPath.Name = "textEditApplicationPath";
             this.textEditApplicationPath.Size = new System.Drawing.Size(274, 20);
-            superToolTip7.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem7.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image4")));
-            toolTipTitleItem7.Text = "Application path";
-            toolTipItem7.LeftIndent = 6;
-            toolTipItem7.Text = "The application that should be opened.";
-            superToolTip7.Items.Add(toolTipTitleItem7);
-            superToolTip7.Items.Add(toolTipItem7);
-            this.textEditApplicationPath.SuperTip = superToolTip7;
+            superToolTip8.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem8.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image5")));
+            toolTipTitleItem8.Text = "Application path";
+            toolTipItem8.LeftIndent = 6;
+            toolTipItem8.Text = "The application that should be opened.";
+            superToolTip8.Items.Add(toolTipTitleItem8);
+            superToolTip8.Items.Add(toolTipItem8);
+            this.textEditApplicationPath.SuperTip = superToolTip8;
             this.textEditApplicationPath.TabIndex = 23;
             this.textEditApplicationPath.EditValueChanged += new System.EventHandler(this.textEditApplicationPath_EditValueChanged);
+            // 
+            // simpleButtonTest
+            // 
+            this.simpleButtonTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonTest.ImageOptions.Image")));
+            this.simpleButtonTest.Location = new System.Drawing.Point(316, 122);
+            this.simpleButtonTest.Name = "simpleButtonTest";
+            this.simpleButtonTest.Size = new System.Drawing.Size(28, 28);
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem5.Text = "Test";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Click this to test if your paths and parameters are correct and the application s" +
+    "tarts.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.simpleButtonTest.SuperTip = superToolTip5;
+            this.simpleButtonTest.TabIndex = 32;
+            this.simpleButtonTest.Click += new System.EventHandler(this.simpleButtonTest_Click);
             // 
             // EditMenuItemControl
             // 
@@ -408,5 +430,6 @@
         private DevExpress.Utils.ToolTipController toolTipControllerEditMenuItem;
         private DevExpress.XtraEditors.CheckEdit checkEditRunAsAdministrator;
         private System.Windows.Forms.PictureBox pictureBoxMenuItemInfo;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonTest;
     }
 }
