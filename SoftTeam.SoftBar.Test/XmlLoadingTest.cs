@@ -1,8 +1,4 @@
-﻿using System;
-using System.Xml;
-using System.Xml.Schema;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using SoftTeam.SoftBar.Core.Xml;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace SoftTeam.SoftBar.Test
 {

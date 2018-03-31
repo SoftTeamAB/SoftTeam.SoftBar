@@ -12,6 +12,13 @@ namespace SoftTeam.SoftBar.Core.Misc
 {
     public class HelperFunctions
     {
+        public static string GetTimeStamp()
+        {
+            string timeStamp = DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToLongTimeString();
+            timeStamp = timeStamp.Replace(":", "_").Replace("-", "_");
+
+            return timeStamp;
+        }
         public static string AssemblyDirectory
         {
             get

@@ -1,8 +1,6 @@
 ﻿using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
-using System;
 using System.Drawing;
-using System.IO;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {

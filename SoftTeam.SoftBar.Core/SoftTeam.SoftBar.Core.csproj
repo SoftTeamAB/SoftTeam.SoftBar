@@ -187,6 +187,7 @@
       <DependentUpon>MyDirectoriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CommandLine.cs" />
+    <Compile Include="Misc\ErrorHandler.cs" />
     <Compile Include="Misc\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">
       <SubType>Form</SubType>

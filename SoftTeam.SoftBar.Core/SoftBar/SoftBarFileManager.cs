@@ -16,6 +16,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 throw new DirectoryNotFoundException("'" + _path + "' does not exist!");
 
             Directory.CreateDirectory(SoftBarDirectoryBackup);
+            Directory.CreateDirectory(SoftBarExceptionLogs);
 
             if (!File.Exists(MenuPath))
                 CreateEmptyMenuXml();
@@ -23,6 +24,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public string SoftBarDirectory { get => _path; }
         public string SoftBarDirectoryBackup { get => Path.Combine(_path, "Backup"); }
+        public string SoftBarExceptionLogs { get => Path.Combine(_path, "Exception log"); }
 
         public string SettingsPath { get => Path.Combine(_path, "Settings.xml"); }
 
@@ -33,17 +35,16 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             try
             {
                 string backupFileName = "";
-                string currentDateTime = DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToLongTimeString();
-                currentDateTime = currentDateTime.Replace(":", "_").Replace("-", "_");
+                string timeStamp = HelperFunctions.GetTimeStamp();
 
                 switch (fileType)
                 {
                     case FileType.Settings:
-                        backupFileName = $"Settings_{currentDateTime}.xml";
+                        backupFileName = $"Settings_{timeStamp}.xml";
                         File.Copy(SettingsPath, Path.Combine(SoftBarDirectoryBackup, backupFileName));
                         break;
                     case FileType.UserMenus:
-                        backupFileName = $"Menu_{currentDateTime}.xml";
+                        backupFileName = $"Menu_{timeStamp}.xml";
                         File.Copy(MenuPath, Path.Combine(SoftBarDirectoryBackup, backupFileName));
                         break;
                 }

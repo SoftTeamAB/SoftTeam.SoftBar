@@ -1,12 +1,5 @@
-﻿using System;
-using System.Drawing;
-
-using DevExpress.XtraBars;
-
+﻿using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.Forms;
-using SoftTeam.SoftBar.Core.Misc;
-using SoftTeam.SoftBar.Core.Settings;
-using SoftTeam.SoftBar.Core.Xml;
 
 namespace SoftTeam.SoftBar.Core.SoftBar
 {
