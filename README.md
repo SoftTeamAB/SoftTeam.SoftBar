@@ -3,9 +3,9 @@ An Application bar for Windows 10, from which you can start applications, open s
 
 DevExpress WinForm 17.2.7 is required to compile this project.
 
-Check out our web page : http://www.softteam.se
+Check out our web page (in swedish) : http://www.softteam.se
 
-Softbar web page : http://www.softteam.se/softbar
+Softbar web page (in swedish): http://www.softteam.se/softbar
 
 ![SoftBar - directories menu](https://github.com/Hultan/SoftTeam.SoftBar/blob/master/SoftBar-directories.PNG?raw=true "Title")
 
