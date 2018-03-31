@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyToolsForm));
             this.pictureEditCalculator = new DevExpress.XtraEditors.PictureEdit();
             this.labelControlCalculator = new DevExpress.XtraEditors.LabelControl();
@@ -76,7 +75,6 @@
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
-            this.xtraOpenFileDialogTool = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
             this.textEditToolName = new DevExpress.XtraEditors.TextEdit();
             this.labelControlToolName = new DevExpress.XtraEditors.LabelControl();
@@ -88,6 +86,7 @@
             this.checkEditToolBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.labelControlToolBeginGroup = new DevExpress.XtraEditors.LabelControl();
             this.groupControlTool = new DevExpress.XtraEditors.GroupControl();
+            this.openFileDialogTool = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditCalculator.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditDiskCleaner.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEditBash.Properties)).BeginInit();
@@ -598,10 +597,6 @@
             this.simpleButtonBrowse.Text = "...";
             this.simpleButtonBrowse.Click += new System.EventHandler(this.simpleButtonBrowse_Click);
             // 
-            // xtraOpenFileDialogTool
-            // 
-            this.xtraOpenFileDialogTool.FileName = "xtraOpenFileDialog1";
-            // 
             // simpleButtonTest
             // 
             this.simpleButtonTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonTest.ImageOptions.Image")));
@@ -708,6 +703,10 @@
             this.groupControlTool.Size = new System.Drawing.Size(529, 181);
             this.groupControlTool.TabIndex = 56;
             this.groupControlTool.Text = "Tool information";
+            // 
+            // openFileDialogTool
+            // 
+            this.openFileDialogTool.FileName = "openFileDialog1";
             // 
             // MyToolsForm
             // 
@@ -846,7 +845,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonBrowse;
-        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogTool;
         private DevExpress.XtraEditors.SimpleButton simpleButtonTest;
         private DevExpress.XtraEditors.TextEdit textEditToolName;
         private DevExpress.XtraEditors.LabelControl labelControlToolName;
@@ -858,5 +856,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEditToolBeginGroup;
         private DevExpress.XtraEditors.LabelControl labelControlToolBeginGroup;
         private DevExpress.XtraEditors.GroupControl groupControlTool;
+        private System.Windows.Forms.OpenFileDialog openFileDialogTool;
     }
 }

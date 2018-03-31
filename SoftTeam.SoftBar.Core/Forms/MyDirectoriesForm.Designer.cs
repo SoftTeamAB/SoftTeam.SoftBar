@@ -28,12 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.textEditPath = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonBrowsePath = new DevExpress.XtraEditors.SimpleButton();
-            this.xtraFolderBrowserDialogMyDirectory = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.labelControPath = new DevExpress.XtraEditors.LabelControl();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
@@ -42,6 +40,7 @@
             this.textEditIconPath = new DevExpress.XtraEditors.TextEdit();
             this.checkEditBegingGroup = new DevExpress.XtraEditors.CheckEdit();
             this.labelControlBeginGroup = new DevExpress.XtraEditors.LabelControl();
+            this.folderBrowserDialogMyDirectory = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -83,10 +82,6 @@
             this.simpleButtonBrowsePath.TabIndex = 3;
             this.simpleButtonBrowsePath.Text = "...";
             this.simpleButtonBrowsePath.Click += new System.EventHandler(this.simpleButtonBrowsePath_Click);
-            // 
-            // xtraFolderBrowserDialogMyDirectory
-            // 
-            this.xtraFolderBrowserDialogMyDirectory.SelectedPath = "xtraFolderBrowserDialog1";
             // 
             // labelControPath
             // 
@@ -197,7 +192,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonBrowsePath;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogMyDirectory;
         private DevExpress.XtraEditors.LabelControl labelControPath;
         private DevExpress.XtraEditors.LabelControl labelControlName;
         private DevExpress.XtraEditors.TextEdit textEditName;
@@ -206,5 +200,6 @@
         private DevExpress.XtraEditors.TextEdit textEditIconPath;
         private DevExpress.XtraEditors.CheckEdit checkEditBegingGroup;
         private DevExpress.XtraEditors.LabelControl labelControlBeginGroup;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogMyDirectory;
     }
 }

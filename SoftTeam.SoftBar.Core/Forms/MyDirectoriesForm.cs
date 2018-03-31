@@ -62,22 +62,22 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonBrowsePath_Click(object sender, EventArgs e)
         {
-            DialogResult result = xtraFolderBrowserDialogMyDirectory.ShowDialog();
+            DialogResult result = folderBrowserDialogMyDirectory.ShowDialog();
 
             if (result == DialogResult.Cancel)
                 return;
 
-            textEditPath.Text = xtraFolderBrowserDialogMyDirectory.SelectedPath;
+            textEditPath.Text = folderBrowserDialogMyDirectory.SelectedPath;
         }
 
         private void simpleButtonBrowseIconPath_Click(object sender, EventArgs e)
         {
-            DialogResult result = xtraFolderBrowserDialogMyDirectory.ShowDialog();
+            DialogResult result = folderBrowserDialogMyDirectory.ShowDialog();
 
             if (result == DialogResult.Cancel)
                 return;
 
-            textEditIconPath.Text = xtraFolderBrowserDialogMyDirectory.SelectedPath;
+            textEditIconPath.Text = folderBrowserDialogMyDirectory.SelectedPath;
         }
         #endregion
     }

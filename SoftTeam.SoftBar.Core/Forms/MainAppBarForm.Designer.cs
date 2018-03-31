@@ -35,7 +35,7 @@
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.xtraOpenFileDialogSoftBar = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.openFileDialogSoftBar = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,9 +81,9 @@
             this.barDockControlRight.Manager = this.barManagerSoftBar;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 32);
             // 
-            // xtraOpenFileDialogSoftBar
+            // openFileDialogSoftBar
             // 
-            this.xtraOpenFileDialogSoftBar.FileName = "xtraOpenFileDialog1";
+            this.openFileDialogSoftBar.FileName = "openFileDialog1";
             // 
             // MainAppBarForm
             // 
@@ -114,6 +114,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         public DevExpress.XtraBars.BarManager barManagerSoftBar;
-        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogSoftBar;
+        private System.Windows.Forms.OpenFileDialog openFileDialogSoftBar;
     }
 }

@@ -46,11 +46,11 @@
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
             this.checkEditBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
-            this.xtraOpenFileDialogEditMenu = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.toolTipControllerEditMenu = new DevExpress.Utils.ToolTipController(this.components);
             this.labelControlWidth = new DevExpress.XtraEditors.LabelControl();
             this.spinEditWidth = new DevExpress.XtraEditors.SpinEdit();
+            this.openFileDialogEditMenu = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
@@ -146,10 +146,6 @@
             this.simpleButtonBrowse.Text = "...";
             this.simpleButtonBrowse.Click += new System.EventHandler(this.simpleButtonBrowse_Click);
             // 
-            // xtraOpenFileDialogEditMenu
-            // 
-            this.xtraOpenFileDialogEditMenu.FileName = "xtraOpenFileDialog1";
-            // 
             // pictureBoxIcon
             // 
             this.pictureBoxIcon.Location = new System.Drawing.Point(51, 9);
@@ -192,6 +188,10 @@
             this.spinEditWidth.Size = new System.Drawing.Size(117, 20);
             this.spinEditWidth.TabIndex = 11;
             // 
+            // openFileDialogEditMenu
+            // 
+            this.openFileDialogEditMenu.FileName = "openFileDialog1";
+            // 
             // EditMenuControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -227,10 +227,10 @@
         private DevExpress.XtraEditors.LabelControl labelControlName;
         private DevExpress.XtraEditors.CheckEdit checkEditBeginGroup;
         private DevExpress.XtraEditors.SimpleButton simpleButtonBrowse;
-        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogEditMenu;
         private System.Windows.Forms.PictureBox pictureBoxIcon;
-        private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.Utils.ToolTipController toolTipControllerEditMenu;
         private DevExpress.XtraEditors.LabelControl labelControlWidth;
         private DevExpress.XtraEditors.SpinEdit spinEditWidth;
+        private System.Windows.Forms.OpenFileDialog openFileDialogEditMenu;
     }
 }

@@ -34,14 +34,13 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonChooseDirectory_Click(object sender, EventArgs e)
         {
-            xtraFolderBrowserDialogSoftBar.Description = "Please choose a SoftBar working folder...";
-            xtraFolderBrowserDialogSoftBar.Title = "Please choose a folder...";
-            DialogResult result = xtraFolderBrowserDialogSoftBar.ShowDialog();
+            folderBrowserDialogSoftBar.Description = "Please choose a SoftBar working folder...";
+            DialogResult result = folderBrowserDialogSoftBar.ShowDialog();
 
             if (result == DialogResult.Cancel)
                 return;
 
-            labelControlChoosenDirectory.Text = xtraFolderBrowserDialogSoftBar.SelectedPath;
+            labelControlChoosenDirectory.Text = folderBrowserDialogSoftBar.SelectedPath;
         }
 
         private void simpleButtonCancel_Click(object sender, EventArgs e)

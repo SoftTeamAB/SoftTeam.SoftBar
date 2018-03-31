@@ -70,17 +70,17 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonBrowse_Click(object sender, EventArgs e)
         {
-            xtraOpenFileDialogTool.Filter = "Exe-files (*.exe)|*.exe|All files (*.*)|*.*";
-            xtraOpenFileDialogTool.FilterIndex = 0;
-            xtraOpenFileDialogTool.CheckFileExists = true;
-            xtraOpenFileDialogTool.Title = "Select a tool...";
+            openFileDialogTool.Filter = "Exe-files (*.exe)|*.exe|All files (*.*)|*.*";
+            openFileDialogTool.FilterIndex = 0;
+            openFileDialogTool.CheckFileExists = true;
+            openFileDialogTool.Title = "Select a tool...";
 
-            DialogResult result = xtraOpenFileDialogTool.ShowDialog();
+            DialogResult result = openFileDialogTool.ShowDialog();
 
             if (result == DialogResult.Cancel)
                 return;
 
-            textEditToolPath.Text = xtraOpenFileDialogTool.FileName;
+            textEditToolPath.Text = openFileDialogTool.FileName;
         }
 
         private void simpleButtonTest_Click(object sender, EventArgs e)

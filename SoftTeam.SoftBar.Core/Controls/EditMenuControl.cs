@@ -32,17 +32,16 @@ namespace SoftTeam.SoftBar.Core.Controls
         #region Misc functions
         private void simpleButtonBrowse_Click(object sender, EventArgs e)
         {
-            xtraOpenFileDialogEditMenu.InitialDirectory = textEditIconPath.Text;
-            // 
-            xtraOpenFileDialogEditMenu.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
-            xtraOpenFileDialogEditMenu.CheckFileExists = true;
-            xtraOpenFileDialogEditMenu.FilterIndex = 7;
-            DialogResult result = xtraOpenFileDialogEditMenu.ShowDialog();
+            openFileDialogEditMenu.InitialDirectory = textEditIconPath.Text;
+            openFileDialogEditMenu.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
+            openFileDialogEditMenu.CheckFileExists = true;
+            openFileDialogEditMenu.FilterIndex = 7;
+            DialogResult result = openFileDialogEditMenu.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                textEditIconPath.Text = xtraOpenFileDialogEditMenu.FileName;
-                UpdateImage(xtraOpenFileDialogEditMenu.FileName);
+                textEditIconPath.Text = openFileDialogEditMenu.FileName;
+                UpdateImage(openFileDialogEditMenu.FileName);
             }
         }
 

@@ -95,16 +95,16 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private bool ImportFromPHSAppBar(string workingDirectory)
         {
-            xtraOpenFileDialogSoftBar.FileName = "Config.ini";
-            xtraOpenFileDialogSoftBar.CheckFileExists = true;
-            xtraOpenFileDialogSoftBar.Title = "Open PHSAppBar config.ini";
-            DialogResult result = xtraOpenFileDialogSoftBar.ShowDialog();
+            openFileDialogSoftBar.FileName = "Config.ini";
+            openFileDialogSoftBar.CheckFileExists = true;
+            openFileDialogSoftBar.Title = "Open PHSAppBar config.ini";
+            DialogResult result = openFileDialogSoftBar.ShowDialog();
             if (result == DialogResult.Cancel)
                 return false;
 
             // Import from PHSAppBar config.ini
             XmlArea area = null;
-            using (PHSAppBarImporter importer = new PHSAppBarImporter(xtraOpenFileDialogSoftBar.FileName))
+            using (PHSAppBarImporter importer = new PHSAppBarImporter(openFileDialogSoftBar.FileName))
                 area = importer.Import();
 
             // Save xml
@@ -116,15 +116,15 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private string ChooseMenuXmlPath()
         {
-            xtraOpenFileDialogSoftBar.FileName = "menu.xml";
-            xtraOpenFileDialogSoftBar.CheckFileExists = true;
-            xtraOpenFileDialogSoftBar.Title = "Open SoftBarmenu.xml";
-            DialogResult result = xtraOpenFileDialogSoftBar.ShowDialog();
+            openFileDialogSoftBar.FileName = "menu.xml";
+            openFileDialogSoftBar.CheckFileExists = true;
+            openFileDialogSoftBar.Title = "Open SoftBarmenu.xml";
+            DialogResult result = openFileDialogSoftBar.ShowDialog();
 
             if (result == DialogResult.Cancel)
                 return "";
             else
-                return xtraOpenFileDialogSoftBar.FileName;
+                return openFileDialogSoftBar.FileName;
         }
 
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)

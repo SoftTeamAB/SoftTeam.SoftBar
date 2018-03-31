@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChooseDirectoryForm));
             this.radioGroupChooseDirectory = new DevExpress.XtraEditors.RadioGroup();
             this.labelControlHeader = new DevExpress.XtraEditors.LabelControl();
             this.labelControlChoosenDirectory = new DevExpress.XtraEditors.LabelControl();
-            this.xtraFolderBrowserDialogSoftBar = new DevExpress.XtraEditors.XtraFolderBrowserDialog(this.components);
             this.simpleButtonChooseDirectory = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
+            this.folderBrowserDialogSoftBar = new System.Windows.Forms.FolderBrowserDialog();
             ((System.ComponentModel.ISupportInitialize)(this.radioGroupChooseDirectory.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,10 +70,6 @@
             this.labelControlChoosenDirectory.TabIndex = 2;
             this.labelControlChoosenDirectory.Text = "labelControl1";
             // 
-            // xtraFolderBrowserDialogSoftBar
-            // 
-            this.xtraFolderBrowserDialogSoftBar.SelectedPath = "xtraFolderBrowserDialog1";
-            // 
             // simpleButtonChooseDirectory
             // 
             this.simpleButtonChooseDirectory.Enabled = false;
@@ -89,7 +84,7 @@
             // simpleButtonCancel
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton2.ImageOptions.Image")));
+            this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
             this.simpleButtonCancel.Location = new System.Drawing.Point(246, 183);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(90, 40);
@@ -100,7 +95,7 @@
             // simpleButtonSave
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton3.ImageOptions.Image")));
+            this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
             this.simpleButtonSave.Location = new System.Drawing.Point(150, 183);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(90, 40);
@@ -138,9 +133,9 @@
         private DevExpress.XtraEditors.RadioGroup radioGroupChooseDirectory;
         private DevExpress.XtraEditors.LabelControl labelControlHeader;
         private DevExpress.XtraEditors.LabelControl labelControlChoosenDirectory;
-        private DevExpress.XtraEditors.XtraFolderBrowserDialog xtraFolderBrowserDialogSoftBar;
         private DevExpress.XtraEditors.SimpleButton simpleButtonChooseDirectory;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogSoftBar;
     }
 }

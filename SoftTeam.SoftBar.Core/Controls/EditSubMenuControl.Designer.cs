@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
@@ -47,7 +46,7 @@
             this.checkEditBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.textEditIconPath = new DevExpress.XtraEditors.TextEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
-            this.xtraOpenFileDialogEditSubMenu = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
+            this.openFileDialogEditSubMenu = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -150,9 +149,9 @@
             this.textEditName.SuperTip = superToolTip3;
             this.textEditName.TabIndex = 9;
             // 
-            // xtraOpenFileDialogEditSubMenu
+            // openFileDialogEditSubMenu
             // 
-            this.xtraOpenFileDialogEditSubMenu.FileName = "xtraOpenFileDialog1";
+            this.openFileDialogEditSubMenu.FileName = "openFileDialog1";
             // 
             // EditSubMenuControl
             // 
@@ -187,6 +186,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEditBeginGroup;
         private DevExpress.XtraEditors.TextEdit textEditIconPath;
         private DevExpress.XtraEditors.TextEdit textEditName;
-        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogEditSubMenu;
+        private System.Windows.Forms.OpenFileDialog openFileDialogEditSubMenu;
     }
 }

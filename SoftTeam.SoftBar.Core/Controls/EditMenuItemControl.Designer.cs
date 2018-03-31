@@ -42,6 +42,9 @@
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
@@ -51,9 +54,6 @@
             DevExpress.Utils.SuperToolTip superToolTip8 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem8 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem8 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -62,11 +62,11 @@
             this.checkEditBeginGroup = new DevExpress.XtraEditors.CheckEdit();
             this.textEditIconPath = new DevExpress.XtraEditors.TextEdit();
             this.textEditName = new DevExpress.XtraEditors.TextEdit();
-            this.xtraOpenFileDialogMenuItem = new DevExpress.XtraEditors.XtraOpenFileDialog(this.components);
             this.tabPaneMenuItem = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageAppearance = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.checkEditRunAsAdministrator = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageCommandLine = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBoxMenuItemInfo = new System.Windows.Forms.PictureBox();
             this.labelControlParameters = new DevExpress.XtraEditors.LabelControl();
             this.textEditParameters = new DevExpress.XtraEditors.TextEdit();
@@ -77,7 +77,8 @@
             this.labelControlApplicationPath = new DevExpress.XtraEditors.LabelControl();
             this.textEditApplicationPath = new DevExpress.XtraEditors.TextEdit();
             this.toolTipControllerEditMenuItem = new DevExpress.Utils.ToolTipController(this.components);
-            this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonImport = new DevExpress.XtraEditors.SimpleButton();
+            this.openFileDialogMenuItem = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -189,10 +190,6 @@
             this.textEditName.SuperTip = superToolTip3;
             this.textEditName.TabIndex = 9;
             // 
-            // xtraOpenFileDialogMenuItem
-            // 
-            this.xtraOpenFileDialogMenuItem.FileName = "xtraOpenFileDialog1";
-            // 
             // tabPaneMenuItem
             // 
             this.tabPaneMenuItem.Controls.Add(this.tabNavigationPageAppearance);
@@ -222,7 +219,7 @@
             this.tabNavigationPageAppearance.ItemShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageAppearance.Name = "tabNavigationPageAppearance";
             this.tabNavigationPageAppearance.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
-            this.tabNavigationPageAppearance.Size = new System.Drawing.Size(376, 158);
+            this.tabNavigationPageAppearance.Size = new System.Drawing.Size(376, 165);
             // 
             // checkEditRunAsAdministrator
             // 
@@ -257,6 +254,23 @@
             this.tabNavigationPageCommandLine.Name = "tabNavigationPageCommandLine";
             this.tabNavigationPageCommandLine.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCommandLine.Size = new System.Drawing.Size(376, 165);
+            // 
+            // simpleButtonTest
+            // 
+            this.simpleButtonTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonTest.ImageOptions.Image")));
+            this.simpleButtonTest.Location = new System.Drawing.Point(316, 122);
+            this.simpleButtonTest.Name = "simpleButtonTest";
+            this.simpleButtonTest.Size = new System.Drawing.Size(28, 28);
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem5.Text = "Test";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Click this to test if your paths and parameters are correct and the application s" +
+    "tarts.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.simpleButtonTest.SuperTip = superToolTip5;
+            this.simpleButtonTest.TabIndex = 32;
+            this.simpleButtonTest.Click += new System.EventHandler(this.simpleButtonTest_Click);
             // 
             // pictureBoxMenuItemInfo
             // 
@@ -360,27 +374,24 @@
             this.textEditApplicationPath.TabIndex = 23;
             this.textEditApplicationPath.EditValueChanged += new System.EventHandler(this.textEditApplicationPath_EditValueChanged);
             // 
-            // simpleButtonTest
+            // simpleButtonImport
             // 
-            this.simpleButtonTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonTest.ImageOptions.Image")));
-            this.simpleButtonTest.Location = new System.Drawing.Point(316, 122);
-            this.simpleButtonTest.Name = "simpleButtonTest";
-            this.simpleButtonTest.Size = new System.Drawing.Size(28, 28);
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem5.Text = "Test";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Click this to test if your paths and parameters are correct and the application s" +
-    "tarts.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.simpleButtonTest.SuperTip = superToolTip5;
-            this.simpleButtonTest.TabIndex = 32;
-            this.simpleButtonTest.Click += new System.EventHandler(this.simpleButtonTest_Click);
+            this.simpleButtonImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonImport.ImageOptions.Image")));
+            this.simpleButtonImport.Location = new System.Drawing.Point(360, 9);
+            this.simpleButtonImport.Name = "simpleButtonImport";
+            this.simpleButtonImport.Size = new System.Drawing.Size(28, 28);
+            this.simpleButtonImport.TabIndex = 26;
+            this.simpleButtonImport.Click += new System.EventHandler(this.simpleButtonImport_Click);
+            // 
+            // openFileDialogMenuItem
+            // 
+            this.openFileDialogMenuItem.FileName = "openFileDialog1";
             // 
             // EditMenuItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.simpleButtonImport);
             this.Controls.Add(this.pictureBoxIcon);
             this.Controls.Add(this.labelControlEditMenu);
             this.Controls.Add(this.tabPaneMenuItem);
@@ -415,7 +426,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEditBeginGroup;
         private DevExpress.XtraEditors.TextEdit textEditIconPath;
         private DevExpress.XtraEditors.TextEdit textEditName;
-        private DevExpress.XtraEditors.XtraOpenFileDialog xtraOpenFileDialogMenuItem;
         private DevExpress.XtraBars.Navigation.TabPane tabPaneMenuItem;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageAppearance;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageCommandLine;
@@ -431,5 +441,7 @@
         private DevExpress.XtraEditors.CheckEdit checkEditRunAsAdministrator;
         private System.Windows.Forms.PictureBox pictureBoxMenuItemInfo;
         private DevExpress.XtraEditors.SimpleButton simpleButtonTest;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonImport;
+        private System.Windows.Forms.OpenFileDialog openFileDialogMenuItem;
     }
 }

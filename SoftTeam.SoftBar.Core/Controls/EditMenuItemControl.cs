@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 
@@ -75,43 +75,43 @@ namespace SoftTeam.SoftBar.Core.Controls
         #region Events
         private void simpleButtonIconPathBrowse_Click(object sender, EventArgs e)
         {
-            xtraOpenFileDialogMenuItem.InitialDirectory = textEditIconPath.Text;
-            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
-            xtraOpenFileDialogMenuItem.CheckFileExists = true;
-            xtraOpenFileDialogMenuItem.FilterIndex = 7;
-            DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
+            openFileDialogMenuItem.InitialDirectory = textEditIconPath.Text;
+            openFileDialogMenuItem.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
+            openFileDialogMenuItem.CheckFileExists = true;
+            openFileDialogMenuItem.FilterIndex = 7;
+            DialogResult result = openFileDialogMenuItem.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                textEditIconPath.Text = xtraOpenFileDialogMenuItem.FileName;
+                textEditIconPath.Text = openFileDialogMenuItem.FileName;
                 UpdateImage();
             }
         }
 
         private void simpleButtonApplicationPathBrowse_Click(object sender, EventArgs e)
         {
-            xtraOpenFileDialogMenuItem.InitialDirectory = textEditApplicationPath.Text;
-            xtraOpenFileDialogMenuItem.Filter = "Applications (*.exe)|*.exe|All files (*.*)|*.*";
-            xtraOpenFileDialogMenuItem.CheckFileExists = true;
-            xtraOpenFileDialogMenuItem.FilterIndex = 0;
-            DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
+            openFileDialogMenuItem.InitialDirectory = textEditApplicationPath.Text;
+            openFileDialogMenuItem.Filter = "Applications (*.exe)|*.exe|All files (*.*)|*.*";
+            openFileDialogMenuItem.CheckFileExists = true;
+            openFileDialogMenuItem.FilterIndex = 0;
+            DialogResult result = openFileDialogMenuItem.ShowDialog();
 
             if (result == DialogResult.OK)
             {
-                textEditApplicationPath.Text = xtraOpenFileDialogMenuItem.FileName;
+                textEditApplicationPath.Text = openFileDialogMenuItem.FileName;
             }
         }
 
         private void simpleButtonDocumentPathBrowse_Click(object sender, EventArgs e)
         {
-            xtraOpenFileDialogMenuItem.InitialDirectory = textEditDocumentPath.Text;
-            xtraOpenFileDialogMenuItem.Filter = "All files (*.*)|*.*";
-            xtraOpenFileDialogMenuItem.CheckFileExists = true;
-            xtraOpenFileDialogMenuItem.FilterIndex = 0;
-            DialogResult result = xtraOpenFileDialogMenuItem.ShowDialog();
+            openFileDialogMenuItem.InitialDirectory = textEditDocumentPath.Text;
+            openFileDialogMenuItem.Filter = "All files (*.*)|*.*";
+            openFileDialogMenuItem.CheckFileExists = true;
+            openFileDialogMenuItem.FilterIndex = 0;
+            DialogResult result = openFileDialogMenuItem.ShowDialog();
 
             if (result == DialogResult.OK)
-                textEditDocumentPath.Text = xtraOpenFileDialogMenuItem.FileName;
+                textEditDocumentPath.Text = openFileDialogMenuItem.FileName;
         }
 
         private void textEditIconPath_EditValueChanged(object sender, EventArgs e)
@@ -151,6 +151,35 @@ namespace SoftTeam.SoftBar.Core.Controls
 
             using (CommandLineHelper cmd = new CommandLineHelper(ApplicationPath, DocumentPath, Parameters, RunAsAdministrator))
                 cmd.Execute();
+        }
+
+        private void simpleButtonImport_Click(object sender, EventArgs e)
+        {
+            openFileDialogMenuItem.InitialDirectory = (Environment.GetFolderPath(Environment.SpecialFolder.StartMenu));
+            openFileDialogMenuItem.Filter = "Link files (*.lnk)|*.lnk|All files (*.*)|*.*";
+            openFileDialogMenuItem.CheckFileExists = true;
+            openFileDialogMenuItem.FilterIndex = 0;
+            DialogResult result = openFileDialogMenuItem.ShowDialog();
+
+            if (result == DialogResult.OK)
+            {
+                if (System.IO.File.Exists(openFileDialogMenuItem.FileName))
+                {
+                    string directory = Path.GetDirectoryName(openFileDialogMenuItem.FileName);
+                    string file = Path.GetFileName(openFileDialogMenuItem.FileName);
+                    string name = Path.GetFileNameWithoutExtension(openFileDialogMenuItem.FileName);
+
+                    Shell32.Shell shell = new Shell32.Shell();
+                    Shell32.Folder folder = shell.NameSpace(directory);
+                    Shell32.FolderItem folderItem = folder.ParseName(file);
+
+                    Shell32.ShellLinkObject link = (Shell32.ShellLinkObject)folderItem.GetLink;
+
+                    textEditName.Text = name;
+                    textEditIconPath.Text = link.Path;
+                    textEditApplicationPath.Text = link.Path;
+                }
+            }
         }
     }
     #endregion
