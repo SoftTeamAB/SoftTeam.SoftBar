@@ -17,7 +17,7 @@ namespace SoftTeam.SoftBar.Core.Settings
         #region Properties and overrides
         public Image Image
         {
-            get { return SoftTeam.SoftBar.Core.Properties.Resources.Directories; }
+            get { return SoftTeam.SoftBar.Core.Properties.Resources.folder; }
         }
 
 

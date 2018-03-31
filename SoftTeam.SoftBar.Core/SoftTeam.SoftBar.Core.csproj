@@ -252,21 +252,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\folder_document.png" />
-    <None Include="Resources\folder_into.png" />
-    <None Include="Resources\hard_drive_network.png" />
-    <None Include="Resources\memorystick.png" />
-    <None Include="Resources\cd.png" />
-    <None Include="Resources\floppy_drive.png" />
-    <None Include="Resources\hard_drive.png" />
-    <None Include="Resources\folder.png" />
-    <None Include="Resources\gear.png" />
     <None Include="Resources\moon.png" />
-    <None Include="Resources\recycle.png" />
     <None Include="Resources\sign_warning_small.png" />
     <None Include="Resources\sign_warning.png" />
-    <None Include="Resources\preferences.png" />
-    <None Include="Resources\delete.png" />
     <None Include="Resources\add.png" />
   </ItemGroup>
   <ItemGroup>
@@ -325,25 +313,31 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\folder_music.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder_movie.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\information.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="PHSAppBar.txt" />
+    <None Include="Resources\tag.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\server_network.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\recycle.png" />
+    <None Include="Resources\preferences.png" />
+    <None Include="Resources\folder_music.png" />
+    <None Include="Resources\folder_movie.png" />
+    <None Include="Resources\memorystick.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\hard_drive_network.png" />
+    <None Include="Resources\hard_drive.png" />
+    <None Include="Resources\floppy_drive.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\folder_into.png" />
+    <None Include="Resources\folder_document.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\clipboard.png" />
+    <None Include="Resources\cd.png" />
     <None Include="Resources\empty.svg" />
     <None Include="Resources\clipboard_medium.png" />
     <None Include="Resources\folder_medium.png" />
     <None Include="Resources\sign_warning_medium.png" />
     <None Include="Resources\toolbox.png" />
-    <None Include="Resources\server_network.png" />
-    <None Include="Resources\server.png" />
-    <None Include="Resources\tag.png" />
-    <None Include="Resources\clipboard.png" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

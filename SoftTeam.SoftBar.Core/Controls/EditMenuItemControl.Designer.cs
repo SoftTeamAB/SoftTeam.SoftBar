@@ -125,7 +125,7 @@
             this.labelControlIconPath.Name = "labelControlIconPath";
             this.labelControlIconPath.Size = new System.Drawing.Size(87, 13);
             this.labelControlIconPath.TabIndex = 13;
-            this.labelControlIconPath.Text = "Icon path (16x16)";
+            this.labelControlIconPath.Text = "Icon path (24x24)";
             // 
             // labelControlEditMenu
             // 

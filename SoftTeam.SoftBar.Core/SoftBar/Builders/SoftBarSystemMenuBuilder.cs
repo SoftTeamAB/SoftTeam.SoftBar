@@ -61,14 +61,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             // Settings for the app bar
             SoftBarMenuItem settingsItem = new SoftBarMenuItem(_form, "Settings", true);
             settingsItem.Setup();
-            settingsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Settings);
+            settingsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.settings);
             settingsItem.Item.ItemClick += _softBarArea.SettingsItem_ItemClick;
             systemMenu.Item.AddItem(settingsItem.Item);
 
             // Settings for the app bar
             SoftBarMenuItem customizeItem = new SoftBarMenuItem(_form, "Customize", true);
             customizeItem.Setup();
-            customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Preferences);
+            customizeItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.preferences);
             customizeItem.Item.ItemClick += _softBarArea.CustomizeItem_ItemClick;
             systemMenu.Item.AddItem(customizeItem.Item);
 
@@ -83,7 +83,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             // Exit the app bar
             SoftBarMenuItem exitItem = new SoftBarMenuItem(_form, "Exit", true);
             exitItem.Setup();
-            exitItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Exit);
+            exitItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.exit);
             exitItem.Item.ItemClick += _softBarArea.ExitItem_ItemClick;
             systemMenu.Item.AddItem(exitItem.Item);
             exitItem.Item.Links[0].BeginGroup = true;
@@ -106,7 +106,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             SoftBarSubMenu myDirectoriesSubMenu=null;
             if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders))
             {
-                myDirectoriesSubMenu = new SoftBarSubMenu(_form, "My folders", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories));
+                myDirectoriesSubMenu = new SoftBarSubMenu(_form, "My folders", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder));
                 myDirectoriesSubMenu.Setup(directoriesMenu);
                 directoriesMenu.Item.AddItem(myDirectoriesSubMenu.Item);
             }
@@ -115,7 +115,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem myDirectoryItem = new SoftBarMenuItem(_form, directory.Name, true);
                 myDirectoryItem.Setup();
-                myDirectoryItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+                myDirectoryItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder);
                 myDirectoryItem.Item.Tag = directory;
                 myDirectoryItem.Item.ItemClick += _softBarArea.MyDirectory_ItemClick;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders))
@@ -130,7 +130,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             SoftBarSubMenu myDrivesSubMenu = null;
             if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyDrives))
             {
-                myDrivesSubMenu = new SoftBarSubMenu(_form, "My drives", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories));
+                myDrivesSubMenu = new SoftBarSubMenu(_form, "My drives", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder));
                 myDrivesSubMenu.Setup(directoriesMenu);
                 directoriesMenu.Item.AddItem(myDrivesSubMenu.Item);
             }
@@ -183,7 +183,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             SoftBarSubMenu mySpecialFoldersSubMenu = null;
             if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
             {
-                mySpecialFoldersSubMenu = new SoftBarSubMenu(_form, "My special folders", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories));
+                mySpecialFoldersSubMenu = new SoftBarSubMenu(_form, "My special folders", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder));
                 mySpecialFoldersSubMenu.Setup(directoriesMenu);
                 directoriesMenu.Item.AddItem(mySpecialFoldersSubMenu.Item);
             }
@@ -193,7 +193,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem desktopItem = new SoftBarMenuItem(_form, "Desktop", true);
                 desktopItem.Setup();
-                desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+                desktopItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder);
                 desktopItem.Item.ItemClick += _softBarArea.DesktopItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(desktopItem.Item);
@@ -207,7 +207,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem documentsItem = new SoftBarMenuItem(_form, "Documents", true);
                 documentsItem.Setup();
-                documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Document);
+                documentsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.document);
                 documentsItem.Item.ItemClick += _softBarArea.DocumentsItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(documentsItem.Item);
@@ -220,7 +220,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem downloadsItem = new SoftBarMenuItem(_form, "Downloads", true);
                 downloadsItem.Setup();
-                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Download);
+                downloadsItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.download);
                 downloadsItem.Item.ItemClick += _softBarArea.DownloadsItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(downloadsItem.Item);
@@ -233,7 +233,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem picturesItem = new SoftBarMenuItem(_form, "Pictures", true);
                 picturesItem.Setup();
-                picturesItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Directories);
+                picturesItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder);
                 picturesItem.Item.ItemClick += _softBarArea.PicturesItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(picturesItem.Item);
@@ -246,7 +246,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem videosItem = new SoftBarMenuItem(_form, "Videos", true);
                 videosItem.Setup();
-                videosItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Movies);
+                videosItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.movies);
                 videosItem.Item.ItemClick += _softBarArea.VideosItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(videosItem.Item);
@@ -259,7 +259,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem musicItem = new SoftBarMenuItem(_form, "Music", true);
                 musicItem.Setup();
-                musicItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Music);
+                musicItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.music);
                 musicItem.Item.ItemClick += _softBarArea.MusicItem_ItemClick; ;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(musicItem.Item);
@@ -279,7 +279,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             toolsMenu.Setup();
             toolsMenu.Button.Click += _softBarArea.Button_Click;
             toolsMenu.Button.Tag = toolsMenu;
-            toolsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.ToolsMenu);
+            toolsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.tools);
 
             // Add all tools
             foreach (var tool in _settingsManager.Settings.MyTools)

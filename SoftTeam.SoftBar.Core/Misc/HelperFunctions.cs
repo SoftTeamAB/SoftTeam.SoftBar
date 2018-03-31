@@ -71,7 +71,7 @@ namespace SoftTeam.SoftBar.Core.Misc
         //    return path;
         //}
 
-        public static Image GetFileImage(string path, ImageSize size = ImageSize.Small_16x16)
+        public static Image GetFileImage(string path, ImageSize size = ImageSize.Medium_24x24)
         {
             if (string.IsNullOrEmpty(path))
                 return null;

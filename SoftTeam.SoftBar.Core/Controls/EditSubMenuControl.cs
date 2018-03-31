@@ -63,7 +63,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage(string path)
         {
-            pictureBoxIcon.Image = HelperFunctions.GetFileImage(path, ImageSize.Small_16x16);
+            pictureBoxIcon.Image = HelperFunctions.GetFileImage(path, ImageSize.Medium_24x24);
         }
         #endregion
 
