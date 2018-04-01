@@ -26,6 +26,25 @@ namespace SoftTeam.SoftBar.Core.Forms
             _settingsManager = new SettingsManager(manager.FileManager.SettingsPath);
             LoadSettings();
 
+            // Set tab page and control captions
+            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu";
+            tabNavigationPageMyDirectories.Caption = $"My folders ({textEditDirectoriesMenuName.Text} menu)";
+            tabNavigationPageMyTools.Caption = $"{textEditToolsMenuName.Text} menu";
+
+            labelControlSystemMenuWidth.Text = $"{textEditSystemMenuName.Text} menu";
+            labelControlSystemMenuName.Text = $"{textEditSystemMenuName.Text} menu";
+
+            checkEditShowDirectoriesMenu.Text = $"{textEditDirectoriesMenuName.Text} menu";
+            labelControlDirectoriesMenuWidth.Text = $"{textEditDirectoriesMenuName.Text} menu";
+            labelControlDirectoriesMenuName.Text = $"{textEditDirectoriesMenuName.Text} menu";
+
+            checkEditShowToolsMenu.Text = $"{textEditToolsMenuName.Text} menu";
+            labelControlToolsMenuWidth.Text = $"{textEditToolsMenuName.Text} menu";
+            labelControlToolsMenuName.Text = $"{textEditToolsMenuName.Text} menu";
+
+            labelControlMyDirectoriesHeader.Text = $"Add any additional directories that you want to show in the {textEditDirectoriesMenuName.Text} menu";
+            labelControlToolsHeader.Text = $"Add any Windows tools that you want in the {textEditToolsMenuName.Text} menu";
+
             tabPaneSettings.SelectedPage = tabNavigationPageGeneral;
         }
         #endregion
@@ -288,6 +307,59 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
 
             DevExpress.LookAndFeel.UserLookAndFeel.Default.SkinName = HelperFunctions.GetThemeName(comboBoxEditTheme.SelectedIndex);
+        }
+
+        private void textEditSystemMenuName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textEditSystemMenuName.Text))
+            {
+                XtraMessageBox.Show("The System menu name cannot be empty!");
+                textEditSystemMenuName.Focus();
+                textEditSystemMenuName.Select();
+                return;
+            }
+
+            labelControlSystemMenuWidth.Text = $"{textEditSystemMenuName.Text} menu";
+            labelControlSystemMenuName.Text = $"{textEditSystemMenuName.Text} menu";
+        }
+
+        private void textEditDirectoriesMenuName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textEditDirectoriesMenuName.Text))
+            {
+                XtraMessageBox.Show("The Directories menu name cannot be empty!");
+                textEditDirectoriesMenuName.Focus();
+                textEditDirectoriesMenuName.Select();
+                return;
+            }
+
+            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu";
+            tabNavigationPageMyDirectories.Caption = $"My folders ({textEditDirectoriesMenuName.Text} menu)";
+
+            checkEditShowDirectoriesMenu.Text = $"{textEditDirectoriesMenuName.Text} menu";
+            labelControlDirectoriesMenuWidth.Text = $"{textEditDirectoriesMenuName.Text} menu";
+            labelControlDirectoriesMenuName.Text = $"{textEditDirectoriesMenuName.Text} menu";
+
+            labelControlMyDirectoriesHeader.Text = $"Add any additional directories that you want to show in the {textEditDirectoriesMenuName.Text} menu";
+        }
+
+        private void textEditToolsMenuName_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textEditToolsMenuName.Text))
+            {
+                XtraMessageBox.Show("The Tools menu name cannot be empty!");
+                textEditToolsMenuName.Focus();
+                textEditToolsMenuName.Select();
+                return;
+            }
+
+            tabNavigationPageMyTools.Caption = $"{textEditToolsMenuName.Text} menu";
+
+            checkEditShowToolsMenu.Text = $"{textEditToolsMenuName.Text} menu";
+            labelControlToolsMenuWidth.Text = $"{textEditToolsMenuName.Text} menu";
+            labelControlToolsMenuName.Text = $"{textEditToolsMenuName.Text} menu";
+
+            labelControlToolsHeader.Text = $"Add any Windows tools that you want in the {textEditToolsMenuName.Text} menu";
         }
     }
 }
