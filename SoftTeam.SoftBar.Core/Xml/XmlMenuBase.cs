@@ -22,6 +22,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         public List<XmlMenuItemBase> MenuItems { get => _menuItems; set => _menuItems = value; }
         #endregion
 
+        #region Helper functions
         public XmlMenuBase GetParent(XmlMenuItemBase childItem)
         {
             if (childItem == null)
@@ -42,5 +43,6 @@ namespace SoftTeam.SoftBar.Core.Xml
 
             return null;
         }
+        #endregion
     }
 }

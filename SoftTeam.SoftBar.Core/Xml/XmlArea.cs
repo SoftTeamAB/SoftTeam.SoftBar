@@ -40,6 +40,7 @@ namespace SoftTeam.SoftBar.Core.Xml
         }
         #endregion
 
+        #region Helper functions
         public XmlMenuBase GetParent(XmlMenuItemBase childItem)
         {
             if (childItem == null)
@@ -66,7 +67,7 @@ namespace SoftTeam.SoftBar.Core.Xml
                 return (XmlMenu)childItem;
 
             var parent = GetParent(childItem);
-            while(parent !=null)
+            while (parent != null)
             {
                 var nextParent = GetParent(parent);
                 if (nextParent == null)
@@ -77,5 +78,6 @@ namespace SoftTeam.SoftBar.Core.Xml
 
             return null;
         }
+        #endregion
     }
 }
