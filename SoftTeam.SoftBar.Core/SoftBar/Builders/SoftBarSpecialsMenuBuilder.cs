@@ -3,7 +3,9 @@ using DevExpress.Utils.Svg;
 using DevExpress.XtraBars;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Misc;
+using System;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 {
@@ -74,7 +76,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                     // where the text will be drawned
                     var text = ((ClipboardItemText)item).Text.RestrictSize();
                     cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
-                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 16);
+                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 14);
                 }
                 else if (item is ClipboardItemImage)
                 {
@@ -118,6 +120,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 e.DrawBackground();
                 e.DrawGlyph();
+                DrawBorder(e.Graphics, e.Bounds);
 
                 if (link.Item.Tag is ClipboardItemText)
                 {
@@ -127,7 +130,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                     // Get the text that should be drawned
                     var text = ((ClipboardItemText)link.Item.Tag).Text.RestrictSize();
                     // Get the position to draw the text
-                    var point = new Point(e.Bounds.Location.X + 2, e.Bounds.Location.Y + 2);
+                    var point = new Point(e.Bounds.Location.X + 2, e.Bounds.Location.Y + 5);
                     // Draw the text
                     e.Graphics.DrawString(text, font, new SolidBrush(color), point);
                     e.Handled = true;
@@ -168,6 +171,14 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             var point = new Point(bounds.Location.X + 32, bounds.Location.Y + 4);
             // Draw the text
             g.DrawString(text, font, new SolidBrush(color), point);
+        }
+
+        private void DrawBorder(Graphics g, Rectangle bounds)
+        {
+            // Draw the border arounde the clipboard item
+            var color = Color.DarkGray;
+            bounds.Inflate(-1, -1);
+            ControlPaint.DrawBorder(g, bounds, color, ButtonBorderStyle.Dashed);
         }
     }
     #endregion
