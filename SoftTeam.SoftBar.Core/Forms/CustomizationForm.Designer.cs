@@ -604,6 +604,7 @@
             this.Name = "CustomizationForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SoftBar customization form";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomizationForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerCustomization)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControlScroll)).EndInit();
             this.panelControlScroll.ResumeLayout(false);
@@ -644,11 +645,11 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonSave;
         private DevExpress.XtraEditors.SimpleButton simpleButtonCancel;
         private DevExpress.XtraEditors.PanelControl panelControlScroll;
-        private System.Windows.Forms.PictureBox pictureBoxPlacementInfo;
         private DevExpress.Utils.ToolTipController toolTipControllerCustomization;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMoveUp;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMoveDown;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuMoveUp;
         private DevExpress.XtraBars.BarButtonItem barButtonItemMenuMoveDown;
+        private System.Windows.Forms.PictureBox pictureBoxPlacementInfo;
     }
 }

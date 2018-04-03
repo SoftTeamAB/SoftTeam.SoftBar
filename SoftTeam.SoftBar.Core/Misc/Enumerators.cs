@@ -1,5 +1,13 @@
 ﻿namespace SoftTeam.SoftBar.Core.Misc
 {
+    public enum ItemPosition
+    {
+        None,
+        Before,
+        Inside,
+        After
+    }
+
     public enum UserTypeEnum
     {
         None = 0,
