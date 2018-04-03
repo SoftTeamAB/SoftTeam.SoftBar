@@ -96,9 +96,9 @@
             // 
             // pictureBoxIcon
             // 
-            this.pictureBoxIcon.Location = new System.Drawing.Point(19, 11);
+            this.pictureBoxIcon.Location = new System.Drawing.Point(17, 8);
             this.pictureBoxIcon.Name = "pictureBoxIcon";
-            this.pictureBoxIcon.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxIcon.Size = new System.Drawing.Size(24, 24);
             this.pictureBoxIcon.TabIndex = 16;
             this.pictureBoxIcon.TabStop = false;
             // 
@@ -140,7 +140,7 @@
             this.labelControlEditMenu.Name = "labelControlEditMenu";
             this.labelControlEditMenu.Size = new System.Drawing.Size(394, 19);
             this.labelControlEditMenu.TabIndex = 12;
-            this.labelControlEditMenu.Text = "Edit menu";
+            this.labelControlEditMenu.Text = "Edit menu item";
             // 
             // checkEditBeginGroup
             // 
@@ -377,7 +377,7 @@
             // simpleButtonImport
             // 
             this.simpleButtonImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonImport.ImageOptions.Image")));
-            this.simpleButtonImport.Location = new System.Drawing.Point(360, 9);
+            this.simpleButtonImport.Location = new System.Drawing.Point(360, 6);
             this.simpleButtonImport.Name = "simpleButtonImport";
             this.simpleButtonImport.Size = new System.Drawing.Size(28, 28);
             this.simpleButtonImport.TabIndex = 26;
