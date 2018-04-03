@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MyDirectoryForm));
             this.textEditPath = new DevExpress.XtraEditors.TextEdit();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
@@ -41,6 +42,7 @@
             this.checkEditBegingGroup = new DevExpress.XtraEditors.CheckEdit();
             this.labelControlBeginGroup = new DevExpress.XtraEditors.LabelControl();
             this.folderBrowserDialogMyDirectory = new System.Windows.Forms.FolderBrowserDialog();
+            this.openFileDialogMyDirectories = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.textEditPath.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -57,6 +59,7 @@
             // simpleButtonSave
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
             this.simpleButtonSave.Location = new System.Drawing.Point(156, 199);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(75, 32);
@@ -67,6 +70,8 @@
             // simpleButtonCancel
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
             this.simpleButtonCancel.Location = new System.Drawing.Point(237, 199);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(75, 32);
@@ -154,10 +159,16 @@
             this.labelControlBeginGroup.TabIndex = 11;
             this.labelControlBeginGroup.Text = "Begin group :";
             // 
+            // openFileDialogMyDirectories
+            // 
+            this.openFileDialogMyDirectories.FileName = "openFileDialog1";
+            // 
             // MyDirectoryForm
             // 
+            this.AcceptButton = this.simpleButtonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.simpleButtonCancel;
             this.ClientSize = new System.Drawing.Size(324, 243);
             this.Controls.Add(this.labelControlBeginGroup);
             this.Controls.Add(this.checkEditBegingGroup);
@@ -176,7 +187,7 @@
             this.MinimizeBox = false;
             this.Name = "MyDirectoryForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "My directory";
+            this.Text = "My folder";
             ((System.ComponentModel.ISupportInitialize)(this.textEditPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).EndInit();
@@ -201,5 +212,6 @@
         private DevExpress.XtraEditors.CheckEdit checkEditBegingGroup;
         private DevExpress.XtraEditors.LabelControl labelControlBeginGroup;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialogMyDirectory;
+        private System.Windows.Forms.OpenFileDialog openFileDialogMyDirectories;
     }
 }

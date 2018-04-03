@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CustomizationMenuItemForm));
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonOk = new DevExpress.XtraEditors.SimpleButton();
             this.editMenu = new SoftTeam.SoftBar.Core.Controls.EditMenuControl();
@@ -39,9 +40,11 @@
             // simpleButtonCancel
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonCancel.Location = new System.Drawing.Point(309, 266);
+            this.simpleButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
+            this.simpleButtonCancel.Location = new System.Drawing.Point(309, 258);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
-            this.simpleButtonCancel.Size = new System.Drawing.Size(75, 23);
+            this.simpleButtonCancel.Size = new System.Drawing.Size(75, 33);
             this.simpleButtonCancel.TabIndex = 1;
             this.simpleButtonCancel.Text = "&Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
@@ -49,9 +52,10 @@
             // simpleButtonOk
             // 
             this.simpleButtonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButtonOk.Location = new System.Drawing.Point(228, 266);
+            this.simpleButtonOk.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonOk.ImageOptions.Image")));
+            this.simpleButtonOk.Location = new System.Drawing.Point(228, 258);
             this.simpleButtonOk.Name = "simpleButtonOk";
-            this.simpleButtonOk.Size = new System.Drawing.Size(75, 23);
+            this.simpleButtonOk.Size = new System.Drawing.Size(75, 33);
             this.simpleButtonOk.TabIndex = 2;
             this.simpleButtonOk.Text = "&OK";
             this.simpleButtonOk.Click += new System.EventHandler(this.simpleButtonOk_Click);
@@ -61,6 +65,7 @@
             this.editMenu.BeginGroup = false;
             this.editMenu.IconPath = "";
             this.editMenu.Location = new System.Drawing.Point(0, 0);
+            this.editMenu.MenuWidth = 0;
             this.editMenu.Name = "editMenu";
             this.editMenu.Size = new System.Drawing.Size(400, 250);
             this.editMenu.TabIndex = 0;
@@ -91,13 +96,16 @@
             this.editMenuItem.Location = new System.Drawing.Point(0, 0);
             this.editMenuItem.Name = "editMenuItem";
             this.editMenuItem.Parameters = "";
+            this.editMenuItem.RunAsAdministrator = false;
             this.editMenuItem.Size = new System.Drawing.Size(400, 250);
             this.editMenuItem.TabIndex = 5;
             // 
-            // CustomizeMenuItem
+            // CustomizationMenuItemForm
             // 
+            this.AcceptButton = this.simpleButtonOk;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.simpleButtonCancel;
             this.ClientSize = new System.Drawing.Size(400, 303);
             this.Controls.Add(this.editMenuItem);
             this.Controls.Add(this.editSubMenu);
@@ -108,7 +116,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CustomizeMenuItem";
+            this.Name = "CustomizationMenuItemForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Customize menu item";
             this.ResumeLayout(false);

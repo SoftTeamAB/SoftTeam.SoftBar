@@ -84,6 +84,7 @@
             // simpleButtonCancel
             // 
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
             this.simpleButtonCancel.Location = new System.Drawing.Point(246, 183);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
@@ -105,8 +106,10 @@
             // 
             // ChooseDirectoryForm
             // 
+            this.AcceptButton = this.simpleButtonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.simpleButtonCancel;
             this.ClientSize = new System.Drawing.Size(361, 235);
             this.Controls.Add(this.simpleButtonSave);
             this.Controls.Add(this.simpleButtonCancel);

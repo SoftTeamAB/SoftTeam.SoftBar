@@ -70,7 +70,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             button.ImageOptions.ImageToTextAlignment = ImageAlignToText.LeftCenter;
             button.Appearance.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
             button.ImageOptions.ImageToTextIndent = 7;
-            button.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
+            //button.ShowFocusRectangle = DevExpress.Utils.DefaultBoolean.False;
 
             // Add the button to the form
             Form.Controls.Add(button);

@@ -103,7 +103,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             directoriesMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder_medium);
 
             // My directories
-            SoftBarSubMenu myDirectoriesSubMenu=null;
+            SoftBarSubMenu myDirectoriesSubMenu = null;
             if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders))
             {
                 myDirectoriesSubMenu = new SoftBarSubMenu(_form, "My folders", new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder));
@@ -115,7 +115,11 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             {
                 SoftBarMenuItem myDirectoryItem = new SoftBarMenuItem(_form, directory.Name, true);
                 myDirectoryItem.Setup();
-                myDirectoryItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder);
+                if (string.IsNullOrEmpty(directory.IconPath))
+                    myDirectoryItem.Item.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.folder);
+                else
+                    myDirectoryItem.Item.ImageOptions.Image = Bitmap.FromFile(directory.IconPath);
+
                 myDirectoryItem.Item.Tag = directory;
                 myDirectoryItem.Item.ItemClick += _softBarArea.MyDirectory_ItemClick;
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMyFolders))
@@ -238,7 +242,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 if (_settingsManager.Settings.GetBooleanSetting(Constants.DirectoriesMenu_SubFolderMySpecialFolders))
                     mySpecialFoldersSubMenu.Item.AddItem(picturesItem.Item);
                 else
-                    directoriesMenu.Item.AddItem(picturesItem.Item);                
+                    directoriesMenu.Item.AddItem(picturesItem.Item);
             }
 
             // Add special directory for the videos folder

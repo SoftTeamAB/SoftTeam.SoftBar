@@ -189,6 +189,13 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonCancel_Click(object sender, EventArgs e)
         {
+            DialogResult result = XtraMessageBox.Show("All changes will be lost! Are you sure?", "Cancel?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                this.DialogResult = DialogResult.None;
+                return;
+            }
+
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }

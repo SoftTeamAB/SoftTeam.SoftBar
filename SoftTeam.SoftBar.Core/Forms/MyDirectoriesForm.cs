@@ -72,12 +72,14 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void simpleButtonBrowseIconPath_Click(object sender, EventArgs e)
         {
-            DialogResult result = folderBrowserDialogMyDirectory.ShowDialog();
+            openFileDialogMyDirectories.InitialDirectory = textEditIconPath.Text;
+            openFileDialogMyDirectories.Filter = "Applications (*.exe;*.dll)|*.exe;*.dll|Bitmap images|*.bmp|GIF images|*.gif|JPEG images|*.jpg; *.jpeg; *.jpe; *.jif; *.jfif; *.jfi|PNG images|*.png|TIFF images|*.tiff; *.tif|All files|*.*";
+            openFileDialogMyDirectories.CheckFileExists = true;
+            openFileDialogMyDirectories.FilterIndex = 7;
+            DialogResult result = openFileDialogMyDirectories.ShowDialog();
 
-            if (result == DialogResult.Cancel)
-                return;
-
-            textEditIconPath.Text = folderBrowserDialogMyDirectory.SelectedPath;
+            if (result == DialogResult.OK)
+                textEditIconPath.Text = openFileDialogMyDirectories.FileName;
         }
         #endregion
     }

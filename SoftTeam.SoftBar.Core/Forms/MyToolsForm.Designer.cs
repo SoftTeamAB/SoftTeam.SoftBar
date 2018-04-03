@@ -78,7 +78,7 @@
             this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
             this.textEditToolName = new DevExpress.XtraEditors.TextEdit();
             this.labelControlToolName = new DevExpress.XtraEditors.LabelControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.simpleButtonIconPathBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.textEditToolIconPath = new DevExpress.XtraEditors.TextEdit();
             this.labelControlToolIconPath = new DevExpress.XtraEditors.LabelControl();
             this.textEditToolParameters = new DevExpress.XtraEditors.TextEdit();
@@ -570,6 +570,7 @@
             // 
             // simpleButtonCancel
             // 
+            this.simpleButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
             this.simpleButtonCancel.Location = new System.Drawing.Point(476, 474);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
@@ -585,7 +586,7 @@
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(75, 32);
             this.simpleButtonSave.TabIndex = 44;
-            this.simpleButtonSave.Text = "Add";
+            this.simpleButtonSave.Text = "Save";
             this.simpleButtonSave.Click += new System.EventHandler(this.simpleButtonSave_Click);
             // 
             // simpleButtonBrowse
@@ -624,13 +625,13 @@
             this.labelControlToolName.TabIndex = 47;
             this.labelControlToolName.Text = "Name";
             // 
-            // simpleButton1
+            // simpleButtonIconPathBrowse
             // 
-            this.simpleButton1.Location = new System.Drawing.Point(322, 145);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(22, 23);
-            this.simpleButton1.TabIndex = 51;
-            this.simpleButton1.Text = "...";
+            this.simpleButtonIconPathBrowse.Location = new System.Drawing.Point(322, 145);
+            this.simpleButtonIconPathBrowse.Name = "simpleButtonIconPathBrowse";
+            this.simpleButtonIconPathBrowse.Size = new System.Drawing.Size(22, 23);
+            this.simpleButtonIconPathBrowse.TabIndex = 51;
+            this.simpleButtonIconPathBrowse.Text = "...";
             // 
             // textEditToolIconPath
             // 
@@ -694,7 +695,7 @@
             this.groupControlTool.Controls.Add(this.textEditToolPath);
             this.groupControlTool.Controls.Add(this.labelControlToolParameters);
             this.groupControlTool.Controls.Add(this.simpleButtonBrowse);
-            this.groupControlTool.Controls.Add(this.simpleButton1);
+            this.groupControlTool.Controls.Add(this.simpleButtonIconPathBrowse);
             this.groupControlTool.Controls.Add(this.labelControlToolName);
             this.groupControlTool.Controls.Add(this.textEditToolIconPath);
             this.groupControlTool.Controls.Add(this.labelControlToolIconPath);
@@ -710,8 +711,10 @@
             // 
             // MyToolsForm
             // 
+            this.AcceptButton = this.simpleButtonSave;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.simpleButtonCancel;
             this.ClientSize = new System.Drawing.Size(563, 528);
             this.Controls.Add(this.simpleButtonTest);
             this.Controls.Add(this.simpleButtonSave);
@@ -848,7 +851,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButtonTest;
         private DevExpress.XtraEditors.TextEdit textEditToolName;
         private DevExpress.XtraEditors.LabelControl labelControlToolName;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton simpleButtonIconPathBrowse;
         private DevExpress.XtraEditors.TextEdit textEditToolIconPath;
         private DevExpress.XtraEditors.LabelControl labelControlToolIconPath;
         private DevExpress.XtraEditors.TextEdit textEditToolParameters;
