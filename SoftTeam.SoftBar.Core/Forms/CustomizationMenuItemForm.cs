@@ -106,7 +106,9 @@ namespace SoftTeam.SoftBar.Core.Forms
                     _subMenu.BeginGroup = editSubMenu.BeginGroup;
                     break;
                 case MenuItemType.MenuItem:
-                    editMenuItem.SaveValues();
+                    // The user might cancel the save
+                    bool result = editMenuItem.SaveValues();
+                    if (!result) return;
 
                     _menuItem.Name = editMenuItem.Name;
                     _menuItem.IconPath = editMenuItem.IconPath;

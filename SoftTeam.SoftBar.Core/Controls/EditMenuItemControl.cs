@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Misc;
 
@@ -54,7 +55,7 @@ namespace SoftTeam.SoftBar.Core.Controls
             UpdateImage();
         }
 
-        public void SaveValues()
+        public bool SaveValues(bool checkPaths = true)
         {
             Name = textEditName.Text;
             IconPath = textEditIconPath.Text;
@@ -64,6 +65,18 @@ namespace SoftTeam.SoftBar.Core.Controls
             ApplicationPath = textEditApplicationPath.Text;
             DocumentPath = textEditDocumentPath.Text;
             Parameters = textEditParameters.Text;
+
+            if (checkPaths)
+            {
+                if (string.IsNullOrEmpty(ApplicationPath) && string.IsNullOrEmpty(IconPath))
+                {
+                    DialogResult result = XtraMessageBox.Show("For this item to do anything, it need either an Application Path or an Document Path. Do you really want to save?", "Missing paths!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (result == DialogResult.No)
+                        return false;
+                }
+            }
+                
+            return true;
         }
 
         private void UpdateImage()
@@ -147,7 +160,7 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void simpleButtonTest_Click(object sender, EventArgs e)
         {
-            SaveValues();
+            SaveValues(false);
 
             using (CommandLineHelper cmd = new CommandLineHelper(ApplicationPath, DocumentPath, Parameters, RunAsAdministrator))
                 cmd.Execute();
