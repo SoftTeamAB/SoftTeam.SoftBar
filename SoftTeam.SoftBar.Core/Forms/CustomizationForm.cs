@@ -246,6 +246,9 @@ namespace SoftTeam.SoftBar.Core.Forms
                 var firstMenu = CreateMenu();
                 if (firstMenu == null) return;
                 _area.Menus.Add((XmlMenu)firstMenu);
+                _selectedNode = firstMenu;
+                RefreshMenuItems();
+                EnableDisableMenus();
                 return;
             }
 
@@ -253,19 +256,20 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "A node must be selected to indicate where the new menu should be created.\n\nSelect a node, to create a sub menu in the first position in that menu.\n\nPlease select a node and click <b>Add menu</b> again.";
+                var message = "A node must be selected to indicate where the new menu should be created. Please select a node and click <b>Add menu</b> again.";
                 XtraMessageBox.Show(message, "No node selected...");
                 return;
             }
 
+            // Create the new menu before or after the selected nodes parent menu
+            var parentMenu = _area.GetParentMenu(selected);
+
             // Never allow menus inside menus
-            var position = GetPosition(selected, false);
+            var position = GetPosition(parentMenu, false);
 
             var menu = CreateMenu();
             if (menu == null) return;
 
-            // Create the new menu before or after the selected nodes parent menu
-            var parentMenu = _area.GetParentMenu(selected);
             if (position == ItemPosition.Before)
                 _area.Menus.Insert(_area.Menus.IndexOf(parentMenu), (XmlMenu)menu);
             else
@@ -283,12 +287,16 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "A node must be selected to indicate where the new sub menu should be created!\n\nSelect a menu node, or sub menu node, to create a sub menu in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new sub menu node after the selected item node.";
+                var message = "A node must be selected to indicate where the new sub menu node should be created!";
                 XtraMessageBox.Show(message, "No node selected...");
                 return;
             }
 
-            var position = GetPosition(selected, selected is XmlMenu || selected is XmlSubMenu);
+            ItemPosition position = ItemPosition.None;
+            if (selected is XmlMenu)
+                position = ItemPosition.Inside;
+            else
+                position = GetPosition(selected, selected is XmlSubMenu);
 
             var subMenu = CreateSubMenu();
             if (subMenu == null) return;
@@ -347,12 +355,16 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "A node must be selected to indicate where the new header item should be created!\n\nSelect a menu node, or sub menu node, to create a header item in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new header item node after the selected item node.";
+                var message = "A node must be selected to indicate where the new header item node should be created!";
                 XtraMessageBox.Show(message);
                 return;
             }
 
-            var position = GetPosition(selected, selected is XmlMenu || selected is XmlSubMenu);
+            ItemPosition position = ItemPosition.None;
+            if (selected is XmlMenu)
+                position = ItemPosition.Inside;
+            else
+                position = GetPosition(selected, selected is XmlSubMenu);
 
             var headerItem = CreateHeaderItem();
             if (headerItem == null) return;
@@ -411,12 +423,16 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             if (selected == null)
             {
-                var message = "A node must be selected to indicate where the new menu item node should be created!\n\nSelect a menu node, or sub menu node, to create a menu item in the first position in that menu.\n\nSelect a menu item node or a header item node to create the new menu item node after the selected item node.";
+                var message = "A node must be selected to indicate where the new menu item node should be created!";
                 XtraMessageBox.Show(message);
                 return;
             }
 
-            var position = GetPosition(selected, selected is XmlMenu || selected is XmlSubMenu);
+            ItemPosition position = ItemPosition.None;
+            if (selected is XmlMenu)
+                position = ItemPosition.Inside;
+            else
+                position = GetPosition(selected, selected is XmlSubMenu);
 
             var menuItem = CreateMenuItem();
             if (menuItem == null) return;
@@ -516,6 +532,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             barButtonItemMenuAddMenuItem.Enabled = (_area.Menus.Count > 0);
             barButtonItemMenuHeaderItem.Enabled = (_area.Menus.Count > 0);
             barButtonItemMenuAddSubMenu.Enabled = (_area.Menus.Count > 0);
+
+            barButtonItemMoveUp.Enabled = (_area.Menus.Count > 0);
+            barButtonItemMoveDown.Enabled = (_area.Menus.Count > 0);
+            barButtonItemMenuMoveUp.Enabled = (_area.Menus.Count > 0);
+            barButtonItemMenuMoveDown.Enabled = (_area.Menus.Count > 0);
+
+            barButtonItemMenuRemoveItem.Enabled = (_area.Menus.Count > 0);
+            barButtonItemRemoveItem.Enabled = (_area.Menus.Count > 0);
         }
 
         private XmlMenuItemBase GetSelectedItem()
@@ -613,12 +637,6 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void CustomizationForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult result = XtraMessageBox.Show("All changes will be lost! Are you sure?", "Cancel?", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result == DialogResult.No)
-            {
-                e.Cancel = true;
-                return;
-            }
         }
         #endregion
 
@@ -661,6 +679,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             _makeVisible = null;
 
             RefreshMenuItems();
+            EnableDisableMenus();
         }
         #endregion
 
