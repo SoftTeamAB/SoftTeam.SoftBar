@@ -76,6 +76,10 @@ namespace SoftTeam.SoftBar.Core.Misc
 
             try
             {
+                // Hyper-v test
+                var path = @"%ProgramFiles%\Hyper-V\";
+                path = Environment.ExpandEnvironmentVariables(path);
+                startInfo.WorkingDirectory = path;
                 Process.Start(startInfo);
             }
             catch (Win32Exception ex)

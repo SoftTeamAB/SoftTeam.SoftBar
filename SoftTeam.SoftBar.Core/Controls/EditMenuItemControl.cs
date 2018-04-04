@@ -162,6 +162,11 @@ namespace SoftTeam.SoftBar.Core.Controls
         {
             SaveValues(false);
 
+            if (!File.Exists(ApplicationPath))
+                XtraMessageBox.Show("WARNING : Application not found!");
+            if (!File.Exists(DocumentPath))
+                XtraMessageBox.Show("WARNING : Document not found!");
+
             using (CommandLineHelper cmd = new CommandLineHelper(ApplicationPath, DocumentPath, Parameters, RunAsAdministrator))
                 cmd.Execute();
         }

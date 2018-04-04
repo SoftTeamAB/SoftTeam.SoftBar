@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="14.7" version="14.7" Modules="professional" RootPath="." Language="sv" Id="{5C4C9853-5972-4171-966A-0AB581C376B0}">
+  <COMPONENT cid="caphyon.advinst.msicomp.ProjectOptionsComponent">
+    <ROW Name="HiddenItems" Value="AppXProductDetailsComponent;AppXDependenciesComponent;AppXAppDetailsComponent;AppXVisualAssetsComponent;AppXCapabilitiesComponent;AppXAppDeclarationsComponent;AppXUriRulesComponent;MsiJavaComponent;MsiDriverPackagesComponent;UserAccountsComponent;ScheduledTasksComponent;SqlConnectionComponent;AutorunComponent;FirewallExceptionComponent;GameUxComponent;MsiDirectEditorComponent;SharePointSlnComponent;SilverlightSlnComponent;MultipleInstancesComponent;SccmComponent;ActSyncAppComponent"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_EXTERNALUIUNINSTALLERNAME" MultiBuildValue="DefaultBuild:aiui"/>
+    <ROW Property="AI_FINDEXE_TITLE" Value="Välj installationspaket för [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
+    <ROW Property="AI_NO_BORDER_NORMAL" MsiKey="AI_NO_BORDER_NORMAL"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_DOTNET_VERSION"/>
+    <ROW Property="AI_PRODUCTNAME_ARP" Value="SoftBar"/>
+    <ROW Property="AI_REQUIRED_DOTNET_DISPLAY" MultiBuildValue="DefaultBuild:4.0" ValueLocId="-"/>
+    <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:4.0.1" ValueLocId="-"/>
+    <ROW Property="AI_ThemeStyleEx" Value="border" MsiKey="AI_ThemeStyleEx"/>
+    <ROW Property="AI_UNINSTALLER" Value="msiexec.exe"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="Denna installationsdatabas innehåller den logik och de data som krävs för att installera &lt;produktnamn&gt;." ValueLocId="*"/>
+    <ROW Property="ARPHELPLINK" Value="http://www.softteam.se/softbar"/>
+    <ROW Property="ARPNOREPAIR" Value="1" MultiBuildValue="DefaultBuild:1"/>
+    <ROW Property="ARPPRODUCTICON" Value="moon.exe" Type="8"/>
+    <ROW Property="ARPSYSTEMCOMPONENT" Value="1"/>
+    <ROW Property="ARPURLINFOABOUT" Value="http://www.softteam.se/softbar"/>
+    <ROW Property="ARPURLUPDATEINFO" Value="http://www.softteam.se/softbar"/>
+    <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:moon.png" Type="1" MsiKey="AppLogoIcon"/>
+    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="Manufacturer" Value="SoftTeam AB"/>
+    <ROW Property="ProductCode" Value="1033:{B77EBFE9-506F-4DE7-8F17-93408579466D} 1053:{E5550CEC-BE10-4138-AD6F-2EC1B688CA8A} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="SoftBar"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
+    <ROW Property="UpgradeCode" Value="{7E01F855-816D-48B0-9305-D7B6798AC9FF}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003 RTM, Windows XP/2003 SP1, Windows XP SP2 x86" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+    <ROW Directory="Xml_Dir" Directory_Parent="APPDIR" DefaultDir="Xml"/>
+    <ROW Directory="de_Dir" Directory_Parent="APPDIR" DefaultDir="de"/>
+    <ROW Directory="es_Dir" Directory_Parent="APPDIR" DefaultDir="es"/>
+    <ROW Directory="ja_Dir" Directory_Parent="APPDIR" DefaultDir="ja"/>
+    <ROW Directory="ru_Dir" Directory_Parent="APPDIR" DefaultDir="ru"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="AI_CustomARPName" ComponentId="{8E3B6FA9-C391-4FCD-98D1-255DA6F0E715}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_ExePath" ComponentId="{FA213467-1E2B-4D3E-AB09-BDE845F7781D}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
+    <ROW Component="APPDIR" ComponentId="{1743FAEF-F288-4D9B-A5ED-69F6880E060A}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="DevExpress.BonusSkins.v17.2.dll" ComponentId="{ACE6625D-6E62-4A02-9065-E40E9E3C4D2E}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.BonusSkins.v17.2.dll"/>
+    <ROW Component="DevExpress.Data.v17.2.dll" ComponentId="{EDA0139E-F909-48EF-A108-ACA53153E6F4}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Data.v17.2.dll"/>
+    <ROW Component="DevExpress.Data.v17.2.resources.dll" ComponentId="{6AE2A3DA-7833-4842-A558-BF3E491ACADA}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.Data.v17.2.resources.dll"/>
+    <ROW Component="DevExpress.Data.v17.2.resources.dll_4" ComponentId="{00A17335-1921-4F16-A343-FE2B76FBEBAA}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.Data.v17.2.resources.dll_4"/>
+    <ROW Component="DevExpress.Data.v17.2.resources.dll_5" ComponentId="{387FDA90-E8F0-4D1B-9239-2204424D1360}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.Data.v17.2.resources.dll_5"/>
+    <ROW Component="DevExpress.Data.v17.2.resources.dll_6" ComponentId="{9E33D32D-66C8-4A50-986E-6D73DF693BFB}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.Data.v17.2.resources.dll_6"/>
+    <ROW Component="DevExpress.Data.v17.2.xml" ComponentId="{41A89B3A-ED59-46C0-86A0-4F6B195F1D32}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Data.v17.2.xml" Type="0"/>
+    <ROW Component="DevExpress.Pdf.v17.2.Core.dll" ComponentId="{EE3A0564-2804-4B57-948C-3563DD161B91}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Pdf.v17.2.Core.dll"/>
+    <ROW Component="DevExpress.Pdf.v17.2.Core.resources.dll" ComponentId="{69A82339-013C-411F-AF48-10D1A1BA145C}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.Pdf.v17.2.Core.resources.dll"/>
+    <ROW Component="DevExpress.Pdf.v17.2.Core.resources.dll_4" ComponentId="{1CF20DAC-E6DB-451A-B5A6-045939D32895}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.Pdf.v17.2.Core.resources.dll_4"/>
+    <ROW Component="DevExpress.Pdf.v17.2.Core.resources.dll_5" ComponentId="{62111248-A0F2-4721-B2A5-4506D11CA3F0}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.Pdf.v17.2.Core.resources.dll_5"/>
+    <ROW Component="DevExpress.Pdf.v17.2.Core.resources.dll_6" ComponentId="{A8D1B09D-D26C-4F2E-B63F-429CF4C97E05}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.Pdf.v17.2.Core.resources.dll_6"/>
+    <ROW Component="DevExpress.Printing.v17.2.Core.dll" ComponentId="{C02F4CF7-06ED-4805-B0C3-212A1D850997}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Printing.v17.2.Core.dll"/>
+    <ROW Component="DevExpress.Printing.v17.2.Core.resources.dll" ComponentId="{FA4BD80B-4FB8-41D2-8290-BE4523466765}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.Printing.v17.2.Core.resources.dll"/>
+    <ROW Component="DevExpress.Printing.v17.2.Core.resources.dll_4" ComponentId="{B7E69DF3-914C-43C7-91DF-A5A3F5088E37}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.Printing.v17.2.Core.resources.dll_4"/>
+    <ROW Component="DevExpress.Printing.v17.2.Core.resources.dll_5" ComponentId="{18D61CAC-7B23-4286-8F33-0BEB51A179DD}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.Printing.v17.2.Core.resources.dll_5"/>
+    <ROW Component="DevExpress.Printing.v17.2.Core.resources.dll_6" ComponentId="{98775210-7CB5-45AE-8470-71F67B38D07B}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.Printing.v17.2.Core.resources.dll_6"/>
+    <ROW Component="DevExpress.Sparkline.v17.2.Core.dll" ComponentId="{3703ADBC-A24A-44B7-A39B-4D9477C9AC20}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Sparkline.v17.2.Core.dll"/>
+    <ROW Component="DevExpress.Sparkline.v17.2.Core.resources.dll" ComponentId="{9BAFFCEB-2F77-4C63-85D4-865FE451D727}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.Sparkline.v17.2.Core.resources.dll"/>
+    <ROW Component="DevExpress.Sparkline.v17.2.Core.resources.dll_4" ComponentId="{59B97678-FD3F-4E36-B949-1A88DB43212A}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.Sparkline.v17.2.Core.resources.dll_4"/>
+    <ROW Component="DevExpress.Sparkline.v17.2.Core.resources.dll_5" ComponentId="{0F936D5D-9F33-4591-BCAC-E076FCABD6C2}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.Sparkline.v17.2.Core.resources.dll_5"/>
+    <ROW Component="DevExpress.Sparkline.v17.2.Core.resources.dll_6" ComponentId="{F3417934-B399-493B-8E1B-D9C29D5A33F3}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.Sparkline.v17.2.Core.resources.dll_6"/>
+    <ROW Component="DevExpress.Utils.v17.2.dll" ComponentId="{189E5089-7A9B-459B-B23C-6469F0BA58AF}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.Utils.v17.2.dll"/>
+    <ROW Component="DevExpress.Utils.v17.2.resources.dll" ComponentId="{8ABB6D30-E5B6-4015-9E8C-057FFC05153B}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.Utils.v17.2.resources.dll"/>
+    <ROW Component="DevExpress.Utils.v17.2.resources.dll_4" ComponentId="{F0258305-2539-41D4-9D0F-79E2F62D7D00}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.Utils.v17.2.resources.dll_4"/>
+    <ROW Component="DevExpress.Utils.v17.2.resources.dll_5" ComponentId="{810BDCD5-D950-469B-85AB-9E5683DD1225}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.Utils.v17.2.resources.dll_5"/>
+    <ROW Component="DevExpress.Utils.v17.2.resources.dll_6" ComponentId="{C4389219-9845-4E1B-8252-5B1A20F3AC98}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.Utils.v17.2.resources.dll_6"/>
+    <ROW Component="DevExpress.XtraBars.v17.2.dll" ComponentId="{16636D54-02F5-45D1-B5A5-6A05EDA165C9}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraBars.v17.2.dll"/>
+    <ROW Component="DevExpress.XtraBars.v17.2.resources.dll" ComponentId="{B31EEE87-6893-4F5D-B64F-363521FAC098}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.XtraBars.v17.2.resources.dll"/>
+    <ROW Component="DevExpress.XtraBars.v17.2.resources.dll_4" ComponentId="{E16F2639-0DA9-4BE2-AB9C-7DDB0740EBEF}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.XtraBars.v17.2.resources.dll_4"/>
+    <ROW Component="DevExpress.XtraBars.v17.2.resources.dll_5" ComponentId="{3153CD2F-C2F2-4B90-8229-EFBD031CF4D1}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.XtraBars.v17.2.resources.dll_5"/>
+    <ROW Component="DevExpress.XtraBars.v17.2.resources.dll_6" ComponentId="{037EE15E-2CC9-4F6F-8D2C-5EE072C257A9}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.XtraBars.v17.2.resources.dll_6"/>
+    <ROW Component="DevExpress.XtraEditors.v17.2.dll" ComponentId="{686FE666-67A7-4185-A42C-F6A641A107E6}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.XtraEditors.v17.2.dll"/>
+    <ROW Component="DevExpress.XtraEditors.v17.2.resources.dll" ComponentId="{C6C06F35-47F3-43FC-BF67-40968C74E932}" Directory_="de_Dir" Attributes="0" KeyPath="DevExpress.XtraEditors.v17.2.resources.dll"/>
+    <ROW Component="DevExpress.XtraEditors.v17.2.resources.dll_4" ComponentId="{B51A6F0F-C8DC-4F70-991A-B0EAAA9F3CD5}" Directory_="es_Dir" Attributes="0" KeyPath="DevExpress.XtraEditors.v17.2.resources.dll_4"/>
+    <ROW Component="DevExpress.XtraEditors.v17.2.resources.dll_5" ComponentId="{73344E5E-CF72-4756-B66A-783CE3F94ED1}" Directory_="ja_Dir" Attributes="0" KeyPath="DevExpress.XtraEditors.v17.2.resources.dll_5"/>
+    <ROW Component="DevExpress.XtraEditors.v17.2.resources.dll_6" ComponentId="{B9EB09AF-F7B6-467E-A718-99010CBE840D}" Directory_="ru_Dir" Attributes="0" KeyPath="DevExpress.XtraEditors.v17.2.resources.dll_6"/>
+    <ROW Component="ProductInformation" ComponentId="{9841707F-F4C3-4A3B-8EDF-564D4EBBF5FA}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{5F6D0C9A-AC94-43CE-8F11-4C482390E8AC}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="SoftBar.xsd" ComponentId="{8776EC41-C170-4C91-8EFB-D0C86628E85D}" Directory_="Xml_Dir" Attributes="0" KeyPath="SoftBar.xsd" Type="0"/>
+    <ROW Component="SoftTeam.SoftBar.Core.dll" ComponentId="{002BE275-E264-4C3B-A16B-7F96C89D0CD4}" Directory_="APPDIR" Attributes="0" KeyPath="SoftTeam.SoftBar.Core.dll"/>
+    <ROW Component="SoftTeam.SoftBar.exe_1" ComponentId="{2E7F759F-02BB-4BF6-9D74-264100730463}" Directory_="APPDIR" Attributes="0" KeyPath="SoftTeam.SoftBar.exe_1"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0" Components="AI_CustomARPName AI_ExePath APPDIR DevExpress.BonusSkins.v17.2.dll DevExpress.Data.v17.2.dll DevExpress.Data.v17.2.resources.dll DevExpress.Data.v17.2.resources.dll_4 DevExpress.Data.v17.2.resources.dll_5 DevExpress.Data.v17.2.resources.dll_6 DevExpress.Data.v17.2.xml DevExpress.Pdf.v17.2.Core.dll DevExpress.Pdf.v17.2.Core.resources.dll DevExpress.Pdf.v17.2.Core.resources.dll_4 DevExpress.Pdf.v17.2.Core.resources.dll_5 DevExpress.Pdf.v17.2.Core.resources.dll_6 DevExpress.Printing.v17.2.Core.dll DevExpress.Printing.v17.2.Core.resources.dll DevExpress.Printing.v17.2.Core.resources.dll_4 DevExpress.Printing.v17.2.Core.resources.dll_5 DevExpress.Printing.v17.2.Core.resources.dll_6 DevExpress.Sparkline.v17.2.Core.dll DevExpress.Sparkline.v17.2.Core.resources.dll DevExpress.Sparkline.v17.2.Core.resources.dll_4 DevExpress.Sparkline.v17.2.Core.resources.dll_5 DevExpress.Sparkline.v17.2.Core.resources.dll_6 DevExpress.Utils.v17.2.dll DevExpress.Utils.v17.2.resources.dll DevExpress.Utils.v17.2.resources.dll_4 DevExpress.Utils.v17.2.resources.dll_5 DevExpress.Utils.v17.2.resources.dll_6 DevExpress.XtraBars.v17.2.dll DevExpress.XtraBars.v17.2.resources.dll DevExpress.XtraBars.v17.2.resources.dll_4 DevExpress.XtraBars.v17.2.resources.dll_5 DevExpress.XtraBars.v17.2.resources.dll_6 DevExpress.XtraEditors.v17.2.dll DevExpress.XtraEditors.v17.2.resources.dll DevExpress.XtraEditors.v17.2.resources.dll_4 DevExpress.XtraEditors.v17.2.resources.dll_5 DevExpress.XtraEditors.v17.2.resources.dll_6 ProductInformation SHORTCUTDIR SoftBar.xsd SoftTeam.SoftBar.Core.dll SoftTeam.SoftBar.exe_1"/>
+    <ROW Feature="TileAssets_DefaultBuild" Title="TileAssets_DefaultBuild" Description="Beskrivning" Display="0" Level="1" Directory_="APPDIR" Attributes="0" Options="271" Builds="DefaultBuild"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="DevExpress.BonusSkins.v17.2.dll" Component_="DevExpress.BonusSkins.v17.2.dll" FileName="DEVEXP~1.DLL|DevExpress.BonusSkins.v17.2.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.BonusSkins.v17.2.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.dll"/>
+    <ROW File="DevExpress.Data.v17.2.dll" Component_="DevExpress.Data.v17.2.dll" FileName="DEVEXP~2.DLL|DevExpress.Data.v17.2.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Data.v17.2.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.xml"/>
+    <ROW File="DevExpress.Data.v17.2.resources.dll" Component_="DevExpress.Data.v17.2.resources.dll" FileName="DEVEXP~1.DLL|DevExpress.Data.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.Data.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.resources.dll"/>
+    <ROW File="DevExpress.Data.v17.2.resources.dll_4" Component_="DevExpress.Data.v17.2.resources.dll_4" FileName="DEVEXP~1.DLL|DevExpress.Data.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.Data.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.resources.dll_4"/>
+    <ROW File="DevExpress.Data.v17.2.resources.dll_5" Component_="DevExpress.Data.v17.2.resources.dll_5" FileName="DEVEXP~1.DLL|DevExpress.Data.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.Data.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.resources.dll_5"/>
+    <ROW File="DevExpress.Data.v17.2.resources.dll_6" Component_="DevExpress.Data.v17.2.resources.dll_6" FileName="DEVEXP~1.DLL|DevExpress.Data.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.Data.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.resources.dll_6"/>
+    <ROW File="DevExpress.Data.v17.2.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~1.XML|DevExpress.Data.v17.2.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Data.v17.2.xml" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.dll"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.dll" Component_="DevExpress.Pdf.v17.2.Core.dll" FileName="DEVEXP~3.DLL|DevExpress.Pdf.v17.2.Core.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Pdf.v17.2.Core.dll" SelfReg="false" NextFile="DevExpress.Pdf.v17.2.Core.xml"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.resources.dll" Component_="DevExpress.Pdf.v17.2.Core.resources.dll" FileName="DEVEXP~2.DLL|DevExpress.Pdf.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.Pdf.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.resources.dll"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.resources.dll_4" Component_="DevExpress.Pdf.v17.2.Core.resources.dll_4" FileName="DEVEXP~2.DLL|DevExpress.Pdf.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.Pdf.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.resources.dll_4"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.resources.dll_5" Component_="DevExpress.Pdf.v17.2.Core.resources.dll_5" FileName="DEVEXP~2.DLL|DevExpress.Pdf.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.Pdf.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.resources.dll_5"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.resources.dll_6" Component_="DevExpress.Pdf.v17.2.Core.resources.dll_6" FileName="DEVEXP~2.DLL|DevExpress.Pdf.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.Pdf.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.resources.dll_6"/>
+    <ROW File="DevExpress.Pdf.v17.2.Core.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~2.XML|DevExpress.Pdf.v17.2.Core.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Pdf.v17.2.Core.xml" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.dll"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.dll" Component_="DevExpress.Printing.v17.2.Core.dll" FileName="DEVEXP~4.DLL|DevExpress.Printing.v17.2.Core.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Printing.v17.2.Core.dll" SelfReg="false" NextFile="DevExpress.Printing.v17.2.Core.xml"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.resources.dll" Component_="DevExpress.Printing.v17.2.Core.resources.dll" FileName="DEVEXP~3.DLL|DevExpress.Printing.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.Printing.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.resources.dll"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.resources.dll_4" Component_="DevExpress.Printing.v17.2.Core.resources.dll_4" FileName="DEVEXP~3.DLL|DevExpress.Printing.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.Printing.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.resources.dll_4"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.resources.dll_5" Component_="DevExpress.Printing.v17.2.Core.resources.dll_5" FileName="DEVEXP~3.DLL|DevExpress.Printing.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.Printing.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.resources.dll_5"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.resources.dll_6" Component_="DevExpress.Printing.v17.2.Core.resources.dll_6" FileName="DEVEXP~3.DLL|DevExpress.Printing.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.Printing.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.resources.dll_6"/>
+    <ROW File="DevExpress.Printing.v17.2.Core.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~3.XML|DevExpress.Printing.v17.2.Core.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Printing.v17.2.Core.xml" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.dll"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.dll" Component_="DevExpress.Sparkline.v17.2.Core.dll" FileName="DEVEXP~5.DLL|DevExpress.Sparkline.v17.2.Core.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Sparkline.v17.2.Core.dll" SelfReg="false" NextFile="DevExpress.Sparkline.v17.2.Core.xml"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.resources.dll" Component_="DevExpress.Sparkline.v17.2.Core.resources.dll" FileName="DEVEXP~4.DLL|DevExpress.Sparkline.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.Sparkline.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Utils.v17.2.resources.dll"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.resources.dll_4" Component_="DevExpress.Sparkline.v17.2.Core.resources.dll_4" FileName="DEVEXP~4.DLL|DevExpress.Sparkline.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.Sparkline.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Utils.v17.2.resources.dll_4"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.resources.dll_5" Component_="DevExpress.Sparkline.v17.2.Core.resources.dll_5" FileName="DEVEXP~4.DLL|DevExpress.Sparkline.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.Sparkline.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Utils.v17.2.resources.dll_5"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.resources.dll_6" Component_="DevExpress.Sparkline.v17.2.Core.resources.dll_6" FileName="DEVEXP~4.DLL|DevExpress.Sparkline.v17.2.Core.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.Sparkline.v17.2.Core.resources.dll" SelfReg="false" NextFile="DevExpress.Utils.v17.2.resources.dll_6"/>
+    <ROW File="DevExpress.Sparkline.v17.2.Core.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~4.XML|DevExpress.Sparkline.v17.2.Core.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Sparkline.v17.2.Core.xml" SelfReg="false" NextFile="DevExpress.Utils.v17.2.dll"/>
+    <ROW File="DevExpress.Utils.v17.2.dll" Component_="DevExpress.Utils.v17.2.dll" FileName="DEVEXP~6.DLL|DevExpress.Utils.v17.2.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Utils.v17.2.dll" SelfReg="false" NextFile="DevExpress.Utils.v17.2.xml"/>
+    <ROW File="DevExpress.Utils.v17.2.resources.dll" Component_="DevExpress.Utils.v17.2.resources.dll" FileName="DEVEXP~5.DLL|DevExpress.Utils.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.Utils.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.resources.dll"/>
+    <ROW File="DevExpress.Utils.v17.2.resources.dll_4" Component_="DevExpress.Utils.v17.2.resources.dll_4" FileName="DEVEXP~5.DLL|DevExpress.Utils.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.Utils.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.resources.dll_4"/>
+    <ROW File="DevExpress.Utils.v17.2.resources.dll_5" Component_="DevExpress.Utils.v17.2.resources.dll_5" FileName="DEVEXP~5.DLL|DevExpress.Utils.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.Utils.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.resources.dll_5"/>
+    <ROW File="DevExpress.Utils.v17.2.resources.dll_6" Component_="DevExpress.Utils.v17.2.resources.dll_6" FileName="DEVEXP~5.DLL|DevExpress.Utils.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.Utils.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.resources.dll_6"/>
+    <ROW File="DevExpress.Utils.v17.2.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~5.XML|DevExpress.Utils.v17.2.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.Utils.v17.2.xml" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.dll"/>
+    <ROW File="DevExpress.XtraBars.v17.2.dll" Component_="DevExpress.XtraBars.v17.2.dll" FileName="DEVEXP~7.DLL|DevExpress.XtraBars.v17.2.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.XtraBars.v17.2.dll" SelfReg="false" NextFile="DevExpress.XtraBars.v17.2.xml"/>
+    <ROW File="DevExpress.XtraBars.v17.2.resources.dll" Component_="DevExpress.XtraBars.v17.2.resources.dll" FileName="DEVEXP~6.DLL|DevExpress.XtraBars.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.XtraBars.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.resources.dll"/>
+    <ROW File="DevExpress.XtraBars.v17.2.resources.dll_4" Component_="DevExpress.XtraBars.v17.2.resources.dll_4" FileName="DEVEXP~6.DLL|DevExpress.XtraBars.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.XtraBars.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.resources.dll_4"/>
+    <ROW File="DevExpress.XtraBars.v17.2.resources.dll_5" Component_="DevExpress.XtraBars.v17.2.resources.dll_5" FileName="DEVEXP~6.DLL|DevExpress.XtraBars.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.XtraBars.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.resources.dll_5"/>
+    <ROW File="DevExpress.XtraBars.v17.2.resources.dll_6" Component_="DevExpress.XtraBars.v17.2.resources.dll_6" FileName="DEVEXP~6.DLL|DevExpress.XtraBars.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.XtraBars.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.resources.dll_6"/>
+    <ROW File="DevExpress.XtraBars.v17.2.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~6.XML|DevExpress.XtraBars.v17.2.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.XtraBars.v17.2.xml" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.dll"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.dll" Component_="DevExpress.XtraEditors.v17.2.dll" FileName="DEVEXP~8.DLL|DevExpress.XtraEditors.v17.2.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.XtraEditors.v17.2.dll" SelfReg="false" NextFile="DevExpress.XtraEditors.v17.2.xml"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll" Component_="DevExpress.XtraEditors.v17.2.resources.dll" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_4"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_4" Component_="DevExpress.XtraEditors.v17.2.resources.dll_4" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_5"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_5" Component_="DevExpress.XtraEditors.v17.2.resources.dll_5" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_6"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_6" Component_="DevExpress.XtraEditors.v17.2.resources.dll_6" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~7.XML|DevExpress.XtraEditors.v17.2.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.XtraEditors.v17.2.xml" SelfReg="false" NextFile="moon.ico"/>
+    <ROW File="SoftBar.xsd" Component_="SoftBar.xsd" FileName="SoftBar.xsd" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\Xml\SoftBar.xsd" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll"/>
+    <ROW File="SoftTeam.SoftBar.Core.dll" Component_="SoftTeam.SoftBar.Core.dll" FileName="SOFTTE~1.DLL|SoftTeam.SoftBar.Core.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.Core.dll" SelfReg="false" NextFile="SoftTeam.SoftBar.Core.dll.config"/>
+    <ROW File="SoftTeam.SoftBar.Core.dll.config" Component_="DevExpress.Data.v17.2.xml" FileName="SOFTTE~1.CON|SoftTeam.SoftBar.Core.dll.config" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.Core.dll.config" SelfReg="false" NextFile="SoftTeam.SoftBar.exe_1"/>
+    <ROW File="SoftTeam.SoftBar.exe.config" Component_="DevExpress.Data.v17.2.xml" FileName="SOFTTE~2.CON|SoftTeam.SoftBar.exe.config" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.exe.config" SelfReg="false" NextFile="SoftTeam.SoftBar.exe.manifest"/>
+    <ROW File="SoftTeam.SoftBar.exe.manifest" Component_="DevExpress.Data.v17.2.xml" FileName="SOFTTE~1.MAN|SoftTeam.SoftBar.exe.manifest" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.exe.manifest" SelfReg="false" NextFile="SoftBar.xsd"/>
+    <ROW File="SoftTeam.SoftBar.exe_1" Component_="SoftTeam.SoftBar.exe_1" FileName="SOFTTE~1.EXE|SoftTeam.SoftBar.exe" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.exe" SelfReg="false" NextFile="SoftTeam.SoftBar.exe.config" DigSign="true"/>
+    <ROW File="moon.ico" Component_="DevExpress.Data.v17.2.xml" FileName="moon.ico" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\moon.ico" SelfReg="false" NextFile="SoftTeam.SoftBar.Core.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="Setup Files" Languages="sv;en" InstallationType="4" CabsLocation="1" PackageType="1" FilesInsideExe="true" ExtUI="true" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_sv.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="InstallDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\InstallDlg.aip"/>
+    <ROW Fragment="LicenseAgreementDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\LicenseAgreementDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;surface\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;surface\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;surface\fragments\VerifyRepairDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiActionTextComponent">
+    <ROW Action="AI_DeleteLzma" Description="Ta bort filer som extraherats från arkivet" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_DeleteRLzma" Description="Ta bort filer som extraherats från arkivet" DescriptionLocId="ActionText.Description.AI_DeleteLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractFiles" Description="Extraherar filer från arkiv" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+    <ROW Action="AI_ExtractLzma" Description="Extraherar filer från arkiv" DescriptionLocId="ActionText.Description.AI_ExtractLzma" TemplateLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiAppSearchComponent">
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_CU" Builds="DefaultBuild"/>
+    <ROW Property="AI_SETUPEXEPATH" Signature_="AI_EXE_PATH_LM" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="ExternalUICleaner.dll" SourcePath="&lt;AI_CUSTACTS&gt;ExternalUICleaner.dll"/>
+    <ROW Name="Prereq.dll" SourcePath="&lt;AI_CUSTACTS&gt;Prereq.dll"/>
+    <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+    <ROW Name="lzmaextractor.dll" SourcePath="&lt;AI_CUSTACTS&gt;lzmaextractor.dll"/>
+    <ROW Name="moon.png" SourcePath="D:\Icons\V-Collection v5\v_collection\v_collection_png\64x64\plain\moon.png"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiConditionComponent">
+    <ROW Feature_="TileAssets_DefaultBuild" Level="4" Condition="VersionNT &lt; 603"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
+    <ROW Dialog_="CustomizeDlg" Control="CustomizeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="MsiRMFilesInUse" Control="Cancel" Type="ImageButton" X="163" Y="359" Width="78" Height="28" Attributes="2" Text="[NextCancelButtons]" TextStyle="[MetroButtonText]" Order="100" MsiKey="MsiRMFilesInUse#Cancel" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="PatchWelcomeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="ProductNameTitle" Type="Text" X="83" Y="21" Width="245" Height="50" Attributes="196611" Text="[ProductName]" TextStyle="[ProductNameForSplash]" Order="600" TextLocId="Metro.Control.Text.ProductName" MsiKey="PatchWelcomeDlg#ProductNameTitle"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="CompanyText" Type="Text" X="83" Y="16" Width="191" Height="12" Attributes="196611" Text="[Manufacturer]" TextStyle="[ManufacturerFont]" Order="700" TextLocId="Metro.Control.Text.Manufacturer" MsiKey="PatchWelcomeDlg#CompanyText"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control="ProductLogo" Type="Bitmap" X="17" Y="5" Width="59" Height="63" Attributes="1" Text="[AppLogoIcon]" Order="800" MsiKey="PatchWelcomeDlg#ProductLogo"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Cancel" Type="ImageButton" X="163" Y="359" Width="78" Height="28" Attributes="2" Text="[NextCancelButtons]" TextStyle="[MetroButtonText]" Order="100" MsiKey="VerifyReadyDlg#Cancel" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Back" Type="PushButton" X="5" Y="381" Width="11" Height="11" Attributes="2" Text="Control.Text.VerifyReadyDlg#Back" Help="Bakåt|" Order="200" TextLocId="Control.Text.VerifyReadyDlg#Back" HelpLocId="Air.Control.Help#Back" MsiKey="VerifyReadyDlg#Back" Options="1" ExtType="PushButton" ExtData="[ButtonText_Back]" ExtDataLocId="-"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="ReadyToInstall" Type="Text" X="17" Y="105" Width="312" Height="19" Attributes="196611" Text="Redo att installera" TextStyle="[SubTitleStyle]" Order="400" TextLocId="Control.Text.VerifyReadyDlg#Title" MsiKey="VerifyReadyDlg#ReadyToInstall"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="Text_2" Type="Text" X="17" Y="139" Width="312" Height="100" Attributes="65539" Text="Installationsguiden är redo att påbörja installationen av [ProductName]" Order="500" TextLocId="Control.Text.VerifyReadyDlg#Description" MsiKey="VerifyReadyDlg#Text_2"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="InstallButton" Type="ImageButton" X="251" Y="359" Width="78" Height="28" Attributes="3" Text="[metrobuttonimage]" TextStyle="[MetroButtonText]" Order="600" MsiKey="VerifyReadyDlg#InstallButton" ExtType="ImageButton" ExtData="INSTALL" ExtDataLocId="Metro.Control.ExtData.VerifyReadyDlg#InstallButton"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="ProductNameTitle" Type="Text" X="83" Y="21" Width="245" Height="50" Attributes="196611" Text="[ProductName]" TextStyle="[ProductNameForSplash]" Order="700" TextLocId="Metro.Control.Text.ProductName" MsiKey="VerifyReadyDlg#ProductNameTitle"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="CompanyText" Type="Text" X="83" Y="16" Width="191" Height="12" Attributes="196611" Text="[Manufacturer]" TextStyle="[ManufacturerFont]" Order="800" TextLocId="Metro.Control.Text.Manufacturer" MsiKey="VerifyReadyDlg#CompanyText"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="ProductLogo" Type="Bitmap" X="17" Y="5" Width="59" Height="63" Attributes="1" Text="[AppLogoIcon]" Order="900" MsiKey="VerifyReadyDlg#ProductLogo"/>
+    <ROW Dialog_="VerifyReadyDlg" Control="AdvInst" Type="Text" X="5" Y="388" Width="74" Height="11" Attributes="196611" Text="Advanced Installer" TextStyle="[BrandingStyle]" Order="1000" MsiKey="VerifyReadyDlg#AdvInst"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control="Cancel" Type="ImageButton" X="163" Y="359" Width="78" Height="28" Attributes="2" Text="[NextCancelButtons]" TextStyle="[MetroButtonText]" Order="100" MsiKey="VerifyRemoveDlg#Cancel" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Bitmap" Type="Bitmap" X="0" Y="0" Width="345" Height="400" Attributes="1" Text="[Background]" Order="100" MsiKey="VerifyRepairDlg#Bitmap"/>
+    <ROW Dialog_="VerifyRepairDlg" Control="Repair" Type="ImageButton" X="251" Y="359" Width="78" Height="28" Attributes="3" Text="[metrobuttonimage]" TextStyle="[MetroButtonText]" Order="200" MsiKey="VerifyRepairDlg#Repair" Options="1" ExtType="ImageButton" ExtData="&amp;Repair" ExtDataLocId="Metro.Control.ExtData.VerifyRepairDlg#Repair"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="CustomizeDlg" Control_="Modify" Event="DoAction" Argument="AI_InstallModeCheck" Condition="AI_MAINT" Ordering="100" MsiKey="CustomizeDlg#Modify#DoAction#AI_InstallModeCheck#AI_MAINT"/>
+    <ROW Dialog_="ExitDialog" Control_="ViewReadmeCheckBox" Event="DoAction" Argument="AI_RunFinishActions" Condition="(AI_INSTALL OR AI_PATCH)" Ordering="200" MsiKey="ExitDialog#ViewReadmeCheckBox#DoAction#AI_RunFinishActions#(AI_INSTALL OR AI_PATCH)"/>
+    <ROW Dialog_="ExitDialog" Control_="LaunchProdCheckBox" Event="DoAction" Argument="AI_RunFinishActions" Condition="(AI_INSTALL OR AI_PATCH)" Ordering="200" MsiKey="ExitDialog#LaunchProdCheckBox#DoAction#AI_RunFinishActions#(AI_INSTALL OR AI_PATCH)"/>
+    <ROW Dialog_="FatalError" Control_="Finish" Event="DoAction" Argument="AI_SHOW_LOG" Condition="(MsiLogFileLocation AND AI_LOG_CHECKBOX)" Ordering="200" MsiKey="FatalError#Finish#DoAction#AI_SHOW_LOG#(MsiLogFileLocation AND AI_LOG_CHECKBOX)"/>
+    <ROW Dialog_="InstallDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="301"/>
+    <ROW Dialog_="InstallDlg" Control_="YouMustAgreeCtrl" Event="NewDialog" Argument="LicenseAgreementDlg" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="301"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="NewDialog" Argument="InstallDlg" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="1"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="101"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="699"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="199" Options="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="699"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Modify" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="99"/>
+    <ROW Dialog_="InstallDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="302" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="303" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="304" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="InstallDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_INSTALL" Ordering="101" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="InstallDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_INSTALL" Ordering="102" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="InstallDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_INSTALL" Ordering="103" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="InstallDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_INSTALL" Ordering="104" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="YouMustAgreeCtrl" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL" Ordering="302" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="YouMustAgreeCtrl" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="303" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL" Ordering="0" Options="2"/>
+    <ROW Dialog_="InstallDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL" Ordering="1" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_INSTALL AND AiLicenseAgreement AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="102" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_INSTALL AND AiLicenseAgreement AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="103" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_INSTALL AND AiLicenseAgreement AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="104" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="LicenseAgreementDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="101" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="LicenseAgreementDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="102" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="LicenseAgreementDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="103" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="LicenseAgreementDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="104" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="2" Options="2"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_INSTALL AND AiLicenseAgreement" Ordering="3" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Modify" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="102" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Modify" Event="EnableRollback" Argument="False" Condition="AI_MAINT AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="103" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Modify" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_MAINT AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="104" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="CustomizeDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_MAINT" Ordering="0" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="CustomizeDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_MAINT" Ordering="1" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="CustomizeDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_MAINT" Ordering="2" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="CustomizeDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_MAINT" Ordering="3" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_MAINT" Ordering="2" Options="2"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_MAINT" Ordering="3" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfRbDiskDlg" Condition="AI_PATCH AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND (PROMPTROLLBACKCOST=&quot;P&quot; OR NOT PROMPTROLLBACKCOST)" Ordering="202" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="EnableRollback" Argument="False" Condition="AI_PATCH AND OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 0 AND PROMPTROLLBACKCOST=&quot;D&quot;" Ordering="203" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="SpawnDialog" Argument="OutOfDiskDlg" Condition="AI_PATCH AND ( (OutOfDiskSpace = 1 AND OutOfNoRbDiskSpace = 1) OR (OutOfDiskSpace = 1 AND PROMPTROLLBACKCOST=&quot;F&quot;) )" Ordering="204" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[AI_ButtonText_Next_Orig]" Argument="[ButtonText_Next]" Condition="AI_PATCH" Ordering="0" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[ButtonText_Next]" Argument="[[AI_CommitButton]]" Condition="AI_PATCH" Ordering="1" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[AI_Text_Next_Orig]" Argument="[Text_Next]" Condition="AI_PATCH" Ordering="2" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="PatchWelcomeDlgDialogInitializer" Event="[Text_Next]" Argument="[Text_Install]" Condition="AI_PATCH" Ordering="3" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[ButtonText_Next]" Argument="[AI_ButtonText_Next_Orig]" Condition="AI_PATCH" Ordering="0" Options="2"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Back" Event="[Text_Next]" Argument="[AI_Text_Next_Orig]" Condition="AI_PATCH" Ordering="1" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH_ORIGINAL" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ChooseTextStyles" Type="1" Source="aicustact.dll" Target="ChooseTextStyles"/>
+    <ROW Action="AI_DATA_SETTER" Type="51" Source="AI_ExtractFiles" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DeleteCadLzma" Type="51" Source="AI_DeleteLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteLzma" Type="1025" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DeleteRCadLzma" Type="51" Source="AI_DeleteRLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_DeleteRLzma" Type="1281" Source="lzmaextractor.dll" Target="DeleteLZMAFiles"/>
+    <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
+    <ROW Action="AI_DoRemoveExternalUIStub" Type="3585" Source="ExternalUICleaner.dll" Target="DoRemoveExternalUIStub" WithoutSeq="true"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_EstimateExtractFiles" Type="1" Source="Prereq.dll" Target="EstimateExtractFiles"/>
+    <ROW Action="AI_ExtractCadLzma" Type="51" Source="AI_ExtractLzma" Target="[AI_SETUPEXEPATH]"/>
+    <ROW Action="AI_ExtractFiles" Type="1025" Source="Prereq.dll" Target="ExtractSourceFiles" AdditionalSeq="AI_DATA_SETTER"/>
+    <ROW Action="AI_ExtractLzma" Type="1025" Source="lzmaextractor.dll" Target="ExtractLZMAFiles"/>
+    <ROW Action="AI_FindExeLzma" Type="1" Source="lzmaextractor.dll" Target="FindEXE"/>
+    <ROW Action="AI_GetArpIconPath" Type="1" Source="aicustact.dll" Target="GetArpIconPath"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_LaunchApp" Type="1" Source="aicustact.dll" Target="[#SoftTeam.SoftBar.exe_1]"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Type="51" Source="AI_SETUPEXEPATH" Target="[AI_SETUPEXEPATH_ORIGINAL]"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_RemoveExternalUIStub" Type="1" Source="ExternalUICleaner.dll" Target="RemoveExternalUIStub"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_RunFinishActions" Type="1" Source="aicustact.dll" Target="RunFinishActions" WithoutSeq="true"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="moon.exe" SourcePath="D:\Icons\V-Collection v5\v_collection\v_collection_ico\moon.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1502"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99" Builds="DefaultBuild"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="199" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="198" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractCadLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="197" Builds="DefaultBuild"/>
+    <ROW Action="AI_FindExeLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="196" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1549" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteRLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="1548" Builds="DefaultBuild"/>
+    <ROW Action="AI_DeleteLzma" Condition="SETUPEXEDIR=&quot;&quot; AND Installed AND (REMOVE&lt;&gt;&quot;ALL&quot;) AND (AI_INSTALL_MODE&lt;&gt;&quot;Remove&quot;) AND (NOT PATCH)" Sequence="6599" Builds="DefaultBuild"/>
+    <ROW Action="AI_ExtractFiles" Sequence="3998" Builds="DefaultBuild"/>
+    <ROW Action="AI_DATA_SETTER" Sequence="3997"/>
+    <ROW Action="AI_EstimateExtractFiles" Sequence="3999" Builds="DefaultBuild"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+    <ROW Action="AI_GetArpIconPath" Sequence="1401"/>
+    <ROW Action="AI_RemoveExternalUIStub" Condition="(REMOVE=&quot;ALL&quot;) AND ((VersionNT &gt; 500) OR((VersionNT = 500) AND (ServicePackLevel &gt;= 4)))" Sequence="1501"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="InstallDlg" Condition="AI_INSTALL" Sequence="1230" SeqType="3" MsiKey="WelcomeDlg"/>
+    <ROW Action="MaintenanceTypeDlg" Condition="AI_MAINT" Sequence="1250" SeqType="3" MsiKey="MaintenanceTypeDlg"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_BACKUP_AI_SETUPEXEPATH" Sequence="99"/>
+    <ROW Action="AI_RESTORE_AI_SETUPEXEPATH" Condition="AI_SETUPEXEPATH_ORIGINAL" Sequence="102"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+    <ROW Action="AI_ChooseTextStyles" Sequence="74"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT64 OR ((VersionNT &lt;&gt; 501) OR (ServicePackLevel = 3))) AND ((VersionNT &lt;&gt; 502) OR (ServicePackLevel = 2))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="AI_DETECTED_DOTNET_VERSION &gt;= AI_REQUIRED_DOTNET_VERSION" Description="[ProductName] kan inte installeras på system med .NET Framework-version som är mindre än [AI_REQUIRED_DOTNET_DISPLAY]." DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="SETUPEXEDIR OR (REMOVE=&quot;ALL&quot;)" Description="This package can only be run from a bootstrapper." DescriptionLocId="AI.LaunchCondition.RequireBootstrapper" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegLocatorComponent">
+    <ROW Signature_="AI_EXE_PATH_CU" Root="1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+    <ROW Signature_="AI_EXE_PATH_LM" Root="2" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Type="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="AI_ExePath" Root="-1" Key="Software\Caphyon\Advanced Installer\LZMA\[ProductCode]\[ProductVersion]" Name="AI_ExePath" Value="[AI_SETUPEXEPATH]" Component_="AI_ExePath"/>
+    <ROW Registry="Comments" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Comments" Value="[ARPCOMMENTS]" Component_="AI_CustomARPName"/>
+    <ROW Registry="Contact" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Contact" Value="[ARPCONTACT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayIcon" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayIcon" Value="[ARP_ICON_PATH]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayName" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayName" Value="[AI_PRODUCTNAME_ARP]" Component_="AI_CustomARPName"/>
+    <ROW Registry="DisplayVersion" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="DisplayVersion" Value="[ProductVersion]" Component_="AI_CustomARPName"/>
+    <ROW Registry="EstimatedSize" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="EstimatedSize" Value="#[AI_ARP_SIZE]" Component_="AI_CustomARPName"/>
+    <ROW Registry="HelpLink" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpLink" Value="[ARPHELPLINK]" Component_="AI_CustomARPName"/>
+    <ROW Registry="HelpTelephone" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="HelpTelephone" Value="[ARPHELPTELEPHONE]" Component_="AI_CustomARPName"/>
+    <ROW Registry="InstallLocation" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="InstallLocation" Value="[APPDIR]" Component_="AI_CustomARPName"/>
+    <ROW Registry="ModifyPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="ModifyPath" Value="[AI_UNINSTALLER] /i [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="NoRepair" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="NoRepair" Value="#1" Component_="AI_CustomARPName"/>
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Publisher" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="Publisher" Value="[Manufacturer]" Component_="AI_CustomARPName"/>
+    <ROW Registry="URLInfoAbout" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLInfoAbout" Value="[ARPURLINFOABOUT]" Component_="AI_CustomARPName"/>
+    <ROW Registry="URLUpdateInfo" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="URLUpdateInfo" Value="[ARPURLUPDATEINFO]" Component_="AI_CustomARPName"/>
+    <ROW Registry="UninstallPath" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallPath" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="UninstallString" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="UninstallString" Value="[AI_UNINSTALLER] /x [ProductCode] AI_UNINSTALLER_CTP=1" Component_="AI_CustomARPName"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+    <ROW Registry="VersionMajor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMajor" Value="#1" Component_="AI_CustomARPName"/>
+    <ROW Registry="VersionMinor" Root="-1" Key="Software\Microsoft\Windows\CurrentVersion\Uninstall\[ProductName] [ProductVersion]" Name="VersionMinor" Value="#0" Component_="AI_CustomARPName"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="SoftTeam.SoftBar.exe" Directory_="SHORTCUTDIR" Name="SOFTTE~1.EXE|SoftTeam.SoftBar.exe" Component_="SoftTeam.SoftBar.exe_1" Target="[#SoftTeam.SoftBar.exe_1]" Description="SoftTeam.SoftBar.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="SoftTeam.SoftBar.exe_1" Directory_="DesktopFolder" Name="SOFTTE~1.EXE|SoftTeam.SoftBar.exe" Component_="SoftTeam.SoftBar.exe_1" Target="[#SoftTeam.SoftBar.exe_1]" Description="SoftTeam.SoftBar.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="surface"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.SynchronizedFolderComponent">
+    <ROW Directory_="APPDIR" SourcePath="..\SoftTeam.SoftBar\bin\Release" Feature="MainFeature" ExcludePattern="*~|#*#|%*%|._|CVS|.cvsignore|SCCS|vssver.scc|mssccprj.scc|vssver2.scc|.svn|.DS_Store|/*.pdb|/*.application|\app.publish" ExcludeFlags="6"/>
+  </COMPONENT>
+</DOCUMENT>
