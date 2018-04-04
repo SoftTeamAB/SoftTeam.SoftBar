@@ -9,5 +9,5 @@ Check out our web page (in swedish) : http://www.softteam.se
 
 Softbar web page (in swedish): http://www.softteam.se/softbar
 
-![SoftBar - directories menu](https://github.com/Hultan/SoftTeam.SoftBar/blob/master/SoftBar-directories.PNG?raw=true "Title")
+![SoftBar](https://github.com/Hultan/SoftTeam.SoftBar/blob/master/SoftBar.PNG?raw=true "Title")
 
