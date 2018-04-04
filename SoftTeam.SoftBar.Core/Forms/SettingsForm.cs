@@ -27,8 +27,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             LoadSettings();
 
             // Set tab page and control captions
-            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu";
-            tabNavigationPageMyDirectories.Caption = $"My folders ({textEditDirectoriesMenuName.Text} menu)";
+            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu - General";
+            tabNavigationPageMyDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu - My folders";
             tabNavigationPageMyTools.Caption = $"{textEditToolsMenuName.Text} menu";
 
             labelControlSystemMenuWidth.Text = $"{textEditSystemMenuName.Text} menu";
@@ -42,7 +42,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             labelControlToolsMenuWidth.Text = $"{textEditToolsMenuName.Text} menu";
             labelControlToolsMenuName.Text = $"{textEditToolsMenuName.Text} menu";
 
-            labelControlMyDirectoriesHeader.Text = $"Add any additional directories that you want to show in the {textEditDirectoriesMenuName.Text} menu";
+            labelControlMyDirectoriesHeader.Text = $"Add any additional folders that you want to show in the {textEditDirectoriesMenuName.Text} menu";
             labelControlToolsHeader.Text = $"Add any Windows tools that you want in the {textEditToolsMenuName.Text} menu";
 
             tabPaneSettings.SelectedPage = tabNavigationPageGeneral;
@@ -340,14 +340,14 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
-            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu";
-            tabNavigationPageMyDirectories.Caption = $"My folders ({textEditDirectoriesMenuName.Text} menu)";
+            tabNavigationPageDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu - General";
+            tabNavigationPageMyDirectories.Caption = $"{textEditDirectoriesMenuName.Text} menu - My folders";
 
             checkEditShowDirectoriesMenu.Text = $"{textEditDirectoriesMenuName.Text} menu";
             labelControlDirectoriesMenuWidth.Text = $"{textEditDirectoriesMenuName.Text} menu";
             labelControlDirectoriesMenuName.Text = $"{textEditDirectoriesMenuName.Text} menu";
 
-            labelControlMyDirectoriesHeader.Text = $"Add any additional directories that you want to show in the {textEditDirectoriesMenuName.Text} menu";
+            labelControlMyDirectoriesHeader.Text = $"Add any additional folders that you want to show in the {textEditDirectoriesMenuName.Text} menu";
         }
 
         private void textEditToolsMenuName_Leave(object sender, EventArgs e)

@@ -54,7 +54,7 @@ namespace SoftTeam.SoftBar.Core.Settings
             _settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, true);
 
             _settings.SetSetting(Constants.General_SystemMenuName, "SoftBar");
-            _settings.SetSetting(Constants.General_DirectoriesMenuName, "Directories");
+            _settings.SetSetting(Constants.General_DirectoriesMenuName, "Folders");
             _settings.SetSetting(Constants.General_ToolsMenuName, "Tools");
 
             _settings.SetIntegerSetting(Constants.General_SystemMenuWidth, 100);

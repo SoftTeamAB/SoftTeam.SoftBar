@@ -327,9 +327,9 @@
             this.labelControlMyDirectoriesHeader.Appearance.Options.UseFont = true;
             this.labelControlMyDirectoriesHeader.Location = new System.Drawing.Point(14, 7);
             this.labelControlMyDirectoriesHeader.Name = "labelControlMyDirectoriesHeader";
-            this.labelControlMyDirectoriesHeader.Size = new System.Drawing.Size(438, 13);
+            this.labelControlMyDirectoriesHeader.Size = new System.Drawing.Size(394, 13);
             this.labelControlMyDirectoriesHeader.TabIndex = 4;
-            this.labelControlMyDirectoriesHeader.Text = "Add any additional directories that you want to show in the directories menu :";
+            this.labelControlMyDirectoriesHeader.Text = "Add any additional folders that you want to show in the folders menu :";
             // 
             // listBoxControlMyDirectories
             // 
