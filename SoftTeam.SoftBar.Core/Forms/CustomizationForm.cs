@@ -323,32 +323,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             EnableDisableMenus();
         }
 
-        private void AddHeaderItemAfter(XmlMenuItemBase newItem, XmlMenuItemBase selected)
-        {
-            ItemPosition position = GetPosition(selected, selected is XmlMenu || selected is XmlSubMenu);
-
-            if (position == ItemPosition.Inside)
-            {
-                // Create the new menu item at position 0 in the menu or sub menu
-                var menu = selected as XmlMenuBase;
-                menu.MenuItems.Insert(0, newItem);
-            }
-            else
-            {
-                // Create the new menu item before or after the selected nodes 
-                var parent = (XmlMenuBase)_area.GetParent(selected);
-                if (position == ItemPosition.Before)
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), newItem);
-                else
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, newItem);
-            }
-
-            _selectedNode = newItem;
-
-            RefreshMenuItems();
-            EnableDisableMenus();
-        }
-
         private void AddHeaderItem()
         {
             var selected = GetSelectedItem();
@@ -369,32 +343,11 @@ namespace SoftTeam.SoftBar.Core.Forms
             var headerItem = CreateHeaderItem();
             if (headerItem == null) return;
 
-            if (position == ItemPosition.Inside)
-            {
-                // Create the new menu item at position 0 in the menu or sub menu
-                var menu = selected as XmlMenuBase;
-                menu.MenuItems.Insert(0, headerItem);
-            }
-            else
-            {
-                // Create the new menu item before or after the selected nodes 
-                var parent = (XmlMenuBase)_area.GetParent(selected);
-                if (position == ItemPosition.Before)
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), headerItem);
-                else
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, headerItem);
-            }
-
-            _selectedNode = headerItem;
-
-            RefreshMenuItems();
-            EnableDisableMenus();
+            AddHeaderItem(headerItem, selected, position);
         }
 
-        private void AddMenuItem(XmlMenuItemBase newItem, XmlMenuItemBase selected)
+        private void AddHeaderItem(XmlMenuItemBase newItem, XmlMenuItemBase selected, ItemPosition position)
         {
-            ItemPosition position = GetPosition(selected, selected is XmlMenu || selected is XmlSubMenu);
-
             if (position == ItemPosition.Inside)
             {
                 // Create the new menu item at position 0 in the menu or sub menu
@@ -403,7 +356,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
             else
             {
-                // Create the new menu item after the selected nodes 
+                // Create the new menu item before or after the selected nodes 
                 var parent = (XmlMenuBase)_area.GetParent(selected);
                 if (position == ItemPosition.Before)
                     parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), newItem);
@@ -437,23 +390,28 @@ namespace SoftTeam.SoftBar.Core.Forms
             var menuItem = CreateMenuItem();
             if (menuItem == null) return;
 
+            AddMenuItem(menuItem, selected, position);
+        }
+
+        private void AddMenuItem(XmlMenuItemBase newItem, XmlMenuItemBase selected, ItemPosition position)
+        {
             if (position == ItemPosition.Inside)
             {
                 // Create the new menu item at position 0 in the menu or sub menu
                 var menu = selected as XmlMenuBase;
-                menu.MenuItems.Insert(0, menuItem);
+                menu.MenuItems.Insert(0, newItem);
             }
             else
             {
                 // Create the new menu item after the selected nodes 
                 var parent = (XmlMenuBase)_area.GetParent(selected);
                 if (position == ItemPosition.Before)
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), menuItem);
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected), newItem);
                 else
-                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, menuItem);
+                    parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, newItem);
             }
 
-            _selectedNode = menuItem;
+            _selectedNode = newItem;
 
             RefreshMenuItems();
             EnableDisableMenus();
@@ -650,7 +608,8 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             RemoveItem();
         }
-        private void RemoveItem(bool askConfirmation = false)
+
+        private void RemoveItem(bool askConfirmation = true)
         {
             var selected = GetSelectedItem();
             string message = "";
@@ -743,78 +702,101 @@ namespace SoftTeam.SoftBar.Core.Forms
                 MoveOut();
                 return true;
             }
+            else if (keyData == Keys.Delete)
+            {
+                RemoveItem();
+                return true;
+            }
             else if (keyData == (Keys.Control | Keys.C))
             {
-                var selected = GetSelectedItem();
-
-                if (selected == null)
-                {
-                    var message = "A node must be selected to indicate which item should be copied!";
-                    XtraMessageBox.Show(message);
-                    return true;
-                }
-                else
-                {
-                    if (selected is XmlMenu || selected is XmlSubMenu)
-                    {
-                        var message = "Copying of menus and sub menus is currently not supported!";
-                        XtraMessageBox.Show(message);
-                        return true;
-                    }
-
-                    _copiedNode = selected.Copy();
-                    return true;
-                }
+                Copy();
+                return true;
             }
             else if (keyData == (Keys.Control | Keys.X))
             {
-                var selected = GetSelectedItem();
-
-                if (selected == null)
-                {
-                    var message = "A node must be selected to indicate which item should be copied!";
-                    XtraMessageBox.Show(message);
-                    return true;
-                }
-                else
-                {
-                    if (selected is XmlMenu || selected is XmlSubMenu)
-                    {
-                        var message = "Copying of menus and sub menus is currently not supported!";
-                        XtraMessageBox.Show(message);
-                        return true;
-                    }
-
-                    _copiedNode = selected.Copy();
-                    RemoveItem(false);
-                    return true;
-                }
+                Cut();
+                return true;
             }
             else if (keyData == (Keys.Control | Keys.V))
             {
-                var selected = GetSelectedItem();
-
-                if (selected == null)
-                {
-                    var message = "A node must be selected to indicate which item should be copied!";
-                    XtraMessageBox.Show(message);
-                    return true;
-                }
-
-                if (_copiedNode == null)
-                {
-                    var message = "A node must be copied first!";
-                    XtraMessageBox.Show(message);
-                    return true;
-                }
-
-                if (_copiedNode is XmlHeaderItem)
-                    AddHeaderItemAfter(_copiedNode, selected);
-                else if (_copiedNode is XmlMenuItem)
-                    AddMenuItem(_copiedNode, selected);
+                Paste();
+                return true;
             }
 
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+        #endregion
+
+        #region Cut, Copy and Paste
+        private void Copy()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "A node must be selected to indicate which item should be copied!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+            else if (selected is XmlMenu || selected is XmlSubMenu)
+            {
+                var message = "Copying of menus and sub menus is currently not supported!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            _copiedNode = selected.Copy();
+        }
+
+        private void Cut()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "A node must be selected to indicate which item should be copied!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+            else if (selected is XmlMenu || selected is XmlSubMenu)
+            {
+                var message = "Copying of menus and sub menus is currently not supported!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            _copiedNode = selected.Copy();
+            RemoveItem(false);
+            ClearSelected();
+        }
+
+        private void Paste()
+        {
+            var selected = GetSelectedItem();
+
+            if (selected == null)
+            {
+                var message = "A node must be selected to indicate where to place the copied node!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+            else if (_copiedNode == null)
+            {
+                var message = "A node must be copied first!";
+                XtraMessageBox.Show(message);
+                return;
+            }
+
+            ItemPosition position = ItemPosition.None;
+            if (selected is XmlMenu)
+                position = ItemPosition.Inside;
+            else
+                position = GetPosition(selected, selected is XmlSubMenu);
+
+            if (_copiedNode is XmlHeaderItem)
+                AddHeaderItem(_copiedNode, selected, position);
+            else if (_copiedNode is XmlMenuItem)
+                AddMenuItem(_copiedNode, selected, position);
         }
         #endregion
 
