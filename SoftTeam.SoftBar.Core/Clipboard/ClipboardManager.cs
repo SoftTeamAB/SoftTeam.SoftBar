@@ -88,7 +88,8 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
             {
                 // Force CheckClipboard to execute on the main thread
                 // otherwise the Clipboard won't work
-                _form.Invoke(new MethodInvoker(() => CheckClipboard()));
+                if (_form != null && !_form.IsDisposed)
+                    _form.Invoke(new MethodInvoker(() => CheckClipboard()));
             }
             catch
             {

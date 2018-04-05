@@ -29,6 +29,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _menu = menu;
 
             editMenu.LoadValues();
+
+            editMenu.SetFocus();
         }
 
         public CustomizationMenuItemForm(XmlHeaderItem headerItem)
@@ -43,6 +45,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _headerItem = headerItem;
 
             editHeaderItem.LoadValues();
+
+            editHeaderItem.SetFocus();
         }
 
         public CustomizationMenuItemForm(XmlSubMenu subMenu)
@@ -58,6 +62,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _subMenu = subMenu;
 
             editSubMenu.LoadValues();
+
+            editSubMenu.SetFocus();
         }
 
         public CustomizationMenuItemForm(XmlMenuItem menuItem)
@@ -78,6 +84,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             _menuItem = menuItem;
 
             editMenuItem.LoadValues();
+
+            editMenuItem.SetFocus();
         }
 
         private void simpleButtonOk_Click(object sender, EventArgs e)

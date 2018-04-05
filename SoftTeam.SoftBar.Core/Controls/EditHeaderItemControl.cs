@@ -32,5 +32,10 @@
             BeginGroup = checkEditBeginGroup.Checked;
         }
         #endregion
+
+        public void SetFocus()
+        {
+            textEditName.Select();
+        }
     }
 }

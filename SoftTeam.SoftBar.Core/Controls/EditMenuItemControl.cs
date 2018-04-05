@@ -75,7 +75,7 @@ namespace SoftTeam.SoftBar.Core.Controls
                         return false;
                 }
             }
-                
+
             return true;
         }
 
@@ -199,6 +199,12 @@ namespace SoftTeam.SoftBar.Core.Controls
                 }
             }
         }
+        #endregion
+
+        public void SetFocus()
+        {
+            textEditName.Select();
+        }
+
     }
-    #endregion
 }

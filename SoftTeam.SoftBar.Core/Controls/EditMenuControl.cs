@@ -74,5 +74,11 @@ namespace SoftTeam.SoftBar.Core.Controls
             IconPath = textEditIconPath.Text;
             UpdateImage(IconPath);
         }
+
+        public void SetFocus()
+        {
+            textEditName.Select();
+        }
+
     }
 }
