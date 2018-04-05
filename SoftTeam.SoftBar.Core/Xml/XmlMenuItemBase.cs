@@ -31,8 +31,9 @@ namespace SoftTeam.SoftBar.Core.Xml
             int result = depth + 1;
 
             if (root is XmlMenu || root is XmlSubMenu)
-                foreach (var node in ((XmlMenuBase)root).MenuItems)
-                    result = Math.Max(result, Depth(node, depth + 1));
+                if (((XmlMenuBase)root).MenuItems.Count > 0)
+                    foreach (var node in ((XmlMenuBase)root).MenuItems)
+                        result = Math.Max(result, Depth(node, depth + 1));
 
             return result;
         }

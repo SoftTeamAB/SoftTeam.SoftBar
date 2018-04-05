@@ -15,8 +15,6 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         #region Fields
         private int _height = Constants.TOP_MARGIN;
-        private int _level = 0;
-        private int _maxLevel = 0;
         private XmlArea _area = null;
         private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         private SoftBarManager _manager = null;
@@ -46,31 +44,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
-        #region Calculate max level
-        private int CalculateDepth()
-        {
-            int maxLevel = 0;
-
-            foreach (var menu in _area.Menus)
-                CalculateMaxLevelEx(menu, ref maxLevel);
-
-            return maxLevel;
-        }
-
-        private void CalculateMaxLevelEx(XmlMenuBase menu, ref int maxLevel)
-        {
-            _level += 1;
-            if (_level > maxLevel)
-                maxLevel = _level;
-
-            foreach (XmlMenuItemBase menuItem in menu.MenuItems)
-                if (menuItem is XmlSubMenu)
-                    CalculateMaxLevelEx((XmlMenuBase)menuItem, ref maxLevel);
-
-            _level -= 1;
-        }
-        #endregion
-
         #region Load menu for customization
         private void RefreshMenuItems()
         {
@@ -82,14 +55,11 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Height is now zero
             _height = 0;
 
-            // Calculate the new depth of the tree
-            _maxLevel = CalculateDepth();
-
             // Create the new menu item controls, recursively
             foreach (var menu in _area.Menus)
             {
-                AddItemControl(MenuItemType.Menu, menu);
-                LoadMenu(menu);
+                AddItemControl(MenuItemType.Menu, menu, 0);
+                LoadMenu(menu,1);
             }
 
             if (_makeVisible != null)
@@ -105,24 +75,21 @@ namespace SoftTeam.SoftBar.Core.Forms
             xtraScrollableControlMenu.Visible = true;
         }
 
-        private void LoadMenu(XmlMenuBase menu)
+        private void LoadMenu(XmlMenuBase menu, int level)
         {
-            _level += 1;
-
             foreach (XmlMenuItemBase menuItem in menu.MenuItems)
             {
                 if (menuItem is XmlSubMenu)
                 {
                     // Create the new sub menu and load its menu items recursively
-                    AddItemControl(MenuItemType.SubMenu, menuItem);
-                    LoadMenu((XmlMenuBase)menuItem);
+                    AddItemControl(MenuItemType.SubMenu, menuItem,level);
+                    LoadMenu((XmlMenuBase)menuItem, level+1);
                 }
                 else if (menuItem is XmlHeaderItem)
-                    AddItemControl(MenuItemType.HeaderItem, menuItem);
+                    AddItemControl(MenuItemType.HeaderItem, menuItem, level);
                 else if (menuItem is XmlMenuItem)
-                    AddItemControl(MenuItemType.MenuItem, menuItem);
+                    AddItemControl(MenuItemType.MenuItem, menuItem, level);
             }
-            _level -= 1;
         }
 
         private void ClearMenuItems()
@@ -133,14 +100,14 @@ namespace SoftTeam.SoftBar.Core.Forms
             xtraScrollableControlMenu.Controls.Clear();
         }
 
-        private void AddItemControl(MenuItemType type, XmlMenuItemBase menu)
+        private void AddItemControl(MenuItemType type, XmlMenuItemBase menu, int level)
         {
-            var step = 128 / _maxLevel;
-            var color = Color.FromArgb(50, _level * step + 127, _level * step + 127, _level * step + 127);
-            MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems);
-            var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
+            var step = 128 / _area.Depth();
+            var color = Color.FromArgb(50, (level + 1) * step + 127, (level + 1) * step + 127, (level + 1) * step + 127);
+            MenuItemControl item = new MenuItemControl(this, type, menu, level, color, _menuItems);
+            var width = xtraScrollableControlMenu.ClientSize.Width - _area.Depth() * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
 
-            item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
+            item.Location = new Point(level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
             item.Size = new Size(width, Constants.ITEM_HEIGHT);
             xtraScrollableControlMenu.Controls.Add(item);
             item.ClearSelectedRequested += Item_ClearSelectedRequested;

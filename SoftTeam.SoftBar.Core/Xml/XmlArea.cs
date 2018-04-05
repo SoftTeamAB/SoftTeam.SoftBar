@@ -85,7 +85,7 @@ namespace SoftTeam.SoftBar.Core.Xml
             int result = 0;
 
             foreach (var node in _menus)
-                result = Math.Max(result, node.Depth(node, 1));
+                result = Math.Max(result, node.Depth(node, 0));
 
             return result;
         }
