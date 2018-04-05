@@ -77,7 +77,6 @@
             this.barButtonItemMoveUp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMoveDown = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemRemoveItem = new DevExpress.XtraBars.BarButtonItem();
-            this.barMenuBar = new DevExpress.XtraBars.Bar();
             this.barSubItemFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemExitAndSave = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemFileExitWithoutSave = new DevExpress.XtraBars.BarButtonItem();
@@ -112,9 +111,9 @@
             // xtraScrollableControlMenu
             // 
             this.xtraScrollableControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xtraScrollableControlMenu.Location = new System.Drawing.Point(0, 53);
+            this.xtraScrollableControlMenu.Location = new System.Drawing.Point(0, 31);
             this.xtraScrollableControlMenu.Name = "xtraScrollableControlMenu";
-            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(758, 397);
+            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(758, 419);
             this.xtraScrollableControlMenu.TabIndex = 0;
             this.xtraScrollableControlMenu.Click += new System.EventHandler(this.xtraScrollableControlMenu_Click);
             // 
@@ -122,7 +121,6 @@
             // 
             this.barManagerCustomization.Bars.AddRange(new DevExpress.XtraBars.Bar[] {
             this.barToolBar,
-            this.barMenuBar,
             this.barBottom});
             this.barManagerCustomization.DockControls.Add(this.barDockControlTop);
             this.barManagerCustomization.DockControls.Add(this.barDockControlBottom);
@@ -152,7 +150,6 @@
             this.barButtonItemMoveDown,
             this.barButtonItemMenuMoveUp,
             this.barButtonItemMenuMoveDown});
-            this.barManagerCustomization.MainMenu = this.barMenuBar;
             this.barManagerCustomization.MaxItemId = 23;
             this.barManagerCustomization.ShowScreenTipsInMenus = true;
             this.barManagerCustomization.StatusBar = this.barBottom;
@@ -283,20 +280,6 @@
             this.barButtonItemRemoveItem.SuperTip = superToolTip5;
             this.barButtonItemRemoveItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemRemoveItem_ItemClick);
             // 
-            // barMenuBar
-            // 
-            this.barMenuBar.BarName = "Main menu";
-            this.barMenuBar.DockCol = 0;
-            this.barMenuBar.DockRow = 0;
-            this.barMenuBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barMenuBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemFile),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItemAddMenu)});
-            this.barMenuBar.OptionsBar.AllowQuickCustomization = false;
-            this.barMenuBar.OptionsBar.MultiLine = true;
-            this.barMenuBar.OptionsBar.UseWholeRow = true;
-            this.barMenuBar.Text = "Main menu";
-            // 
             // barSubItemFile
             // 
             this.barSubItemFile.Caption = "File";
@@ -319,7 +302,6 @@
             superToolTip6.Items.Add(toolTipTitleItem7);
             superToolTip6.Items.Add(toolTipItem6);
             this.barButtonItemExitAndSave.SuperTip = superToolTip6;
-            this.barButtonItemExitAndSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemExitAndSave_ItemClick);
             // 
             // barButtonItemFileExitWithoutSave
             // 
@@ -339,7 +321,6 @@
             superToolTip7.Items.Add(toolTipSeparatorItem2);
             superToolTip7.Items.Add(toolTipTitleItem9);
             this.barButtonItemFileExitWithoutSave.SuperTip = superToolTip7;
-            this.barButtonItemFileExitWithoutSave.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemFileExitWithoutSave_ItemClick);
             // 
             // barSubItemAddMenu
             // 
@@ -369,7 +350,6 @@
             superToolTip8.Items.Add(toolTipTitleItem10);
             superToolTip8.Items.Add(toolTipItem8);
             this.barButtonItemMenuAddMenu.SuperTip = superToolTip8;
-            this.barButtonItemMenuAddMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenu_ItemClick);
             // 
             // barButtonItemMenuAddSubMenu
             // 
@@ -385,7 +365,6 @@
             superToolTip9.Items.Add(toolTipTitleItem11);
             superToolTip9.Items.Add(toolTipItem9);
             this.barButtonItemMenuAddSubMenu.SuperTip = superToolTip9;
-            this.barButtonItemMenuAddSubMenu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddSubMenu_ItemClick);
             // 
             // barButtonItemMenuHeaderItem
             // 
@@ -402,7 +381,6 @@
             superToolTip10.Items.Add(toolTipTitleItem12);
             superToolTip10.Items.Add(toolTipItem10);
             this.barButtonItemMenuHeaderItem.SuperTip = superToolTip10;
-            this.barButtonItemMenuHeaderItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddHeaderItem_ItemClick);
             // 
             // barButtonItemMenuAddMenuItem
             // 
@@ -417,7 +395,6 @@
             superToolTip11.Items.Add(toolTipTitleItem13);
             superToolTip11.Items.Add(toolTipItem11);
             this.barButtonItemMenuAddMenuItem.SuperTip = superToolTip11;
-            this.barButtonItemMenuAddMenuItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuAddMenuItem_ItemClick);
             // 
             // barButtonItemMenuMoveUp
             // 
@@ -426,7 +403,6 @@
             this.barButtonItemMenuMoveUp.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuMoveUp.ImageOptions.Image")));
             this.barButtonItemMenuMoveUp.Name = "barButtonItemMenuMoveUp";
             this.barButtonItemMenuMoveUp.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItemMenuMoveUp.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuMoveUp_ItemClick);
             // 
             // barButtonItemMenuMoveDown
             // 
@@ -435,7 +411,6 @@
             this.barButtonItemMenuMoveDown.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItemMenuMoveDown.ImageOptions.Image")));
             this.barButtonItemMenuMoveDown.Name = "barButtonItemMenuMoveDown";
             this.barButtonItemMenuMoveDown.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
-            this.barButtonItemMenuMoveDown.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuMoveDown_ItemClick);
             // 
             // barButtonItemMenuRemoveItem
             // 
@@ -510,7 +485,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManagerCustomization;
-            this.barDockControlTop.Size = new System.Drawing.Size(758, 53);
+            this.barDockControlTop.Size = new System.Drawing.Size(758, 31);
             // 
             // barDockControlBottom
             // 
@@ -524,17 +499,17 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 53);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
             this.barDockControlLeft.Manager = this.barManagerCustomization;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 460);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(758, 53);
+            this.barDockControlRight.Location = new System.Drawing.Point(758, 31);
             this.barDockControlRight.Manager = this.barManagerCustomization;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 438);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 460);
             // 
             // toolTipControllerCustomization
             // 
@@ -618,7 +593,6 @@
         private DevExpress.XtraBars.BarManager barManagerCustomization;
         private DevExpress.XtraBars.Bar barToolBar;
         private DevExpress.XtraBars.BarButtonItem barButtonItemAddMenu;
-        private DevExpress.XtraBars.Bar barMenuBar;
         private DevExpress.XtraBars.BarSubItem barSubItemFile;
         private DevExpress.XtraBars.BarButtonItem barButtonItemFileExitWithoutSave;
         private DevExpress.XtraBars.Bar barBottom;

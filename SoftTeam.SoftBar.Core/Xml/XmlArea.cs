@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Xml;
 
 namespace SoftTeam.SoftBar.Core.Xml
@@ -77,6 +78,16 @@ namespace SoftTeam.SoftBar.Core.Xml
             }
 
             return null;
+        }
+
+        public int Depth()
+        {
+            int result = 0;
+
+            foreach (var node in _menus)
+                result = Math.Max(result, node.Depth(node, 1));
+
+            return result;
         }
         #endregion
     }

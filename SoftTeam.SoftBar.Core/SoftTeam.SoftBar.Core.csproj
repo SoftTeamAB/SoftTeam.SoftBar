@@ -150,6 +150,7 @@
     <Compile Include="Forms\CustomizationForm.Designer.cs">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomizationFormBuilder.cs" />
     <Compile Include="Forms\CustomizationInfoForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,7 +195,6 @@
       <DependentUpon>MyDirectoriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CommandLine.cs" />
-    <Compile Include="Misc\DrawingControl.cs" />
     <Compile Include="Misc\ErrorHandler.cs" />
     <Compile Include="Misc\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">

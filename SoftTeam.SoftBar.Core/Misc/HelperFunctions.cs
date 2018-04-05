@@ -19,6 +19,7 @@ namespace SoftTeam.SoftBar.Core.Misc
 
             return timeStamp;
         }
+
         public static string AssemblyDirectory
         {
             get
@@ -32,7 +33,7 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         public static string GetTypeName(MenuItemType type)
         {
-            switch(type)
+            switch (type)
             {
                 case MenuItemType.Menu:
                     return "Menu";
@@ -53,9 +54,9 @@ namespace SoftTeam.SoftBar.Core.Misc
             switch (type)
             {
                 case MenuItemType.Menu:
-                    return Color.FromArgb(80,80,80);
+                    return Color.FromArgb(80, 80, 80);
                 case MenuItemType.SubMenu:
-                    return Color.FromArgb(80,80,80);
+                    return Color.FromArgb(80, 80, 80);
                 case MenuItemType.HeaderItem:
                     return Color.Gray;
                 case MenuItemType.MenuItem:
@@ -182,7 +183,7 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         public static string GetThemeName(int index)
         {
-            switch(index)
+            switch (index)
             {
                 case 0:
                     return "DevExpress Dark Style";
@@ -244,11 +245,11 @@ namespace SoftTeam.SoftBar.Core.Misc
                     {
                         Object o = key.GetValue("WorkingDirectory");
                         if (o != null)
-                            path = o.ToString();  
+                            path = o.ToString();
                     }
                 }
             }
-            catch 
+            catch
             {
             }
 
@@ -262,7 +263,7 @@ namespace SoftTeam.SoftBar.Core.Misc
                 // Make sure the keys exists
                 CreateWorkingDirectoryRegistryKeys();
 
-                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\SoftTeam\\SoftBar",true))
+                using (RegistryKey key = Registry.CurrentUser.OpenSubKey("Software\\SoftTeam\\SoftBar", true))
                 {
                     if (key != null)
                         key.SetValue("WorkingDirectory", path);

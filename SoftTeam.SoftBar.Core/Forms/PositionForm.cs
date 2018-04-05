@@ -10,12 +10,13 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Xml;
+using System.IO;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class PositionForm : DevExpress.XtraEditors.XtraForm
     {
-        public ItemPosition Position { get; set; } =  ItemPosition.None;
+        public ItemPosition Position { get; set; } = ItemPosition.None;
 
         public PositionForm(XmlMenuItemBase selected, bool insideAvailable = false)
         {
@@ -23,21 +24,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             simpleButtonCreateItemInside.Enabled = insideAvailable;
 
-            try
-            {
-                pictureBoxIcon.Image = Image.FromFile(selected.IconPath);
-            }
-            catch (Exception)
-            {
-                try
-                {
-                    pictureBoxIcon.Image = new Bitmap(Icon.ExtractAssociatedIcon(selected.IconPath).ToBitmap()).ResizeImage(24,24);
-                }
-                catch (Exception)
-                {
-                }
-            }
-
+            pictureBoxIcon.Image = HelperFunctions.GetFileImage(selected.IconPath);
             labelControlSelectedItem.Text = selected.Name;
         }
 

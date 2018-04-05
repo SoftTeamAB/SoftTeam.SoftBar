@@ -75,10 +75,12 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void RefreshMenuItems()
         {
             xtraScrollableControlMenu.Visible = false;
-            DrawingControl.SuspendDrawing(xtraScrollableControlMenu);
 
             // Remove all the old menu items
             ClearMenuItems();
+
+            // Height is now zero
+            _height = 0;
 
             // Calculate the new depth of the tree
             _maxLevel = CalculateDepth();
@@ -100,7 +102,6 @@ namespace SoftTeam.SoftBar.Core.Forms
                 xtraScrollableControlMenu.ScrollControlIntoView(_makeVisible);
             }
 
-            DrawingControl.ResumeDrawing(xtraScrollableControlMenu);
             xtraScrollableControlMenu.Visible = true;
         }
 
@@ -126,7 +127,9 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void ClearMenuItems()
         {
-            _height = 0;
+            foreach (Control control in xtraScrollableControlMenu.Controls)
+                control.Dispose();
+
             xtraScrollableControlMenu.Controls.Clear();
         }
 
@@ -195,36 +198,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             AddSubMenu();
         }
 
-        private void barButtonItemMenuAddMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            AddMenu();
-        }
-
-        private void barButtonItemMenuAddSubMenu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            AddSubMenu();
-        }
-
-        private void barButtonItemMenuAddHeaderItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            AddHeaderItem();
-        }
-
-        private void barButtonItemMenuAddMenuItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            AddMenuItem();
-        }
-
-        private void barButtonItemMenuMoveUp_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            MoveUp();
-        }
-
-        private void barButtonItemMenuMoveDown_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            MoveDown();
-        }
-
         private void barButtonItemMoveUp_ItemClick(object sender, ItemClickEventArgs e)
         {
             MoveUp();
@@ -266,6 +239,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // Never allow menus inside menus
             var position = GetPosition(parentMenu, false);
+            if (position == ItemPosition.None) return;
 
             var menu = CreateMenu();
             if (menu == null) return;
@@ -296,7 +270,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (selected is XmlMenu)
                 position = ItemPosition.Inside;
             else
+            {
                 position = GetPosition(selected, selected is XmlSubMenu);
+                if (position == ItemPosition.None) return;
+            }
 
             var subMenu = CreateSubMenu();
             if (subMenu == null) return;
@@ -338,7 +315,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (selected is XmlMenu)
                 position = ItemPosition.Inside;
             else
+            {
                 position = GetPosition(selected, selected is XmlSubMenu);
+                if (position == ItemPosition.None) return;
+            }
 
             var headerItem = CreateHeaderItem();
             if (headerItem == null) return;
@@ -385,7 +365,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (selected is XmlMenu)
                 position = ItemPosition.Inside;
             else
+            {
                 position = GetPosition(selected, selected is XmlSubMenu);
+                if (position == ItemPosition.None) return;
+            }
 
             var menuItem = CreateMenuItem();
             if (menuItem == null) return;
@@ -558,16 +541,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
 
         private void simpleButtonCancel_Click(object sender, EventArgs e)
-        {
-            Cancel();
-        }
-
-        private void barButtonItemExitAndSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            Save();
-        }
-
-        private void barButtonItemFileExitWithoutSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Cancel();
         }
@@ -791,7 +764,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             if (selected is XmlMenu)
                 position = ItemPosition.Inside;
             else
+            {
                 position = GetPosition(selected, selected is XmlSubMenu);
+                if (position == ItemPosition.None) return;
+            }
 
             if (_copiedNode is XmlHeaderItem)
                 AddHeaderItem(_copiedNode, selected, position);

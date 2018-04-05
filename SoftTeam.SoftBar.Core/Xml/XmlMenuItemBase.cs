@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace SoftTeam.SoftBar.Core.Xml
 {
     // Base class for menu items, header items and sub menus
@@ -23,6 +25,17 @@ namespace SoftTeam.SoftBar.Core.Xml
         public string IconPath { get => _iconPath; set => _iconPath = value; }
         public int IconNumber { get => _iconNumber; set => _iconNumber = value; }
         #endregion
+
+        public int Depth(XmlMenuItemBase root, int depth)
+        {
+            int result = depth + 1;
+
+            if (root is XmlMenu || root is XmlSubMenu)
+                foreach (var node in ((XmlMenuBase)root).MenuItems)
+                    result = Math.Max(result, Depth(node, depth + 1));
+
+            return result;
+        }
 
         #region Abstract functions
         public abstract int CountItems();

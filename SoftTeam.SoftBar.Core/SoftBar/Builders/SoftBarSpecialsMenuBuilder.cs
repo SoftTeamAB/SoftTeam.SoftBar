@@ -74,7 +74,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                 {
                     // Create and SvgImage to reserve space where
                     // where the text will be drawned
-                    var text = ((ClipboardItemText)item).Text.RestrictSize();
+                    var text = ((ClipboardItemText)item).Text.RestrictSize().Trim();
                     cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
                     cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 14);
                 }
