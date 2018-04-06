@@ -1,101 +1,183 @@
-﻿using DevExpress.XtraEditors;
+﻿// TODO : Hook up MenuCustomized event and call EnableDisableMenus in the event handler
+
+using DevExpress.XtraEditors;
+using SoftTeam.SoftBar.Core.Controls;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Xml;
+using System;
+using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core.Forms
 {
     public class CustomizationFormBuilder
     {
+        private CustomizationForm CustomizationForm { get; }
         private XtraScrollableControl ScrollableControl { get; }
         private XmlArea Area { get; }
-        private int Height { get; set; } = Constants.TOP_MARGIN;
+        private MenuItemControl VisibleMenuItemControl { get; set; }
+        private ObservableCollection<MenuItemControl> MenuItemControls { get; }
+        public XmlMenuItemBase SelectedXmlNode { get; set; }
 
-        public CustomizationFormBuilder(XtraScrollableControl scrollableControl, XmlArea area)
+        public event EventHandler MenuCustomized;
+
+        private void onMenuCustomized()
         {
+            MenuCustomized?.Invoke(this, new EventArgs());
+        }
+
+        public CustomizationFormBuilder(CustomizationForm form, XtraScrollableControl scrollableControl, XmlArea area)
+        {
+            CustomizationForm = form;
             ScrollableControl = scrollableControl;
             Area = area;
         }
 
-        //public void RefreshMenuItems()
-        //{
-        //    ScrollableControl.Visible = false;
+        public void RefreshMenuItems()
+        {
+            ScrollableControl.Visible = false;
 
-        //    // Remove all the old menu items
-        //    ClearMenuItems();
+            // Remove all the old menu items
+            ClearMenuItems();
 
-        //    // Height is no zero
-        //    Height = 0;
+            // Create the new menu item controls, recursively
+            foreach (var menu in Area.Menus)
+            {
+                AddItemControl(MenuItemType.Menu, menu,0);
+                LoadMenu(menu,1);
+            }
 
-        //    // Create the new menu item controls, recursively
-        //    foreach (var menu in Area.Menus)
-        //    {
-        //        AddItemControl(MenuItemType.Menu, menu);
-        //        LoadMenu(menu);
-        //    }
+            if (VisibleMenuItemControl != null)
+            {
+                // Clear old selected item
+                ClearSelected();
+                // Set the new item as selected
+                VisibleMenuItemControl.Selected = MenuItemSelectedStatus.Selected;
+                // Scroll it into view
+                ScrollableControl.ScrollControlIntoView(VisibleMenuItemControl);
+            }
 
-        //    if (_makeVisible != null)
-        //    {
-        //        // Clear old selected item
-        //        ClearSelected();
-        //        // Set the new item as selected
-        //        _makeVisible.Selected = MenuItemSelectedStatus.Selected;
-        //        // Scroll it into view
-        //        ScrollableControl.ScrollControlIntoView(_makeVisible);
-        //    }
+            ScrollableControl.Visible = true;
+        }
 
-        //    ScrollableControl.Visible = true;
-        //}
+        private void LoadMenu(XmlMenuBase menu, int level)
+        {
+            foreach (XmlMenuItemBase menuItem in menu.MenuItems)
+            {
+                if (menuItem is XmlSubMenu)
+                {
+                    // Create the new sub menu and load its menu items recursively
+                    AddItemControl(MenuItemType.SubMenu, menuItem, level);
+                    LoadMenu((XmlMenuBase)menuItem, level + 1);
+                }
+                else if (menuItem is XmlHeaderItem)
+                    AddItemControl(MenuItemType.HeaderItem, menuItem, level);
+                else if (menuItem is XmlMenuItem)
+                    AddItemControl(MenuItemType.MenuItem, menuItem, level);
+            }
+        }
 
-        //private void LoadMenu(XmlMenuBase menu)
-        //{
-        //    _level += 1;
+        private void AddItemControl(MenuItemType type, XmlMenuItemBase menu, int level)
+        {
+            // Calculate color
+            var step = 128 / Area.Depth();
+            var color = Color.FromArgb(50, (level + 1) * step + 127, (level + 1) * step + 127, (level + 1) * step + 127);
+            // Create new menu item control
+            MenuItemControl item = new MenuItemControl(CustomizationForm, type, menu, level, color, MenuItemControls);
+            // Location and size
+            var width = ScrollableControl.ClientSize.Width - Area.Depth() * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
+            var top = Constants.TOP_MARGIN + ScrollableControl.Controls.Count * (item.Height + Constants.SPACE);
+            item.Location = new Point(level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, top);
+            item.Size = new Size(width, Constants.ITEM_HEIGHT);
+            // Add the item to the scrollable control
+            ScrollableControl.Controls.Add(item);
+            // Add events
+            item.ClearSelectedRequested += Item_ClearSelectedRequested;
+            item.ItemSelected += Item_ItemSelected;
 
-        //    foreach (XmlMenuItemBase menuItem in menu.MenuItems)
-        //    {
-        //        if (menuItem is XmlSubMenu)
-        //        {
-        //            // Create the new sub menu and load its menu items recursively
-        //            AddItemControl(MenuItemType.SubMenu, menuItem);
-        //            LoadMenu((XmlMenuBase)menuItem);
-        //        }
-        //        else if (menuItem is XmlHeaderItem)
-        //            AddItemControl(MenuItemType.HeaderItem, menuItem);
-        //        else if (menuItem is XmlMenuItem)
-        //            AddItemControl(MenuItemType.MenuItem, menuItem);
-        //    }
-        //    _level -= 1;
-        //}
+            if (SelectedXmlNode != null && SelectedXmlNode.Equals(menu))
+            {
+                SelectedXmlNode = null;
+                VisibleMenuItemControl = item;
+            }
 
-        //private void AddItemControl(MenuItemType type, XmlMenuItemBase menu)
-        //{
-        //    var step = 128 / _maxLevel;
-        //    var color = Color.FromArgb(50, _level * step + 127, _level * step + 127, _level * step + 127);
-        //    MenuItemControl item = new MenuItemControl(this, type, menu, _level, color, _menuItems);
-        //    var width = xtraScrollableControlMenu.ClientSize.Width - _maxLevel * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
+            MenuItemControls.Add(item);
+        }
 
-        //    item.Location = new Point(_level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
-        //    item.Size = new Size(width, Constants.ITEM_HEIGHT);
-        //    xtraScrollableControlMenu.Controls.Add(item);
-        //    item.ClearSelectedRequested += Item_ClearSelectedRequested;
-        //    item.ItemSelected += Item_ItemSelected;
-        //    _height += item.Height + Constants.SPACE;
+        private void RemoveItem(bool askConfirmation = true)
+        {
+            var selected = GetSelectedMenuItemControl();
+            string message = "";
+            if (selected == null)
+            {
+                message = "Please select the node that you want to remove, and hit <b>Remove item</b> item again!";
+                XtraMessageBox.Show(message, "No node selected...", DevExpress.Utils.DefaultBoolean.True);
+                return;
+            }
 
-        //    if (_selectedNode != null && _selectedNode.Equals(menu))
-        //    {
-        //        _selectedNode = null;
-        //        _makeVisible = item;
-        //    }
+            if (askConfirmation)
+            {
+                message = $"Are you sure you want to remove the node {selected.Name}?";
+                DialogResult result = XtraMessageBox.Show(message, "Remove node...", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True);
+                if (result == DialogResult.No)
+                    return;
+            }
 
-        //    _menuItems.Add(item);
-        //}
+            var parent = Area.GetParent(selected);
+            if (parent == null)
+                Area.Menus.Remove((XmlMenu)selected);
+            else
+                parent.MenuItems.Remove(selected);
 
-        //public void ClearMenuItems()
-        //{
-        //    foreach (Control control in ScrollableControl.Controls)
-        //        control.Dispose();
+            selected = null;
+            VisibleMenuItemControl = null;
 
-        //    ScrollableControl.Controls.Clear();
-        //}
+            RefreshMenuItems();
+
+            // Call MenuCustomized event
+            onMenuCustomized();
+            //EnableDisableMenus();
+        }
+
+
+        private XmlMenuItemBase GetSelectedMenuItemControl()
+        {
+            foreach (var menuItem in MenuItemControls)
+                if (menuItem.Selected == MenuItemSelectedStatus.Selected)
+                    return menuItem.Item;
+
+            return null;
+        }
+
+        public void ClearMenuItems()
+        {
+            foreach (Control control in ScrollableControl.Controls)
+                control.Dispose();
+
+            ScrollableControl.Controls.Clear();
+        }
+
+        public void ClearSelected()
+        {
+            foreach (MenuItemControl menuItemControl in ScrollableControl.Controls)
+                menuItemControl.Selected = MenuItemSelectedStatus.NotSelected;
+        }
+
+        #region Event handlers
+        private void Item_ItemSelected(object sender, EventArgs e)
+        {
+            if (sender == null)
+                VisibleMenuItemControl = null;
+            else
+                VisibleMenuItemControl = (MenuItemControl)sender;
+        }
+
+        private void Item_ClearSelectedRequested(object sender, EventArgs e)
+        {
+            VisibleMenuItemControl = null;
+            ClearSelected();
+        }
+        #endregion
     }
 }
