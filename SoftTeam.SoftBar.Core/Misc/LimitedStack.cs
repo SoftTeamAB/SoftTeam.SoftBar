@@ -33,6 +33,10 @@ namespace SoftTeam.SoftBar.Core.Misc
         #endregion
 
         #region Public Stack Implementation
+        public T this[int index]    // Indexer declaration  
+        {
+            get { return _list.ElementAt(index); }
+        }
 
         public void Push(T value)
         {

@@ -105,6 +105,9 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // My tools
             listBoxControlMyTools.DataSource = _settingsManager.Settings.MyTools;
+
+            // Clipboard
+            spinEditClipboard.Value = _settingsManager.Settings.GetIntegerSetting(Constants.Clipboard_HistoryItems, 10);
         }
 
         private void SaveSettings()
@@ -150,30 +153,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             // My tools
             listBoxControlMyTools.DataSource = (List<Tool>)_settingsManager.Settings.MyTools;
 
-            //// My directories
-            //_manager.Settings.MyDirectories.Clear();
-            //foreach (var directory in listBoxControlMyDirectories.Items)
-            //{
-            //    var item = new Directory();
-            //    item.Name = directory.ToString();
-            //    item.IconPath = "";
-            //    item.Path = directory.ToString();
-            //    item.BeginGroup = false;
-            //    _manager.Settings.MyDirectories.Add(item);
-            //}
-
-            //// My tools
-            //_manager.Settings.MyTools.Clear();
-            //foreach (var tool in listBoxControlMyTools.Items)
-            //{
-            //    var itemTool = new Tool();
-            //    itemTool.Name = tool.ToString();
-            //    itemTool.IconPath = tool.ToString();
-            //    itemTool.Path = tool.ToString();
-            //    itemTool.Parameters = "";
-            //    itemTool.BeginGroup = false;
-            //    _manager.Settings.MyTools.Add(itemTool);
-            //}
+            _settingsManager.Settings.SetIntegerSetting(Constants.Clipboard_HistoryItems, int.Parse(spinEditClipboard.EditValue.ToString()));
+            _manager.ClipboardManager.ChangeClipboardSize(int.Parse(spinEditClipboard.EditValue.ToString()));
         }
         #endregion
 

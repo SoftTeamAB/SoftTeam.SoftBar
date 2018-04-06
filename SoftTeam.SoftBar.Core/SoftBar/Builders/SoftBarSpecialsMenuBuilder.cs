@@ -96,47 +96,54 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             cliboardItem.Item.Tag = item;
             _specialsMenu.Item.AddItem(cliboardItem.Item);
         }
+        #endregion
 
+        #region Draw item
         private void Manager_CustomDrawItem(object sender, DevExpress.XtraBars.BarItemCustomDrawEventArgs e)
         {
             BarItemLink link = e.LinkInfo?.Link as BarItemLink;
             if (link == null) return;
             if (link.Item.Tag == null) return;
+            Graphics g = e.Graphics;
 
             var font = new Font("Tahoma", 8.25f);
             if (link.Item.Tag.ToString() == "clipboardComputerName")
             {
+                var appearance = link.Item.ItemAppearance.GetAppearance(e.State);                
                 // Draw my computer name item
                 e.DrawBackground();
-                DrawItem(e.Graphics, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server), "Computer name", font);
+                DrawItem(g, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server), "Computer name", appearance.Font);
                 e.Handled = true;
             }
             else if (link.Item.Tag.ToString() == "clipboardIp")
             {
+                var appearance = link.Item.ItemAppearance.GetAppearance(e.State);
                 // Draw my ip item
                 e.DrawBackground();
-                DrawItem(e.Graphics, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server_network), "Computer ip", font);
+                DrawItem(g, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server_network), "Computer ip", appearance.Font);
                 e.Handled = true;
             }
             else if (link.Item.Tag is ClipboardItem)
             {
+                var appearance = link.Item.ItemAppearance.GetAppearance(e.State);
                 BarButtonItem item = link.Item as BarButtonItem;
-
+                // Get theme fore color for the text
+                Skin currentSkin = DevExpress.Skins.EditorsSkins.GetSkin(_manager.Form.LookAndFeel);
+                var backGroundColor = currentSkin.TranslateColor(SystemColors.Control);
                 e.DrawBackground();
                 e.DrawGlyph();
-                DrawBorder(e.Graphics, e.Bounds, ((ClipboardItem)link.Item.Tag).CurrentlyInClipboard);
+                DrawBorder(g, e.Bounds, ((ClipboardItem)link.Item.Tag).CurrentlyInClipboard);
 
                 if (link.Item.Tag is ClipboardItemText)
                 {
-                    // Get theme fore color for the text
-                    Skin currentSkin = DevExpress.Skins.EditorsSkins.GetSkin(_manager.Form.LookAndFeel);
                     var color = currentSkin.TranslateColor(SystemColors.ControlText);
                     // Get the text that should be drawned
                     var text = ((ClipboardItemText)link.Item.Tag).Text.RestrictSize();
                     // Get the position to draw the text
                     var point = new Point(e.Bounds.Location.X + 2, e.Bounds.Location.Y + 5);
                     // Draw the text
-                    e.Graphics.DrawString(text, font, new SolidBrush(color), point);
+                    g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+                    g.DrawString(text, appearance.Font, new SolidBrush(color), point);
                     e.Handled = true;
                 }
                 else if (link.Item.Tag is ClipboardItemImage)
@@ -150,7 +157,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
                     // Create the bounds
                     var imageBounds = new Rectangle(location, size);
                     // Draw the image
-                    e.Graphics.DrawImage(image, imageBounds);
+                    g.DrawImage(image, imageBounds);
                     e.Handled = true;
                 }
             }
@@ -174,6 +181,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             // Get the position to draw the text
             var point = new Point(bounds.Location.X + 32, bounds.Location.Y + 4);
             // Draw the text
+            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             g.DrawString(text, font, new SolidBrush(color), point);
         }
 

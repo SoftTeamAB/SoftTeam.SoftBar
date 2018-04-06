@@ -97,6 +97,9 @@
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
+            this.tabNavigationPageClipboard = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.spinEditClipboard = new DevExpress.XtraEditors.SpinEdit();
+            this.labelControlClipboardItems = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -127,6 +130,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkEditShowDirectoriesMenu.Properties)).BeginInit();
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
+            this.tabNavigationPageClipboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -135,13 +140,15 @@
             this.tabPaneSettings.Controls.Add(this.tabNavigationPageMyDirectories);
             this.tabPaneSettings.Controls.Add(this.tabNavigationPageGeneral);
             this.tabPaneSettings.Controls.Add(this.tabNavigationPageMyTools);
+            this.tabPaneSettings.Controls.Add(this.tabNavigationPageClipboard);
             this.tabPaneSettings.Location = new System.Drawing.Point(12, 12);
             this.tabPaneSettings.Name = "tabPaneSettings";
             this.tabPaneSettings.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPageGeneral,
             this.tabNavigationPageDirectories,
             this.tabNavigationPageMyDirectories,
-            this.tabNavigationPageMyTools});
+            this.tabNavigationPageMyTools,
+            this.tabNavigationPageClipboard});
             this.tabPaneSettings.RegularSize = new System.Drawing.Size(607, 372);
             this.tabPaneSettings.SelectedPage = this.tabNavigationPageMyDirectories;
             this.tabPaneSettings.Size = new System.Drawing.Size(607, 372);
@@ -759,6 +766,48 @@
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
+            // tabNavigationPageClipboard
+            // 
+            this.tabNavigationPageClipboard.Caption = "Clipboard";
+            this.tabNavigationPageClipboard.Controls.Add(this.labelControlClipboardItems);
+            this.tabNavigationPageClipboard.Controls.Add(this.spinEditClipboard);
+            this.tabNavigationPageClipboard.Name = "tabNavigationPageClipboard";
+            this.tabNavigationPageClipboard.Size = new System.Drawing.Size(589, 327);
+            // 
+            // spinEditClipboard
+            // 
+            this.spinEditClipboard.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Location = new System.Drawing.Point(148, 20);
+            this.spinEditClipboard.Name = "spinEditClipboard";
+            this.spinEditClipboard.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditClipboard.Properties.IsFloatValue = false;
+            this.spinEditClipboard.Properties.Mask.EditMask = "N00";
+            this.spinEditClipboard.Properties.MaxValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Size = new System.Drawing.Size(45, 20);
+            this.spinEditClipboard.TabIndex = 0;
+            // 
+            // labelControlClipboardItems
+            // 
+            this.labelControlClipboardItems.Location = new System.Drawing.Point(18, 23);
+            this.labelControlClipboardItems.Name = "labelControlClipboardItems";
+            this.labelControlClipboardItems.Size = new System.Drawing.Size(109, 13);
+            this.labelControlClipboardItems.TabIndex = 1;
+            this.labelControlClipboardItems.Text = "Clipboard history items";
+            // 
             // SettingsForm
             // 
             this.AcceptButton = this.simpleButtonSave;
@@ -810,6 +859,9 @@
             this.tabNavigationPageMyTools.ResumeLayout(false);
             this.tabNavigationPageMyTools.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
+            this.tabNavigationPageClipboard.ResumeLayout(false);
+            this.tabNavigationPageClipboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -868,5 +920,8 @@
         private DevExpress.XtraEditors.CheckEdit checkEditSubFolderSpecialFolders;
         private DevExpress.XtraEditors.CheckEdit checkEditSubFolderDrives;
         private DevExpress.XtraEditors.CheckEdit checkEditSubFolderMyFolders;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageClipboard;
+        private DevExpress.XtraEditors.LabelControl labelControlClipboardItems;
+        private DevExpress.XtraEditors.SpinEdit spinEditClipboard;
     }
 }

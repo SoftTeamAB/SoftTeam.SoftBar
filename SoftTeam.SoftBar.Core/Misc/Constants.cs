@@ -46,5 +46,7 @@
         public const string SpecialFolder_Pictures = "SpecialFolder.Pictures";
         public const string SpecialFolder_Videos = "SpecialFolder.Videos";
         public const string SpecialFolder_Music = "SpecialFolder.Music";
+
+        public const string Clipboard_HistoryItems = "Clipboard.HistoryItems";
     }
 }

@@ -47,6 +47,19 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         #endregion
 
         #region Clipboard
+        public void ChangeClipboardSize(int newMaxCapacity)
+        {
+            if (newMaxCapacity == _maxCapacity) return;
+
+            var newStack = new LimitedStack<ClipboardItem>(newMaxCapacity);
+
+            for (int i = 0; i < Math.Min(_clipboard.Count,newMaxCapacity); i++)
+                newStack.Push( _clipboard[i]);
+
+            _clipboard = newStack;
+            _maxCapacity = newMaxCapacity;
+        }
+
         private void CheckClipboard()
         {
             try
@@ -102,7 +115,7 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
                 // Force CheckClipboard to execute on the main thread
                 // otherwise the Clipboard won't work
                 if (_form != null && !_form.IsDisposed)
-                    _form.Invoke(new MethodInvoker(() => CheckClipboard()));
+                    _form?.Invoke(new MethodInvoker(() => CheckClipboard()));
             }
             catch
             {
