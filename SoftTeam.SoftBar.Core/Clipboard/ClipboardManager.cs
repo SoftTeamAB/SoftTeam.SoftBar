@@ -60,6 +60,7 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
                     if (!ContainsHash(hash))
                     {
                         ClipboardItemText textItem = new ClipboardItemText(text, hash);
+                        SetAsCurrentlyInClipboard(textItem);
                         ClipboardList.Push(textItem);
                         onClipboardItemAdded();
                     }
@@ -72,6 +73,7 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
                     if (!ContainsHash(hash))
                     {
                         ClipboardItemImage imageItem = new ClipboardItemImage(image, hash);
+                        SetAsCurrentlyInClipboard(imageItem);
                         ClipboardList.Push(imageItem);
                         onClipboardItemAdded();
                     }
@@ -81,6 +83,16 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
             {
                 // Ignore errors 
             }
+        }
+
+        public void SetAsCurrentlyInClipboard(ClipboardItem clipboardItem)
+        {
+            // Mark all items as not in clipboard...
+            foreach (ClipboardItem item in ClipboardList)
+                item.CurrentlyInClipboard = false;
+
+            // ...and set this item as CurrentlyInClipboard
+            clipboardItem.CurrentlyInClipboard = true;
         }
 
         private void _timer_Elapsed(object sender)

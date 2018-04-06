@@ -43,6 +43,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Button.Click += _manager.SpecialsArea.ClipboardMenu_Clicked;
             _specialsMenu.Button.Tag = _specialsMenu;
             _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
+            _specialsMenu.Button.SuperTip = HelperFunctions.CreateInformationToolTip("Use SHIFT + CTRL + c to open the clipboard menu at mouse position.");
             _specialsMenu.Item.Manager.CustomDrawItem += Manager_CustomDrawItem;
 
             // My computer name
@@ -66,31 +67,34 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
             // Clipboard items
             foreach (var item in _manager.ClipboardManager.ClipboardList)
+                AddClipboardItem(item);
+        }
+
+        private void AddClipboardItem(object item)
+        {
+            SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, "", true);
+            cliboardItem.Setup();
+
+            if (item is ClipboardItemText)
             {
-                SoftBarMenuItem cliboardItem = new SoftBarMenuItem(_manager.Form, "", true);
-                cliboardItem.Setup();
-
-                if (item is ClipboardItemText)
-                {
-                    // Create and SvgImage to reserve space where
-                    // where the text will be drawned
-                    var text = ((ClipboardItemText)item).Text.RestrictSize().Trim();
-                    cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
-                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 14);
-                }
-                else if (item is ClipboardItemImage)
-                {
-                    // Create and SvgImage to reserve space where
-                    // where the image will be drawned                    
-                    cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
-                    cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, 60);
-                }
-
-                cliboardItem.Item.ItemClick += _manager.SpecialsArea.clipboardItem_ItemClick;
-
-                cliboardItem.Item.Tag = item;
-                _specialsMenu.Item.AddItem(cliboardItem.Item);
+                // Create and SvgImage to reserve space where
+                // where the text will be drawned
+                var text = ((ClipboardItemText)item).Text.RestrictSize().Trim();
+                cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
+                cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, text.NumberOfLines() * 14);
             }
+            else if (item is ClipboardItemImage)
+            {
+                // Create and SvgImage to reserve space where
+                // where the image will be drawned                    
+                cliboardItem.Item.ImageOptions.SvgImage = new SvgImage();
+                cliboardItem.Item.ImageOptions.SvgImageSize = new Size(100, 60);
+            }
+
+            cliboardItem.Item.ItemClick += _manager.SpecialsArea.clipboardItem_ItemClick;
+
+            cliboardItem.Item.Tag = item;
+            _specialsMenu.Item.AddItem(cliboardItem.Item);
         }
 
         private void Manager_CustomDrawItem(object sender, DevExpress.XtraBars.BarItemCustomDrawEventArgs e)
@@ -120,7 +124,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
                 e.DrawBackground();
                 e.DrawGlyph();
-                DrawBorder(e.Graphics, e.Bounds);
+                DrawBorder(e.Graphics, e.Bounds, ((ClipboardItem)link.Item.Tag).CurrentlyInClipboard);
 
                 if (link.Item.Tag is ClipboardItemText)
                 {
@@ -173,10 +177,13 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             g.DrawString(text, font, new SolidBrush(color), point);
         }
 
-        private void DrawBorder(Graphics g, Rectangle bounds)
+        private void DrawBorder(Graphics g, Rectangle bounds, bool currentlyInClipboard)
         {
             // Draw the border arounde the clipboard item
-            var color = Color.DarkGray;
+            Color color = Color.DarkGray;
+            if (currentlyInClipboard)
+                color = Color.Red;
+
             bounds.Inflate(-1, -1);
             ControlPaint.DrawBorder(g, bounds, color, ButtonBorderStyle.Dashed);
         }

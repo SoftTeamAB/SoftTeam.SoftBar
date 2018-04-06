@@ -250,6 +250,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void clipboardItem_ItemClick(object sender, ItemClickEventArgs e)
         {
+            // Since the user clicked on this item, make sure it is marked as currently in clipboard
+            _manager.ClipboardManager.SetAsCurrentlyInClipboard((ClipboardItem)e.Item.Tag);
+            // And set it as the current clipboard item.
             if (e.Item.Tag is ClipboardItemText)
                 Clipboard.SetText(((ClipboardItemText)e.Item.Tag).Text);
             else if (e.Item.Tag is ClipboardItemImage)
