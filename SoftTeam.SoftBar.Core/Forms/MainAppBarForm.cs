@@ -10,14 +10,45 @@ namespace SoftTeam.SoftBar.Core.Forms
 {
     public partial class MainAppBarForm : DevExpress.XtraEditors.XtraForm
     {
-        AppBar _appBar;
+        #region Fields
+        private SoftBarManager _manager = null;
+        private AppBar _appBar;
+        #endregion
 
+        #region Properties
+        public SoftBarManager Manager { get => _manager; set => _manager = value; }
+        #endregion
+
+        #region Clipboard
+        [DllImport("user32.dll")]
+        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
+        [DllImport("user32.dll")]
+        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
+        private static int WM_HOTKEY = 0x0312;
+
+        /// <summary>
+        /// The enumeration of possible modifiers.
+        /// </summary>
+        [Flags]
+        public new enum ModifierKeys : uint
+        {
+            None = 0,
+            Alt = 1,
+            Control = 2,
+            Shift = 4,
+            Win = 8
+        }
+        #endregion
+
+        #region Constructor
         public MainAppBarForm()
         {
             InitializeComponent();
             _appBar = new AppBar();
         }
+        #endregion
 
+        #region Load and closing
         private void MainAppBarForm_Load(object sender, EventArgs e)
         {
             bool exit = false;
@@ -28,7 +59,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             var path = HelperFunctions.GetWorkingDirectory();
 
             // First time user
-            if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(System.IO.Path.Combine(path,"menu.xml")))
+            if (string.IsNullOrEmpty(path) || !System.IO.File.Exists(System.IO.Path.Combine(path, "menu.xml")))
             {
                 using (StartupForm form = new StartupForm())
                 {
@@ -81,18 +112,29 @@ namespace SoftTeam.SoftBar.Core.Forms
                 HelperFunctions.SetWorkingDirectory(path);
 
             // Create the app bar from XML
-            SoftBarManager manager = new SoftBarManager(this, path);
+            _manager = new SoftBarManager(this, path);
+
+            // Register global hotkeys (Clipboard etc)
+            RegisterHotKeys();
 
             if (newUser)
             {
                 var header = $"SoftBar - New user";
                 var message = $"Since you are a new SoftBar user, it is recommended" + Environment.NewLine +
                               "that you check out <b>SoftBar/Settings</b> to set up <b>SoftBar</b>," + Environment.NewLine +
-                              "and <b>SoftBar/Customize</b> to create your own menus!"; 
+                              "and <b>SoftBar/Customize</b> to create your own menus!";
                 XtraMessageBox.Show(message, header, MessageBoxButtons.OK, MessageBoxIcon.Information, DevExpress.Utils.DefaultBoolean.True);
             }
         }
 
+        private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnregisterHotKeys();
+            _appBar.RegisterBar(this);
+        }
+        #endregion
+
+        #region Misc functions
         private bool ImportFromPHSAppBar(string workingDirectory)
         {
             openFileDialogSoftBar.FileName = "Config.ini";
@@ -127,11 +169,6 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return openFileDialogSoftBar.FileName;
         }
 
-        private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            _appBar.RegisterBar(this);
-        }
-
         private string ChooseWorkingDirectory()
         {
             using (ChooseDirectoryForm form = new ChooseDirectoryForm())
@@ -141,12 +178,37 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return form.Path;
             }
         }
+        #endregion
 
+        #region Register/unregister hotkeys
+        private void RegisterHotKeys()
+        {
+            RegisterHotKey(this.Handle, this.GetType().GetHashCode(), (int)(ModifierKeys.Shift | ModifierKeys.Control), 0x43);//Set hotkey as Win + 'c'
+        }
+
+        private void UnregisterHotKeys()
+        {
+            UnregisterHotKey(this.Handle, this.GetType().GetHashCode());
+        }
+        #endregion
+
+        #region Overrides
         protected override void WndProc(ref Message m)
         {
+            base.WndProc(ref m);
+
             _appBar.WndProc(this, ref m);
 
-            base.WndProc(ref m);
+            // check if we got a hot key pressed.
+            if (m.Msg == WM_HOTKEY)
+            {
+                // get the keys.
+                Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+                ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
+
+                if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == Keys.C)
+                    _manager.ClipboardManager.HotKeyClicked(MousePosition);
+            }
         }
 
         protected override System.Windows.Forms.CreateParams CreateParams
@@ -160,6 +222,6 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return cp;
             }
         }
-
+        #endregion
     }
 }

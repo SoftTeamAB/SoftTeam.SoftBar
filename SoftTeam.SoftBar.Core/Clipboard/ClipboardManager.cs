@@ -17,6 +17,7 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         private int _maxCapacity = 0;
         private System.Threading.Timer _timer = null;
         private MainAppBarForm _form = null;
+        private bool IsClipboardPopupMenuVisible = false;
         #endregion
 
         #region Events
@@ -165,9 +166,20 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         public void Dispose()
         {
             // The timer must be disposed otherwise the app will crash on shutdown
-            _timer.Change(System.Threading.Timeout.Infinite, System.Threading.Timeout.Infinite);
             _timer.Dispose();
             _timer = null;
+        }
+        #endregion
+
+        #region Clipboard hotKey
+        public void HotKeyClicked(Point mousePosition)
+        {
+            if (_form.Manager.SpecialsArea.Menus[0].Item.Opened == true)
+                _form.Manager.SpecialsArea.Menus[0].Item.HidePopup();
+            else
+                _form.Manager.SpecialsArea.Menus[0].Item.ShowPopup(mousePosition);
+
+            IsClipboardPopupMenuVisible = !IsClipboardPopupMenuVisible;
         }
         #endregion
     }
