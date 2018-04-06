@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.InteropServices;
+using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Misc;
@@ -183,12 +184,16 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Register/unregister hotkeys
         private void RegisterHotKeys()
         {
-            RegisterHotKey(this.Handle, this.GetType().GetHashCode(), (int)(ModifierKeys.Shift | ModifierKeys.Control), 0x43);//Set hotkey as Win + 'c'
+            //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
+            var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
+            Keys k = (Keys)char.ToUpper(hotkey[0]);
+            if (!RegisterHotKey(this.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)k))
+                XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
         }
 
         private void UnregisterHotKeys()
         {
-            UnregisterHotKey(this.Handle, this.GetType().GetHashCode());
+            UnregisterHotKey(this.Handle, 0);
         }
         #endregion
 
@@ -205,8 +210,9 @@ namespace SoftTeam.SoftBar.Core.Forms
                 // get the keys.
                 Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
                 ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
-
-                if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == Keys.C)
+                var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
+                Keys k = (Keys)char.ToUpper(hotkey[0]);
+                if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == k)
                     _manager.ClipboardManager.HotKeyClicked(MousePosition);
             }
         }

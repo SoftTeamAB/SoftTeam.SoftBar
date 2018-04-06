@@ -108,6 +108,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // Clipboard
             spinEditClipboard.Value = _settingsManager.Settings.GetIntegerSetting(Constants.Clipboard_HistoryItems, 10);
+            textEditHotKey.Text = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
         }
 
         private void SaveSettings()
@@ -155,6 +156,13 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             _settingsManager.Settings.SetIntegerSetting(Constants.Clipboard_HistoryItems, int.Parse(spinEditClipboard.EditValue.ToString()));
             _manager.ClipboardManager.ChangeClipboardSize(int.Parse(spinEditClipboard.EditValue.ToString()));
+
+            var hotkey = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
+            if (hotkey != textEditHotKey.Text)
+                XtraMessageBox.Show("You need to restart SoftBar when the hotkey has changed!","Hotkey has changed...");
+
+            if (textEditHotKey.Text.Length>0)
+                _settingsManager.Settings.SetStringSetting(Constants.Clipboard_Hotkey, textEditHotKey.Text.ToLower());
         }
         #endregion
 
@@ -348,6 +356,15 @@ namespace SoftTeam.SoftBar.Core.Forms
             labelControlToolsMenuName.Text = $"{textEditToolsMenuName.Text} menu";
 
             labelControlToolsHeader.Text = $"Add any Windows tools that you want in the {textEditToolsMenuName.Text} menu";
+        }
+
+        private void textEditHotKey_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
+        {
+            if (!Constants.validHotKeys.Contains(e.NewValue.ToString()))
+            {
+                System.Media.SystemSounds.Beep.Play();
+                e.Cancel = true;
+            }
         }
     }
 }

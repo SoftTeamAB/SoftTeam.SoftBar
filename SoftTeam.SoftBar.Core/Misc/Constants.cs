@@ -2,6 +2,8 @@
 {
     public static class Constants
     {
+        public const string validHotKeys = "abcdefghijklmnopqrstuvwxyzåäö";
+
         // General constants
         public const int SPACE = 0;
         public const int LEFT_MARGIN = 3;
@@ -48,5 +50,6 @@
         public const string SpecialFolder_Music = "SpecialFolder.Music";
 
         public const string Clipboard_HistoryItems = "Clipboard.HistoryItems";
+        public const string Clipboard_Hotkey = "Clipboard.Hotkey";
     }
 }

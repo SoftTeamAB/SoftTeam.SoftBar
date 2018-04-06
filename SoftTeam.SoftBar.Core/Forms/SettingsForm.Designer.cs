@@ -95,11 +95,13 @@
             this.listBoxControlMyTools = new DevExpress.XtraEditors.ListBoxControl();
             this.simpleButtonRemoveTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
+            this.tabNavigationPageClipboard = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.textEditHotKey = new DevExpress.XtraEditors.TextEdit();
+            this.labelControlHotKey = new DevExpress.XtraEditors.LabelControl();
+            this.labelControlClipboardItems = new DevExpress.XtraEditors.LabelControl();
+            this.spinEditClipboard = new DevExpress.XtraEditors.SpinEdit();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.tabNavigationPageClipboard = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.spinEditClipboard = new DevExpress.XtraEditors.SpinEdit();
-            this.labelControlClipboardItems = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -131,6 +133,7 @@
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
             this.tabNavigationPageClipboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditHotKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).BeginInit();
             this.SuspendLayout();
             // 
@@ -744,6 +747,67 @@
             this.simpleButtonAddTool.Text = "Add";
             this.simpleButtonAddTool.Click += new System.EventHandler(this.simpleButtonAddTool_Click);
             // 
+            // tabNavigationPageClipboard
+            // 
+            this.tabNavigationPageClipboard.Caption = "Clipboard";
+            this.tabNavigationPageClipboard.Controls.Add(this.textEditHotKey);
+            this.tabNavigationPageClipboard.Controls.Add(this.labelControlHotKey);
+            this.tabNavigationPageClipboard.Controls.Add(this.labelControlClipboardItems);
+            this.tabNavigationPageClipboard.Controls.Add(this.spinEditClipboard);
+            this.tabNavigationPageClipboard.Name = "tabNavigationPageClipboard";
+            this.tabNavigationPageClipboard.Size = new System.Drawing.Size(589, 327);
+            // 
+            // textEditHotKey
+            // 
+            this.textEditHotKey.Location = new System.Drawing.Point(237, 55);
+            this.textEditHotKey.Name = "textEditHotKey";
+            this.textEditHotKey.Properties.MaxLength = 1;
+            this.textEditHotKey.Size = new System.Drawing.Size(45, 20);
+            this.textEditHotKey.TabIndex = 3;
+            this.textEditHotKey.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditHotKey_EditValueChanging);
+            // 
+            // labelControlHotKey
+            // 
+            this.labelControlHotKey.Location = new System.Drawing.Point(18, 58);
+            this.labelControlHotKey.Name = "labelControlHotKey";
+            this.labelControlHotKey.Size = new System.Drawing.Size(182, 13);
+            this.labelControlHotKey.TabIndex = 2;
+            this.labelControlHotKey.Text = "Clipboard hotmey (CTRL + SHIFT + ?)";
+            // 
+            // labelControlClipboardItems
+            // 
+            this.labelControlClipboardItems.Location = new System.Drawing.Point(18, 23);
+            this.labelControlClipboardItems.Name = "labelControlClipboardItems";
+            this.labelControlClipboardItems.Size = new System.Drawing.Size(109, 13);
+            this.labelControlClipboardItems.TabIndex = 1;
+            this.labelControlClipboardItems.Text = "Clipboard history items";
+            // 
+            // spinEditClipboard
+            // 
+            this.spinEditClipboard.EditValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Location = new System.Drawing.Point(237, 20);
+            this.spinEditClipboard.Name = "spinEditClipboard";
+            this.spinEditClipboard.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.spinEditClipboard.Properties.IsFloatValue = false;
+            this.spinEditClipboard.Properties.Mask.EditMask = "N00";
+            this.spinEditClipboard.Properties.MaxValue = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Properties.MinValue = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.spinEditClipboard.Size = new System.Drawing.Size(45, 20);
+            this.spinEditClipboard.TabIndex = 0;
+            // 
             // simpleButtonSave
             // 
             this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
@@ -765,48 +829,6 @@
             this.simpleButtonCancel.TabIndex = 2;
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
-            // 
-            // tabNavigationPageClipboard
-            // 
-            this.tabNavigationPageClipboard.Caption = "Clipboard";
-            this.tabNavigationPageClipboard.Controls.Add(this.labelControlClipboardItems);
-            this.tabNavigationPageClipboard.Controls.Add(this.spinEditClipboard);
-            this.tabNavigationPageClipboard.Name = "tabNavigationPageClipboard";
-            this.tabNavigationPageClipboard.Size = new System.Drawing.Size(589, 327);
-            // 
-            // spinEditClipboard
-            // 
-            this.spinEditClipboard.EditValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spinEditClipboard.Location = new System.Drawing.Point(148, 20);
-            this.spinEditClipboard.Name = "spinEditClipboard";
-            this.spinEditClipboard.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.spinEditClipboard.Properties.IsFloatValue = false;
-            this.spinEditClipboard.Properties.Mask.EditMask = "N00";
-            this.spinEditClipboard.Properties.MaxValue = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.spinEditClipboard.Properties.MinValue = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.spinEditClipboard.Size = new System.Drawing.Size(45, 20);
-            this.spinEditClipboard.TabIndex = 0;
-            // 
-            // labelControlClipboardItems
-            // 
-            this.labelControlClipboardItems.Location = new System.Drawing.Point(18, 23);
-            this.labelControlClipboardItems.Name = "labelControlClipboardItems";
-            this.labelControlClipboardItems.Size = new System.Drawing.Size(109, 13);
-            this.labelControlClipboardItems.TabIndex = 1;
-            this.labelControlClipboardItems.Text = "Clipboard history items";
             // 
             // SettingsForm
             // 
@@ -861,6 +883,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
             this.tabNavigationPageClipboard.ResumeLayout(false);
             this.tabNavigationPageClipboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditHotKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).EndInit();
             this.ResumeLayout(false);
 
@@ -923,5 +946,7 @@
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPageClipboard;
         private DevExpress.XtraEditors.LabelControl labelControlClipboardItems;
         private DevExpress.XtraEditors.SpinEdit spinEditClipboard;
+        private DevExpress.XtraEditors.TextEdit textEditHotKey;
+        private DevExpress.XtraEditors.LabelControl labelControlHotKey;
     }
 }
