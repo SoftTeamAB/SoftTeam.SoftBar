@@ -14,31 +14,12 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Fields
         private SoftBarManager _manager = null;
         private AppBar _appBar;
+
+        private static int WM_HOTKEY = 0x0312;
         #endregion
 
         #region Properties
         public SoftBarManager Manager { get => _manager; set => _manager = value; }
-        #endregion
-
-        #region Clipboard
-        [DllImport("user32.dll")]
-        public static extern bool RegisterHotKey(IntPtr hWnd, int id, int fsModifiers, int vlc);
-        [DllImport("user32.dll")]
-        public static extern bool UnregisterHotKey(IntPtr hWnd, int id);
-        private static int WM_HOTKEY = 0x0312;
-
-        /// <summary>
-        /// The enumeration of possible modifiers.
-        /// </summary>
-        [Flags]
-        public new enum ModifierKeys : uint
-        {
-            None = 0,
-            Alt = 1,
-            Control = 2,
-            Shift = 4,
-            Win = 8
-        }
         #endregion
 
         #region Constructor
@@ -115,9 +96,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Create the app bar from XML
             _manager = new SoftBarManager(this, path);
 
-            // Register global hotkeys (Clipboard etc)
-            RegisterHotKeys();
-
             if (newUser)
             {
                 var header = $"SoftBar - New user";
@@ -130,7 +108,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            UnregisterHotKeys();
+            _manager.HotkeyManager.UnregisterHotKeys();
             _appBar.RegisterBar(this);
         }
         #endregion
@@ -181,22 +159,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
-        #region Register/unregister hotkeys
-        private void RegisterHotKeys()
-        {
-            //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
-            var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-            Keys k = (Keys)char.ToUpper(hotkey[0]);
-            if (!RegisterHotKey(this.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)k))
-                XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
-        }
-
-        private void UnregisterHotKeys()
-        {
-            UnregisterHotKey(this.Handle, 0);
-        }
-        #endregion
-
         #region Overrides
         protected override void WndProc(ref Message m)
         {
@@ -206,15 +168,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // check if we got a hot key pressed.
             if (m.Msg == WM_HOTKEY)
-            {
-                // get the keys.
-                Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
-                ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
-                var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-                Keys k = (Keys)char.ToUpper(hotkey[0]);
-                if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == k)
-                    _manager.ClipboardManager.HotKeyClicked(MousePosition);
-            }
+                _manager.HotkeyManager.ProcessHotKeys(ref m, MousePosition);
         }
 
         protected override System.Windows.Forms.CreateParams CreateParams

@@ -1,6 +1,7 @@
 ﻿using DevExpress.UserSkins;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
+using SoftTeam.SoftBar.Core.Hotkey;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
@@ -20,6 +21,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private MainAppBarForm _form = null;
         private SoftBarFileManager _fileManager = null;
         private ClipboardManager _clipboardManager = null;
+        private HotkeyManager _hotkeyManager = null;
         #endregion
 
         #region Properties
@@ -31,6 +33,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public SoftBarFileManager FileManager { get => _fileManager; set => _fileManager = value; }
         public ClipboardManager ClipboardManager { get => _clipboardManager; set => _clipboardManager = value; }
         public SoftBarArea SpecialsArea { get => _specialsArea; set => _specialsArea = value; }
+        public HotkeyManager HotkeyManager { get => _hotkeyManager; set => _hotkeyManager = value; }
         #endregion
 
         #region Constructor
@@ -55,6 +58,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             // Clipboard
             _clipboardManager = new ClipboardManager(_form, 10);
             _clipboardManager.ClipboardItemAdded += _clipboardManager_ClipboardItemAdded;
+
+            // Hotkeys
+            _hotkeyManager = new HotkeyManager(this);
+            _hotkeyManager.RegisterHotKeys();
 
             // Setup system and user area
             _systemArea = new SoftBarArea(this, AreaType.System);

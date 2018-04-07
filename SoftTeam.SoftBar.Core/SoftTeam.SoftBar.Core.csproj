@@ -181,6 +181,7 @@
     <Compile Include="Forms\StartupForm.Designer.cs">
       <DependentUpon>StartupForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Hotkey\HotkeyManager.cs" />
     <Compile Include="Misc\ControlExtension.cs" />
     <Compile Include="Forms\MyToolsForm.cs">
       <SubType>Form</SubType>
