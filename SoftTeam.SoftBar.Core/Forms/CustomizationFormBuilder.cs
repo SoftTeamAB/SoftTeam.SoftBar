@@ -143,10 +143,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             foreach (var menuItem in MenuItemControls)
                 if (menuItem.Selected == MenuItemSelectedStatus.Selected)
-                    Console.WriteLine("Selected:" + menuItem.Item.Name);
-
-            foreach (var menuItem in MenuItemControls)
-                if (menuItem.Selected == MenuItemSelectedStatus.Selected)
                     return menuItem.Item;
 
             return null;

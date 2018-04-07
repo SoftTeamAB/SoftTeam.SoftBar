@@ -108,7 +108,8 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // Clipboard
             spinEditClipboard.Value = _settingsManager.Settings.GetIntegerSetting(Constants.Clipboard_HistoryItems, 10);
-            textEditHotKey.Text = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
+            textEditClipboardHotKey.Text = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
+            textEditSoftBarHotkey.Text = _settingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s");
         }
 
         private void SaveSettings()
@@ -157,12 +158,18 @@ namespace SoftTeam.SoftBar.Core.Forms
             _settingsManager.Settings.SetIntegerSetting(Constants.Clipboard_HistoryItems, int.Parse(spinEditClipboard.EditValue.ToString()));
             _manager.ClipboardManager.ChangeClipboardSize(int.Parse(spinEditClipboard.EditValue.ToString()));
 
-            var hotkey = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
-            if (hotkey != textEditHotKey.Text)
-                XtraMessageBox.Show("You need to restart SoftBar when the hotkey has changed!","Hotkey has changed...");
+            //var clipboardHotkey = _settingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
+            //var softBarHotkey = _settingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s");
+            //if (clipboardHotkey != textEditClipboardHotKey.Text || softBarHotkey != textEditSoftBarHotkey.Text)
+            //    XtraMessageBox.Show("You need to restart SoftBar when the hotkeys has changed!", "Hotkeys has changed...");
 
-            if (textEditHotKey.Text.Length>0)
-                _settingsManager.Settings.SetStringSetting(Constants.Clipboard_Hotkey, textEditHotKey.Text.ToLower());
+            if (textEditClipboardHotKey.Text.Length>0)
+                _settingsManager.Settings.SetStringSetting(Constants.Clipboard_Hotkey, textEditClipboardHotKey.Text.ToLower());
+            if (textEditSoftBarHotkey.Text.Length > 0)
+                _settingsManager.Settings.SetStringSetting(Constants.General_Hotkey, textEditSoftBarHotkey.Text.ToLower());
+
+            _manager.HotkeyManager.UnregisterHotKeys();
+            _manager.HotkeyManager.RegisterHotKeys();
         }
         #endregion
 

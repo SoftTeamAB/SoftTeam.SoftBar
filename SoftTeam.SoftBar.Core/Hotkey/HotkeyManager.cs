@@ -15,6 +15,9 @@ namespace SoftTeam.SoftBar.Core.Hotkey
 {
     public class HotkeyManager
     {
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
         #region Fields
         private SoftBarManager _manager = null;
         #endregion
@@ -51,13 +54,16 @@ namespace SoftTeam.SoftBar.Core.Hotkey
         {
             //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-            Keys k = (Keys)char.ToUpper(hotkey[0]);
+            Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
 
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)k))
-                XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
+            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)clipboardHotkey))
+                XtraMessageBox.Show($"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
 
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)Keys.S))
-                XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + s!");
+            hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
+            Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
+
+            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)softBarHotkey))
+                XtraMessageBox.Show($"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
         }
 
         public void UnregisterHotKeys()
@@ -85,12 +91,20 @@ namespace SoftTeam.SoftBar.Core.Hotkey
             Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
             ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-            Keys k = (Keys)char.ToUpper(hotkey[0]);
+            Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
+            hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
+            Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
 
-            if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == k)
+            if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == clipboardHotkey)
                 _manager.ClipboardManager.HotKeyClicked(mousePosition);
-            else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == Keys.S)
+            else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == softBarHotkey)
+            {
+                // Application bar on top
                 _manager.ApplicationBarManager.AlwaysOnTop();
+                // Set focus on system button does not work so we
+                // have to use SetForegroundWindow here for some reason
+                SetForegroundWindow(_manager.Form.Handle);
+            }
 
         }
         #endregion
