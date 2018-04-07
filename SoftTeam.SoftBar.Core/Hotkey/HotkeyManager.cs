@@ -90,7 +90,7 @@ namespace SoftTeam.SoftBar.Core.Hotkey
             if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == k)
                 _manager.ClipboardManager.HotKeyClicked(mousePosition);
             else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == Keys.S)
-                _manager.MoveSoftBarOnTop();
+                _manager.ApplicationBarManager.AlwaysOnTop();
 
         }
         #endregion

@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace SoftTeam.SoftBar.Core
 {
-    public class AppBar
+    public class AppBarTool
     {
 
         /// <summary>
@@ -157,7 +157,7 @@ namespace SoftTeam.SoftBar.Core
 
         private int uCallBack;
 
-        public AppBar()
+        public AppBarTool()
         {
         }
 
@@ -253,6 +253,16 @@ namespace SoftTeam.SoftBar.Core
                 abd.rc.right - abd.rc.left, abd.rc.bottom - abd.rc.top, true);
         }
 
+        public void AlwaysOnTop(Form form, bool onTop)
+        {
+            APPBARDATA abd = new APPBARDATA();
+            abd.cbSize = Marshal.SizeOf(abd);
+            abd.hWnd = form.Handle;
+            //abd.uEdge = (int)ABEdge.ABE_TOP;
+
+            SetWindowPos(abd.hWnd, onTop ? HWND_TOPMOST : HWND_BOTTOM,
+                0, 0, 0, 0, SetWindowPosFlags.IgnoreMove | SetWindowPosFlags.IgnoreResize | SetWindowPosFlags.DoNotActivate);
+        }
 
         public void WndProc(Form form, ref System.Windows.Forms.Message m)
         {

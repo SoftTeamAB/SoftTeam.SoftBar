@@ -13,7 +13,6 @@ namespace SoftTeam.SoftBar.Core.Forms
     {
         #region Fields
         private SoftBarManager _manager = null;
-        private AppBar _appBar;
 
         private static int WM_HOTKEY = 0x0312;
         #endregion
@@ -26,7 +25,6 @@ namespace SoftTeam.SoftBar.Core.Forms
         public MainAppBarForm()
         {
             InitializeComponent();
-            _appBar = new AppBar();
         }
         #endregion
 
@@ -86,9 +84,6 @@ namespace SoftTeam.SoftBar.Core.Forms
                 return;
             }
 
-            // Set up the app bar at the top of the screen
-            _appBar.RegisterBar(this);
-
             // Save the path (working folder) for the xml file
             if (HelperFunctions.GetWorkingDirectory() != path)
                 HelperFunctions.SetWorkingDirectory(path);
@@ -109,7 +104,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private void MainAppBarForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             _manager.HotkeyManager.UnregisterHotKeys();
-            _appBar.RegisterBar(this);
+            _manager.ApplicationBarManager.UnregisterApplicationBar();
         }
         #endregion
 
@@ -163,10 +158,11 @@ namespace SoftTeam.SoftBar.Core.Forms
         protected override void WndProc(ref Message m)
         {
             base.WndProc(ref m);
+            
+            // Process application bar messages
+            _manager?.ApplicationBarManager?.ProcessApplicationBarMessages(ref m);            
 
-            _appBar.WndProc(this, ref m);
-
-            // check if we got a hot key pressed.
+            // Process hotkey messages
             if (m.Msg == WM_HOTKEY)
                 _manager.HotkeyManager.ProcessHotKeys(ref m, MousePosition);
         }

@@ -1,11 +1,11 @@
 ﻿using DevExpress.UserSkins;
+using SoftTeam.SoftBar.Core.AppBar;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
 using SoftTeam.SoftBar.Core.Hotkey;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -23,6 +23,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private SoftBarFileManager _fileManager = null;
         private ClipboardManager _clipboardManager = null;
         private HotkeyManager _hotkeyManager = null;
+        private ApplicationBarManager _applicationBarManager = null;
         #endregion
 
         #region Properties
@@ -35,12 +36,16 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public ClipboardManager ClipboardManager { get => _clipboardManager; set => _clipboardManager = value; }
         public SoftBarArea SpecialsArea { get => _specialsArea; set => _specialsArea = value; }
         public HotkeyManager HotkeyManager { get => _hotkeyManager; set => _hotkeyManager = value; }
+        public ApplicationBarManager ApplicationBarManager { get => _applicationBarManager; set => _applicationBarManager = value; }
         #endregion
 
         #region Constructor
         public SoftBarManager(MainAppBarForm form, string path)
         {
             _form = form;
+
+            _applicationBarManager = new ApplicationBarManager(this);
+            _applicationBarManager.RegisterApplicationBar();
 
             _fileManager = new SoftBarFileManager(path);
 
@@ -127,10 +132,5 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             g.DrawLine(lightPen, left + 1, 2, left + 1, _form.Height - 4);
         }
         #endregion
-
-        public void MoveSoftBarOnTop()
-        {
-            
-        }
     }
 }

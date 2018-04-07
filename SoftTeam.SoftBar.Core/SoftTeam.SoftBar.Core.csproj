@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppBar\AppBar.cs" />
+    <Compile Include="AppBar\ApplicationBarManager.cs" />
     <Compile Include="Clipboard\ClipboardItem.cs" />
     <Compile Include="Clipboard\ClipboardItemAudio.cs" />
     <Compile Include="Clipboard\ClipboardItemFiles.cs" />
