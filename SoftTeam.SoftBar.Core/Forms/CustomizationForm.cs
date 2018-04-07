@@ -14,14 +14,11 @@ namespace SoftTeam.SoftBar.Core.Forms
     public partial class CustomizationForm : DevExpress.XtraEditors.XtraForm
     {
         #region Fields
-        private int _height = Constants.TOP_MARGIN;
         private XmlArea _area = null;
-        private ObservableCollection<MenuItemControl> _menuItems = new ObservableCollection<MenuItemControl>();
         private SoftBarManager _manager = null;
-        private MenuItemControl _makeVisible = null;
-        private XmlMenuItemBase _selectedNode = null;
         private CustomizationInfoForm _infoForm = null;
         private XmlMenuItemBase _copiedNode = null;
+        private CustomizationFormBuilder _builder = null;
         #endregion
 
         #region Constructors
@@ -31,116 +28,22 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             _manager = manager;
             _area = _manager.UserAreaXml;
-
+            _builder = new CustomizationFormBuilder(this, xtraScrollableControlMenu, _area);
+            _builder.MenuCustomized += _builder_MenuCustomized;
             barButtonItemPath.Caption = manager.FileManager.MenuPath;
             barButtonItemBackupPath.Caption = manager.FileManager.SoftBarDirectoryBackup;
 
             var darkerColor = HelperFunctions.ChangeColorBrightness(this.BackColor, -0.2f);
             panelControlScroll.BackColor = darkerColor;
 
-            RefreshMenuItems();
+            _builder.RefreshMenuItems();
 
             EnableDisableMenus();
         }
-        #endregion
 
-        #region Load menu for customization
-        private void RefreshMenuItems()
+        private void _builder_MenuCustomized(object sender, EventArgs e)
         {
-            xtraScrollableControlMenu.Visible = false;
-
-            // Remove all the old menu items
-            ClearMenuItems();
-
-            // Height is now zero
-            _height = 0;
-
-            // Create the new menu item controls, recursively
-            foreach (var menu in _area.Menus)
-            {
-                AddItemControl(MenuItemType.Menu, menu, 0);
-                LoadMenu(menu,1);
-            }
-
-            if (_makeVisible != null)
-            {
-                // Clear old selected item
-                ClearSelected();
-                // Set the new item as selected
-                _makeVisible.Selected = MenuItemSelectedStatus.Selected;
-                // Scroll it into view
-                xtraScrollableControlMenu.ScrollControlIntoView(_makeVisible);
-            }
-
-            xtraScrollableControlMenu.Visible = true;
-        }
-
-        private void LoadMenu(XmlMenuBase menu, int level)
-        {
-            foreach (XmlMenuItemBase menuItem in menu.MenuItems)
-            {
-                if (menuItem is XmlSubMenu)
-                {
-                    // Create the new sub menu and load its menu items recursively
-                    AddItemControl(MenuItemType.SubMenu, menuItem,level);
-                    LoadMenu((XmlMenuBase)menuItem, level+1);
-                }
-                else if (menuItem is XmlHeaderItem)
-                    AddItemControl(MenuItemType.HeaderItem, menuItem, level);
-                else if (menuItem is XmlMenuItem)
-                    AddItemControl(MenuItemType.MenuItem, menuItem, level);
-            }
-        }
-
-        private void ClearMenuItems()
-        {
-            foreach (Control control in xtraScrollableControlMenu.Controls)
-                control.Dispose();
-
-            xtraScrollableControlMenu.Controls.Clear();
-        }
-
-        private void AddItemControl(MenuItemType type, XmlMenuItemBase menu, int level)
-        {
-            var step = 128 / _area.Depth();
-            var color = Color.FromArgb(50, (level + 1) * step + 127, (level + 1) * step + 127, (level + 1) * step + 127);
-            MenuItemControl item = new MenuItemControl(this, type, menu, level, color, _menuItems);
-            var width = xtraScrollableControlMenu.ClientSize.Width - _area.Depth() * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
-
-            item.Location = new Point(level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, _height);
-            item.Size = new Size(width, Constants.ITEM_HEIGHT);
-            xtraScrollableControlMenu.Controls.Add(item);
-            item.ClearSelectedRequested += Item_ClearSelectedRequested;
-            item.ItemSelected += Item_ItemSelected;
-            _height += item.Height + Constants.SPACE;
-
-            if (_selectedNode != null && _selectedNode.Equals(menu))
-            {
-                _selectedNode = null;
-                _makeVisible = item;
-            }
-
-            _menuItems.Add(item);
-        }
-
-        private void Item_ItemSelected(object sender, EventArgs e)
-        {
-            if (sender == null)
-                _makeVisible = null;
-            else
-                _makeVisible = (MenuItemControl)sender;
-        }
-
-        private void Item_ClearSelectedRequested(object sender, EventArgs e)
-        {
-            _makeVisible = null;
-            ClearSelected();
-        }
-
-        private void ClearSelected()
-        {
-            foreach (var item in _menuItems)
-                item.Selected = MenuItemSelectedStatus.NotSelected;
+            EnableDisableMenus();
         }
         #endregion
 
@@ -186,13 +89,13 @@ namespace SoftTeam.SoftBar.Core.Forms
                 var firstMenu = CreateMenu();
                 if (firstMenu == null) return;
                 _area.Menus.Add((XmlMenu)firstMenu);
-                _selectedNode = firstMenu;
-                RefreshMenuItems();
+                _builder.SelectedXmlNode = firstMenu;
+                _builder.RefreshMenuItems();
                 EnableDisableMenus();
                 return;
             }
 
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -216,15 +119,15 @@ namespace SoftTeam.SoftBar.Core.Forms
             else
                 _area.Menus.Insert(_area.Menus.IndexOf(parentMenu) + 1, (XmlMenu)menu);
 
-            _selectedNode = menu;
+            _builder.SelectedXmlNode = menu;
 
-            RefreshMenuItems();
+            _builder.RefreshMenuItems();
             EnableDisableMenus();
         }
 
         private void AddSubMenu()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -261,15 +164,15 @@ namespace SoftTeam.SoftBar.Core.Forms
                     parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, subMenu);
             }
 
-            _selectedNode = subMenu;
+            _builder.SelectedXmlNode = subMenu;
 
-            RefreshMenuItems();
+            _builder.RefreshMenuItems();
             EnableDisableMenus();
         }
 
         private void AddHeaderItem()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -311,15 +214,15 @@ namespace SoftTeam.SoftBar.Core.Forms
                     parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, newItem);
             }
 
-            _selectedNode = newItem;
+            _builder.SelectedXmlNode = newItem;
 
-            RefreshMenuItems();
+            _builder.RefreshMenuItems();
             EnableDisableMenus();
         }
 
         private void AddMenuItem()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -361,9 +264,9 @@ namespace SoftTeam.SoftBar.Core.Forms
                     parent.MenuItems.Insert(parent.MenuItems.IndexOf(selected) + 1, newItem);
             }
 
-            _selectedNode = newItem;
+            _builder.SelectedXmlNode = newItem;
 
-            RefreshMenuItems();
+            _builder.RefreshMenuItems();
             EnableDisableMenus();
         }
         #endregion
@@ -450,15 +353,6 @@ namespace SoftTeam.SoftBar.Core.Forms
             barButtonItemRemoveItem.Enabled = (_area.Menus.Count > 0);
         }
 
-        private XmlMenuItemBase GetSelectedItem()
-        {
-            foreach (var menuItem in _menuItems)
-                if (menuItem.Selected == MenuItemSelectedStatus.Selected)
-                    return menuItem.Item;
-
-            return null;
-        }
-
         private ItemPosition GetPosition(XmlMenuItemBase selected, bool insideAvailable = false)
         {
             using (PositionForm form = new PositionForm(selected, insideAvailable))
@@ -541,51 +435,19 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Remove item
         private void barButtonItemRemoveItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            RemoveItem();
+            _builder.RemoveItem();
         }
 
         private void barButtonItemMenuRemoveItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            RemoveItem();
-        }
-
-        private void RemoveItem(bool askConfirmation = true)
-        {
-            var selected = GetSelectedItem();
-            string message = "";
-            if (selected == null)
-            {
-                message = "Please select the node that you want to remove, and hit <b>Remove item</b> item again!";
-                XtraMessageBox.Show(message, "No node selected...", DevExpress.Utils.DefaultBoolean.True);
-                return;
-            }
-
-            if (askConfirmation)
-            {
-                message = $"Are you sure you want to remove the node {selected.Name}?";
-                DialogResult result = XtraMessageBox.Show(message, "Remove node...", MessageBoxButtons.YesNo, MessageBoxIcon.Question, DevExpress.Utils.DefaultBoolean.True);
-                if (result == DialogResult.No)
-                    return;
-            }
-
-            var parent = _area.GetParent(selected);
-            if (parent == null)
-                _area.Menus.Remove((XmlMenu)selected);
-            else
-                parent.MenuItems.Remove(selected);
-
-            selected = null;
-            _makeVisible = null;
-
-            RefreshMenuItems();
-            EnableDisableMenus();
+            _builder.RemoveItem();
         }
         #endregion
 
         #region Random events
         private void xtraScrollableControlMenu_Click(object sender, EventArgs e)
         {
-            ClearSelected();
+            _builder.ClearSelected();
         }
 
         private void pictureBoxPlacementInfo_MouseEnter(object sender, EventArgs e)
@@ -644,7 +506,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
             else if (keyData == Keys.Delete)
             {
-                RemoveItem();
+                _builder.RemoveItem();
                 return true;
             }
             else if (keyData == (Keys.Control | Keys.C))
@@ -670,7 +532,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         #region Cut, Copy and Paste
         private void Copy()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -690,7 +552,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void Cut()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -706,13 +568,13 @@ namespace SoftTeam.SoftBar.Core.Forms
             }
 
             _copiedNode = selected.Copy();
-            RemoveItem(false);
-            ClearSelected();
+            _builder.RemoveItem(false);
+            _builder.ClearSelected();
         }
 
         private void Paste()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
 
             if (selected == null)
             {
@@ -749,7 +611,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         /// </summary>
         private void MoveUp()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
             if (selected == null) return;
 
             if (selected is XmlMenu)
@@ -780,7 +642,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 parent.MenuItems.Insert(index - 1, selected);
             }
 
-            _selectedNode = selected;
+            _builder.SelectedXmlNode = selected;
         }
 
         /// <summary>
@@ -788,7 +650,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         /// </summary>
         private void MoveDown()
         {
-            var selected = GetSelectedItem();
+            var selected = _builder.GetSelectedMenuItemControl();
             if (selected == null) return;
 
             if (selected is XmlMenu)
@@ -819,7 +681,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                 parent.MenuItems.Insert(index + 1, selected);
             }
 
-            _selectedNode = selected;
+            _builder.SelectedXmlNode = selected;
         }
 
         /// <summary>
@@ -839,7 +701,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         // Get the MenuItemControl for a menu item node
         private MenuItemControl GetMenuItemControl(XmlMenuItemBase item)
         {
-            foreach (var control in _menuItems)
+            foreach (var control in _builder.MenuItemControls)
             {
                 if (control.Item.Equals(item))
                     return control;
@@ -858,7 +720,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             var item1Delta = item2.ItemHeight;
 
             // Move the items
-            foreach (var item in _menuItems)
+            foreach (var item in _builder.MenuItemControls)
             {
                 if (item1.Item.ContainsItem(item.Item))
                     item.Location = new Point(item.Location.X, item.Location.Y + item1Delta);

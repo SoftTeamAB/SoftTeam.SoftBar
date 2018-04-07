@@ -1,6 +1,4 @@
-﻿// TODO : Hook up MenuCustomized event and call EnableDisableMenus in the event handler
-
-using DevExpress.XtraEditors;
+﻿using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.Controls;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Xml;
@@ -17,7 +15,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         private XtraScrollableControl ScrollableControl { get; }
         private XmlArea Area { get; }
         private MenuItemControl VisibleMenuItemControl { get; set; }
-        private ObservableCollection<MenuItemControl> MenuItemControls { get; }
+        public ObservableCollection<MenuItemControl> MenuItemControls { get; }
         public XmlMenuItemBase SelectedXmlNode { get; set; }
 
         public event EventHandler MenuCustomized;
@@ -32,6 +30,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             CustomizationForm = form;
             ScrollableControl = scrollableControl;
             Area = area;
+
+            MenuItemControls = new ObservableCollection<MenuItemControl>();
         }
 
         public void RefreshMenuItems()
@@ -44,8 +44,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             // Create the new menu item controls, recursively
             foreach (var menu in Area.Menus)
             {
-                AddItemControl(MenuItemType.Menu, menu,0);
-                LoadMenu(menu,1);
+                AddItemControl(MenuItemType.Menu, menu, 0);
+                LoadMenu(menu, 1);
             }
 
             if (VisibleMenuItemControl != null)
@@ -105,7 +105,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             MenuItemControls.Add(item);
         }
 
-        private void RemoveItem(bool askConfirmation = true)
+        public void RemoveItem(bool askConfirmation = true)
         {
             var selected = GetSelectedMenuItemControl();
             string message = "";
@@ -137,12 +137,14 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // Call MenuCustomized event
             onMenuCustomized();
-            //EnableDisableMenus();
         }
 
-
-        private XmlMenuItemBase GetSelectedMenuItemControl()
+        public XmlMenuItemBase GetSelectedMenuItemControl()
         {
+            foreach (var menuItem in MenuItemControls)
+                if (menuItem.Selected == MenuItemSelectedStatus.Selected)
+                    Console.WriteLine("Selected:" + menuItem.Item.Name);
+
             foreach (var menuItem in MenuItemControls)
                 if (menuItem.Selected == MenuItemSelectedStatus.Selected)
                     return menuItem.Item;
@@ -160,7 +162,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         public void ClearSelected()
         {
-            foreach (MenuItemControl menuItemControl in ScrollableControl.Controls)
+            foreach (MenuItemControl menuItemControl in MenuItemControls)
                 menuItemControl.Selected = MenuItemSelectedStatus.NotSelected;
         }
 
