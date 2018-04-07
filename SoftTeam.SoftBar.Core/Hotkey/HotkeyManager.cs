@@ -56,51 +56,45 @@ namespace SoftTeam.SoftBar.Core.Hotkey
         public void RegisterHotKeys()
         {
             //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
+            var modifierSetting = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 2);
+            ModifierKeys modifierKeys = HelperFunctions.GetModifierKeys(modifierSetting);
+
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
             Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
 
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)clipboardHotkey))
-                XtraMessageBox.Show($"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
+            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)modifierKeys, (int)clipboardHotkey))
+                XtraMessageBox.Show($"Failed to register hotkey {hotkey}!");
 
             hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
             Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
 
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)softBarHotkey))
-                XtraMessageBox.Show($"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
+            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)modifierKeys, (int)softBarHotkey))
+                XtraMessageBox.Show($"Failed to register hotkey {hotkey}!");
         }
 
         public void UnregisterHotKeys()
         {
             UnregisterHotKey(_manager.Form.Handle, 0);
         }
-
-        //public bool TryRegisterHotkey()
-        //{
-        //    try
-        //    {
-        //        return true;
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return false;
-        //    }
-        //}
         #endregion
 
         #region Process hot keys
         public void ProcessHotKeys(ref Message m, Point mousePosition)
         {
-            // get the keys.
-            Keys key = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
-            ModifierKeys modifier = (ModifierKeys)((int)m.LParam & 0xFFFF);
+            Keys keyPressed = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
+            ModifierKeys modifiersPressed = (ModifierKeys)((int)m.LParam & 0xFFFF);
+
+            var modifierSetting = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 2);
+            ModifierKeys modifierKeys = HelperFunctions.GetModifierKeys(modifierSetting);
+
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
             Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
             hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
             Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
 
-            if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == clipboardHotkey)
+            if (modifiersPressed == modifierKeys && keyPressed == clipboardHotkey)
                 _manager.ClipboardManager.HotKeyClicked(mousePosition);
-            else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == softBarHotkey)
+            else if (modifiersPressed == modifierKeys && keyPressed == softBarHotkey)
             {
                 // Application bar on top
                 var onTop = _manager.ApplicationBarManager.AlwaysOnTop();

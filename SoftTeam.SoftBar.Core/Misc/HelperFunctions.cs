@@ -7,11 +7,39 @@ using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
 using System.Windows.Forms;
+using static SoftTeam.SoftBar.Core.Hotkey.HotkeyManager;
 
 namespace SoftTeam.SoftBar.Core.Misc
 {
     public class HelperFunctions
     {
+        public static ModifierKeys GetModifierKeys(int index)
+        {
+            ModifierKeys modifierKeys = ModifierKeys.None;
+            switch (index)
+            {
+                case 0:
+                    modifierKeys = ModifierKeys.Control;
+                    break;
+                case 1:
+                    modifierKeys = ModifierKeys.Alt;
+                    break;
+                case 2:
+                    modifierKeys = ModifierKeys.Shift | ModifierKeys.Control;
+                    break;
+                case 3:
+                    modifierKeys = ModifierKeys.Control | ModifierKeys.Alt;
+                    break;
+                case 4:
+                    modifierKeys = ModifierKeys.Alt | ModifierKeys.Shift;
+                    break;
+                case 5:
+                    modifierKeys = ModifierKeys.Shift | ModifierKeys.Control | ModifierKeys.Alt;
+                    break;
+            }
+            return modifierKeys;
+        }
+
         public static string GetTimeStamp()
         {
             string timeStamp = DateTime.Now.ToShortDateString() + "_" + DateTime.Now.ToLongTimeString();

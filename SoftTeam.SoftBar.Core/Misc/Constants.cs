@@ -52,5 +52,6 @@
         public const string Clipboard_HistoryItems = "Clipboard.HistoryItems";
         public const string Clipboard_Hotkey = "Clipboard.Hotkey";
         public const string General_Hotkey = "General.Hotkey";
+        public const string General_Modifiers = "General.Modifiers";
     }
 }

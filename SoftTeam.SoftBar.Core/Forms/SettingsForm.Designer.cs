@@ -29,29 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase1 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition1 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition2 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition3 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement1 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement2 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement3 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition1 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase5 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition13 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition14 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition15 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement13 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement14 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement15 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition5 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
+            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase6 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition16 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition17 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition18 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement16 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement17 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement18 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
+            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            DevExpress.XtraEditors.TableLayout.ItemTemplateBase itemTemplateBase2 = new DevExpress.XtraEditors.TableLayout.ItemTemplateBase();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition4 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition5 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TableColumnDefinition tableColumnDefinition6 = new DevExpress.XtraEditors.TableLayout.TableColumnDefinition();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement4 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement5 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement6 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
-            DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition2 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
             this.tabPaneSettings = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageDirectories = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -103,17 +103,19 @@
             this.simpleButtonRemoveTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageClipboard = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textEditSoftBarHotkey = new DevExpress.XtraEditors.TextEdit();
+            this.labelControlGeneralHotkey = new DevExpress.XtraEditors.LabelControl();
             this.textEditClipboardHotKey = new DevExpress.XtraEditors.TextEdit();
             this.labelControlHotKey = new DevExpress.XtraEditors.LabelControl();
             this.labelControlClipboardItems = new DevExpress.XtraEditors.LabelControl();
             this.spinEditClipboard = new DevExpress.XtraEditors.SpinEdit();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
-            this.textEditSoftBarHotkey = new DevExpress.XtraEditors.TextEdit();
-            this.labelControlGeneralHotkey = new DevExpress.XtraEditors.LabelControl();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.toolTipControllerSettings = new DevExpress.Utils.ToolTipController(this.components);
+            this.comboBoxEditModifiers = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.labelControlModifiers = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -145,11 +147,12 @@
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
             this.tabNavigationPageClipboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClipboardHotKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -363,35 +366,35 @@
             this.listBoxControlMyDirectories.Name = "listBoxControlMyDirectories";
             this.listBoxControlMyDirectories.Size = new System.Drawing.Size(557, 243);
             this.listBoxControlMyDirectories.TabIndex = 0;
-            tableColumnDefinition1.Length.Value = 28D;
-            tableColumnDefinition2.Length.Value = 183D;
-            tableColumnDefinition3.Length.Value = 336D;
-            itemTemplateBase1.Columns.Add(tableColumnDefinition1);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition2);
-            itemTemplateBase1.Columns.Add(tableColumnDefinition3);
-            templatedItemElement1.FieldName = "Image";
-            templatedItemElement1.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement1.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement1.Text = "Image";
-            templatedItemElement1.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ColumnIndex = 1;
-            templatedItemElement2.FieldName = "Name";
-            templatedItemElement2.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement2.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement2.Text = "Name";
-            templatedItemElement2.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement3.ColumnIndex = 2;
-            templatedItemElement3.FieldName = "Path";
-            templatedItemElement3.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement3.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement3.Text = "Path";
-            templatedItemElement3.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            itemTemplateBase1.Elements.Add(templatedItemElement1);
-            itemTemplateBase1.Elements.Add(templatedItemElement2);
-            itemTemplateBase1.Elements.Add(templatedItemElement3);
-            itemTemplateBase1.Name = "Directory";
-            itemTemplateBase1.Rows.Add(tableRowDefinition1);
-            this.listBoxControlMyDirectories.Templates.Add(itemTemplateBase1);
+            tableColumnDefinition13.Length.Value = 28D;
+            tableColumnDefinition14.Length.Value = 183D;
+            tableColumnDefinition15.Length.Value = 336D;
+            itemTemplateBase5.Columns.Add(tableColumnDefinition13);
+            itemTemplateBase5.Columns.Add(tableColumnDefinition14);
+            itemTemplateBase5.Columns.Add(tableColumnDefinition15);
+            templatedItemElement13.FieldName = "Image";
+            templatedItemElement13.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement13.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement13.Text = "Image";
+            templatedItemElement13.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement14.ColumnIndex = 1;
+            templatedItemElement14.FieldName = "Name";
+            templatedItemElement14.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement14.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement14.Text = "Name";
+            templatedItemElement14.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement15.ColumnIndex = 2;
+            templatedItemElement15.FieldName = "Path";
+            templatedItemElement15.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement15.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement15.Text = "Path";
+            templatedItemElement15.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            itemTemplateBase5.Elements.Add(templatedItemElement13);
+            itemTemplateBase5.Elements.Add(templatedItemElement14);
+            itemTemplateBase5.Elements.Add(templatedItemElement15);
+            itemTemplateBase5.Name = "Directory";
+            itemTemplateBase5.Rows.Add(tableRowDefinition5);
+            this.listBoxControlMyDirectories.Templates.Add(itemTemplateBase5);
             this.listBoxControlMyDirectories.DoubleClick += new System.EventHandler(this.listBoxControlMyDirectories_DoubleClick);
             // 
             // simpleButtonAddDirectory
@@ -710,36 +713,36 @@
             this.listBoxControlMyTools.Name = "listBoxControlMyTools";
             this.listBoxControlMyTools.Size = new System.Drawing.Size(557, 238);
             this.listBoxControlMyTools.TabIndex = 2;
-            tableColumnDefinition4.Length.Value = 27D;
-            tableColumnDefinition5.Length.Value = 151D;
-            tableColumnDefinition6.Length.Value = 375D;
-            itemTemplateBase2.Columns.Add(tableColumnDefinition4);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition5);
-            itemTemplateBase2.Columns.Add(tableColumnDefinition6);
-            templatedItemElement4.ColumnIndex = 1;
-            templatedItemElement4.FieldName = "Name";
-            templatedItemElement4.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement4.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement4.Text = "Name";
-            templatedItemElement4.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement5.ColumnIndex = 2;
-            templatedItemElement5.FieldName = "Path";
-            templatedItemElement5.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement5.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement5.Text = "Path";
-            templatedItemElement5.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
-            templatedItemElement6.FieldName = "Image";
-            templatedItemElement6.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            templatedItemElement6.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
-            templatedItemElement6.Text = "Image";
-            templatedItemElement6.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
-            itemTemplateBase2.Elements.Add(templatedItemElement4);
-            itemTemplateBase2.Elements.Add(templatedItemElement5);
-            itemTemplateBase2.Elements.Add(templatedItemElement6);
-            itemTemplateBase2.Name = "ToolsTemplate";
-            tableRowDefinition2.Length.Value = 20D;
-            itemTemplateBase2.Rows.Add(tableRowDefinition2);
-            this.listBoxControlMyTools.Templates.Add(itemTemplateBase2);
+            tableColumnDefinition16.Length.Value = 27D;
+            tableColumnDefinition17.Length.Value = 151D;
+            tableColumnDefinition18.Length.Value = 375D;
+            itemTemplateBase6.Columns.Add(tableColumnDefinition16);
+            itemTemplateBase6.Columns.Add(tableColumnDefinition17);
+            itemTemplateBase6.Columns.Add(tableColumnDefinition18);
+            templatedItemElement16.ColumnIndex = 1;
+            templatedItemElement16.FieldName = "Name";
+            templatedItemElement16.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement16.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement16.Text = "Name";
+            templatedItemElement16.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement17.ColumnIndex = 2;
+            templatedItemElement17.FieldName = "Path";
+            templatedItemElement17.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement17.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement17.Text = "Path";
+            templatedItemElement17.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleLeft;
+            templatedItemElement18.FieldName = "Image";
+            templatedItemElement18.ImageOptions.ImageAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            templatedItemElement18.ImageOptions.ImageScaleMode = DevExpress.XtraEditors.TileItemImageScaleMode.ZoomInside;
+            templatedItemElement18.Text = "Image";
+            templatedItemElement18.TextAlignment = DevExpress.XtraEditors.TileItemContentAlignment.MiddleCenter;
+            itemTemplateBase6.Elements.Add(templatedItemElement16);
+            itemTemplateBase6.Elements.Add(templatedItemElement17);
+            itemTemplateBase6.Elements.Add(templatedItemElement18);
+            itemTemplateBase6.Name = "ToolsTemplate";
+            tableRowDefinition6.Length.Value = 20D;
+            itemTemplateBase6.Rows.Add(tableRowDefinition6);
+            this.listBoxControlMyTools.Templates.Add(itemTemplateBase6);
             this.listBoxControlMyTools.DoubleClick += new System.EventHandler(this.listBoxControlMyTools_DoubleClick);
             // 
             // simpleButtonRemoveTool
@@ -765,6 +768,8 @@
             // tabNavigationPageClipboard
             // 
             this.tabNavigationPageClipboard.Caption = "Clipboard & Hotkeys";
+            this.tabNavigationPageClipboard.Controls.Add(this.labelControlModifiers);
+            this.tabNavigationPageClipboard.Controls.Add(this.comboBoxEditModifiers);
             this.tabNavigationPageClipboard.Controls.Add(this.pictureBox2);
             this.tabNavigationPageClipboard.Controls.Add(this.pictureBox1);
             this.tabNavigationPageClipboard.Controls.Add(this.textEditSoftBarHotkey);
@@ -776,9 +781,59 @@
             this.tabNavigationPageClipboard.Name = "tabNavigationPageClipboard";
             this.tabNavigationPageClipboard.Size = new System.Drawing.Size(589, 327);
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(150, 117);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem5.Text = "Clipboard hotkey";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Shows the clipboard menu at the mouse pointer position. Press the hotkey again to" +
+    " hide the clipboard menu.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBox2, superToolTip5);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(150, 91);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
+            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem6.Text = "SoftBar hotkey";
+            toolTipItem6.LeftIndent = 6;
+            toolTipItem6.Text = "Shows SoftBar and sets focus to it, even if another window is maximized on top of" +
+    " it. Press the hotkey again to hide SoftBar.";
+            superToolTip6.Items.Add(toolTipTitleItem6);
+            superToolTip6.Items.Add(toolTipItem6);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBox1, superToolTip6);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            // 
+            // textEditSoftBarHotkey
+            // 
+            this.textEditSoftBarHotkey.Location = new System.Drawing.Point(172, 89);
+            this.textEditSoftBarHotkey.Name = "textEditSoftBarHotkey";
+            this.textEditSoftBarHotkey.Properties.MaxLength = 1;
+            this.textEditSoftBarHotkey.Size = new System.Drawing.Size(45, 20);
+            this.textEditSoftBarHotkey.TabIndex = 5;
+            // 
+            // labelControlGeneralHotkey
+            // 
+            this.labelControlGeneralHotkey.Location = new System.Drawing.Point(26, 92);
+            this.labelControlGeneralHotkey.Name = "labelControlGeneralHotkey";
+            this.labelControlGeneralHotkey.Size = new System.Drawing.Size(79, 13);
+            this.labelControlGeneralHotkey.TabIndex = 4;
+            this.labelControlGeneralHotkey.Text = "SoftBar hotkey :";
+            // 
             // textEditClipboardHotKey
             // 
-            this.textEditClipboardHotKey.Location = new System.Drawing.Point(232, 123);
+            this.textEditClipboardHotKey.Location = new System.Drawing.Point(172, 115);
             this.textEditClipboardHotKey.Name = "textEditClipboardHotKey";
             this.textEditClipboardHotKey.Properties.MaxLength = 1;
             this.textEditClipboardHotKey.Size = new System.Drawing.Size(45, 20);
@@ -787,15 +842,15 @@
             // 
             // labelControlHotKey
             // 
-            this.labelControlHotKey.Location = new System.Drawing.Point(13, 126);
+            this.labelControlHotKey.Location = new System.Drawing.Point(26, 118);
             this.labelControlHotKey.Name = "labelControlHotKey";
-            this.labelControlHotKey.Size = new System.Drawing.Size(179, 13);
+            this.labelControlHotKey.Size = new System.Drawing.Size(88, 13);
             this.labelControlHotKey.TabIndex = 2;
-            this.labelControlHotKey.Text = "Clipboard hotkey (CTRL + SHIFT + ?)";
+            this.labelControlHotKey.Text = "Clipboard hotkey :";
             // 
             // labelControlClipboardItems
             // 
-            this.labelControlClipboardItems.Location = new System.Drawing.Point(13, 91);
+            this.labelControlClipboardItems.Location = new System.Drawing.Point(26, 20);
             this.labelControlClipboardItems.Name = "labelControlClipboardItems";
             this.labelControlClipboardItems.Size = new System.Drawing.Size(109, 13);
             this.labelControlClipboardItems.TabIndex = 1;
@@ -808,7 +863,7 @@
             0,
             0,
             0});
-            this.spinEditClipboard.Location = new System.Drawing.Point(232, 88);
+            this.spinEditClipboard.Location = new System.Drawing.Point(172, 17);
             this.spinEditClipboard.Name = "spinEditClipboard";
             this.spinEditClipboard.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -849,55 +904,30 @@
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
-            // textEditSoftBarHotkey
+            // comboBoxEditModifiers
             // 
-            this.textEditSoftBarHotkey.Location = new System.Drawing.Point(232, 22);
-            this.textEditSoftBarHotkey.Name = "textEditSoftBarHotkey";
-            this.textEditSoftBarHotkey.Properties.MaxLength = 1;
-            this.textEditSoftBarHotkey.Size = new System.Drawing.Size(45, 20);
-            this.textEditSoftBarHotkey.TabIndex = 5;
+            this.comboBoxEditModifiers.Location = new System.Drawing.Point(172, 63);
+            this.comboBoxEditModifiers.Name = "comboBoxEditModifiers";
+            this.comboBoxEditModifiers.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditModifiers.Properties.Items.AddRange(new object[] {
+            "Ctrl",
+            "Alt",
+            "Shift + Ctrl",
+            "Ctrl + Alt",
+            "Alt + Shift",
+            "Shift + Ctrl + Alt"});
+            this.comboBoxEditModifiers.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEditModifiers.Size = new System.Drawing.Size(114, 20);
+            this.comboBoxEditModifiers.TabIndex = 8;
             // 
-            // labelControlGeneralHotkey
+            // labelControlModifiers
             // 
-            this.labelControlGeneralHotkey.Location = new System.Drawing.Point(13, 25);
-            this.labelControlGeneralHotkey.Name = "labelControlGeneralHotkey";
-            this.labelControlGeneralHotkey.Size = new System.Drawing.Size(170, 13);
-            this.labelControlGeneralHotkey.TabIndex = 4;
-            this.labelControlGeneralHotkey.Text = "SoftBar hotkey (CTRL + SHIFT + ?)";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(210, 24);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem2.Text = "SoftBar hotkey";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "Shows SoftBar and sets focus to it, even if another window is maximized on top of" +
-    " it. Press the hotkey again to hide SoftBar.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.toolTipControllerSettings.SetSuperTip(this.pictureBox1, superToolTip2);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(210, 125);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(16, 16);
-            toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Text = "Clipboard hotkey";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Shows the clipboard menu at the mouse pointer position. Press the hotkey again to" +
-    " hide the clipboard menu.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.toolTipControllerSettings.SetSuperTip(this.pictureBox2, superToolTip1);
-            this.pictureBox2.TabIndex = 7;
-            this.pictureBox2.TabStop = false;
+            this.labelControlModifiers.Location = new System.Drawing.Point(26, 66);
+            this.labelControlModifiers.Name = "labelControlModifiers";
+            this.labelControlModifiers.Size = new System.Drawing.Size(78, 13);
+            this.labelControlModifiers.TabIndex = 9;
+            this.labelControlModifiers.Text = "Modifier key(s) :";
             // 
             // SettingsForm
             // 
@@ -952,11 +982,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
             this.tabNavigationPageClipboard.ResumeLayout(false);
             this.tabNavigationPageClipboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClipboardHotKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1025,5 +1056,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private DevExpress.Utils.ToolTipController toolTipControllerSettings;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private DevExpress.XtraEditors.LabelControl labelControlModifiers;
+        private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditModifiers;
     }
 }
