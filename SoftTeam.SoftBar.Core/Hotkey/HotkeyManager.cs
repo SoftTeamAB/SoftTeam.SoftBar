@@ -52,8 +52,12 @@ namespace SoftTeam.SoftBar.Core.Hotkey
             //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
             Keys k = (Keys)char.ToUpper(hotkey[0]);
+
             if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)k))
                 XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + {hotkey}!");
+
+            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)(ModifierKeys.Shift | ModifierKeys.Control), (int)Keys.S))
+                XtraMessageBox.Show(@"Failed to register hotkey CTRL + SHIFT + s!");
         }
 
         public void UnregisterHotKeys()
@@ -85,6 +89,9 @@ namespace SoftTeam.SoftBar.Core.Hotkey
 
             if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == k)
                 _manager.ClipboardManager.HotKeyClicked(mousePosition);
+            else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == Keys.S)
+                _manager.MoveSoftBarOnTop();
+
         }
         #endregion
     }

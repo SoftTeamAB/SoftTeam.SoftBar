@@ -5,6 +5,7 @@ using SoftTeam.SoftBar.Core.Hotkey;
 using SoftTeam.SoftBar.Core.Misc;
 using SoftTeam.SoftBar.Core.Settings;
 using SoftTeam.SoftBar.Core.Xml;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -126,5 +127,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             g.DrawLine(lightPen, left + 1, 2, left + 1, _form.Height - 4);
         }
         #endregion
+
+        public void MoveSoftBarOnTop()
+        {
+            
+        }
     }
 }
