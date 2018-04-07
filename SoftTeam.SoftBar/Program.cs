@@ -119,13 +119,14 @@ namespace SoftTeam.SoftBar
                 var exceptionDir = Path.Combine(workingDir, "Exception log");
                 var timeStamp = HelperFunctions.GetTimeStamp();
                 var fileName = $"Exception_{timeStamp}.txt";
-                var writer = File.CreateText(fileName);
+                var writer = File.CreateText(Path.Combine(exceptionDir,fileName));
 
-                writer.WriteLine(
-                    "{0} An Error occurred:",
-                    DateTime.Now,
-                    e.ToString()
-                    );
+                writer.WriteLine("Date :" + DateTime.Now.ToString() + Environment.NewLine);
+                writer.WriteLine("Message :" + e.Message + Environment.NewLine);
+                writer.WriteLine("StackTrace :" + e.StackTrace + Environment.NewLine);
+                writer.WriteLine("----------------------------------------------" + Environment.NewLine);
+
+                writer.Close();
             }
             catch
             {

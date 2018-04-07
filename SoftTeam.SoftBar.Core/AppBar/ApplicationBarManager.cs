@@ -27,10 +27,12 @@ namespace SoftTeam.SoftBar.Core.AppBar
             _appBar.RegisterBar(_manager.Form);
         }
 
-        public void AlwaysOnTop()
+        public bool AlwaysOnTop()
         {
             _onTop = !_onTop;
             _appBar.AlwaysOnTop(_manager.Form, _onTop);
+
+            return _onTop;
         }
 
         public void ProcessApplicationBarMessages(ref Message m)

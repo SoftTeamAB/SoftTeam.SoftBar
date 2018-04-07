@@ -17,9 +17,12 @@ namespace SoftTeam.SoftBar.Core.Hotkey
     {
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetForegroundWindow();
 
         #region Fields
         private SoftBarManager _manager = null;
+        private IntPtr _foregroundWindow;
         #endregion
 
         #region Hotkeys essentials
@@ -100,10 +103,28 @@ namespace SoftTeam.SoftBar.Core.Hotkey
             else if (modifier == (ModifierKeys.Shift | ModifierKeys.Control) && key == softBarHotkey)
             {
                 // Application bar on top
-                _manager.ApplicationBarManager.AlwaysOnTop();
+                var onTop = _manager.ApplicationBarManager.AlwaysOnTop();
                 // Set focus on system button does not work so we
                 // have to use SetForegroundWindow here for some reason
-                SetForegroundWindow(_manager.Form.Handle);
+
+                if (onTop)
+                {
+                    // Store the current foreground window, so that we can restore it later
+                    _foregroundWindow = GetForegroundWindow();
+                    // Set focus to our app bar
+                    SetForegroundWindow(_manager.Form.Handle);
+                }
+                else
+                {
+                    // Try and restore focus to previous windows
+                    try
+                    {
+                        SetForegroundWindow(_foregroundWindow);
+                    }
+                    catch 
+                    {
+                    }
+                }
             }
 
         }
