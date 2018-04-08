@@ -9,7 +9,7 @@
     <ROW Property="AI_FINDEXE_TITLE" Value="Välj installationspaket för [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_NO_BORDER_NORMAL" MsiKey="AI_NO_BORDER_NORMAL"/>
     <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_DOTNET_VERSION"/>
-    <ROW Property="AI_PRODUCTNAME_ARP" Value="SoftBar"/>
+    <ROW Property="AI_PRODUCTNAME_ARP" Value="[|ProductName]"/>
     <ROW Property="AI_REQUIRED_DOTNET_DISPLAY" MultiBuildValue="DefaultBuild:4.0" ValueLocId="-"/>
     <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:4.0.1" ValueLocId="-"/>
     <ROW Property="AI_ThemeStyleEx" Value="border" MsiKey="AI_ThemeStyleEx"/>
@@ -23,12 +23,13 @@
     <ROW Property="ARPURLINFOABOUT" Value="http://www.softteam.se/softbar"/>
     <ROW Property="ARPURLUPDATEINFO" Value="http://www.softteam.se/softbar"/>
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:moon.png" Type="1" MsiKey="AppLogoIcon"/>
-    <ROW Property="CTRLS" Value="2"/>
+    <ROW Property="CTRLS" Value="3"/>
     <ROW Property="Manufacturer" Value="SoftTeam AB"/>
     <ROW Property="ProductCode" Value="1033:{B77EBFE9-506F-4DE7-8F17-93408579466D} 1053:{E5550CEC-BE10-4138-AD6F-2EC1B688CA8A} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
-    <ROW Property="ProductName" Value="SoftBar"/>
+    <ROW Property="ProductName" Value="SoftBar - RC 2"/>
     <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{7E01F855-816D-48B0-9305-D7B6798AC9FF}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -145,8 +146,11 @@
     <ROW File="DevExpress.XtraEditors.v17.2.resources.dll" Component_="DevExpress.XtraEditors.v17.2.resources.dll" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\de\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_4"/>
     <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_4" Component_="DevExpress.XtraEditors.v17.2.resources.dll_4" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\es\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_5"/>
     <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_5" Component_="DevExpress.XtraEditors.v17.2.resources.dll_5" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ja\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll_6"/>
-    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_6" Component_="DevExpress.XtraEditors.v17.2.resources.dll_6" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false"/>
+    <ROW File="DevExpress.XtraEditors.v17.2.resources.dll_6" Component_="DevExpress.XtraEditors.v17.2.resources.dll_6" FileName="DEVEXP~7.DLL|DevExpress.XtraEditors.v17.2.resources.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\ru\DevExpress.XtraEditors.v17.2.resources.dll" SelfReg="false" NextFile="Readme.txt"/>
     <ROW File="DevExpress.XtraEditors.v17.2.xml" Component_="DevExpress.Data.v17.2.xml" FileName="DEVEXP~7.XML|DevExpress.XtraEditors.v17.2.xml" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\DevExpress.XtraEditors.v17.2.xml" SelfReg="false" NextFile="moon.ico"/>
+    <ROW File="License_en.rtf" Component_="DevExpress.Data.v17.2.xml" FileName="LICENS~1.RTF|License_en.rtf" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\License_en.rtf" SelfReg="false" NextFile="License_sv.rtf"/>
+    <ROW File="License_sv.rtf" Component_="DevExpress.Data.v17.2.xml" FileName="LICENS~2.RTF|License_sv.rtf" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\License_sv.rtf" SelfReg="false"/>
+    <ROW File="Readme.txt" Component_="DevExpress.Data.v17.2.xml" FileName="Readme.txt" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\Readme.txt" SelfReg="false" NextFile="License_en.rtf"/>
     <ROW File="SoftBar.xsd" Component_="SoftBar.xsd" FileName="SoftBar.xsd" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\Xml\SoftBar.xsd" SelfReg="false" NextFile="DevExpress.Data.v17.2.resources.dll"/>
     <ROW File="SoftTeam.SoftBar.Core.dll" Component_="SoftTeam.SoftBar.Core.dll" FileName="SOFTTE~1.DLL|SoftTeam.SoftBar.Core.dll" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.Core.dll" SelfReg="false" NextFile="SoftTeam.SoftBar.Core.dll.config"/>
     <ROW File="SoftTeam.SoftBar.Core.dll.config" Component_="DevExpress.Data.v17.2.xml" FileName="SOFTTE~1.CON|SoftTeam.SoftBar.Core.dll.config" Attributes="0" SourcePath="..\SoftTeam.SoftBar\bin\Release\SoftTeam.SoftBar.Core.dll.config" SelfReg="false" NextFile="SoftTeam.SoftBar.exe_1"/>
@@ -208,7 +212,7 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiControlComponent">
     <ROW Dialog_="CustomizeDlg" Control="CustomizeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
-    <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="17" Y="106" Width="312" Height="243" Attributes="3" Property="EulaRead" Text="License.rtf" Order="600" TextLocId="Control.Text.LicenseAgreementDlg#AgreementText_2" MsiKey="LicenseAgreementDlg#AgreementText"/>
+    <ROW Dialog_="LicenseAgreementDlg" Control="AgreementText" Type="ScrollableText" X="17" Y="106" Width="312" Height="243" Attributes="3" Property="EulaRead" Text="..\SoftTeam.SoftBar\bin\Release\License_en.rtf" Order="600" TextLocId="-" MsiKey="LicenseAgreementDlg#AgreementText"/>
     <ROW Dialog_="MsiRMFilesInUse" Control="Cancel" Type="ImageButton" X="163" Y="359" Width="78" Height="28" Attributes="2" Text="[NextCancelButtons]" TextStyle="[MetroButtonText]" Order="100" MsiKey="MsiRMFilesInUse#Cancel" Options="1" ExtType="ImageButton" ExtData="[ButtonText_Cancel]" ExtDataLocId="-"/>
     <ROW Dialog_="PatchWelcomeDlg" Control="PatchWelcomeDlgDialogInitializer" Type="DialogInitializer" X="0" Y="0" Width="0" Height="0" Attributes="0" Order="-1" TextLocId="-" HelpLocId="-" ExtDataLocId="-"/>
     <ROW Dialog_="PatchWelcomeDlg" Control="ProductNameTitle" Type="Text" X="83" Y="21" Width="245" Height="50" Attributes="196611" Text="[ProductName]" TextStyle="[ProductNameForSplash]" Order="600" TextLocId="Metro.Control.Text.ProductName" MsiKey="PatchWelcomeDlg#ProductNameTitle"/>
@@ -319,6 +323,7 @@
     <ROW Action="AI_RunFinishActions" Type="1" Source="aicustact.dll" Target="RunFinishActions" WithoutSeq="true"/>
     <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
     <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="AI_ViewReadme" Type="1" Source="aicustact.dll" Target="[#Readme.txt]"/>
     <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
     <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
