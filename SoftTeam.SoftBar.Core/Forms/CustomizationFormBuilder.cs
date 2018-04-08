@@ -87,7 +87,7 @@ namespace SoftTeam.SoftBar.Core.Forms
             MenuItemControl item = new MenuItemControl(CustomizationForm, type, menu, level, color, MenuItemControls);
             // Location and size
             var width = ScrollableControl.ClientSize.Width - Area.Depth() * Constants.LEVEL_INDENTATION - Constants.SCROLLBAR_WIDTH;
-            var top = Constants.TOP_MARGIN + ScrollableControl.Controls.Count * (item.Height + Constants.SPACE);
+            var top = Constants.TOP_MARGIN + ScrollableControl.Controls.Count * (Constants.ITEM_HEIGHT + Constants.SPACE);
             item.Location = new Point(level * Constants.LEVEL_INDENTATION + Constants.LEFT_MARGIN, top);
             item.Size = new Size(width, Constants.ITEM_HEIGHT);
             // Add the item to the scrollable control
