@@ -43,7 +43,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Button.Click += _manager.SpecialsArea.ClipboardMenu_Clicked;
             _specialsMenu.Button.Tag = _specialsMenu;
             _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
-            _specialsMenu.Button.SuperTip = HelperFunctions.CreateInformationToolTip("Use SHIFT + CTRL + c to open the clipboard menu at mouse position.");
+            _specialsMenu.Button.SuperTip = HelperFunctions.CreateInformationToolTip("Use clipboard hotkey to open the clipboard menu at mouse position.\n\nUse CTRL+click to remove a clipboard history item (for example a password).");
             _specialsMenu.Item.Manager.CustomDrawItem += Manager_CustomDrawItem;
 
             // My computer name

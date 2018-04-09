@@ -26,8 +26,7 @@ namespace SoftTeam.SoftBar.Core.Misc
         public LimitedStack(int maxSize)
         {
             _limit = maxSize;
-            _list = new LinkedList<T>();
-
+            _list = new LinkedList<T>();            
         }
 
         #endregion
@@ -36,6 +35,11 @@ namespace SoftTeam.SoftBar.Core.Misc
         public T this[int index]    // Indexer declaration  
         {
             get { return _list.ElementAt(index); }
+        }
+
+        public void RemoveItem(T value)
+        {
+            _list.Remove(value);
         }
 
         public void Push(T value)

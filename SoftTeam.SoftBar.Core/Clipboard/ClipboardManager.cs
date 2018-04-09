@@ -18,6 +18,7 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
         private System.Threading.Timer _timer = null;
         private MainAppBarForm _form = null;
         private bool IsClipboardPopupMenuVisible = false;
+        private string _dontAddHash = string.Empty;
         #endregion
 
         #region Events
@@ -53,8 +54,8 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
 
             var newStack = new LimitedStack<ClipboardItem>(newMaxCapacity);
 
-            for (int i = 0; i < Math.Min(_clipboard.Count,newMaxCapacity); i++)
-                newStack.Push( _clipboard[i]);
+            for (int i = 0; i < Math.Min(_clipboard.Count, newMaxCapacity); i++)
+                newStack.Push(_clipboard[i]);
 
             _clipboard = newStack;
             _maxCapacity = newMaxCapacity;
@@ -70,12 +71,13 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
                     string text = Clipboard.GetText();
                     string hash = CalculateHashCode(text);
                     // Don't add the text if it is already in the list
-                    if (!ContainsHash(hash))
+                    if (!string.IsNullOrEmpty(text) && !ContainsHash(hash) && hash!=_dontAddHash)
                     {
                         ClipboardItemText textItem = new ClipboardItemText(text, hash);
                         SetAsCurrentlyInClipboard(textItem);
                         ClipboardList.Push(textItem);
                         onClipboardItemAdded();
+                        _dontAddHash = string.Empty;
                     }
                 }
                 else if (Clipboard.ContainsImage())
@@ -83,12 +85,13 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
                     Image image = Clipboard.GetImage();
                     string hash = CalculateHashCode(image);
                     // Don't add the image if it is already in the list
-                    if (!ContainsHash(hash))
+                    if (!ContainsHash(hash) && hash != _dontAddHash)
                     {
                         ClipboardItemImage imageItem = new ClipboardItemImage(image, hash);
                         SetAsCurrentlyInClipboard(imageItem);
                         ClipboardList.Push(imageItem);
                         onClipboardItemAdded();
+                        _dontAddHash = string.Empty;
                     }
                 }
             }
@@ -121,6 +124,34 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
             {
 
             }
+        }
+
+        internal void RemoveClipboardItem(ClipboardItem item)
+        {
+            // If the clipboard is containing the item we are about to delete, 
+            // make sure it is not added again.
+            if (isClipboardContaining(item))
+                if (item is ClipboardItemText)
+                    _dontAddHash = CalculateHashCode(((ClipboardItemText)item).Text);
+                else if (item is ClipboardItemImage)
+                    _dontAddHash = CalculateHashCode(((ClipboardItemImage)item).Image);
+
+            _clipboard.RemoveItem(item);
+        }
+
+        private bool isClipboardContaining(ClipboardItem item)
+        {
+            if (item is ClipboardItemText)
+            {
+                if (Clipboard.ContainsText() && Clipboard.GetText() == ((ClipboardItemText)item).Text)
+                    return true;
+            }
+            else if (item is ClipboardItemImage)
+            {
+                if (Clipboard.ContainsImage() && Clipboard.GetImage() == ((ClipboardItemImage)item).Image)
+                    return true;
+            }
+            return false;
         }
         #endregion
 

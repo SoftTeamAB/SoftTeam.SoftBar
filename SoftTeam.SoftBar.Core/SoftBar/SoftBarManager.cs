@@ -63,7 +63,6 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
             // Clipboard
             _clipboardManager = new ClipboardManager(_form, 10);
-            _clipboardManager.ClipboardItemAdded += _clipboardManager_ClipboardItemAdded;
 
             // Hotkeys
             _hotkeyManager = new HotkeyManager(this);
@@ -76,6 +75,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             _specialsArea.Load();
             _userArea = new SoftBarArea(this, AreaType.User, _systemArea.Width);
             _userArea.Load();
+
+            _clipboardManager.ClipboardItemAdded += _clipboardManager_ClipboardItemAdded;
 
             // Resize event
             _systemArea.OnAreaResized += _systemArea_OnAreaResized;
