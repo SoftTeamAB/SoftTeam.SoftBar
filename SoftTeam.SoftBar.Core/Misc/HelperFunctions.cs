@@ -13,6 +13,33 @@ namespace SoftTeam.SoftBar.Core.Misc
 {
     public class HelperFunctions
     {
+        public static Keys GetModifierKeys(ModifierKeys modifiers)
+        {
+            Keys modifierKeys = Keys.None;
+            switch (modifiers)
+            {
+                case ModifierKeys.Control:
+                    modifierKeys = Keys.Control;
+                    break;
+                case ModifierKeys.Alt:
+                    modifierKeys = Keys.Alt;
+                    break;
+                case ModifierKeys.Shift | ModifierKeys.Control:
+                    modifierKeys = Keys.Shift | Keys.Control;
+                    break;
+                case ModifierKeys.Control | ModifierKeys.Alt:
+                    modifierKeys = Keys.Control | Keys.Alt;
+                    break;
+                case ModifierKeys.Alt | ModifierKeys.Shift:
+                    modifierKeys = Keys.Alt | Keys.Shift;
+                    break;
+                case ModifierKeys.Shift | ModifierKeys.Control | ModifierKeys.Alt:
+                    modifierKeys = Keys.Shift | Keys.Control | Keys.Alt;
+                    break;
+            }
+            return modifierKeys;
+        }
+
         public static ModifierKeys GetModifierKeys(int index)
         {
             ModifierKeys modifierKeys = ModifierKeys.None;

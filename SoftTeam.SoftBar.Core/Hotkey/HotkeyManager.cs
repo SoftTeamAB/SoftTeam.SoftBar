@@ -15,10 +15,12 @@ namespace SoftTeam.SoftBar.Core.Hotkey
 {
     public class HotkeyManager
     {
+        #region Foreground windows essentials
         [DllImport("user32.dll")]
         private static extern bool SetForegroundWindow(IntPtr hWnd);
         [DllImport("user32.dll")]
         private static extern IntPtr GetForegroundWindow();
+        #endregion
 
         #region Fields
         private SoftBarManager _manager = null;
@@ -56,20 +58,48 @@ namespace SoftTeam.SoftBar.Core.Hotkey
         public void RegisterHotKeys()
         {
             //http://www.dreamincode.net/forums/topic/180436-global-hotkeys/
-            var modifierSetting = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 2);
-            ModifierKeys modifierKeys = HelperFunctions.GetModifierKeys(modifierSetting);
 
+            ModifierKeys modifierKeys = GetModifierKeys();
+
+            RegisterClipboardHotkey(modifierKeys);
+            RegisterSoftBarHotkey(modifierKeys);
+        }
+
+        public bool RegisterHotkey(ModifierKeys modifierKeys, Keys key)
+        {
+            return RegisterHotKey(_manager.Form.Handle, 0, (int)modifierKeys, (int)key);
+        }
+
+        public bool RegisterSoftBarHotkey(ModifierKeys modifierKeys)
+        {
+            Keys softBarHotkey = GetSoftBarHotkey();
+
+            return RegisterHotkey(modifierKeys, softBarHotkey);                
+        }
+
+        public bool RegisterClipboardHotkey(ModifierKeys modifierKeys)
+        {
+            Keys clipboardHotkey = GetClipboardHotkey();
+
+            return RegisterHotkey(modifierKeys, clipboardHotkey);                
+        }
+
+        private Keys GetClipboardHotkey()
+        {
             var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-            Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
+            return (Keys)char.ToUpper(hotkey[0]);
+        }
 
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)modifierKeys, (int)clipboardHotkey))
-                XtraMessageBox.Show($"Failed to register hotkey {hotkey}!");
+        private Keys GetSoftBarHotkey()
+        {
+            var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
+            return (Keys)char.ToUpper(hotkey[0]);
+        }
 
-            hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
-            Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
-
-            if (!RegisterHotKey(_manager.Form.Handle, 0, (int)modifierKeys, (int)softBarHotkey))
-                XtraMessageBox.Show($"Failed to register hotkey {hotkey}!");
+        private ModifierKeys GetModifierKeys()
+        {
+            var modifierSetting = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 3);
+            return HelperFunctions.GetModifierKeys(modifierSetting);
         }
 
         public void UnregisterHotKeys()
@@ -84,13 +114,9 @@ namespace SoftTeam.SoftBar.Core.Hotkey
             Keys keyPressed = (Keys)(((int)m.LParam >> 16) & 0xFFFF);
             ModifierKeys modifiersPressed = (ModifierKeys)((int)m.LParam & 0xFFFF);
 
-            var modifierSetting = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 2);
-            ModifierKeys modifierKeys = HelperFunctions.GetModifierKeys(modifierSetting);
-
-            var hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c").ToLower();
-            Keys clipboardHotkey = (Keys)char.ToUpper(hotkey[0]);
-            hotkey = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s").ToLower();
-            Keys softBarHotkey = (Keys)char.ToUpper(hotkey[0]);
+            ModifierKeys modifierKeys = _manager.HotkeyManager.GetModifierKeys();
+            Keys clipboardHotkey = _manager.HotkeyManager.GetClipboardHotkey();
+            Keys softBarHotkey = _manager.HotkeyManager.GetSoftBarHotkey();
 
             if (modifiersPressed == modifierKeys && keyPressed == clipboardHotkey)
                 _manager.ClipboardManager.HotKeyClicked(mousePosition);
@@ -115,7 +141,7 @@ namespace SoftTeam.SoftBar.Core.Hotkey
                     {
                         SetForegroundWindow(_foregroundWindow);
                     }
-                    catch 
+                    catch
                     {
                     }
                 }

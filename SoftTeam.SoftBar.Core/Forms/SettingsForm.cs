@@ -104,11 +104,10 @@ namespace SoftTeam.SoftBar.Core.Forms
             listBoxControlMyTools.DataSource = _manager.SettingsManager.Settings.MyTools;
 
             // Clipboard
+            comboBoxEditModifiers.SelectedIndex = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 3);
             spinEditClipboard.Value = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.Clipboard_HistoryItems, 10);
             textEditClipboardHotKey.Text = _manager.SettingsManager.Settings.GetStringSetting(Constants.Clipboard_Hotkey, "c");
             textEditSoftBarHotkey.Text = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_Hotkey, "s");
-
-            comboBoxEditModifiers.SelectedIndex = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Modifiers, 2);
         }
 
         private void SaveSettings()
@@ -369,11 +368,74 @@ namespace SoftTeam.SoftBar.Core.Forms
 
         private void textEditHotKey_EditValueChanging(object sender, DevExpress.XtraEditors.Controls.ChangingEventArgs e)
         {
-            if (!Constants.validHotKeys.Contains(e.NewValue.ToString()))
+            if (!Constants.ValidHotKeys.Contains(e.NewValue.ToString()))
             {
                 System.Media.SystemSounds.Beep.Play();
                 e.Cancel = true;
             }
+        }
+
+        private void textEditSoftBarHotkey_EditValueChanged(object sender, EventArgs e)
+        {
+            TryRegisterSoftBarHotkey();
+        }
+
+        private void TryRegisterSoftBarHotkey()
+        {
+            _manager.HotkeyManager.UnregisterHotKeys();
+
+            try
+            {
+                // Unregister hotkeys and try the new hotkey
+                var result = TryRegisterHotkey((Keys)char.ToUpper(textEditSoftBarHotkey.Text[0]));
+                pictureBoxSoftBarHotkeyWarning.Visible = !result;
+
+                // Remove the temporary hotkey
+                _manager.HotkeyManager.UnregisterHotKeys();
+            }
+            catch 
+            {
+                pictureBoxSoftBarHotkeyWarning.Visible = true;
+            }
+
+            _manager.HotkeyManager.RegisterHotKeys();
+        }
+
+        private void textEditClipboardHotKey_EditValueChanged(object sender, EventArgs e)
+        {
+            TryRegisterClipboardHotkey();
+        }
+
+        private void TryRegisterClipboardHotkey()
+        {
+            _manager.HotkeyManager.UnregisterHotKeys();
+
+            try
+            {
+                // Unregister hotkeys and try the new hotkey
+                var result = TryRegisterHotkey((Keys)char.ToUpper(textEditClipboardHotKey.Text[0]));
+                pictureBoxClipboardHotkeyWarning.Visible = !result;
+
+                // Remove the temporary hotkey
+                _manager.HotkeyManager.UnregisterHotKeys();
+            }
+            catch
+            {
+                pictureBoxClipboardHotkeyWarning.Visible = true;
+            }
+
+            _manager.HotkeyManager.RegisterHotKeys();
+        }
+
+        private bool TryRegisterHotkey(Keys hotkey)
+        {
+            return _manager.HotkeyManager.RegisterHotkey(HelperFunctions.GetModifierKeys(comboBoxEditModifiers.SelectedIndex), (Keys)hotkey);
+        }
+
+        private void comboBoxEditModifiers_EditValueChanged(object sender, EventArgs e)
+        {
+            TryRegisterSoftBarHotkey();
+            TryRegisterClipboardHotkey();
         }
     }
 }

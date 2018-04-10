@@ -7,6 +7,7 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
+using SoftTeam.SoftBar.Core.SoftBar.Builders;
 
 namespace SoftTeam.SoftBar.Core.ClipboardList
 {
@@ -233,7 +234,15 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
             if (_form.Manager.SpecialsArea.Menus[0].Item.Opened == true)
                 _form.Manager.SpecialsArea.Menus[0].Item.HidePopup();
             else
+            {
+                // Clear clipboard menu
+                _form.Manager.SpecialsArea.Menus.Clear();
+                // Rebuild clipboard menu
+                var specialsMenuBuilder = new SoftBarSpecialsMenuBuilder(_form.Manager);
+                specialsMenuBuilder.Build();
+                // Show clipboard menu
                 _form.Manager.SpecialsArea.Menus[0].Item.ShowPopup(mousePosition);
+            }
 
             IsClipboardPopupMenuVisible = !IsClipboardPopupMenuVisible;
         }

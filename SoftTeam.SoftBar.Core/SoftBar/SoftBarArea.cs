@@ -250,10 +250,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void clipboardItem_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (Control.ModifierKeys == Keys.Control)
-            {
+            if (Control.ModifierKeys == Keys.Shift)
                 _manager.ClipboardManager.RemoveClipboardItem((ClipboardItem)e.Item.Tag);
-            }
             else
             {
                 // Since the user clicked on this item, make sure it is marked as currently in clipboard

@@ -46,12 +46,18 @@
             DevExpress.XtraEditors.TableLayout.TemplatedItemElement templatedItemElement18 = new DevExpress.XtraEditors.TableLayout.TemplatedItemElement();
             DevExpress.XtraEditors.TableLayout.TableRowDefinition tableRowDefinition6 = new DevExpress.XtraEditors.TableLayout.TableRowDefinition();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip10 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem10 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem10 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip11 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem11 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem11 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip12 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem12 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem12 = new DevExpress.Utils.ToolTipItem();
             this.tabPaneSettings = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPageDirectories = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
@@ -103,6 +109,10 @@
             this.simpleButtonRemoveTool = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonAddTool = new DevExpress.XtraEditors.SimpleButton();
             this.tabNavigationPageClipboard = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.pictureBoxClipboardHotkeyWarning = new System.Windows.Forms.PictureBox();
+            this.pictureBoxSoftBarHotkeyWarning = new System.Windows.Forms.PictureBox();
+            this.labelControlModifiers = new DevExpress.XtraEditors.LabelControl();
+            this.comboBoxEditModifiers = new DevExpress.XtraEditors.ComboBoxEdit();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.textEditSoftBarHotkey = new DevExpress.XtraEditors.TextEdit();
@@ -114,8 +124,6 @@
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.toolTipControllerSettings = new DevExpress.Utils.ToolTipController(this.components);
-            this.comboBoxEditModifiers = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.labelControlModifiers = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.tabPaneSettings)).BeginInit();
             this.tabPaneSettings.SuspendLayout();
             this.tabNavigationPageDirectories.SuspendLayout();
@@ -147,12 +155,14 @@
             this.tabNavigationPageMyTools.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).BeginInit();
             this.tabNavigationPageClipboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClipboardHotkeyWarning)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSoftBarHotkeyWarning)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClipboardHotKey.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tabPaneSettings
@@ -768,6 +778,8 @@
             // tabNavigationPageClipboard
             // 
             this.tabNavigationPageClipboard.Caption = "Clipboard & Hotkeys";
+            this.tabNavigationPageClipboard.Controls.Add(this.pictureBoxClipboardHotkeyWarning);
+            this.tabNavigationPageClipboard.Controls.Add(this.pictureBoxSoftBarHotkeyWarning);
             this.tabNavigationPageClipboard.Controls.Add(this.labelControlModifiers);
             this.tabNavigationPageClipboard.Controls.Add(this.comboBoxEditModifiers);
             this.tabNavigationPageClipboard.Controls.Add(this.pictureBox2);
@@ -781,20 +793,84 @@
             this.tabNavigationPageClipboard.Name = "tabNavigationPageClipboard";
             this.tabNavigationPageClipboard.Size = new System.Drawing.Size(589, 327);
             // 
+            // pictureBoxClipboardHotkeyWarning
+            // 
+            this.pictureBoxClipboardHotkeyWarning.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClipboardHotkeyWarning.Image")));
+            this.pictureBoxClipboardHotkeyWarning.Location = new System.Drawing.Point(223, 118);
+            this.pictureBoxClipboardHotkeyWarning.Name = "pictureBoxClipboardHotkeyWarning";
+            this.pictureBoxClipboardHotkeyWarning.Size = new System.Drawing.Size(16, 16);
+            superToolTip9.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem9.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem9.Text = "Hotkey warning";
+            toolTipItem9.LeftIndent = 6;
+            toolTipItem9.Text = "<b>SoftBar</b> failed to register this hotkey, probably because another applicati" +
+    "on is using it.";
+            superToolTip9.Items.Add(toolTipTitleItem9);
+            superToolTip9.Items.Add(toolTipItem9);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBoxClipboardHotkeyWarning, superToolTip9);
+            this.pictureBoxClipboardHotkeyWarning.TabIndex = 11;
+            this.pictureBoxClipboardHotkeyWarning.TabStop = false;
+            this.pictureBoxClipboardHotkeyWarning.Visible = false;
+            // 
+            // pictureBoxSoftBarHotkeyWarning
+            // 
+            this.pictureBoxSoftBarHotkeyWarning.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxSoftBarHotkeyWarning.Image")));
+            this.pictureBoxSoftBarHotkeyWarning.Location = new System.Drawing.Point(223, 92);
+            this.pictureBoxSoftBarHotkeyWarning.Name = "pictureBoxSoftBarHotkeyWarning";
+            this.pictureBoxSoftBarHotkeyWarning.Size = new System.Drawing.Size(16, 16);
+            superToolTip10.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem10.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
+            toolTipTitleItem10.Text = "Hotkey warning";
+            toolTipItem10.LeftIndent = 6;
+            toolTipItem10.Text = "<b>SoftBar</b> failed to register this hotkey, probably because another applicati" +
+    "on is using it.";
+            superToolTip10.Items.Add(toolTipTitleItem10);
+            superToolTip10.Items.Add(toolTipItem10);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBoxSoftBarHotkeyWarning, superToolTip10);
+            this.pictureBoxSoftBarHotkeyWarning.TabIndex = 10;
+            this.pictureBoxSoftBarHotkeyWarning.TabStop = false;
+            this.pictureBoxSoftBarHotkeyWarning.Visible = false;
+            // 
+            // labelControlModifiers
+            // 
+            this.labelControlModifiers.Location = new System.Drawing.Point(26, 66);
+            this.labelControlModifiers.Name = "labelControlModifiers";
+            this.labelControlModifiers.Size = new System.Drawing.Size(78, 13);
+            this.labelControlModifiers.TabIndex = 9;
+            this.labelControlModifiers.Text = "Modifier key(s) :";
+            // 
+            // comboBoxEditModifiers
+            // 
+            this.comboBoxEditModifiers.Location = new System.Drawing.Point(172, 63);
+            this.comboBoxEditModifiers.Name = "comboBoxEditModifiers";
+            this.comboBoxEditModifiers.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.comboBoxEditModifiers.Properties.Items.AddRange(new object[] {
+            "Ctrl",
+            "Alt",
+            "Shift + Ctrl",
+            "Ctrl + Alt",
+            "Alt + Shift",
+            "Shift + Ctrl + Alt"});
+            this.comboBoxEditModifiers.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+            this.comboBoxEditModifiers.Size = new System.Drawing.Size(114, 20);
+            this.comboBoxEditModifiers.TabIndex = 8;
+            this.comboBoxEditModifiers.EditValueChanged += new System.EventHandler(this.comboBoxEditModifiers_EditValueChanged);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(150, 117);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(16, 16);
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem5.Text = "Clipboard hotkey";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Shows the clipboard menu at the mouse pointer position. Press the hotkey again to" +
+            toolTipTitleItem11.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem11.Text = "Clipboard hotkey";
+            toolTipItem11.LeftIndent = 6;
+            toolTipItem11.Text = "Shows the clipboard menu at the mouse pointer position. Press the hotkey again to" +
     " hide the clipboard menu.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.toolTipControllerSettings.SetSuperTip(this.pictureBox2, superToolTip5);
+            superToolTip11.Items.Add(toolTipTitleItem11);
+            superToolTip11.Items.Add(toolTipItem11);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBox2, superToolTip11);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
@@ -804,14 +880,14 @@
             this.pictureBox1.Location = new System.Drawing.Point(150, 91);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(16, 16);
-            toolTipTitleItem6.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
-            toolTipTitleItem6.Text = "SoftBar hotkey";
-            toolTipItem6.LeftIndent = 6;
-            toolTipItem6.Text = "Shows SoftBar and sets focus to it, even if another window is maximized on top of" +
+            toolTipTitleItem12.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image3")));
+            toolTipTitleItem12.Text = "SoftBar hotkey";
+            toolTipItem12.LeftIndent = 6;
+            toolTipItem12.Text = "Shows SoftBar and sets focus to it, even if another window is maximized on top of" +
     " it. Press the hotkey again to hide SoftBar.";
-            superToolTip6.Items.Add(toolTipTitleItem6);
-            superToolTip6.Items.Add(toolTipItem6);
-            this.toolTipControllerSettings.SetSuperTip(this.pictureBox1, superToolTip6);
+            superToolTip12.Items.Add(toolTipTitleItem12);
+            superToolTip12.Items.Add(toolTipItem12);
+            this.toolTipControllerSettings.SetSuperTip(this.pictureBox1, superToolTip12);
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
@@ -822,6 +898,8 @@
             this.textEditSoftBarHotkey.Properties.MaxLength = 1;
             this.textEditSoftBarHotkey.Size = new System.Drawing.Size(45, 20);
             this.textEditSoftBarHotkey.TabIndex = 5;
+            this.textEditSoftBarHotkey.EditValueChanged += new System.EventHandler(this.textEditSoftBarHotkey_EditValueChanged);
+            this.textEditSoftBarHotkey.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditHotKey_EditValueChanging);
             // 
             // labelControlGeneralHotkey
             // 
@@ -838,6 +916,7 @@
             this.textEditClipboardHotKey.Properties.MaxLength = 1;
             this.textEditClipboardHotKey.Size = new System.Drawing.Size(45, 20);
             this.textEditClipboardHotKey.TabIndex = 3;
+            this.textEditClipboardHotKey.EditValueChanged += new System.EventHandler(this.textEditClipboardHotKey_EditValueChanged);
             this.textEditClipboardHotKey.EditValueChanging += new DevExpress.XtraEditors.Controls.ChangingEventHandler(this.textEditHotKey_EditValueChanging);
             // 
             // labelControlHotKey
@@ -904,31 +983,6 @@
             this.simpleButtonCancel.Text = "Cancel";
             this.simpleButtonCancel.Click += new System.EventHandler(this.simpleButtonCancel_Click);
             // 
-            // comboBoxEditModifiers
-            // 
-            this.comboBoxEditModifiers.Location = new System.Drawing.Point(172, 63);
-            this.comboBoxEditModifiers.Name = "comboBoxEditModifiers";
-            this.comboBoxEditModifiers.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.comboBoxEditModifiers.Properties.Items.AddRange(new object[] {
-            "Ctrl",
-            "Alt",
-            "Shift + Ctrl",
-            "Ctrl + Alt",
-            "Alt + Shift",
-            "Shift + Ctrl + Alt"});
-            this.comboBoxEditModifiers.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.comboBoxEditModifiers.Size = new System.Drawing.Size(114, 20);
-            this.comboBoxEditModifiers.TabIndex = 8;
-            // 
-            // labelControlModifiers
-            // 
-            this.labelControlModifiers.Location = new System.Drawing.Point(26, 66);
-            this.labelControlModifiers.Name = "labelControlModifiers";
-            this.labelControlModifiers.Size = new System.Drawing.Size(78, 13);
-            this.labelControlModifiers.TabIndex = 9;
-            this.labelControlModifiers.Text = "Modifier key(s) :";
-            // 
             // SettingsForm
             // 
             this.AcceptButton = this.simpleButtonSave;
@@ -982,12 +1036,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControlMyTools)).EndInit();
             this.tabNavigationPageClipboard.ResumeLayout(false);
             this.tabNavigationPageClipboard.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClipboardHotkeyWarning)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSoftBarHotkeyWarning)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditSoftBarHotkey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditClipboardHotKey.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spinEditClipboard.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.comboBoxEditModifiers.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1058,5 +1114,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private DevExpress.XtraEditors.LabelControl labelControlModifiers;
         private DevExpress.XtraEditors.ComboBoxEdit comboBoxEditModifiers;
+        private System.Windows.Forms.PictureBox pictureBoxClipboardHotkeyWarning;
+        private System.Windows.Forms.PictureBox pictureBoxSoftBarHotkeyWarning;
     }
 }

@@ -2,7 +2,7 @@
 {
     public static class Constants
     {
-        public const string validHotKeys = "abcdefghijklmnopqrstuvwxyzåäö";
+        public const string ValidHotKeys = "abcdefghijklmnopqrstuvwxyzåäö0123456789";
 
         // General constants
         public const int SPACE = 0;
