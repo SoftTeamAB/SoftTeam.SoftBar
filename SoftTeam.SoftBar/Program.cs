@@ -4,6 +4,7 @@ using SoftTeam.SoftBar.Core.Misc;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.ExceptionServices;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -15,21 +16,30 @@ namespace SoftTeam.SoftBar
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
+        [HandleProcessCorruptedStateExceptions]        
         static void Main()
         {
-            // Add the event handler for handling UI thread exceptions to the event.
-            Application.ThreadException += new ThreadExceptionEventHandler(MainAppBarForm_UIThreadException);
+            try
+            {
+                // Add the event handler for handling UI thread exceptions to the event.
+                Application.ThreadException += new ThreadExceptionEventHandler(MainAppBarForm_UIThreadException);
 
-            // Set the unhandled exception mode to force all Windows Forms errors
-            // to go through our handler.
-            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+                // Set the unhandled exception mode to force all Windows Forms errors
+                // to go through our handler.
+                Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
 
-            // Add the event handler for handling non-UI thread exceptions to the event. 
-            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+                // Add the event handler for handling non-UI thread exceptions to the event. 
+                AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
 
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainAppBarForm());
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new MainAppBarForm());
+            }
+            catch (Exception ex)
+            {
+                SaveExceptionLog(ex);
+                Application.Exit();
+            }
         }
 
         // https://msdn.microsoft.com/en-us/library/system.windows.forms.application.threadexception.aspx
