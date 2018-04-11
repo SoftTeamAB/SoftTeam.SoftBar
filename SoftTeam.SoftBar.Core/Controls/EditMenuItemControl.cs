@@ -81,7 +81,12 @@ namespace SoftTeam.SoftBar.Core.Controls
 
         private void UpdateImage()
         {
-            pictureBoxIcon.Image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Medium_24x24);
+            if (!string.IsNullOrEmpty(textEditIconPath.Text))
+                pictureBoxIcon.Image = HelperFunctions.GetFileImage(textEditIconPath.Text, ImageSize.Medium_24x24);
+            else if (!string.IsNullOrEmpty(textEditApplicationPath.Text))
+                pictureBoxIcon.Image = HelperFunctions.GetFileImage(textEditApplicationPath.Text, ImageSize.Medium_24x24);
+            else
+                pictureBoxIcon.Image = null;
         }
         #endregion
 
@@ -206,5 +211,16 @@ namespace SoftTeam.SoftBar.Core.Controls
             textEditName.Select();
         }
 
+        private void simpleButtonCapture_Click(object sender, EventArgs e)
+        {
+            using (CaptureForm form = new CaptureForm())
+            {
+                DialogResult result = form.ShowDialog();
+                if (result == DialogResult.Cancel)
+                    return;
+                
+                textEditApplicationPath.Text = form.ApplicationPath;
+            }
+        }
     }
 }
