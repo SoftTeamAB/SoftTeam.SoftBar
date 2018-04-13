@@ -7,7 +7,7 @@ The installation is made with Advanced Installer 14.7. https://www.advancedinsta
 
 Check out our web page (in swedish) : http://www.softteam.se
 
-Softbar web page (in swedish): http://www.softteam.se/softbar
+Softbar web page (in swedish). Here you can find some documentation and the installation exe-file: http://www.softteam.se/softbar
 
 ![SoftBar](https://github.com/Hultan/SoftTeam.SoftBar/blob/master/SoftBar.PNG?raw=true "Title")
 
