@@ -42,6 +42,9 @@
             DevExpress.Utils.SuperToolTip superToolTip4 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem4 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem4 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
+            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip6 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem6 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem6 = new DevExpress.Utils.ToolTipItem();
@@ -54,9 +57,6 @@
             DevExpress.Utils.SuperToolTip superToolTip9 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem9 = new DevExpress.Utils.ToolTipTitleItem();
             DevExpress.Utils.ToolTipItem toolTipItem9 = new DevExpress.Utils.ToolTipItem();
-            DevExpress.Utils.SuperToolTip superToolTip5 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem5 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem5 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.simpleButtonBrowse = new DevExpress.XtraEditors.SimpleButton();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
@@ -69,6 +69,7 @@
             this.tabNavigationPageAppearance = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.checkEditRunAsAdministrator = new DevExpress.XtraEditors.CheckEdit();
             this.tabNavigationPageCommandLine = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.simpleButtonCapture = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonTest = new DevExpress.XtraEditors.SimpleButton();
             this.pictureBoxMenuItemInfo = new System.Windows.Forms.PictureBox();
             this.labelControlParameters = new DevExpress.XtraEditors.LabelControl();
@@ -82,7 +83,6 @@
             this.toolTipControllerEditMenuItem = new DevExpress.Utils.ToolTipController(this.components);
             this.simpleButtonImport = new DevExpress.XtraEditors.SimpleButton();
             this.openFileDialogMenuItem = new System.Windows.Forms.OpenFileDialog();
-            this.simpleButtonCapture = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).BeginInit();
@@ -260,6 +260,25 @@
             this.tabNavigationPageCommandLine.Properties.ShowMode = DevExpress.XtraBars.Navigation.ItemShowMode.ImageAndText;
             this.tabNavigationPageCommandLine.Size = new System.Drawing.Size(376, 165);
             // 
+            // simpleButtonCapture
+            // 
+            this.simpleButtonCapture.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCapture.ImageOptions.Image")));
+            this.simpleButtonCapture.Location = new System.Drawing.Point(338, 35);
+            this.simpleButtonCapture.Name = "simpleButtonCapture";
+            this.simpleButtonCapture.Size = new System.Drawing.Size(28, 28);
+            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipTitleItem5.Text = "Capture";
+            toolTipItem5.LeftIndent = 6;
+            toolTipItem5.Text = "Get help capturing the application path, by starting the application while <b>Sof" +
+    "tBar</b> is recording application that starts on your system.";
+            superToolTip5.Items.Add(toolTipTitleItem5);
+            superToolTip5.Items.Add(toolTipItem5);
+            this.simpleButtonCapture.SuperTip = superToolTip5;
+            this.simpleButtonCapture.TabIndex = 33;
+            this.simpleButtonCapture.Text = "...";
+            this.simpleButtonCapture.Click += new System.EventHandler(this.simpleButtonCapture_Click);
+            // 
             // simpleButtonTest
             // 
             this.simpleButtonTest.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonTest.ImageOptions.Image")));
@@ -379,6 +398,10 @@
             this.textEditApplicationPath.TabIndex = 23;
             this.textEditApplicationPath.EditValueChanged += new System.EventHandler(this.textEditApplicationPath_EditValueChanged);
             // 
+            // toolTipControllerEditMenuItem
+            // 
+            this.toolTipControllerEditMenuItem.AutoPopDelay = 10000;
+            // 
             // simpleButtonImport
             // 
             this.simpleButtonImport.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonImport.ImageOptions.Image")));
@@ -391,25 +414,6 @@
             // openFileDialogMenuItem
             // 
             this.openFileDialogMenuItem.FileName = "openFileDialog1";
-            // 
-            // simpleButtonCapture
-            // 
-            this.simpleButtonCapture.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCapture.ImageOptions.Image")));
-            this.simpleButtonCapture.Location = new System.Drawing.Point(338, 35);
-            this.simpleButtonCapture.Name = "simpleButtonCapture";
-            this.simpleButtonCapture.Size = new System.Drawing.Size(28, 28);
-            superToolTip5.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem5.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipTitleItem5.Text = "Capture";
-            toolTipItem5.LeftIndent = 6;
-            toolTipItem5.Text = "Get help capturing the application path, by starting the application while <b>Sof" +
-    "tBar</b> is recording application that starts on your system.";
-            superToolTip5.Items.Add(toolTipTitleItem5);
-            superToolTip5.Items.Add(toolTipItem5);
-            this.simpleButtonCapture.SuperTip = superToolTip5;
-            this.simpleButtonCapture.TabIndex = 33;
-            this.simpleButtonCapture.Text = "...";
-            this.simpleButtonCapture.Click += new System.EventHandler(this.simpleButtonCapture_Click);
             // 
             // EditMenuItemControl
             // 
