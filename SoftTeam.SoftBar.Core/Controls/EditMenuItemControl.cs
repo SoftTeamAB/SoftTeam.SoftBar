@@ -220,6 +220,7 @@ namespace SoftTeam.SoftBar.Core.Controls
                     return;
                 
                 textEditApplicationPath.Text = form.ApplicationPath;
+                textEditIconPath.Text = form.ApplicationPath;
             }
         }
     }
