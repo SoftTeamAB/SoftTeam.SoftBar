@@ -153,40 +153,72 @@ namespace SoftTeam.SoftBar.Core.ClipboardList
             return false;
         }
 
+        /// <summary>
+        /// Compares two images
+        /// </summary>
+        /// <param name="image1"></param>
+        /// <param name="image2"></param>
+        /// <returns>True if they are identical</returns>
         private bool CompareImages(Image image1, Image image2)
         {
+            if ((image1 == null && image2 != null) || (image1 != null && image2 == null))
+                return false;
+            if (image1 == null && image2 == null)
+                return true;
+
             Bitmap bmp1 = new Bitmap(image1);
             Bitmap bmp2 = new Bitmap(image2);
 
-            bool equals = true;
-            Rectangle rect = new Rectangle(0, 0, bmp1.Width, bmp1.Height);
-            BitmapData bmpData1 = bmp1.LockBits(rect, ImageLockMode.ReadOnly, bmp1.PixelFormat);
-            BitmapData bmpData2 = bmp2.LockBits(rect, ImageLockMode.ReadOnly, bmp2.PixelFormat);
-            unsafe
+            // Test to see if we have the same size of image
+            if (bmp1.Size != bmp2.Size)
             {
-                byte* ptr1 = (byte*)bmpData1.Scan0.ToPointer();
-                byte* ptr2 = (byte*)bmpData2.Scan0.ToPointer();
-                int width = rect.Width * 3; // for 24bpp pixel data
-                for (int y = 0; equals && y < rect.Height; y++)
+                return false;
+            }
+
+            var rect = new Rectangle(0, 0, bmp1.Width, bmp1.Height);
+            var bmpData1 = bmp1.LockBits(rect, ImageLockMode.ReadOnly, bmp1.PixelFormat);
+
+            try
+            {
+                var bmpData2 = bmp2.LockBits(rect, ImageLockMode.ReadOnly, bmp1.PixelFormat);
+
+                try
                 {
-                    for (int x = 0; x < width; x++)
+                    unsafe
                     {
-                        if (*ptr1 != *ptr2)
+                        var ptr1 = (byte*)bmpData1.Scan0.ToPointer();
+                        var ptr2 = (byte*)bmpData2.Scan0.ToPointer();
+                        var width = 3 * rect.Width; // for 24bpp pixel data
+
+                        for (var y = 0; y < rect.Height; y++)
                         {
-                            equals = false;
-                            break;
+                            for (var x = 0; x < width; x++)
+                            {
+                                if (*ptr1 != *ptr2)
+                                {
+                                    return false;
+                                }
+
+                                ptr1++;
+                                ptr2++;
+                            }
+
+                            ptr1 += bmpData1.Stride - width;
+                            ptr2 += bmpData2.Stride - width;
                         }
-                        ptr1++;
-                        ptr2++;
                     }
-                    ptr1 += bmpData1.Stride - width;
-                    ptr2 += bmpData2.Stride - width;
+                }
+                finally
+                {
+                    bmp2.UnlockBits(bmpData2);
                 }
             }
-            bmp1.UnlockBits(bmpData1);
-            bmp2.UnlockBits(bmpData2);
+            finally
+            {
+                bmp1.UnlockBits(bmpData1);
+            }
 
-            return equals;
+            return true;
         }
         #endregion
 
