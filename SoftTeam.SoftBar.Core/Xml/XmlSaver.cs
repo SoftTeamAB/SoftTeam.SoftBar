@@ -93,6 +93,7 @@ namespace SoftTeam.SoftBar.Core.Xml
                     itemNode.SetAttribute("name", item.Name);
                     itemNode.SetAttribute("beginGroup", item.BeginGroup.ToString().ToLower());
                     itemNode.SetAttribute("iconPath", item.IconPath);
+                    itemNode.SetAttribute("runAsAdministrator", item.RunAsAdministrator.ToString().ToLower());
 
                     if (!string.IsNullOrEmpty(item.ApplicationPath))
                     {
