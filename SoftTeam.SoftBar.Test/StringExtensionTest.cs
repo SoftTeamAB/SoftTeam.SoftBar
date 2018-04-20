@@ -97,7 +97,7 @@ namespace SoftTeam.SoftBar.Test
 
             test = test.RestrictSize();
 
-            Assert.AreEqual("A longer test that w\nbecause it is way to\nand it basically wil", test);
+            Assert.AreEqual("A longer test that will be restricted\nbecause it is way to long\nand it basically will never", test);
         }
         #endregion
     }
