@@ -9,7 +9,7 @@ Check out our web page (in swedish) : http://www.softteam.se
 
 Softbar web page (in swedish). Here you can find some documentation and the installation exe-file: http://www.softteam.se/softbar
 
-SoftBar 1.0 installation can be downloaded here : https://github.com/Hultan/SoftTeam.SoftBar/releases/latest
+SoftBar 1.0.1 installation can be downloaded here : https://github.com/Hultan/SoftTeam.SoftBar/releases/latest
 
 ![SoftBar](https://github.com/Hultan/SoftTeam.SoftBar/blob/master/SoftBar.PNG?raw=true "Title")
 
