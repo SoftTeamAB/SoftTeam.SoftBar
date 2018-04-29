@@ -218,6 +218,7 @@
     <Compile Include="Misc\HelperFunctions.cs" />
     <Compile Include="Misc\LimitedStack.cs" />
     <Compile Include="Misc\ObjectExtension.cs" />
+    <Compile Include="Misc\PerformanceInfo.cs" />
     <Compile Include="Misc\PHSAppBarImporter.cs" />
     <Compile Include="Misc\ProcessCapture.cs" />
     <Compile Include="Misc\StringExtension.cs" />
