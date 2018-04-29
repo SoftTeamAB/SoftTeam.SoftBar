@@ -97,11 +97,13 @@
             this.FormBorderEffect = DevExpress.XtraEditors.FormBorderEffect.None;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "MainAppBarForm";
             this.ShowInTaskbar = false;
             this.Text = "SoftTeam SoftBar";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainAppBarForm_FormClosing);
             this.Load += new System.EventHandler(this.MainAppBarForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainAppBarForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

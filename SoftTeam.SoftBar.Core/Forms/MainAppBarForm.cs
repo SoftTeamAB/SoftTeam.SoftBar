@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -28,7 +29,7 @@ namespace SoftTeam.SoftBar.Core.Forms
         }
         #endregion
 
-        #region Load and closing
+        #region Events
         private void MainAppBarForm_Load(object sender, EventArgs e)
         {
             bool exit = false;
@@ -105,6 +106,15 @@ namespace SoftTeam.SoftBar.Core.Forms
         {
             _manager.HotkeyManager.UnregisterHotKeys();
             _manager.ApplicationBarManager.UnregisterApplicationBar();
+        }
+
+        private void MainAppBarForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F1)
+            {
+                // Help page
+                Process.Start("Http://www.softteam.se/softbar");
+            }
         }
         #endregion
 
