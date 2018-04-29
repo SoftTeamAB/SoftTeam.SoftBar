@@ -27,6 +27,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         private List<SoftBarMenu> _menus = null;
         private int _left = 0;
         private SoftBarManager _manager = null;
+        private Timer _updateTimer = null;
+        private PerformanceCounter _cpuCounter;
         #endregion
 
         #region Events
@@ -79,12 +81,102 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     // Create system area builder
                     var specialsMenuBuilder = new SoftBarSpecialsMenuBuilder(_manager);
                     specialsMenuBuilder.Build();
+
+                    DisposeTimerAndCounters();
+
+                    LabelControl labelCPU = GetLabelControl("labelCPU");
+                    if (labelCPU != null)
+                        labelCPU.Click += label_Click;
+                    LabelControl labelMem = GetLabelControl("labelMem");
+                    if (labelMem != null)
+                        labelMem.Click += label_Click;
+
+                    // Create performace counter
+                    _cpuCounter = new PerformanceCounter("Processor", "% Idle Time", "_Total");
+
+                    // Add timer for performance meter updates
+                    _updateTimer = new Timer();
+                    _updateTimer.Interval = 2000;
+                    _updateTimer.Tick += _updateTimer_Tick;
+                    _updateTimer.Start();
+
+                    // Update performance meters
+                    // Read the value an extra time to avoid an initial 0 value read
+                    // https://stackoverflow.com/questions/21420207/why-does-this-performance-counter-always-return-zero
+                    _cpuCounter.NextValue();
+                    UpdatePerfomanceMeters();
+
                     break;
                 case AreaType.User:
                     // Create user area builder
                     var userMenuBuilder = new SoftBarUserMenuBuilder(_manager);
                     userMenuBuilder.Build();
                     break;
+            }
+        }
+
+        private void label_Click(object sender, EventArgs e)
+        {
+            StartTaskManager();
+        }
+
+        private void StartTaskManager()
+        {
+            try
+            {
+                string path = @"[WINDOWSFOLDER]\[SYSTEM32FOLDER]\taskmgr.exe";
+
+                path = path.Replace("[WINDOWSFOLDER]", Environment.GetFolderPath(Environment.SpecialFolder.Windows));
+                path = path.Replace("[SYSTEM32FOLDER]", "System32");
+
+                Process.Start(path);
+            }
+            catch
+            {
+                // TODO : Alert user
+            }
+        }
+
+        private void _updateTimer_Tick(object sender, EventArgs e)
+        {
+            UpdatePerfomanceMeters();
+        }
+
+        private LabelControl GetLabelControl(string name)
+        {
+            var controls = _manager.Form.Controls.Find(name, false);
+            if (controls == null || controls.Count() == 0)
+                return null;
+            else
+                return (LabelControl)controls[0];
+        }
+
+        private void UpdatePerfomanceMeters()
+        {
+            LabelControl labelCPU = GetLabelControl("labelCPU");
+            if (labelCPU != null)
+            {
+                float value = 100 - _cpuCounter.NextValue();
+                string text = "";
+                if (value > 75 && value < 100)
+                    text = $"CPU : <color=#ff0000>{value:#.0} %</color>";
+                else
+                    text = $"CPU : {value:#.0} %";
+                labelCPU.Text = text;
+            }
+
+            LabelControl labelMem = GetLabelControl("labelMem");
+            if (labelMem != null)
+            {
+                Int64 phav = PerformanceInfo.GetPhysicalAvailableMemoryInMiB();
+                Int64 tot = PerformanceInfo.GetTotalMemoryInMiB();
+                decimal percentUsed = 100 - ((decimal)phav / (decimal)tot) * 100;
+                string text = "";
+                if (percentUsed > 75)
+                    text = $"Mem : <color=#ff0000>{percentUsed:#.0} %</color>";
+                else
+                    text = $"Mem : {percentUsed:#.0} %";
+                labelMem.Text = text;
             }
         }
 
@@ -95,6 +187,31 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
             Menus.Clear();
         }
+
+        private void DisposeTimerAndCounters()
+        {
+            // Unhook events
+            LabelControl labelCPU = GetLabelControl("labelCPU");
+            if (labelCPU != null)
+                labelCPU.Click -= label_Click;
+            LabelControl labelMem = GetLabelControl("labelMem");
+            if (labelMem != null)
+                labelMem.Click -= label_Click;
+
+            // Make sure to dispose the clipboard since it has an active timer
+            if (_updateTimer != null)
+            {
+                _updateTimer.Stop();
+                _updateTimer.Dispose();
+                _updateTimer = null;
+            }
+            if (_cpuCounter != null)
+            {
+                _cpuCounter.Dispose();
+                _cpuCounter = null;
+            }
+        }
+
         #endregion
 
         #region Events
@@ -119,7 +236,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar
 
         public void ExitItem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            // Make sure to dispose the clipboard since it has an active timer
+            DisposeTimerAndCounters();
+
             _manager.ClipboardManager.Dispose();
             _manager.Form.Close();
         }
@@ -153,7 +271,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             {
                 _menus[Constants.SYSTEM_MENU].Item.HidePopup();
                 var areaBackup = _manager.UserAreaXml.Copy();
-                
+
                 DialogResult result = form.ShowDialog();
 
                 if (result == DialogResult.Cancel)

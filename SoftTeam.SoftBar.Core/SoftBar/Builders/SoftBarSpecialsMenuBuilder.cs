@@ -1,6 +1,7 @@
 ﻿using DevExpress.Skins;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Misc;
 using System;
@@ -26,12 +27,32 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         #region Build
         public void Build()
         {
-            BuildSpecialsMenu();
+            // Build them "backwards" so that we know the width
+            var width = BuildClipboardMenu();
+            BuildPerformanceMenu(width);
         }
 
-        private void BuildSpecialsMenu()
+        private void BuildPerformanceMenu(int clipboardWidth)
         {
-            // Create the actual system menu
+            var width = 70;
+            LabelControl labelCPU = new LabelControl();
+            labelCPU.Name = "labelCPU";
+            labelCPU.Text = "CPU :";
+            labelCPU.Location = new Point(_manager.Form.Width - clipboardWidth - width, 2);
+            labelCPU.AllowHtmlString = true;
+            _manager.Form.Controls.Add(labelCPU);
+
+            LabelControl labelMem = new LabelControl();
+            labelMem.Name = "labelMem";
+            labelMem.Text = "Mem :";
+            labelMem.AllowHtmlString = true;
+            labelMem.Location = new Point(_manager.Form.Width - clipboardWidth - width, 15);
+            _manager.Form.Controls.Add(labelMem);
+        }
+
+        private int BuildClipboardMenu()
+        {
+            // Create the clipboard menu
             var width = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_ClipboardMenuWidth, 100);
             var name = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_ClipboardMenuName, "Clipboard");
             var left = _manager.Form.Width - width;
@@ -68,6 +89,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             // Clipboard items
             foreach (var item in _manager.ClipboardManager.ClipboardList)
                 AddClipboardItem(item);
+
+            return width;
         }
 
         private void AddClipboardItem(object item)

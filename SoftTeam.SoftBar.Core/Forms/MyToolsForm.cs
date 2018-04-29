@@ -170,7 +170,7 @@ namespace SoftTeam.SoftBar.Core.Forms
                     path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\msinfo32.exe";
                     break;
                 case ToolPath.TaskManager:
-                    path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\taskmgr.exe";
+                    path = @"[WINDOWSFOLDER]\[SYSTEM32FOLDER]\taskmgr.exe";
                     break;
                 case ToolPath.VolumeMixer:
                     path = @"[WINDOWSFOLDER]\[SYSTEMFOLDER]\SndVol.exe";
