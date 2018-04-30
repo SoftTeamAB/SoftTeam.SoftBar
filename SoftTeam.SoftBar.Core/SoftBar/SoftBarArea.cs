@@ -61,7 +61,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         #region Misc functions
         public void Load(bool hardReload = false)
         {
-            ClearMenus();
+            Dispose();
 
             if (hardReload)
             {
@@ -82,29 +82,10 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     var specialsMenuBuilder = new SoftBarSpecialsMenuBuilder(_manager);
                     specialsMenuBuilder.Build();
 
-                    DisposeTimerAndCounters();
-
-                    LabelControl labelCPU = GetLabelControl("labelCPU");
-                    if (labelCPU != null)
-                        labelCPU.Click += label_Click;
-                    LabelControl labelMem = GetLabelControl("labelMem");
-                    if (labelMem != null)
-                        labelMem.Click += label_Click;
-
-                    // Create performace counter
-                    _cpuCounter = new PerformanceCounter("Processor", "% Idle Time", "_Total");
-
-                    // Add timer for performance meter updates
-                    _updateTimer = new Timer();
-                    _updateTimer.Interval = 2000;
-                    _updateTimer.Tick += _updateTimer_Tick;
-                    _updateTimer.Start();
-
-                    // Update performance meters
-                    // Read the value an extra time to avoid an initial 0 value read
-                    // https://stackoverflow.com/questions/21420207/why-does-this-performance-counter-always-return-zero
-                    _cpuCounter.NextValue();
-                    UpdatePerfomanceMeters();
+                    // Check if performance meter is visible
+                    var performanceMeterVisible = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_PerformanceMeterVisible);
+                    if (performanceMeterVisible)
+                        SetupPerformanceMeter();
 
                     break;
                 case AreaType.User:
@@ -113,6 +94,33 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                     userMenuBuilder.Build();
                     break;
             }
+        }
+
+        private void SetupPerformanceMeter()
+        {
+            DisposeTimerAndCounters();
+
+            LabelControl labelCPU = GetLabelControl("labelCPU");
+            if (labelCPU != null)
+                labelCPU.Click += label_Click;
+            LabelControl labelMem = GetLabelControl("labelMem");
+            if (labelMem != null)
+                labelMem.Click += label_Click;
+
+            // Create performace counter
+            _cpuCounter = new PerformanceCounter("Processor", "% Idle Time", "_Total");
+
+            // Add timer for performance meter updates
+            _updateTimer = new Timer();
+            _updateTimer.Interval = 2000;
+            _updateTimer.Tick += _updateTimer_Tick;
+            _updateTimer.Start();
+
+            // Update performance meters
+            // Read the value an extra time to avoid an initial 0 value read
+            // https://stackoverflow.com/questions/21420207/why-does-this-performance-counter-always-return-zero
+            _cpuCounter.NextValue();
+            UpdatePerfomanceMeters();
         }
 
         private void label_Click(object sender, EventArgs e)
@@ -255,8 +263,9 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 // Reload the settings
                 _manager.SettingsManager.Load();
 
-                // Reload the system menus
+                // Reload the system menus and specials menu
                 Load();
+                _manager.SpecialsArea.Load();
 
                 Application.DoEvents();
 
@@ -396,6 +405,23 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public void Dispose()
         {
             ClearMenus();
+            if (Type == AreaType.Specials)
+            {
+                LabelControl labelCPU = GetLabelControl("labelCPU");
+                if (labelCPU != null)
+                {
+                    _manager.Form.Controls.Remove(labelCPU);
+                    labelCPU.Dispose();
+                    labelCPU = null;
+                }
+                LabelControl labelMem = GetLabelControl("labelMem");
+                if (labelMem != null)
+                {
+                    _manager.Form.Controls.Remove(labelMem);
+                    labelMem.Dispose();
+                    labelMem = null;
+                }
+            }
         }
 
         #endregion

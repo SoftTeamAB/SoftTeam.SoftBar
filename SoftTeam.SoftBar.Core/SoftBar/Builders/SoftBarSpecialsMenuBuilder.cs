@@ -29,8 +29,18 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
         public void Build()
         {
             // Build them "backwards" so that we know the width
-            var width = BuildClipboardMenu();
-            BuildPerformanceMenu(width);
+            var clipboardVisible = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_ClipboardMenuVisible);
+            var performanceMeterVisible = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_PerformanceMeterVisible);
+
+            if (clipboardVisible && performanceMeterVisible)
+            {
+                var width = BuildClipboardMenu();
+                BuildPerformanceMenu(width);
+            }
+            else if (clipboardVisible)
+                BuildClipboardMenu();
+            else if (performanceMeterVisible)
+                BuildPerformanceMenu(0);
         }
 
         private void BuildPerformanceMenu(int clipboardWidth)
@@ -140,7 +150,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             var font = new Font("Tahoma", 8.25f);
             if (link.Item.Tag.ToString() == "clipboardComputerName")
             {
-                var appearance = link.Item.ItemAppearance.GetAppearance(e.State);                
+                var appearance = link.Item.ItemAppearance.GetAppearance(e.State);
                 // Draw my computer name item
                 e.DrawBackground();
                 DrawItem(g, e.Bounds, new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.server), "Computer name", appearance.Font);

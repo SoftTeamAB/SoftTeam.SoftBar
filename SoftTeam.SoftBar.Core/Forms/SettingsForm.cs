@@ -54,6 +54,14 @@ namespace SoftTeam.SoftBar.Core.Forms
                 checkEditShowDirectoriesMenu.Checked = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_DirectoriesMenuVisible);
             if (_manager.SettingsManager.Settings.ExistsSetting(Constants.General_ToolsMenuVisible))
                 checkEditShowToolsMenu.Checked = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_ToolsMenuVisible);
+            if (_manager.SettingsManager.Settings.ExistsSetting(Constants.General_ClipboardMenuVisible))
+                checkEditShowClipboardMenu.Checked = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_ClipboardMenuVisible);
+            else
+                checkEditShowClipboardMenu.Checked = true;
+            if (_manager.SettingsManager.Settings.ExistsSetting(Constants.General_PerformanceMeterVisible))
+                checkEditShowPerfomanceMeter.Checked = _manager.SettingsManager.Settings.GetBooleanSetting(Constants.General_PerformanceMeterVisible);
+            else
+                checkEditShowPerfomanceMeter.Checked = true;
 
             comboBoxEditTheme.SelectedIndex = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_Theme);
 
@@ -117,6 +125,8 @@ namespace SoftTeam.SoftBar.Core.Forms
             // General
             _manager.SettingsManager.Settings.SetBooleanSetting(Constants.General_DirectoriesMenuVisible, checkEditShowDirectoriesMenu.Checked);
             _manager.SettingsManager.Settings.SetBooleanSetting(Constants.General_ToolsMenuVisible, checkEditShowToolsMenu.Checked);
+            _manager.SettingsManager.Settings.SetBooleanSetting(Constants.General_ClipboardMenuVisible, checkEditShowClipboardMenu.Checked);
+            _manager.SettingsManager.Settings.SetBooleanSetting(Constants.General_PerformanceMeterVisible, checkEditShowPerfomanceMeter.Checked);
             _manager.SettingsManager.Settings.SetIntegerSetting(Constants.General_Theme, comboBoxEditTheme.SelectedIndex);
 
             _manager.SettingsManager.Settings.SetIntegerSetting(Constants.General_SystemMenuWidth, int.Parse(spinEditSystemMenuWidth.EditValue.ToString()));

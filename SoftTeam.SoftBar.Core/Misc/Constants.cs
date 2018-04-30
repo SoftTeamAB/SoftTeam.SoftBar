@@ -23,6 +23,8 @@
         // Settings
         public const string General_DirectoriesMenuVisible = "General.DirectoriesMenuVisible";
         public const string General_ToolsMenuVisible = "General.ToolsMenuVisible";
+        public const string General_ClipboardMenuVisible = "General.ClipboardMenuVisible";
+        public const string General_PerformanceMeterVisible = "General.PerformanceMeterVisible";
         public const string General_Theme = "General.Theme";
         public const string General_SystemMenuWidth = "General.SystemMenuWidth";
         public const string General_DirectoriesMenuWidth = "General.DirectoriesMenuWidth";
