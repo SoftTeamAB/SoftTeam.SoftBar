@@ -1,4 +1,5 @@
 ﻿using DevExpress.UserSkins;
+using DevExpress.Utils;
 using SoftTeam.SoftBar.Core.AppBar;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Forms;
@@ -37,6 +38,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar
         public SoftBarArea SpecialsArea { get => _specialsArea; set => _specialsArea = value; }
         public HotkeyManager HotkeyManager { get => _hotkeyManager; set => _hotkeyManager = value; }
         public ApplicationBarManager ApplicationBarManager { get => _applicationBarManager; set => _applicationBarManager = value; }
+        public ToolTipController ToolTipController { get; set; }
         #endregion
 
         #region Constructor

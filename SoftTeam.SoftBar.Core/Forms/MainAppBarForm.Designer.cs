@@ -36,6 +36,7 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.openFileDialogSoftBar = new System.Windows.Forms.OpenFileDialog();
+            this.toolTipControllerSoftBar = new DevExpress.Utils.ToolTipController(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManagerSoftBar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -85,6 +86,12 @@
             // 
             this.openFileDialogSoftBar.FileName = "openFileDialog1";
             // 
+            // toolTipControllerSoftBar
+            // 
+            this.toolTipControllerSoftBar.AllowHtmlText = true;
+            this.toolTipControllerSoftBar.AutoPopDelay = 10000;
+            this.toolTipControllerSoftBar.ToolTipType = DevExpress.Utils.ToolTipType.SuperTip;
+            // 
             // MainAppBarForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,5 +124,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         public DevExpress.XtraBars.BarManager barManagerSoftBar;
         private System.Windows.Forms.OpenFileDialog openFileDialogSoftBar;
+        private DevExpress.Utils.ToolTipController toolTipControllerSoftBar;
     }
 }

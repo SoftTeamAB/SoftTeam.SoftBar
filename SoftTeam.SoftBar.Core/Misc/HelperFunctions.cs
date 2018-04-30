@@ -214,26 +214,46 @@ namespace SoftTeam.SoftBar.Core.Misc
 
         public static SuperToolTip CreateWarningToolTip(string errorMessage)
         {
-            SuperToolTip toolTip = new SuperToolTip();
-            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
-            args.Title.Text = "Warning!";
-            args.Contents.Text = errorMessage;
-            args.Contents.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.Warning);
-            toolTip.Setup(args);
+            SuperToolTip tooltip = new SuperToolTip();
 
-            return toolTip;
+            ToolTipTitleItem title = new ToolTipTitleItem();
+            title.AllowHtmlText = DefaultBoolean.True;
+            title.Text = "<b>Warning!</b>";
+
+            ToolTipItem item = new ToolTipItem();
+            item.Image = SoftTeam.SoftBar.Core.Properties.Resources.Warning;
+            item.AllowHtmlText = DefaultBoolean.True;
+            item.Text += errorMessage;
+
+            ToolTipSeparatorItem separator = new ToolTipSeparatorItem();
+
+            tooltip.Items.Add(title);
+            tooltip.Items.Add(separator);
+            tooltip.Items.Add(item);
+
+            return tooltip;
         }
 
         public static SuperToolTip CreateInformationToolTip(string message)
         {
-            SuperToolTip toolTip = new SuperToolTip();
-            SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
-            args.Title.Text = "Information!";
-            args.Contents.Text = message;
-            args.Contents.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.information);
-            toolTip.Setup(args);
+            SuperToolTip tooltip = new SuperToolTip();
 
-            return toolTip;
+            ToolTipTitleItem title = new ToolTipTitleItem();
+            title.AllowHtmlText = DefaultBoolean.True;
+            title.Text = "<b>Information!</b>";
+
+            ToolTipItem item = new ToolTipItem();
+            item.Image = SoftTeam.SoftBar.Core.Properties.Resources.information;
+            item.AllowHtmlText = DefaultBoolean.True;
+            item.Text += message;
+
+            ToolTipSeparatorItem separator = new ToolTipSeparatorItem();
+
+            tooltip.Items.Add(title);
+            tooltip.Items.Add(separator);
+            tooltip.Items.Add(item);
+
+            return tooltip;
         }
 
         public static string GetThemeName(int index)

@@ -91,6 +91,7 @@ namespace SoftTeam.SoftBar.Core.Forms
 
             // Create the app bar from XML
             _manager = new SoftBarManager(this, path);
+            _manager.ToolTipController = toolTipControllerSoftBar;
 
             if (newUser)
             {

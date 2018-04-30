@@ -1,4 +1,5 @@
 ﻿using DevExpress.Skins;
+using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
@@ -34,12 +35,15 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
         private void BuildPerformanceMenu(int clipboardWidth)
         {
+            var text = "The performance meter show you how much of your computers CPU and memory that are being used. Click to start <b>Windows Task Manager</b>!";
             var width = 70;
             LabelControl labelCPU = new LabelControl();
             labelCPU.Name = "labelCPU";
             labelCPU.Text = "CPU :";
             labelCPU.Location = new Point(_manager.Form.Width - clipboardWidth - width, 2);
             labelCPU.AllowHtmlString = true;
+            labelCPU.SuperTip = HelperFunctions.CreateInformationToolTip(text);
+            labelCPU.ToolTipController = _manager.ToolTipController;
             _manager.Form.Controls.Add(labelCPU);
 
             LabelControl labelMem = new LabelControl();
@@ -47,6 +51,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             labelMem.Text = "Mem :";
             labelMem.AllowHtmlString = true;
             labelMem.Location = new Point(_manager.Form.Width - clipboardWidth - width, 15);
+            labelMem.SuperTip = HelperFunctions.CreateInformationToolTip(text);
+            labelMem.ToolTipController = _manager.ToolTipController;
             _manager.Form.Controls.Add(labelMem);
         }
 
@@ -56,6 +62,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             var width = _manager.SettingsManager.Settings.GetIntegerSetting(Constants.General_ClipboardMenuWidth, 100);
             var name = _manager.SettingsManager.Settings.GetStringSetting(Constants.General_ClipboardMenuName, "Clipboard");
             var left = _manager.Form.Width - width;
+            var text = "Use clipboard hotkey to open the clipboard menu at mouse position.\n\nUse SHIFT+click to remove a clipboard history item (for example a password).";
 
             _specialsMenu = new SoftBarMenu(_manager.Form, name, left, width, true);
             _specialsMenu.Width = width;
@@ -64,7 +71,8 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             _specialsMenu.Button.Click += _manager.SpecialsArea.ClipboardMenu_Clicked;
             _specialsMenu.Button.Tag = _specialsMenu;
             _specialsMenu.Button.ImageOptions.Image = new Bitmap(SoftTeam.SoftBar.Core.Properties.Resources.clipboard_medium);
-            _specialsMenu.Button.SuperTip = HelperFunctions.CreateInformationToolTip("Use clipboard hotkey to open the clipboard menu at mouse position.\n\nUse SHIFT+click to remove a clipboard history item (for example a password).");
+            _specialsMenu.Button.SuperTip = HelperFunctions.CreateInformationToolTip(text);
+            _specialsMenu.Button.ToolTipController = _manager.ToolTipController;
             _specialsMenu.Item.Manager.CustomDrawItem += Manager_CustomDrawItem;
 
             // My computer name
