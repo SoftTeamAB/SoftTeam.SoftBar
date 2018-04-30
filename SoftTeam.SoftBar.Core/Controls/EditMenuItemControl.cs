@@ -35,8 +35,6 @@ namespace SoftTeam.SoftBar.Core.Controls
         public EditMenuItemControl()
         {
             InitializeComponent();
-
-            tabPaneMenuItem.SelectedPage = tabNavigationPageAppearance;
         }
         #endregion
 

@@ -30,8 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CaptureForm));
-            DevExpress.XtraGrid.GridFormatRule gridFormatRule2 = new DevExpress.XtraGrid.GridFormatRule();
-            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue2 = new DevExpress.XtraEditors.FormatConditionRuleValue();
+            DevExpress.XtraGrid.GridFormatRule gridFormatRule1 = new DevExpress.XtraGrid.GridFormatRule();
+            DevExpress.XtraEditors.FormatConditionRuleValue formatConditionRuleValue1 = new DevExpress.XtraEditors.FormatConditionRuleValue();
             this.gridColumnPriority = new DevExpress.XtraGrid.Columns.GridColumn();
             this.simpleButtonCapture = new DevExpress.XtraEditors.SimpleButton();
             this.imageListCapture = new System.Windows.Forms.ImageList(this.components);
@@ -54,6 +54,8 @@
             // 
             // simpleButtonCapture
             // 
+            this.simpleButtonCapture.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCapture.Appearance.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.simpleButtonCapture.Appearance.Options.UseFont = true;
             this.simpleButtonCapture.ImageOptions.ImageIndex = 0;
@@ -62,7 +64,7 @@
             this.simpleButtonCapture.ImageOptions.ImageToTextIndent = 20;
             this.simpleButtonCapture.Location = new System.Drawing.Point(12, 111);
             this.simpleButtonCapture.Name = "simpleButtonCapture";
-            this.simpleButtonCapture.Size = new System.Drawing.Size(435, 90);
+            this.simpleButtonCapture.Size = new System.Drawing.Size(574, 90);
             this.simpleButtonCapture.TabIndex = 0;
             this.simpleButtonCapture.Text = "Capture!";
             this.simpleButtonCapture.Click += new System.EventHandler(this.simpleButtonCapture_Click);
@@ -97,10 +99,13 @@
             // 
             // gridControlCapture
             // 
+            this.gridControlCapture.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.gridControlCapture.Location = new System.Drawing.Point(12, 207);
             this.gridControlCapture.MainView = this.gridViewCapture;
             this.gridControlCapture.Name = "gridControlCapture";
-            this.gridControlCapture.Size = new System.Drawing.Size(435, 111);
+            this.gridControlCapture.Size = new System.Drawing.Size(574, 149);
             this.gridControlCapture.TabIndex = 4;
             this.gridControlCapture.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridViewCapture});
@@ -110,15 +115,15 @@
             this.gridViewCapture.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.gridColumnPath,
             this.gridColumnPriority});
-            gridFormatRule2.ApplyToRow = true;
-            gridFormatRule2.Column = this.gridColumnPriority;
-            gridFormatRule2.Name = "FormatProgram";
-            formatConditionRuleValue2.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            formatConditionRuleValue2.Appearance.Options.UseBackColor = true;
-            formatConditionRuleValue2.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
-            formatConditionRuleValue2.Value1 = 0;
-            gridFormatRule2.Rule = formatConditionRuleValue2;
-            this.gridViewCapture.FormatRules.Add(gridFormatRule2);
+            gridFormatRule1.ApplyToRow = true;
+            gridFormatRule1.Column = this.gridColumnPriority;
+            gridFormatRule1.Name = "FormatProgram";
+            formatConditionRuleValue1.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            formatConditionRuleValue1.Appearance.Options.UseBackColor = true;
+            formatConditionRuleValue1.Condition = DevExpress.XtraEditors.FormatCondition.Equal;
+            formatConditionRuleValue1.Value1 = 0;
+            gridFormatRule1.Rule = formatConditionRuleValue1;
+            this.gridViewCapture.FormatRules.Add(gridFormatRule1);
             this.gridViewCapture.GridControl = this.gridControlCapture;
             this.gridViewCapture.Name = "gridViewCapture";
             this.gridViewCapture.OptionsBehavior.Editable = false;
@@ -129,17 +134,18 @@
             // 
             this.gridColumnPath.Caption = "Path";
             this.gridColumnPath.FieldName = "Path";
-            this.gridColumnPath.MaxWidth = 400;
+            this.gridColumnPath.MaxWidth = 500;
             this.gridColumnPath.MinWidth = 10;
             this.gridColumnPath.Name = "gridColumnPath";
             this.gridColumnPath.Visible = true;
             this.gridColumnPath.VisibleIndex = 0;
-            this.gridColumnPath.Width = 400;
+            this.gridColumnPath.Width = 500;
             // 
             // simpleButtonCancel
             // 
+            this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
-            this.simpleButtonCancel.Location = new System.Drawing.Point(357, 324);
+            this.simpleButtonCancel.Location = new System.Drawing.Point(496, 364);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(90, 34);
             this.simpleButtonCancel.TabIndex = 5;
@@ -148,8 +154,9 @@
             // 
             // simpleButtonNext
             // 
+            this.simpleButtonNext.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonNext.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonNext.ImageOptions.Image")));
-            this.simpleButtonNext.Location = new System.Drawing.Point(261, 324);
+            this.simpleButtonNext.Location = new System.Drawing.Point(400, 364);
             this.simpleButtonNext.Name = "simpleButtonNext";
             this.simpleButtonNext.Size = new System.Drawing.Size(90, 34);
             this.simpleButtonNext.TabIndex = 6;
@@ -160,7 +167,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(459, 364);
+            this.ClientSize = new System.Drawing.Size(596, 407);
             this.Controls.Add(this.simpleButtonNext);
             this.Controls.Add(this.simpleButtonCancel);
             this.Controls.Add(this.gridControlCapture);

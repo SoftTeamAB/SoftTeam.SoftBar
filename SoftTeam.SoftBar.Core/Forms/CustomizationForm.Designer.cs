@@ -77,6 +77,15 @@
             this.barButtonItemMoveUp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMoveDown = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemRemoveItem = new DevExpress.XtraBars.BarButtonItem();
+            this.barBottom = new DevExpress.XtraBars.Bar();
+            this.barButtonItemPathHeader = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemPath = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItemBackupPathHeader = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItemBackupPath = new DevExpress.XtraBars.BarStaticItem();
+            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
+            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.barSubItemFile = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItemExitAndSave = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemFileExitWithoutSave = new DevExpress.XtraBars.BarButtonItem();
@@ -88,15 +97,6 @@
             this.barButtonItemMenuMoveUp = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMenuMoveDown = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItemMenuRemoveItem = new DevExpress.XtraBars.BarButtonItem();
-            this.barBottom = new DevExpress.XtraBars.Bar();
-            this.barButtonItemPathHeader = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemPath = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItemBackupPathHeader = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItemBackupPath = new DevExpress.XtraBars.BarStaticItem();
-            this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
-            this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.toolTipControllerCustomization = new DevExpress.Utils.ToolTipController(this.components);
             this.simpleButtonCancel = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButtonSave = new DevExpress.XtraEditors.SimpleButton();
@@ -113,7 +113,7 @@
             this.xtraScrollableControlMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.xtraScrollableControlMenu.Location = new System.Drawing.Point(0, 31);
             this.xtraScrollableControlMenu.Name = "xtraScrollableControlMenu";
-            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(758, 419);
+            this.xtraScrollableControlMenu.Size = new System.Drawing.Size(1008, 632);
             this.xtraScrollableControlMenu.TabIndex = 0;
             this.xtraScrollableControlMenu.Click += new System.EventHandler(this.xtraScrollableControlMenu_Click);
             // 
@@ -159,7 +159,7 @@
             // 
             this.barToolBar.BarName = "Tools";
             this.barToolBar.DockCol = 0;
-            this.barToolBar.DockRow = 1;
+            this.barToolBar.DockRow = 0;
             this.barToolBar.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.barToolBar.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemAddMenu),
@@ -279,6 +279,97 @@
             superToolTip5.Items.Add(toolTipTitleItem6);
             this.barButtonItemRemoveItem.SuperTip = superToolTip5;
             this.barButtonItemRemoveItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemRemoveItem_ItemClick);
+            // 
+            // barBottom
+            // 
+            this.barBottom.BarName = "Status bar";
+            this.barBottom.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
+            this.barBottom.DockCol = 0;
+            this.barBottom.DockRow = 0;
+            this.barBottom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
+            this.barBottom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPathHeader),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPath),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPathHeader),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPath)});
+            this.barBottom.OptionsBar.AllowQuickCustomization = false;
+            this.barBottom.OptionsBar.DrawDragBorder = false;
+            this.barBottom.OptionsBar.UseWholeRow = true;
+            this.barBottom.Text = "Status bar";
+            // 
+            // barButtonItemPathHeader
+            // 
+            this.barButtonItemPathHeader.Caption = "SoftBar.xml path : ";
+            this.barButtonItemPathHeader.Id = 4;
+            this.barButtonItemPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItemPathHeader.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItemPathHeader.Name = "barButtonItemPathHeader";
+            this.barButtonItemPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPathHeader_ItemClick);
+            // 
+            // barButtonItemPath
+            // 
+            this.barButtonItemPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
+            this.barButtonItemPath.Caption = "[path]";
+            this.barButtonItemPath.Id = 5;
+            this.barButtonItemPath.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemPath.Name = "barButtonItemPath";
+            this.barButtonItemPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPath_ItemClick);
+            // 
+            // barButtonItemBackupPathHeader
+            // 
+            this.barButtonItemBackupPathHeader.Caption = "Backup directory :";
+            this.barButtonItemBackupPathHeader.Id = 15;
+            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItemBackupPathHeader.Name = "barButtonItemBackupPathHeader";
+            this.barButtonItemBackupPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPathHeader_ItemClick);
+            // 
+            // barButtonItemBackupPath
+            // 
+            this.barButtonItemBackupPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
+            this.barButtonItemBackupPath.Caption = "[backup path]";
+            this.barButtonItemBackupPath.Id = 16;
+            this.barButtonItemBackupPath.ItemAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemBackupPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
+            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
+            this.barButtonItemBackupPath.Name = "barButtonItemBackupPath";
+            this.barButtonItemBackupPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPath_ItemClick);
+            // 
+            // barDockControlTop
+            // 
+            this.barDockControlTop.CausesValidation = false;
+            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
+            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
+            this.barDockControlTop.Manager = this.barManagerCustomization;
+            this.barDockControlTop.Size = new System.Drawing.Size(1008, 31);
+            // 
+            // barDockControlBottom
+            // 
+            this.barDockControlBottom.CausesValidation = false;
+            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.barDockControlBottom.Location = new System.Drawing.Point(0, 704);
+            this.barDockControlBottom.Manager = this.barManagerCustomization;
+            this.barDockControlBottom.Size = new System.Drawing.Size(1008, 25);
+            // 
+            // barDockControlLeft
+            // 
+            this.barDockControlLeft.CausesValidation = false;
+            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
+            this.barDockControlLeft.Manager = this.barManagerCustomization;
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 673);
+            // 
+            // barDockControlRight
+            // 
+            this.barDockControlRight.CausesValidation = false;
+            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
+            this.barDockControlRight.Location = new System.Drawing.Point(1008, 31);
+            this.barDockControlRight.Manager = this.barManagerCustomization;
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 673);
             // 
             // barSubItemFile
             // 
@@ -420,97 +511,6 @@
             this.barButtonItemMenuRemoveItem.Name = "barButtonItemMenuRemoveItem";
             this.barButtonItemMenuRemoveItem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemMenuRemoveItem_ItemClick);
             // 
-            // barBottom
-            // 
-            this.barBottom.BarName = "Status bar";
-            this.barBottom.CanDockStyle = DevExpress.XtraBars.BarCanDockStyle.Bottom;
-            this.barBottom.DockCol = 0;
-            this.barBottom.DockRow = 0;
-            this.barBottom.DockStyle = DevExpress.XtraBars.BarDockStyle.Bottom;
-            this.barBottom.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPathHeader),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemPath),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPathHeader),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItemBackupPath)});
-            this.barBottom.OptionsBar.AllowQuickCustomization = false;
-            this.barBottom.OptionsBar.DrawDragBorder = false;
-            this.barBottom.OptionsBar.UseWholeRow = true;
-            this.barBottom.Text = "Status bar";
-            // 
-            // barButtonItemPathHeader
-            // 
-            this.barButtonItemPathHeader.Caption = "SoftBar.xml path : ";
-            this.barButtonItemPathHeader.Id = 4;
-            this.barButtonItemPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barButtonItemPathHeader.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItemPathHeader.Name = "barButtonItemPathHeader";
-            this.barButtonItemPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPathHeader_ItemClick);
-            // 
-            // barButtonItemPath
-            // 
-            this.barButtonItemPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
-            this.barButtonItemPath.Caption = "[path]";
-            this.barButtonItemPath.Id = 5;
-            this.barButtonItemPath.ItemAppearance.Normal.Options.UseTextOptions = true;
-            this.barButtonItemPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
-            this.barButtonItemPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
-            this.barButtonItemPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
-            this.barButtonItemPath.Name = "barButtonItemPath";
-            this.barButtonItemPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemPath_ItemClick);
-            // 
-            // barButtonItemBackupPathHeader
-            // 
-            this.barButtonItemBackupPathHeader.Caption = "Backup directory :";
-            this.barButtonItemBackupPathHeader.Id = 15;
-            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.barButtonItemBackupPathHeader.ItemAppearance.Normal.Options.UseFont = true;
-            this.barButtonItemBackupPathHeader.Name = "barButtonItemBackupPathHeader";
-            this.barButtonItemBackupPathHeader.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPathHeader_ItemClick);
-            // 
-            // barButtonItemBackupPath
-            // 
-            this.barButtonItemBackupPath.AutoSize = DevExpress.XtraBars.BarStaticItemSize.Spring;
-            this.barButtonItemBackupPath.Caption = "[backup path]";
-            this.barButtonItemBackupPath.Id = 16;
-            this.barButtonItemBackupPath.ItemAppearance.Normal.Options.UseTextOptions = true;
-            this.barButtonItemBackupPath.ItemAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
-            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.Options.UseTextOptions = true;
-            this.barButtonItemBackupPath.ItemInMenuAppearance.Normal.TextOptions.Trimming = DevExpress.Utils.Trimming.EllipsisPath;
-            this.barButtonItemBackupPath.Name = "barButtonItemBackupPath";
-            this.barButtonItemBackupPath.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItemBackupPath_ItemClick);
-            // 
-            // barDockControlTop
-            // 
-            this.barDockControlTop.CausesValidation = false;
-            this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
-            this.barDockControlTop.Manager = this.barManagerCustomization;
-            this.barDockControlTop.Size = new System.Drawing.Size(758, 31);
-            // 
-            // barDockControlBottom
-            // 
-            this.barDockControlBottom.CausesValidation = false;
-            this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControlBottom.Location = new System.Drawing.Point(0, 491);
-            this.barDockControlBottom.Manager = this.barManagerCustomization;
-            this.barDockControlBottom.Size = new System.Drawing.Size(758, 25);
-            // 
-            // barDockControlLeft
-            // 
-            this.barDockControlLeft.CausesValidation = false;
-            this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 31);
-            this.barDockControlLeft.Manager = this.barManagerCustomization;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 460);
-            // 
-            // barDockControlRight
-            // 
-            this.barDockControlRight.CausesValidation = false;
-            this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(758, 31);
-            this.barDockControlRight.Manager = this.barManagerCustomization;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 460);
-            // 
             // toolTipControllerCustomization
             // 
             this.toolTipControllerCustomization.GetActiveObjectInfo += new DevExpress.Utils.ToolTipControllerGetActiveObjectInfoEventHandler(this.toolTipControllerCustomization_GetActiveObjectInfo);
@@ -520,7 +520,7 @@
             this.simpleButtonCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.simpleButtonCancel.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonCancel.ImageOptions.Image")));
-            this.simpleButtonCancel.Location = new System.Drawing.Point(671, 4);
+            this.simpleButtonCancel.Location = new System.Drawing.Point(921, 4);
             this.simpleButtonCancel.Name = "simpleButtonCancel";
             this.simpleButtonCancel.Size = new System.Drawing.Size(75, 33);
             this.simpleButtonCancel.TabIndex = 5;
@@ -531,7 +531,7 @@
             // 
             this.simpleButtonSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.simpleButtonSave.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButtonSave.ImageOptions.Image")));
-            this.simpleButtonSave.Location = new System.Drawing.Point(590, 4);
+            this.simpleButtonSave.Location = new System.Drawing.Point(840, 4);
             this.simpleButtonSave.Name = "simpleButtonSave";
             this.simpleButtonSave.Size = new System.Drawing.Size(75, 33);
             this.simpleButtonSave.TabIndex = 6;
@@ -543,16 +543,16 @@
             this.panelControlScroll.Controls.Add(this.simpleButtonCancel);
             this.panelControlScroll.Controls.Add(this.simpleButtonSave);
             this.panelControlScroll.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelControlScroll.Location = new System.Drawing.Point(0, 450);
+            this.panelControlScroll.Location = new System.Drawing.Point(0, 663);
             this.panelControlScroll.Name = "panelControlScroll";
-            this.panelControlScroll.Size = new System.Drawing.Size(758, 41);
+            this.panelControlScroll.Size = new System.Drawing.Size(1008, 41);
             this.panelControlScroll.TabIndex = 11;
             // 
             // pictureBoxPlacementInfo
             // 
             this.pictureBoxPlacementInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxPlacementInfo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxPlacementInfo.Image")));
-            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(709, 55);
+            this.pictureBoxPlacementInfo.Location = new System.Drawing.Point(959, 55);
             this.pictureBoxPlacementInfo.Name = "pictureBoxPlacementInfo";
             this.pictureBoxPlacementInfo.Size = new System.Drawing.Size(34, 34);
             this.pictureBoxPlacementInfo.TabIndex = 0;
@@ -566,7 +566,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.simpleButtonCancel;
-            this.ClientSize = new System.Drawing.Size(758, 516);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.pictureBoxPlacementInfo);
             this.Controls.Add(this.xtraScrollableControlMenu);
             this.Controls.Add(this.panelControlScroll);

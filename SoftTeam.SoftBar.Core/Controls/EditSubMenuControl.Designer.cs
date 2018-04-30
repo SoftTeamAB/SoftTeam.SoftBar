@@ -63,7 +63,7 @@
             // 
             // simpleButtonBrowse
             // 
-            this.simpleButtonBrowse.Location = new System.Drawing.Point(330, 132);
+            this.simpleButtonBrowse.Location = new System.Drawing.Point(423, 132);
             this.simpleButtonBrowse.Name = "simpleButtonBrowse";
             this.simpleButtonBrowse.Size = new System.Drawing.Size(27, 23);
             this.simpleButtonBrowse.TabIndex = 15;
@@ -97,7 +97,7 @@
             this.labelControlEditSubMenu.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControlEditSubMenu.Location = new System.Drawing.Point(3, 9);
             this.labelControlEditSubMenu.Name = "labelControlEditSubMenu";
-            this.labelControlEditSubMenu.Size = new System.Drawing.Size(394, 19);
+            this.labelControlEditSubMenu.Size = new System.Drawing.Size(494, 19);
             this.labelControlEditSubMenu.TabIndex = 12;
             this.labelControlEditSubMenu.Text = "Edit sub menu";
             // 
@@ -120,7 +120,7 @@
             // 
             this.textEditIconPath.Location = new System.Drawing.Point(50, 134);
             this.textEditIconPath.Name = "textEditIconPath";
-            this.textEditIconPath.Size = new System.Drawing.Size(274, 20);
+            this.textEditIconPath.Size = new System.Drawing.Size(367, 20);
             superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem2.Text = "Icon path";
@@ -137,7 +137,7 @@
             // 
             this.textEditName.Location = new System.Drawing.Point(50, 89);
             this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new System.Drawing.Size(307, 20);
+            this.textEditName.Size = new System.Drawing.Size(400, 20);
             superToolTip3.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem3.Text = "Name";
@@ -166,7 +166,7 @@
             this.Controls.Add(this.textEditIconPath);
             this.Controls.Add(this.textEditName);
             this.Name = "EditSubMenuControl";
-            this.Size = new System.Drawing.Size(400, 250);
+            this.Size = new System.Drawing.Size(500, 300);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).EndInit();

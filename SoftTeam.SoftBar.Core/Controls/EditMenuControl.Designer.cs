@@ -62,7 +62,7 @@
             // 
             this.textEditName.Location = new System.Drawing.Point(50, 74);
             this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new System.Drawing.Size(307, 20);
+            this.textEditName.Size = new System.Drawing.Size(400, 20);
             superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
             toolTipTitleItem1.Text = "Name";
@@ -78,7 +78,7 @@
             // 
             this.textEditIconPath.Location = new System.Drawing.Point(50, 119);
             this.textEditIconPath.Name = "textEditIconPath";
-            this.textEditIconPath.Size = new System.Drawing.Size(274, 20);
+            this.textEditIconPath.Size = new System.Drawing.Size(367, 20);
             superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
             toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image1")));
             toolTipTitleItem2.Text = "Icon path";
@@ -102,7 +102,7 @@
             this.labelControlEditMenu.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControlEditMenu.Location = new System.Drawing.Point(3, 9);
             this.labelControlEditMenu.Name = "labelControlEditMenu";
-            this.labelControlEditMenu.Size = new System.Drawing.Size(394, 19);
+            this.labelControlEditMenu.Size = new System.Drawing.Size(494, 19);
             this.labelControlEditMenu.TabIndex = 3;
             this.labelControlEditMenu.Text = "Edit menu";
             // 
@@ -139,7 +139,7 @@
             // 
             // simpleButtonBrowse
             // 
-            this.simpleButtonBrowse.Location = new System.Drawing.Point(330, 117);
+            this.simpleButtonBrowse.Location = new System.Drawing.Point(423, 117);
             this.simpleButtonBrowse.Name = "simpleButtonBrowse";
             this.simpleButtonBrowse.Size = new System.Drawing.Size(27, 23);
             this.simpleButtonBrowse.TabIndex = 7;
@@ -207,7 +207,7 @@
             this.Controls.Add(this.textEditIconPath);
             this.Controls.Add(this.textEditName);
             this.Name = "EditMenuControl";
-            this.Size = new System.Drawing.Size(400, 250);
+            this.Size = new System.Drawing.Size(500, 300);
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditIconPath.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();

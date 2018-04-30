@@ -28,13 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
             DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHeaderItemControl));
             DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
+            DevExpress.Utils.SuperToolTip superToolTip2 = new DevExpress.Utils.SuperToolTip();
+            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem2 = new DevExpress.Utils.ToolTipTitleItem();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditHeaderItemControl));
+            DevExpress.Utils.ToolTipItem toolTipItem2 = new DevExpress.Utils.ToolTipItem();
             this.pictureBoxIcon = new System.Windows.Forms.PictureBox();
             this.labelControlName = new DevExpress.XtraEditors.LabelControl();
             this.labelControlEditHeader = new DevExpress.XtraEditors.LabelControl();
@@ -72,7 +72,7 @@
             this.labelControlEditHeader.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
             this.labelControlEditHeader.Location = new System.Drawing.Point(3, 9);
             this.labelControlEditHeader.Name = "labelControlEditHeader";
-            this.labelControlEditHeader.Size = new System.Drawing.Size(394, 19);
+            this.labelControlEditHeader.Size = new System.Drawing.Size(494, 19);
             this.labelControlEditHeader.TabIndex = 12;
             this.labelControlEditHeader.Text = "Edit header";
             // 
@@ -82,32 +82,32 @@
             this.checkEditBeginGroup.Name = "checkEditBeginGroup";
             this.checkEditBeginGroup.Properties.Caption = "Begin group";
             this.checkEditBeginGroup.Size = new System.Drawing.Size(100, 19);
-            superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem2.Text = "Begin group";
-            toolTipItem2.LeftIndent = 6;
-            toolTipItem2.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
-            superToolTip2.Items.Add(toolTipTitleItem2);
-            superToolTip2.Items.Add(toolTipItem2);
-            this.checkEditBeginGroup.SuperTip = superToolTip2;
+            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem1.Text = "Begin group";
+            toolTipItem1.LeftIndent = 6;
+            toolTipItem1.Text = "If this is checked a separator will appear <b>before</b> this item in the menu.";
+            superToolTip1.Items.Add(toolTipTitleItem1);
+            superToolTip1.Items.Add(toolTipItem1);
+            this.checkEditBeginGroup.SuperTip = superToolTip1;
             this.checkEditBeginGroup.TabIndex = 11;
             // 
             // textEditName
             // 
             this.textEditName.Location = new System.Drawing.Point(50, 89);
             this.textEditName.Name = "textEditName";
-            this.textEditName.Size = new System.Drawing.Size(307, 20);
-            superToolTip1.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
-            toolTipTitleItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
-            toolTipTitleItem1.Text = "Name";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "The name of this menu item. This is the name that will appear in the menu, when i" +
+            this.textEditName.Size = new System.Drawing.Size(405, 20);
+            superToolTip2.AllowHtmlText = DevExpress.Utils.DefaultBoolean.True;
+            toolTipTitleItem2.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image")));
+            toolTipTitleItem2.Text = "Name";
+            toolTipItem2.LeftIndent = 6;
+            toolTipItem2.Text = "The name of this menu item. This is the name that will appear in the menu, when i" +
     "t is opened.";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.textEditName.SuperTip = superToolTip1;
+            superToolTip2.Items.Add(toolTipTitleItem2);
+            superToolTip2.Items.Add(toolTipItem2);
+            this.textEditName.SuperTip = superToolTip2;
             this.textEditName.TabIndex = 9;
             // 
-            // EditHeaderItem
+            // EditHeaderItemControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -116,8 +116,8 @@
             this.Controls.Add(this.labelControlEditHeader);
             this.Controls.Add(this.checkEditBeginGroup);
             this.Controls.Add(this.textEditName);
-            this.Name = "EditHeaderItem";
-            this.Size = new System.Drawing.Size(400, 250);
+            this.Name = "EditHeaderItemControl";
+            this.Size = new System.Drawing.Size(500, 300);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.checkEditBeginGroup.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.textEditName.Properties)).EndInit();
