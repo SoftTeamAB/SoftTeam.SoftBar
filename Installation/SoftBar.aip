@@ -25,10 +25,10 @@
     <ROW Property="AppLogoIcon" Value="applogoicon" MultiBuildValue="DefaultBuild:moon.png" Type="1" MsiKey="AppLogoIcon"/>
     <ROW Property="CTRLS" Value="2"/>
     <ROW Property="Manufacturer" Value="SoftTeam AB"/>
-    <ROW Property="ProductCode" Value="1033:{3A52274A-CB8B-4DD3-987D-BA31A0A2B64C} 1053:{DC318C4B-6F97-4396-94BA-ADEFA8419ABC} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{C6A0CE64-E9AC-4036-A401-08724CCA7EA0} 1053:{487C10A0-7CEF-458C-BA8C-9AD17E0653CA} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="SoftBar"/>
-    <ROW Property="ProductVersion" Value="1.0.1" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.2" Type="32"/>
     <ROW Property="RUNAPPLICATION" Value="1" Type="4"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{7E01F855-816D-48B0-9305-D7B6798AC9FF}"/>
@@ -57,7 +57,7 @@
     <ROW Directory="ru_Dir" Directory_Parent="APPDIR" DefaultDir="ru"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
-    <ROW Component="AI_CustomARPName" ComponentId="{BF0FDA3A-2781-4241-9DEA-DCD8645E8EAA}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
+    <ROW Component="AI_CustomARPName" ComponentId="{F57F0826-B3DE-4F2B-B7A3-A77BAD9D4EFF}" Directory_="APPDIR" Attributes="4" KeyPath="DisplayName" Options="1"/>
     <ROW Component="AI_ExePath" ComponentId="{FA213467-1E2B-4D3E-AB09-BDE845F7781D}" Directory_="APPDIR" Attributes="4" KeyPath="AI_ExePath"/>
     <ROW Component="APPDIR" ComponentId="{1743FAEF-F288-4D9B-A5ED-69F6880E060A}" Directory_="APPDIR" Attributes="0"/>
     <ROW Component="DevExpress.BonusSkins.v17.2.dll" ComponentId="{ACE6625D-6E62-4A02-9065-E40E9E3C4D2E}" Directory_="APPDIR" Attributes="0" KeyPath="DevExpress.BonusSkins.v17.2.dll"/>
