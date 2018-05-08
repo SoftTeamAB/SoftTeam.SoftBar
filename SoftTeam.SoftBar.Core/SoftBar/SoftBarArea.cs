@@ -166,10 +166,17 @@ namespace SoftTeam.SoftBar.Core.SoftBar
             {
                 float value = 100 - _cpuCounter.NextValue();
                 string text = "";
-                if (value > 75 && value < 100)
+
+                if (value > 100)
+                    value = 100;
+
+                if (value <= 0)
+                    text = $"CPU : {0:#.0} %";
+                else if (value > 90)
                     text = $"CPU : <color=#ff0000>{value:#.0} %</color>";
                 else
                     text = $"CPU : {value:#.0} %";
+
                 labelCPU.Text = text;
             }
 
@@ -180,10 +187,17 @@ namespace SoftTeam.SoftBar.Core.SoftBar
                 Int64 tot = PerformanceInfo.GetTotalMemoryInMiB();
                 decimal percentUsed = 100 - ((decimal)phav / (decimal)tot) * 100;
                 string text = "";
-                if (percentUsed > 75)
+
+                if (percentUsed > 100)
+                    percentUsed = 100;
+
+                if (percentUsed <= 0)
+                    text = $"Mem : {0:#.0} %";
+                else if (percentUsed > 90)
                     text = $"Mem : <color=#ff0000>{percentUsed:#.0} %</color>";
                 else
                     text = $"Mem : {percentUsed:#.0} %";
+
                 labelMem.Text = text;
             }
         }
