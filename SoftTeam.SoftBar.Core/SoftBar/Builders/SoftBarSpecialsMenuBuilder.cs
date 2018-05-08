@@ -49,7 +49,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
             var width = 70;
             LabelControl labelCPU = new LabelControl();
             labelCPU.Name = "labelCPU";
-            labelCPU.Text = "CPU :";
+            labelCPU.Text = "CPU : {0:#.0} %";
             labelCPU.Location = new Point(_manager.Form.Width - clipboardWidth - width, 2);
             labelCPU.AllowHtmlString = true;
             labelCPU.SuperTip = HelperFunctions.CreateInformationToolTip(text);
@@ -58,7 +58,7 @@ namespace SoftTeam.SoftBar.Core.SoftBar.Builders
 
             LabelControl labelMem = new LabelControl();
             labelMem.Name = "labelMem";
-            labelMem.Text = "Mem :";
+            labelMem.Text = "Mem : {0:#.0} %";
             labelMem.AllowHtmlString = true;
             labelMem.Location = new Point(_manager.Form.Width - clipboardWidth - width, 15);
             labelMem.SuperTip = HelperFunctions.CreateInformationToolTip(text);
