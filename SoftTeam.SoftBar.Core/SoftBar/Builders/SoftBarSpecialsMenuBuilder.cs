@@ -1,11 +1,9 @@
 ﻿using DevExpress.Skins;
-using DevExpress.Utils;
 using DevExpress.Utils.Svg;
 using DevExpress.XtraBars;
 using DevExpress.XtraEditors;
 using SoftTeam.SoftBar.Core.ClipboardList;
 using SoftTeam.SoftBar.Core.Misc;
-using System;
 using System.Drawing;
 using System.Windows.Forms;
 
