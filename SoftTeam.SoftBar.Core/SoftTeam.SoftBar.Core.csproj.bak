@@ -9,12 +9,13 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SoftTeam.SoftBar.Core</RootNamespace>
     <AssemblyName>SoftTeam.SoftBar.Core</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>SAK</SccProjectName>
     <SccLocalPath>SAK</SccLocalPath>
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +26,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -33,6 +35,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -71,15 +74,17 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Data.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Dialogs.v17.2.Core, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraDialogs.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.BonusSkins.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Data.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Dialogs.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v17.2.Core, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraBars.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDialogs.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraEditors.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraPrinting.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGrid.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v17.2, Version=17.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -92,8 +97,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppBar\AppBarFunctions.cs" />
-    <Compile Include="AppBar\Interop.cs" />
+    <Compile Include="AppBar\AppBar.cs" />
+    <Compile Include="AppBar\ApplicationBarManager.cs" />
+    <Compile Include="Clipboard\ClipboardItem.cs" />
+    <Compile Include="Clipboard\ClipboardItemAudio.cs" />
+    <Compile Include="Clipboard\ClipboardItemFiles.cs" />
+    <Compile Include="Clipboard\ClipboardItemImage.cs" />
+    <Compile Include="Clipboard\ClipboardItemText.cs" />
+    <Compile Include="Clipboard\ClipboardManager.cs" />
     <Compile Include="Controls\EditHeaderItemControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -124,11 +135,36 @@
     <Compile Include="Controls\MenuItemControl.Designer.cs">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CaptureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CaptureForm.Designer.cs">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ChooseDirectoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ChooseDirectoryForm.Designer.cs">
+      <DependentUpon>ChooseDirectoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\CustomizationForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\CustomizationForm.Designer.cs">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CustomizationFormBuilder.cs" />
+    <Compile Include="Forms\CustomizationInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomizationInfoForm.Designer.cs">
+      <DependentUpon>CustomizationInfoForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\CustomizationMenuItemForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +172,25 @@
     <Compile Include="Forms\CustomizationMenuItemForm.Designer.cs">
       <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\MenuItemInfoForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MenuItemInfoForm.Designer.cs">
+      <DependentUpon>MenuItemInfoForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PositionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PositionForm.Designer.cs">
+      <DependentUpon>PositionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\StartupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\StartupForm.Designer.cs">
+      <DependentUpon>StartupForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Hotkey\HotkeyManager.cs" />
     <Compile Include="Misc\ControlExtension.cs" />
     <Compile Include="Forms\MyToolsForm.cs">
       <SubType>Form</SubType>
@@ -150,6 +205,7 @@
       <DependentUpon>MyDirectoriesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Misc\CommandLine.cs" />
+    <Compile Include="Misc\ErrorHandler.cs" />
     <Compile Include="Misc\ImageExtension.cs" />
     <Compile Include="Forms\MainAppBarForm.cs">
       <SubType>Form</SubType>
@@ -160,10 +216,19 @@
     <Compile Include="Misc\Constants.cs" />
     <Compile Include="Misc\Enumerators.cs" />
     <Compile Include="Misc\HelperFunctions.cs" />
+    <Compile Include="Misc\LimitedStack.cs" />
+    <Compile Include="Misc\ObjectExtension.cs" />
+    <Compile Include="Misc\PerformanceInfo.cs" />
+    <Compile Include="Misc\PHSAppBarImporter.cs" />
+    <Compile Include="Misc\ProcessCapture.cs" />
+    <Compile Include="Misc\StringExtension.cs" />
+    <Compile Include="SoftBar\Builders\SoftBarSpecialsMenuBuilder.cs" />
+    <Compile Include="SoftBar\SoftBarFileManager.cs" />
     <Compile Include="Settings\Directory.cs" />
     <Compile Include="Settings\Tool.cs" />
     <Compile Include="SoftBar\Builders\SoftBarSystemMenuBuilder.cs" />
     <Compile Include="SoftBar\Builders\SoftBarUserMenuBuilder.cs" />
+    <Compile Include="SoftBar\SoftBarStaticItem.cs" />
     <Compile Include="Xml\XmlArea.cs" />
     <Compile Include="Xml\XmlHeaderItem.cs" />
     <Compile Include="Xml\XmlLoader.cs" />
@@ -171,6 +236,7 @@
     <Compile Include="Xml\XmlMenuBase.cs" />
     <Compile Include="Xml\XmlMenuItem.cs" />
     <Compile Include="Xml\XmlMenuItemBase.cs" />
+    <Compile Include="Xml\XmlSaver.cs" />
     <Compile Include="Xml\XmlSubMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -207,26 +273,10 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\folder_document.png" />
-    <None Include="Resources\folder_into.png" />
-    <None Include="Resources\hard_drive_network.png" />
-    <None Include="Resources\memorystick.png" />
-    <None Include="Resources\cd.png" />
-    <None Include="Resources\floppy_drive.png" />
-    <None Include="Resources\hard_drive.png" />
-    <None Include="Resources\folder.png" />
-    <None Include="Resources\gear.png" />
     <None Include="Resources\moon.png" />
-    <None Include="Resources\recycle.png" />
     <None Include="Resources\sign_warning_small.png" />
     <None Include="Resources\sign_warning.png" />
-    <None Include="Resources\preferences.png" />
-    <None Include="Resources\delete.png" />
     <None Include="Resources\add.png" />
-    <None Include="Xml\SoftBar.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Controls\EditHeaderItemControl.resx">
@@ -244,11 +294,26 @@
     <EmbeddedResource Include="Controls\MenuItemControl.resx">
       <DependentUpon>MenuItemControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CaptureForm.resx">
+      <DependentUpon>CaptureForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ChooseDirectoryForm.resx">
+      <DependentUpon>ChooseDirectoryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationForm.resx">
       <DependentUpon>CustomizationForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomizationInfoForm.resx">
+      <DependentUpon>CustomizationInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\CustomizationMenuItemForm.resx">
       <DependentUpon>CustomizationMenuItemForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MenuItemInfoForm.resx">
+      <DependentUpon>MenuItemInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MyToolsForm.resx">
       <DependentUpon>MyToolsForm.cs</DependentUpon>
@@ -258,6 +323,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MainAppBarForm.resx">
       <DependentUpon>MainAppBarForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PositionForm.resx">
+      <DependentUpon>PositionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\StartupForm.resx">
+      <DependentUpon>StartupForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -269,13 +340,45 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="PHSAppBar.txt" />
+    <None Include="Resources\tag.png" />
+    <None Include="Resources\gear.png" />
+    <None Include="Resources\server_network.png" />
+    <None Include="Resources\server.png" />
+    <None Include="Resources\recycle.png" />
+    <None Include="Resources\preferences.png" />
+    <None Include="Resources\folder_music.png" />
+    <None Include="Resources\folder_movie.png" />
+    <None Include="Resources\memorystick.png" />
+    <None Include="Resources\information.png" />
+    <None Include="Resources\hard_drive_network.png" />
+    <None Include="Resources\hard_drive.png" />
+    <None Include="Resources\floppy_drive.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\folder_into.png" />
+    <None Include="Resources\folder_document.png" />
+    <None Include="Resources\folder.png" />
+    <None Include="Resources\clipboard.png" />
+    <None Include="Resources\cd.png" />
+    <None Include="Resources\empty.svg" />
+    <None Include="Resources\clipboard_medium.png" />
+    <None Include="Resources\folder_medium.png" />
+    <None Include="Resources\sign_warning_medium.png" />
     <None Include="Resources\toolbox.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\folder_music.png" />
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\folder_movie.png" />
+    <COMReference Include="Shell32">
+      <Guid>{50A7E9B0-70EF-11D1-B75A-00A0C90564FE}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
